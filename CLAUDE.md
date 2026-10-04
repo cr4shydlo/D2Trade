@@ -307,7 +307,7 @@ asyncio_mode = auto
 main_file = run_app.py
 ```
 
-Scenariusze w repo (**95 testów**, `py -3.11 -m pytest -q` ≈ 100 s):
+Scenariusze w repo (**96 testów**, `py -3.11 -m pytest -q` ≈ 100 s):
 
 | plik | co sprawdza |
 |---|---|

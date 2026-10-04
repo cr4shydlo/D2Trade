@@ -11,6 +11,7 @@ import json
 import pytest
 from nicegui.testing import User
 
+import i18n
 import paths
 import traderie_map as tm
 import traderie_post as tp
@@ -179,6 +180,38 @@ async def test_ustawienia_maja_sekcje_dane_z_gry(user: User, lokalnie):
     await user.should_see("Dane z gry")
     await user.should_see("Katalog z Diablo II: Resurrected:")
     await user.should_see("Odswiez baze")          # baza jest, wiec przycisk odswieza
+
+
+async def test_przycisk_w_ustawieniach_buduje_baze(user: User, monkeypatch, tmp_path):
+    """Caly przeplyw z okna: wskaz katalog -> przycisk -> baza gotowa.
+
+    Katalog gry udaje zestaw tabel z test_game_extract - nie trzeba miec D2R.
+    """
+    import test_game_extract as tge
+    import d2_web as W
+
+    tge.zbuduj_sztuczna_gre(tmp_path)
+    monkeypatch.setattr(tm, "load_auth", lambda: {})
+    gs.odswiez()
+    game_db._INDEKS = None
+    await user.open("/")
+    W.settings_dialog()
+    await asyncio.sleep(0.4)
+    await user.should_see("brak lokalnej bazy")
+
+    # pole jest wstepnie wypelnione zgadnieta sciezka, wiec podmieniamy wartosc, nie dopisujemy
+    pole = user.find("Katalog z Diablo II: Resurrected:").elements.pop()
+    pole.set_value(str(tmp_path))
+    await asyncio.sleep(0.1)
+    user.find("Wyciagnij dane z gry").click()
+    for _ in range(40):
+        await asyncio.sleep(0.1)
+        if gs.dostepne():
+            break
+    assert gs.dostepne(), "przycisk nie zbudowal bazy"
+    assert gs.get_item("Ring"), "baza jest, ale nie zna przedmiotow"
+    # sciezka ma sie zapamietac, zeby nastepnym razem nie trzeba jej bylo wpisywac
+    assert i18n.settings().get("game_dir") == str(tmp_path)
 
 
 async def test_pasek_boczny_mowi_zeby_wskazac_gre(user: User, monkeypatch):

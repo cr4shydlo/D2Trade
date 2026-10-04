@@ -117,19 +117,29 @@ def zapisz_tabele(katalog, nazwa, wiersze):
     (katalog / (nazwa + ".txt")).write_text("\r\n".join(linie) + "\r\n", encoding="utf-8")
 
 
-@pytest.fixture
-def gra(tmp_path):
-    """Katalog udajacy wypakowane pliki gry."""
-    excel = tmp_path / "data" / "global" / "excel"
-    stringi = tmp_path / "data" / "local" / "lng" / "strings"
-    excel.mkdir(parents=True)
-    stringi.mkdir(parents=True)
+def zbuduj_sztuczna_gre(katalog):
+    """Zapisuje w katalogu zestaw tabel i tekstow udajacy wypakowane pliki D2R.
+
+    Osobna funkcja, a nie tylko fikstura, bo korzysta z niej takze test okna
+    (test_local_mode) - przycisk 'Wyciagnij dane z gry' trzeba przetestowac na czyms,
+    a nikt nie ma gwarancji, ze ma zainstalowana gre.
+    """
+    excel = katalog / "data" / "global" / "excel"
+    stringi = katalog / "data" / "local" / "lng" / "strings"
+    excel.mkdir(parents=True, exist_ok=True)
+    stringi.mkdir(parents=True, exist_ok=True)
     for nazwa, wiersze in TABELE.items():
         zapisz_tabele(excel, nazwa, wiersze)
     for nazwa, pary in TEKSTY.items():
         dane = [{"id": i, "Key": k, "enUS": v} for i, (k, v) in enumerate(pary.items())]
         (stringi / (nazwa + ".json")).write_text(json.dumps(dane), encoding="utf-8")
-    return tmp_path
+    return katalog
+
+
+@pytest.fixture
+def gra(tmp_path):
+    """Katalog udajacy wypakowane pliki gry."""
+    return zbuduj_sztuczna_gre(tmp_path)
 
 
 @pytest.fixture

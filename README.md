@@ -255,7 +255,7 @@ Secrets, settings, `cache/` and `game_data/` are kept.
 .venv\Scripts\python -m pytest -q
 ```
 
-95 tests, about 100 s. They drive the real UI through `nicegui.testing.User`, without a
+96 tests, about 100 s. They drive the real UI through `nicegui.testing.User`, without a
 browser. They **never touch real data**: `conftest.py` points `D2_DANE` at a temporary
 directory and unpacks the `sample_data/` fixture there, and both Traderie and the model are
 stubbed out. The local-mode tests build their own synthetic game tables, so they do not need
