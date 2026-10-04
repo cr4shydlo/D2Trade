@@ -45,7 +45,7 @@ Te reguły wynikły z pracy nad projektem i trzeba je utrzymać.
 8. **Sekrety leżą w jednym katalogu `secrets/`** (`traderie_auth.txt`, `api_OVH.txt`), cały katalog
    jest w `.gitignore` i **nigdy** nie trafia do `settings.json`. Oba wkleja się w Ustawieniach
    (pola ukryte, z podglądem) — zapis robi `app_config.save()` / `llm.save_api_key()`, ścieżki daje
-   `paths.secret()`, a `paths.collect_secrets()` przy starcie przenosi pliki ze starych miejsc.
+   `paths.secret()`, a `paths.migrate_layout()` przy starcie przenosi pliki ze starych miejsc.
    **Zakaz dla każdego, kto pracuje nad kodem (także dla Claude): nie otwierać, nie wypisywać,
    nie kopiować i nie wysyłać zawartości tych plików ani nigdzie jej nie wklejać.** Przenoszenie
    pliku bez czytania jest w porządku; podgląd treści nie.
@@ -62,7 +62,6 @@ py -3.11 -m pip install nicegui pywebview keyboard mss pillow ollama
 |---|---|
 | `D2 Trade.bat` | nowe okno (NiceGUI + pywebview), bez konsoli |
 | `D2 Trade (console).bat` | to samo z konsolą — do diagnozy |
-| `D2 Trade (old window).bat` | stare okno tkinter (`d2_gui.py`), zapasowe |
 | `Extract game data.bat` | buduje `game_data/` z plików D2R (sekcja 11) |
 | `py -3.11 d2_trade.py` | tryb konsolowy: `[--send] [--redo] [--force] [--no-prices]` |
 
@@ -94,14 +93,12 @@ Okno startuje na `http://127.0.0.1:8765` (w pywebview jako natywne okno).
 | `app_config.py` | ustawienia konta i modelu; test połączenia |
 | `i18n.py` | tłumaczenie UI + `settings.json` |
 | `paths.py` | gdzie leżą pliki programu, a gdzie dane (`D2_DANE` przestawia dane — tego używają testy) |
-| `affixes_build.py` | generator `affixes_data.json` z plików danych gry |
 
 ### Interfejs
 
 | Plik | Uwaga |
 |---|---|
-| `d2_web.py` | **aktualne okno** (NiceGUI, jasny motyw). 1550 linii — kandydat do podziału, patrz sekcja 10 |
-| `d2_gui.py` | **stare okno** (tkinter), tylko jako zapasowe. Nie rozwijać; docelowo usunąć |
+| `d2_web.py` | **okno programu** (NiceGUI). ~2000 linii — kandydat do podziału, patrz sekcja 10 |
 
 ### Dane (tworzone w czasie pracy, nie w repo)
 
@@ -209,12 +206,23 @@ rozpoznanie rare/magic opiera się na tekście (patrz niżej), a kolor służy j
 
 ### Magic i rare — `rare_eval.py`
 
-`affixes_data.json` zawiera **maksima statów per slot i rzadkość**, wyciągnięte wprost z CASC
-gry (projekt `d2r_assets`, `tools/export_affixes_data.py`; 1496 afiksów). Poprzednia wersja
-pochodziła z `affixes_build.py` i repo `blizzhackers/d2data` — obie zgadzają się w 401 z 402
-wartości. Jedyna różnica: życie na Grand Charmie to **45**, nie 50. Afiks „of Vita” 46–50 jest
-w tabelach gry, ale wymaga ilvl 110, a ilvl nie przekracza 99 — nigdy nie wypada, więc liczony
-do maksimum sprawiał, że idealny 45-życiowy skiller wychodził na 90%.
+`affixes_data.json` zawiera **maksima statów per slot i rzadkość** (54 typy przedmiotów).
+Czyta je `rare_eval.wczytaj_maksima()` — **najpierw** `game_data/affixes_data.json`, czyli
+wersję wyciągniętą z gry użytkownika (zna afiksy moda), a dopiero potem plik z repozytorium,
+żeby ocena rzutu działała zaraz po sklonowaniu.
+
+Generatorem jest `game_extract.zakresy_slotow()`. Afiks wchodzi do maksimum, gdy jest
+`spawnable`, któryś jego `itype` pasuje do typu przedmiotu lub typu nadrzędnego, a żaden
+`etype` nie pasuje. **Liczymy tylko afiksy osiągalne**: `level > 99` odpada, bo ilvl nigdy
+nie przekracza 99. Stąd życie na Grand Charmie to **45**, nie 50 — afiks „of Vita” 46–50 jest
+w tabelach, ale wymaga ilvl 110, więc nigdy nie wypada; wliczony do maksimum sprawiał, że
+idealny 45-życiowy skiller wychodził na 90%. `automagic` pomijamy: te afiksy są przypisane do
+konkretnych baz, nie losowane.
+
+Wcześniej robił to `affixes_build.py`, ściągając dane z `blizzhackers/d2data`. Został usunięty
+(4 X 2026): dublował źródło, wymagał sieci i po uruchomieniu **nadpisywał dobre dane gorszymi**
+— nie ciął po ilvl, więc wracało błędne 50 życia. Port do `game_extract.py` sprawdzono
+porównaniem: **2006 wartości, 0 różnic** względem pliku w repozytorium.
 
 - `KEYS` — staty, które decydują o wartości danego slotu (kolejność = ważność).
 - `STRONG = 0.75` — stat ≥ 75% maksimum liczy się jako mocny.
@@ -406,7 +414,7 @@ Przy zmianach w logice (bez UI) najszybszą kontrolą jest przepuszczenie prawdz
   `_usuniete/`) przenosi przy starcie `paths.migrate_layout()`, więc dane z poprzedniej wersji
   same trafiają na swoje miejsce. Polskie słowo „screeny” w tekstach dla użytkownika zostało.
 - **Sekrety w jednym katalogu** — `secrets/traderie_auth.txt` i `secrets/api_OVH.txt`
-  (`paths.SEKRETY`, `paths.secret()`); `paths.collect_secrets()` przenosi pliki z poprzednich
+  (`paths.SECRETS`, `paths.secret()`); `paths.migrate_layout()` przenosi pliki z poprzednich
   lokalizacji przy starcie, bez czytania ich treści.
 - **Klucz API modelu wklejany w oknie** — pole „Klucz API:” (ukryte, jak token Traderie) w sekcji
   chmury; zapisuje się do pliku w `secrets/`, nie do ustawień. Okno nie pyta już o nazwę pliku
@@ -506,8 +514,9 @@ Przy zmianach w logice (bez UI) najszybszą kontrolą jest przepuszczenie prawdz
 - Ponowny odczyt nadpisuje `.listing.json`, więc pola wpisane przez użytkownika (`KEEP_ON_REMAP`:
   `where`, `planned_price`, `sold`, `sold_via`, `removed`) są przenoszone ze starego pliku.
   Wystawione przedmioty (`posted`) nie są w ogóle przemapowywane.
-- **Dane afiksów** pochodzą z plików LoD; afiksy dodane przez Reign of the Warlock mogą ich nie
-  obejmować. Odświeżenie: `py -3.11 affixes_build.py`.
+- **Dane afiksów w repo** (`affixes_data.json`) pochodzą z retailowego D2R i mogą nie obejmować
+  afiksów dodanych przez moda. Kto wyciągnie dane z własnej gry, dostaje własną wersję w
+  `game_data/affixes_data.json` — `rare_eval` woli ją od tej z repo.
 - **Tryb lokalny: pakiet `casc`** ma gotowe koło tylko dla Windows x64 + Python 3.11. Gdy go nie ma,
   `game_extract.py` przyjmuje katalog z już wypakowanym `data/` (CascView) — `game_casc.otworz()`
   rozpoznaje jedno i drugie, a `Katalog` nie wymaga żadnej biblioteki (dlatego testy go używają).
@@ -559,9 +568,6 @@ Przy zmianach w logice (bez UI) najszybszą kontrolą jest przepuszczenie prawdz
 ### Dług techniczny
 
 - `d2_web.py` ma ~1900 linii — warto rozdzielić na widoki, okna dialogowe i stan.
-- `d2_gui.py` (stare okno tkinter) został przy starym wyglądzie — nowego motywu nie dostanie.
-- `d2_gui.py` (tkinter, ~1800 linii) duplikuje logikę UI; nie ma nowych funkcji (odnawianie,
-  pole „gdzie leży”) — usunąć, gdy nowe okno się sprawdzi.
 - `traderie_post.py`: `post`, `_sell_call`, `set_visible` i `refresh_listing` powtarzają ten sam
   schemat żądania — warto wyciągnąć jedną funkcję pomocniczą.
 - **Nazwy klas CSS muszą zaczynać się od `d2`** (`.d2row`, `.d2list`). Quasar ma własne `.row`,
@@ -597,6 +603,7 @@ i poza repo):
 | `items.json` | przedmioty: rodzaj, nazwa, aliasy, typ, tagi, `props`, `desc`, ikona |
 | `meta.json` | skąd, kiedy, liczniki (pokazywane użytkownikowi) |
 | `icons/*.png` | ikony HD (`.sprite` → PNG, przycięte do zawartości) |
+| `affixes_data.json` | maksima statów per slot — wersja lepsza od tej z repo (patrz sekcja 7) |
 
 Dwa źródła, jedno API (`game_casc.otworz()`): archiwum **CASC** zainstalowanej gry albo zwykły
 katalog z wypakowanym `data/`. Nazwy plików podaje się w jednej postaci (`data/global/excel/armor.txt`).

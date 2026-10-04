@@ -172,7 +172,6 @@ can live anywhere and can be moved - every path in the code is relative.
 |---|---|
 | `D2 Trade.bat` | normal start, no console window |
 | `D2 Trade (console).bat` | the same with a visible console, for diagnostics |
-| `D2 Trade (old window).bat` | the older tkinter window, kept as a fallback |
 | `Extract game data.bat` | builds the local database from the game files |
 
 ## Three ways to run it
@@ -216,8 +215,9 @@ example) and point the tool at **that** folder instead - everything else works t
 
 - identifying items by name: bases, uniques, set items, runewords, runes and gems;
 - splitting a tooltip into stats, including magic/rare items and crafts;
-- **roll quality** - each value against the highest that stat can roll (`affixes_data.json`
-  is in the repository, so this works out of the box);
+- **roll quality** - each value against the highest that stat can roll (a copy of the affix
+  table ships with the repository, and extracting your own game replaces it with one that
+  also knows the affixes your mod adds);
 - the item icon taken from the game instead of Traderie's CDN;
 - the **d2jsp sale post**, with prices in runes and/or FG;
 - the "where is it" field (character and stash tab), filtering, paging, light/dark theme.

@@ -1,5 +1,5 @@
 """Przelaczanie dostawcy modelu (Ollama <-> chmura) i zapamietywanie modelu per dostawca."""
-import asyncio, json, urllib.request
+import asyncio
 from nicegui.testing import User
 
 async def test_switch(user: User):

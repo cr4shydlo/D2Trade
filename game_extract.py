@@ -21,7 +21,6 @@ import json
 import re
 import sys
 import time
-from pathlib import Path
 
 import game_casc as gc
 import paths
@@ -94,6 +93,25 @@ MODY_AFIKSU = (1, 2, 3)
 # nazwy kolumn z wlasciwosciami: (kod, parametr, min, max)
 KOL_PRZEDMIOT = ("prop%d", "par%d", "min%d", "max%d")
 KOL_RUNEWORD = ("T1Code%d", "T1Param%d", "T1Min%d", "T1Max%d")
+
+# ---- maksima statow per slot i rzadkosc (affixes_data.json dla rare_eval) ----
+MAX_ILVL = 99     # poziom przedmiotu nigdy nie przekracza 99, wiec afiks wyzej nie wypadnie
+# kod moda z gry -> klucz statu w rare_eval. Kilka kodow na jeden stat, bo gra ma
+# osobne warianty afiksu dla roznych zakresow (cast1/cast2/cast3 to ten sam FCR).
+MODY_STATOW = {
+    "cast1": "fcr", "cast2": "fcr", "cast3": "fcr", "swing1": "ias", "swing2": "ias", "swing3": "ias",
+    "balance1": "fhr", "balance2": "fhr", "balance3": "fhr", "move1": "frw", "move2": "frw", "move3": "frw",
+    "block1": "fbr", "block2": "fbr", "block3": "fbr", "res-all": "allres", "res-fire": "fres",
+    "res-cold": "cres", "res-ltng": "lres", "res-pois": "pres", "hp": "life", "mana": "mana",
+    "str": "str", "dex": "dex", "vit": "vit", "enr": "enr", "lifesteal": "ll", "manasteal": "ml",
+    "mag%": "mf", "gold%": "gf", "att": "ar", "ac%": "ed_def", "dmg%": "ed", "dmg-min": "mindmg",
+    "dmg-max": "maxdmg", "red-dmg": "dr", "red-mag": "mdr", "allskills": "allsk", "skilltab": "tab",
+    "regen": "regen", "mana-kill": "manakill", "sock": "sock", "crush": "cb", "openwounds": "ow",
+    "deadly": "ds",
+    # '+X do umiejetnosci klasy' ma osobny kod na kazda klase, nie jeden wspolny
+    "ama": "classsk", "sor": "classsk", "nec": "classsk", "pal": "classsk",
+    "bar": "classsk", "dru": "classsk", "ass": "classsk", "war": "classsk",
+}
 
 
 # ---------------- teksty statow ----------------
@@ -357,6 +375,45 @@ def przodkowie(itemtypes: list) -> dict:
 
     for kod in rodzic:
         out[kod] = rozwin(kod)
+    return out
+
+
+def zakresy_slotow(magicprefix: list, magicsuffix: list, rodzina: dict) -> dict:
+    """Maksima statow per slot i rzadkosc - to, czego rare_eval uzywa do oceny rzutu.
+
+    Afiks moze sie trafic na przedmiocie, gdy jest 'spawnable', ktorys z jego itype
+    pasuje do typu przedmiotu (albo jego typu nadrzednego), a zaden etype nie pasuje.
+    Liczymy tylko afiksy osiagalne: afiks z wymaganym poziomem ponad 99 nigdy nie wypadnie,
+    bo poziom przedmiotu nie przekracza 99 (inaczej idealny skiller wychodzil na 90%).
+    automagic pomijamy - te afiksy sa przypisane do konkretnych baz, nie losowane.
+    """
+    afiksy = [a for a in magicprefix + magicsuffix if gc.liczba(a.get("spawnable")) == 1]
+    out = {}
+    # liczymy dla kazdego typu przedmiotu, nie tylko dla tych, ktore rare_eval zna dzisiaj -
+    # tabela jest mala, a dzieki temu nowy slot w regulach wyceny nie wymaga nowej bazy
+    for slot in sorted(rodzina):
+        przodki = rodzina.get(slot) or {slot}
+        staty = {}
+        for a in afiksy:
+            itypy = {(a.get("itype%d" % i) or "").strip() for i in range(1, 8)} - {""}
+            etypy = {(a.get("etype%d" % i) or "").strip() for i in range(1, 6)} - {""}
+            if not itypy & przodki or etypy & przodki:
+                continue
+            poziom = gc.liczba(a.get("level"))
+            if poziom is not None and poziom > MAX_ILVL:
+                continue
+            rzadki = gc.liczba(a.get("rare")) == 1
+            for i in MODY_AFIKSU:
+                klucz = MODY_STATOW.get((a.get("mod%dcode" % i) or "").strip())
+                hi = gc.liczba(a.get("mod%dmax" % i))
+                if not klucz or hi is None:
+                    continue
+                wpis = staty.setdefault(klucz, {"magic": 0, "rare": 0})
+                wpis["magic"] = max(wpis["magic"], hi)
+                if rzadki:
+                    wpis["rare"] = max(wpis["rare"], hi)
+        if staty:
+            out[slot] = staty
     return out
 
 
@@ -656,6 +713,13 @@ def zbuduj(sciezka, mow=print) -> dict:
     _zapisz("props.json", {"list": pula.lista,
                            "statowe": [p["property_id"] for p in pula.lista if not p["required"]]}, mow)
     _zapisz("items.json", przedmioty, mow)
+    # Maksima afiksow dla rare_eval. W repozytorium lezy gotowy affixes_data.json, ale ten
+    # jest lepszy: pochodzi z gry tego uzytkownika, wiec obejmuje tez afiksy dodane przez moda.
+    sloty = zakresy_slotow(tab["magicprefix"], tab["magicsuffix"], rodzina)
+    _zapisz("affixes_data.json", {
+        "source": "Diablo II: Resurrected - tabele gry (game_extract.py), %s" % sciezka,
+        "slots": sloty,
+    }, mow)
     meta = {
         "source": str(sciezka), "kind": zrodlo.etykieta,
         "created": time.strftime("%Y-%m-%d %H:%M"),

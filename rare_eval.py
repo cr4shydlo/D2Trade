@@ -10,10 +10,33 @@ import json
 import math
 from pathlib import Path
 
+import paths
 import traderie_map as tm
 import traderie_price as tpr
 
-DATA = json.loads((Path(__file__).with_name("affixes_data.json")).read_text(encoding="utf-8"))["slots"]
+# Maksima statow per slot: najpierw baza wyciagnieta z gry uzytkownika (game_extract.py),
+# bo zna tez afiksy dodane przez moda, a dopiero potem plik z repozytorium - zeby ocena
+# rzutu dzialala od razu po sklonowaniu, bez instalowania gry.
+ZRODLA_MAKSIMOW = (paths.DATA / "game_data" / "affixes_data.json",
+                   Path(__file__).with_name("affixes_data.json"))
+
+
+def wczytaj_maksima() -> dict:
+    for p in ZRODLA_MAKSIMOW:
+        try:
+            return json.loads(p.read_text(encoding="utf-8"))["slots"]
+        except Exception:
+            continue
+    return {}
+
+
+DATA = wczytaj_maksima()
+
+
+def przeladuj():
+    """Po zbudowaniu bazy z gry trzeba wziac nowe maksima - inaczej oceniamy po starych."""
+    global DATA
+    DATA = wczytaj_maksima()
 CLASSES = r"(amazon|sorceress|necromancer|paladin|barbarian|druid|assassin|warlock)"
 STAT_RX = {   # klucz statu -> wzorzec na tekscie wlasciwosci Traderie (po normalize)
     "fcr": r"faster cast rate", "ias": r"increased attack speed", "fhr": r"faster hit recovery",

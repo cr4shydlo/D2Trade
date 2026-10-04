@@ -58,6 +58,7 @@ fresh_data()
 sys.modules.setdefault("ollama", types.SimpleNamespace(Client=lambda **k: None))
 
 import traderie_map as tm   # noqa: E402
+import rare_eval            # noqa: E402
 
 pytest_plugins = ["nicegui.testing.user_plugin"]
 
@@ -100,5 +101,8 @@ def isolate():
     tm.http_json = fake_http
     tm.load_auth = lambda: {"Authorization": "Bearer test.test.test"}
     fresh_data()
+    # Maksima statow czytaja sie przy imporcie, a testy trybu lokalnego podstawiaja wlasne
+    # game_data/ z malutka tabelka. Bez tego nastepne testy ocenialyby rzuty po jej danych.
+    rare_eval.przeladuj()
     os.chdir(DANE)          # d2_web robi to przy imporcie; po fresh_data() katalog jest ten sam
     yield

@@ -20,7 +20,6 @@ from pathlib import Path
 from PIL import Image, ImageChops
 import llm
 
-MODEL = "qwen3-vl:4b-instruct"  # domyslny model lokalny; faktyczny wybor jest w Ustawieniach (llm.py)
 SCALES = (1.5, 1.0)  # kazdy screen czytany w dwoch skalach - rozbieznosci = do sprawdzenia
 TIEBREAK_SCALE = 1.25  # trzeci odczyt tylko przy rozbieznosciach
 USE_JSON = False     # False = zwykly tekst (szybciej, mniej pustych odpowiedzi)

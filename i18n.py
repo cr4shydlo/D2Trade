@@ -138,57 +138,6 @@ def tr(s):
     return _line(s)
 
 
-def patch_tkinter():
-    """Tlumaczenie w locie: tekst widzetow, tytuly okien, naglowki tabel, okienka komunikatow."""
-    import tkinter as tk
-    from tkinter import ttk, messagebox, simpledialog
-    if _lang == "pl" or getattr(tk, "_i18n_patched", False):
-        return
-    tk._i18n_patched = True
-
-    def fix(d):
-        if d and isinstance(d, dict) and "text" in d:
-            d = dict(d)
-            d["text"] = tr(d["text"])
-        return d
-
-    orig_init = tk.BaseWidget.__init__
-
-    def init(self, master, widgetName, cnf={}, kw={}, extra=()):
-        orig_init(self, master, widgetName, fix(cnf), fix(kw), extra)
-    tk.BaseWidget.__init__ = init
-
-    orig_conf = tk.Misc.configure
-
-    def conf(self, cnf=None, **kw):
-        return orig_conf(self, fix(cnf), **fix(kw))
-    tk.Misc.configure = tk.Misc.config = conf
-
-    orig_title = tk.Wm.wm_title
-
-    def title(self, string=None):
-        return orig_title(self, tr(string)) if string is not None else orig_title(self)
-    tk.Wm.wm_title = tk.Wm.title = title
-
-    orig_heading = ttk.Treeview.heading
-
-    def heading(self, column, option=None, **kw):
-        return orig_heading(self, column, option, **fix(kw))
-    ttk.Treeview.heading = heading
-
-    for name in ("showinfo", "showwarning", "showerror", "askyesno", "askyesnocancel", "askokcancel"):
-        orig = getattr(messagebox, name)
-
-        def wrap(title=None, message=None, _o=orig, **kw):
-            return _o(tr(title), tr(message), **kw)
-        setattr(messagebox, name, wrap)
-    orig_ask = simpledialog.askstring
-
-    def askstring(title, prompt, **kw):
-        return orig_ask(tr(title), tr(prompt), **kw)
-    simpledialog.askstring = askstring
-
-
 def missing(lang: str):
     """Teksty z en.json (wzorzec), ktorych brakuje w danym jezyku."""
     ref = json.loads((LANG_DIR / "en.json").read_text(encoding="utf-8"))

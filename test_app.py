@@ -1,8 +1,7 @@
 """Przeplyw glowny: lista, wycena, okno ceny, widoki, synchronizacja z Traderie."""
-import asyncio, ast, json, pathlib
+import asyncio, ast, pathlib
 from nicegui.testing import User
 from nicegui import ui
-import traderie_post as tp
 
 
 def test_dlugie_zadania_nie_wolaja_ui_notify():

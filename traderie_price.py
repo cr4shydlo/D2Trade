@@ -20,7 +20,6 @@ import json
 import time
 import urllib.parse
 import statistics
-from collections import Counter
 from pathlib import Path
 
 import traderie_map as tm
@@ -34,7 +33,6 @@ PAGE_DELAY = 1.5          # przerwa miedzy stronami (s)
 # format zapytania jak w przegladarce; priceValues=true dodaje wartosci run ('value') do cen
 LISTINGS_QUERY = ("{api}/listings?itemTags=true&item={item}&selling=true&auction=false"
                   "&page={page}&priceValues=true{filters}")
-TOLERANCE = 0.25          # "podobny" stat: roznica <= 25% szerokosci zakresu (min. 1)
 SETTINGS = {"Platform", "Mode", "Ladder", "Game version", "Ethereal"}
 DEFENSE_IDS = {399, 1855}  # Traderie ma dwie wlasciwosci obrony - traktujemy jak jedna
 
@@ -143,27 +141,6 @@ NO_TRADERIE = ("ceny biora sie z transakcji na Traderie - bez tokenu ich nie ma.
 HIGH_ROLL = 0.85          # stat w gornych 15% zakresu = "wysoki rzut", za ktory sie doplaca
 DEFENSE_FILTER_ID = 399   # tak filtruje strona price-check ("+X Defense")
 DEFENSE_TOL = 0.02        # obrona +/- 2% (dla 136: 133-139)
-
-
-def stat_filters(mine: dict, variable: dict, ranges_by_pid: dict, defense: bool = True) -> str:
-    """Filtry zmiennych statow dla price-check: wartosc +/- tolerancja, w granicach zakresu."""
-    out = ""
-    for pid, tol in variable.items():
-        if not isinstance(mine.get(pid), (int, float)) or isinstance(mine.get(pid), bool):
-            continue
-        if pid in DEFENSE_IDS:
-            if not defense:
-                continue
-            d = mine[pid]
-            t = max(2, round(DEFENSE_TOL * d))
-            out += f"&prop_{DEFENSE_FILTER_ID}Min={d - t}&prop_{DEFENSE_FILTER_ID}Max={d + t}"
-            continue
-        lo, hi = ranges_by_pid.get(pid, (None, None))
-        vmin, vmax = mine[pid] - tol, mine[pid] + tol
-        if lo is not None:
-            vmin, vmax = max(lo, vmin), min(hi, vmax)
-        out += f"&prop_{pid}Min={int(vmin)}&prop_{pid}Max={int(round(vmax))}"
-    return out
 
 
 def _price_cache_load() -> dict:

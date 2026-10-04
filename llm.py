@@ -16,7 +16,6 @@ import time
 import base64
 import urllib.error
 import urllib.request
-from pathlib import Path
 
 import i18n
 import paths

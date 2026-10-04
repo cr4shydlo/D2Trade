@@ -1496,6 +1496,7 @@ def settings_dialog():
             # katalogi czytane leniwie - po przebudowie trzeba je zapomniec
             game_source.odswiez()
             game_db._INDEKS = None
+            rare_eval.przeladuj()
             S.defs.clear()
             S.imgs.clear()
             i18n.save_setting("game_dir", sciezka)

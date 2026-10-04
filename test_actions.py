@@ -1,7 +1,6 @@
 """Akcje na przedmiotach: wystawianie, oznaczanie sprzedazy, usuwanie z listy."""
 import asyncio, json
 from nicegui.testing import User
-from nicegui import ui
 import traderie_post as tp
 
 async def test_actions(user: User):

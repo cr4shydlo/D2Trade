@@ -67,7 +67,6 @@ async def test_llm(user: User):
 async def test_klucz_api_trafia_do_pliku_nie_do_ustawien(user: User):
     """Klucz wklejony w oknie zapisuje sie w pliku obok programu - settings.json zostaje bez sekretow."""
     import json as _json
-    from pathlib import Path
     import i18n, llm, paths, app_config, d2_web as W
     await user.open("/")
 

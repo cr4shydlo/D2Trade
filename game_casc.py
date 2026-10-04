@@ -207,17 +207,6 @@ def liczba(tekst, domyslna=None):
         return domyslna
 
 
-def czy_gra(sciezka) -> bool:
-    """Czy pod ta sciezka da sie czytac dane gry (bez otwierania archiwum)."""
-    if not sciezka:
-        return False
-    try:
-        otworz(sciezka)
-        return True
-    except BrakZrodla:
-        return False
-
-
 def zgadnij_gre():
     """Typowe miejsca instalacji D2R - podpowiedz, gdy uzytkownik nie poda sciezki."""
     kandydaci = [
