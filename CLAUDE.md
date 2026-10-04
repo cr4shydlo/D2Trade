@@ -6,6 +6,10 @@ Narzędzie do sprzedaży przedmiotów z Diablo II: Resurrected (mod **Reign of t
 Przepływ: zrzut ekranu w grze (F12) → odczyt tooltipa modelem wizyjnym → dopasowanie do pozycji
 w Traderie → podpowiedź ceny → wystawienie oferty → post sprzedażowy na d2jsp.
 
+Od 4 X 2026 projekt jest repozytorium git i działa też **bez tokenu Traderie**: definicje
+przedmiotów, zakresy statów i ikony wyciąga wtedy z plików gry użytkownika (sekcja 11).
+Opis dla osoby z zewnątrz jest w [README.md](README.md) — ten plik jest dla pracujących nad kodem.
+
 Projekt powstał w rozmowie z Claude (wrzesień–październik 2026) i dopiero teraz trafia do IDE.
 Kod działa na komputerze autora (Windows, Python 3.11, `py -3.11`). Katalog projektu jest dowolny —
 wszystkie ścieżki w kodzie są względne względem pliku `.py` (okna robią `os.chdir` na swój katalog,
@@ -30,7 +34,15 @@ Te reguły wynikły z pracy nad projektem i trzeba je utrzymać.
    Nazwy przedmiotów i statów zostają po angielsku, bo tak nazywa je gra i Traderie.
 5. **Każda zmiana musi być sprawdzona na prawdziwych danych** (pliki w `screenshots/`, `cache/`) albo
    testem — patrz sekcja 9. W tym projekcie testy wyłapały kilka realnych błędów.
-6. **Sekrety leżą w jednym katalogu `secrets/`** (`traderie_auth.txt`, `api_OVH.txt`), cały katalog
+6. **Repozytorium ma być klonowalne przez obcą osobę.** Żadnych danych autora w plikach
+   wchodzących do repo: ID konta, tokenu, nazw postaci, zrzutów z czytelnymi danymi konta.
+   `settings.json`, `screenshots/`, `posted.json`, `secrets/` i `game_data/` są w `.gitignore`;
+   wzorzec `sample_data/` ma wartości zastępcze (`seller_id: 0000000000`). Prawdziwe ID konta
+   siedziało kiedyś na stałe w `traderie_sync.SELLER_ID` — teraz to pusty string i bierze się
+   z ustawień. Przed commitem sprawdzaj, czy nie wraca.
+7. **Zawartości gry nie rozpowszechniamy.** Czytanie plików własnej instalacji jest w porządku,
+   ale `game_data/` (tabele, teksty, ikony Blizzarda) zostaje na dysku użytkownika.
+8. **Sekrety leżą w jednym katalogu `secrets/`** (`traderie_auth.txt`, `api_OVH.txt`), cały katalog
    jest w `.gitignore` i **nigdy** nie trafia do `settings.json`. Oba wkleja się w Ustawieniach
    (pola ukryte, z podglądem) — zapis robi `app_config.save()` / `llm.save_api_key()`, ścieżki daje
    `paths.secret()`, a `paths.collect_secrets()` przy starcie przenosi pliki ze starych miejsc.
@@ -51,6 +63,7 @@ py -3.11 -m pip install nicegui pywebview keyboard mss pillow ollama
 | `D2 Trade.bat` | nowe okno (NiceGUI + pywebview), bez konsoli |
 | `D2 Trade (z konsola).bat` | to samo z konsolą — do diagnozy |
 | `D2 Trade (stare okno).bat` | stare okno tkinter (`d2_gui.py`), zapasowe |
+| `Wyciagnij dane z gry.bat` | buduje `game_data/` z plików D2R (sekcja 11) |
 | `py -3.11 d2_trade.py` | tryb konsolowy: `[--send] [--redo] [--force] [--no-prices]` |
 
 Okno startuje na `http://127.0.0.1:8765` (w pywebview jako natywne okno).
@@ -73,7 +86,10 @@ Okno startuje na `http://127.0.0.1:8765` (w pywebview jako natywne okno).
 | `traderie_sync.py` | pobranie własnych ofert, import ofert spoza programu, status „do odnowienia” |
 | `traderie_notify.py` | odpytywanie powiadomień Traderie |
 | `quick_price.py` | szybka wycena z wolnego tekstu („shako def 140”) |
-| `game_db.py` | katalog nazw przedmiotów z plików gry (`game_items.json`) — rozpoznaje nazwę bez pytania Traderie |
+| `game_db.py` | katalog nazw przedmiotów (`game_items.json` + `game_data/`) — rozpoznaje nazwę bez pytania Traderie |
+| `game_casc.py` | czytanie plików D2R: archiwum CASC albo wypakowany katalog `data/`; `.sprite` → PNG |
+| `game_extract.py` | CLI: pliki gry → `game_data/` (przedmioty, szablony statów, ikony) |
+| `game_source.py` | `game_data/` → definicje w formacie Traderie; źródło zapasowe dla `get_item()` |
 | `d2jsp_post.py` | skróty statów i generowanie BBCode posta sprzedażowego |
 | `app_config.py` | ustawienia konta i modelu; test połączenia |
 | `i18n.py` | tłumaczenie UI + `settings.json` |
@@ -96,6 +112,7 @@ screenshots/_trash/   kosz (ręczne usunięcie z listy)
 cache/<slug>.json     definicje przedmiotów z Traderie
 cache/img/            obrazki przedmiotów z CDN
 cache/price_check.json   wyniki price-check (TTL 12 h) — mniej zapytań przy tej samej wycenie
+game_data/            baza wyciągnięta z gry (items.json, props.json, meta.json, icons/)
 logs/d2_RRRRMMDD.log  log okna
 posted.json           rejestr wystawionych (po odcisku zawartości)
 prices.json           ostatnia cena per przedmiot
@@ -163,7 +180,10 @@ rozpoznanie rare/magic opiera się na tekście (patrz niżej), a kolor służy j
 
 ## 6. Dopasowanie (`traderie_map.py`)
 
-- Nazwa → `cache/<slug>.json` albo pobranie z `/items?id=<slug>&properties=true`.
+- Nazwa → `cache/<slug>.json` → `/items?id=<slug>&properties=true` → **pliki gry** (`game_source`).
+  Kolejność jest celowa: cache z Traderie ma prawdziwe `property_id`, więc jest lepszy od
+  definicji złożonej lokalnie. Bez tokenu krok sieciowy jest pomijany (`have_auth()`), żeby
+  nie wisieć na żądaniach, które i tak wrócą z `Unauthorized`.
 - **Rare**: baza jest w drugiej linii tooltipa („RING”, „JARED'S STONE”). **Magic**: baza siedzi
   w nazwie („Russet **Grand Charm** of Life”) — szukamy najdłuższego pasującego fragmentu przed „of”.
   Funkcja `find_base()` zwraca `(definicja, indeks pierwszej linii statów, 'rare'|'magic')`.
@@ -215,6 +235,13 @@ do maksimum sprawiał, że idealny 45-życiowy skiller wychodził na 90%.
   Źródła: almarsguides „Loot Worth Keeping”, d2r-lootgoblin „Item Valuation”, ceny skillerów
   (45 life > 12% FHR > sam skiller).
 - Przy dobrych rare'ach program sugeruje `offer` zamiast ceny sztywnej.
+
+### Bez tokenu Traderie
+
+Ceny biorą się z transakcji, a te są tylko na Traderie — więc w trybie lokalnym `suggest()`
+w obu modułach kończy się na ocenie rzutu i dopisuje `traderie_price.NO_TRADERIE`. Ocena działa
+w całości offline, bo maksima i tak pochodzą z plików gry. **Nie zgadujemy ceny z niczego innego**
+— to ta sama zasada co w punkcie 3 sekcji 1.
 
 ---
 
@@ -280,7 +307,7 @@ asyncio_mode = auto
 main_file = run_app.py
 ```
 
-Scenariusze w repo (**57 testów**, `py -3.11 -m pytest -q` ≈ 80 s):
+Scenariusze w repo (**91 testów**, `py -3.11 -m pytest -q` ≈ 90 s):
 
 | plik | co sprawdza |
 |---|---|
@@ -292,6 +319,8 @@ Scenariusze w repo (**57 testów**, `py -3.11 -m pytest -q` ≈ 80 s):
 | `test_cache_cen.py` | cache price-check: TTL, inne filtry = inne pytanie, `force`, błąd sieci oddaje poprzedni wynik |
 | `test_katalog_gry.py` | katalog nazw z gry: rozpoznanie bez sieci, nazwy bez „The”, mniej zapytań |
 | `test_jakosc_rzutu.py` | opis słowny jakości rzutu i skala kolorów paska |
+| `test_tryb_lokalny.py` | praca bez tokenu: definicja z plików gry, odczyt rare'a, blokada wystawiania, brak cen, post d2jsp |
+| `test_wyciag_z_gry.py` | wyciąg z gry na sztucznych tabelach: formaty opisów, trudne staty (drzewka, klasy, per poziom), nazwy z tabel tekstowych |
 | `test_odnawianie.py` | odnawianie: PUT, zaznaczone vs wszystkie, „serwer potwierdził, ale nie odnowił”, padnięcie `ui.notify`, pole „gdzie leży”, samoczynne sprawdzenie ofert po wejściu w „Wystawione”, zerwane połączenie przy tym sprawdzeniu nie blokuje okna |
 | `test_mapowanie.py` | magic/rare bez fałszywych ostrzeżeń, staty bez liczby, staty których Traderie nie ma, ponowny odczyt nie gubi wpisów |
 | `test_stronicowanie.py` | podział listy na strony, numeracja, wybór 10/20/50 zapisany w `settings.json` |
@@ -310,6 +339,18 @@ Przy zmianach w logice (bez UI) najszybszą kontrolą jest przepuszczenie prawdz
 ## 10. Stan i co dalej
 
 ### Zrobione (październik 2026, po przeniesieniu do IDE)
+
+- **Repozytorium git i praca bez Traderie (4 X 2026)** — projekt da się sklonować i uruchomić
+  bez żadnych poświadczeń. Szczegóły w sekcji 11; tu dwie rzeczy warte zapamiętania.
+  **Z kodu wyleciało ID konta autora**: `traderie_sync.SELLER_ID` było wpisane na stałe,
+  a ten sam numer siedział we wzorcu testów — mimo że okno zasłania to pole, żeby nie świeciło
+  na nagraniu. Teraz stała jest pusta, wartość bierze się z ustawień, a `own_listings()` bez niej
+  mówi wprost, czego brakuje, zamiast pytać Traderie o oferty nikogo.
+  **Nazwy przedmiotów szły ze złej kolumny**: `uniqueitems.index` / `runes.*Rune Name` to klucze
+  wewnętrzne, a gracz widzi tekst z `item-names` / `item-runes`. Rozjeżdżały się w 126 miejscach
+  („Unique Warlock Helm" to „Hellwarden's Will", „Wartraveler" to „War Traveler", „Hustle (armor)"
+  to „Hysteria"). Dotyczyło to też `game_items.json` — plik jest przebudowany, stare zapisy
+  zostały jako `aliases`, więc jedno i drugie nadal się rozpoznaje.
 
 - **Nowy wygląd okna (2 X 2026)** — ciemny, spokojny motyw zamiast jasnego i pastelowego.
   Zasada: **jedyne nasycone kolory to kolory rzadkości przedmiotów** (`RAR` w `d2_web.py`, takie jak
@@ -451,6 +492,17 @@ Przy zmianach w logice (bez UI) najszybszą kontrolą jest przepuszczenie prawdz
   Wystawione przedmioty (`posted`) nie są w ogóle przemapowywane.
 - **Dane afiksów** pochodzą z plików LoD; afiksy dodane przez Reign of the Warlock mogą ich nie
   obejmować. Odświeżenie: `py -3.11 affixes_build.py`.
+- **Tryb lokalny: pakiet `casc`** ma gotowe koło tylko dla Windows x64 + Python 3.11. Gdy go nie ma,
+  `game_extract.py` przyjmuje katalog z już wypakowanym `data/` (CascView) — `game_casc.otworz()`
+  rozpoznaje jedno i drugie, a `Katalog` nie wymaga żadnej biblioteki (dlatego testy go używają).
+- **Tryb lokalny: linie spoza tabeli przedmiotu.** Definicja z plików gry dostaje własne staty
+  **plus całą pulę statów** (`props.json` → `statowe`), bo tooltip pokazuje też runę w gnieździe
+  i afiksy crafta. Kolejność ma znaczenie: `game_source.get_item()` daje najpierw staty tego
+  przedmiotu, bo `map_item` bierze pierwszy pasujący szablon.
+- **Tryb lokalny: brak numerów Traderie.** `property_id` to oznaczenia z ich bazy, których w grze
+  nie ma, więc lokalnie są ujemne (poza 399/796/1855, traktowanymi w kodzie specjalnie).
+  Listing ma wtedy `local: true`, a `traderie_post.build_payload()` odmawia wystawienia.
+  Po wklejeniu tokenu trzeba odczytać screena ponownie.
 - **Nazwy statów modowych** (np. `Sigil: Lethargy`) nie mają skrótów w `d2jsp_post.SHORT`.
 - **Staty, których Traderie nie ma w definicji przedmiotu** (np. `Regenerate Mana 9%` na pierścieniu)
   zostają w `unmatched` i nie idą do oferty. Panel szczegółów pokazuje je jako „Nie trafi do oferty…”
@@ -505,7 +557,64 @@ Przy zmianach w logice (bez UI) najszybszą kontrolą jest przepuszczenie prawdz
 
 ---
 
-## 11. Styl kodu
+## 11. Dane z gry (`game_casc.py`, `game_extract.py`, `game_source.py`)
+
+Bez tokenu Traderie nie ma skąd wziąć definicji przedmiotu, a bez niej program nie wie, które
+linie tooltipa są statami ani jakie mają zakresy. Te same dane leżą w plikach gry.
+
+```
+py -3.11 game_extract.py "C:\Program Files (x86)\Diablo II Resurrected"
+```
+
+Wynik w `game_data/` (przy danych, nie przy kodzie — jest w `paths.KEEP`, poza kopią zapasową
+i poza repo):
+
+| plik | zawartość |
+|---|---|
+| `props.json` | `{"list": [...], "statowe": [...]}` — wspólna pula właściwości (szablony linii tooltipa) |
+| `items.json` | przedmioty: rodzaj, nazwa, aliasy, typ, tagi, `props`, `desc`, ikona |
+| `meta.json` | skąd, kiedy, liczniki (pokazywane użytkownikowi) |
+| `icons/*.png` | ikony HD (`.sprite` → PNG, przycięte do zawartości) |
+
+Dwa źródła, jedno API (`game_casc.otworz()`): archiwum **CASC** zainstalowanej gry albo zwykły
+katalog z wypakowanym `data/`. Nazwy plików podaje się w jednej postaci (`data/global/excel/armor.txt`).
+
+### Pułapki, które już kosztowały czas
+
+1. **Pakiet `_casc` ma nieoczywiste sygnatury.** `open_file` zwraca `(ok, uchwyt)`, `read_file`
+   `(uchwyt, dane, ile)`. Przekazanie pary do `read_file` kończy się mylącym
+   „Parameter must be a file reference" — wygląda jak zła nazwa pliku, a jest złym argumentem.
+2. **Nazwa przedmiotu nie jest w kolumnie z nazwą.** Patrz sekcja 10 — zawsze przez `item-names`.
+3. **Tag typu musi być w słowniku Traderie, nie gry.** `rare_eval.slot_of()` dopasowuje tagi,
+   a gra nazywa Grand Charma „Large Charm". Tag wprost z `itemtypes.txt` wyceniłby skillera
+   jak Large Charma. Stąd własna tabela `TAGI_TYPU`, od najbardziej szczegółowego typu.
+4. **Tekst drzewka jest już całą linią.** `StrSklTabItem1` to `"%+d to Javelin and Spear Skills"`,
+   więc doklejenie `"%+d to "` daje `"+{{value}} to +{{v2}} to ..."`. Pilnuje tego test.
+5. **Opis `+X do umiejętności klasy` jest zawsze pierwszej klasy.** `itemstatcost` ma jeden wpis
+   („Amazon"); o którą klasę chodzi, mówi kolumna `val` w `properties.txt`. Teksty per klasa są
+   w `charstats` (`StrAllSkills`, `StrClassOnly`) — stamtąd też bierze się kod klasy, bo kolumny
+   z nim nie ma: klucz `SorOnly` → `sor`, czyli to, co `skills.txt` ma w `charclass`.
+6. **Staty zbiorcze to jedna linia, nie kilka.** `res-all` zmienia cztery odporności, ale gra
+   pisze „All Resistances +30". Tak samo `all-stats` i obrażenia od trucizny. Teksty biorą się
+   z plików językowych (`ZBIORCZE`, `TRUCIZNA`), nie z angielskich literałów w kodzie.
+7. **Staty „per poziom" nie mają min/max.** Zakres liczy się z parametru: gra trzyma go w ósmych
+   częściach punktu na poziom, więc `param/8` do `param*99/8`. Sprawdzone na opisach z Traderie
+   (Harlequin Crest 1-148 życia, Enigma 0-74 siły, 1-99% MF).
+8. **Afiksy podają umiejętność numerem, unikaty nazwą.** Numer to pozycja wiersza w `skills.txt`;
+   nazwa idzie przez `skilldesc.txt` → `skills.json`. `game_extract.nazwy_umiejetnosci()` indeksuje
+   po obu.
+
+### Jak to sprawdzać
+
+Najszybsza kontrola to przepuszczenie prawdziwych `screenshots/*.json` przez `map_item()` dwa razy
+— raz z cache Traderie, raz z podmienionym `tm.load_auth` na `{}` i pustym `tm.CACHE` — i porównanie
+wyników. Przy ostatnim przebiegu (20 odczytów) **żadna linia statu nie została niedopasowana**,
+a wszystkie różnice to staty, których lokalnie jest **więcej** niż w Traderie (np. `Regenerate Mana`
+na pierścieniu, rozbite obrażenia od ognia, `Required Level` na secie).
+
+---
+
+## 12. Styl kodu
 
 - Python 3.11, biblioteka standardowa + `nicegui`, `pillow`, `ollama`, `keyboard`, `mss`, `pywebview`.
 - Pliki `.py` bez polskich znaków diakrytycznych; komentarze po polsku, zwięzłe, tłumaczą **dlaczego**,

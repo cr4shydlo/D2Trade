@@ -370,6 +370,24 @@ def tag_typu(typ: str, rodzina: dict):
 
 
 # ---------------- opis przedmiotu ----------------
+POZIOM_MAX = 99            # najwyzszy poziom postaci - stad gorny koniec statow "per poziom"
+PER_POZIOM_DZIELNIK = 8    # gra trzyma te wartosci w osmych czesciach punktu na poziom
+
+
+def zakres_per_poziom(param):
+    """Zakres statu zaleznego od poziomu postaci: od poziomu 1 do 99.
+
+    Taki stat nie ma w tabeli min/max, bo rosnie z poziomem. Bez zakresu linia opisu
+    wygladalaby jak '+ to Life', a program nie wiedzialby, ze wartosc jest zmienna.
+    Sprawdzone na opisach z Traderie: Harlequin Crest (param 12) ma 1-148 zycia,
+    Enigma 0-74 sily (param 6) i 1-99% MF (param 8).
+    """
+    if param is None:
+        return None, None
+    return (int(param / PER_POZIOM_DZIELNIK),
+            int(param * POZIOM_MAX / PER_POZIOM_DZIELNIK))
+
+
 def linia_opisu(szablon: str, lo, hi) -> str:
     """Szablon + zakres -> linia opisu w formacie, ktory czyta traderie_map.parse_ranges().
 
@@ -377,7 +395,7 @@ def linia_opisu(szablon: str, lo, hi) -> str:
     i tylko wtedy program wie, ze wartosc jest losowa i nalezy do listingu.
     """
     if lo is None and hi is None:
-        return szablon.replace("{{value}}", "").replace("+ ", "+")
+        return re.sub(r"\s+", " ", re.sub(r"\+?\{\{\w+\}\}", "", szablon)).strip()
     if hi is None or lo == hi:
         return re.sub(r"\{\{\w+\}\}", str(lo), szablon)
     wstawka = "[color=Lime]%d-%d[/color]" % (lo, hi)
@@ -530,6 +548,8 @@ def main(argv):
                 par = (r.get(par_k % i) or "").strip() or None
                 lo = gc.liczba(r.get(min_k % i), None)
                 hi = gc.liczba(r.get(max_k % i), None)
+                if lo is None and hi is None and kod.endswith("/lvl"):
+                    lo, hi = zakres_per_poziom(gc.liczba(par, None))
                 for szablon, typ in opisy_wlasciwosci(kod, par, wl, kontekst):
                     pid = pula.dodaj(szablon, typ)
                     if pid is None:

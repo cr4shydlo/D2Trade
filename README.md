@@ -1,212 +1,212 @@
 # D2 Trade
 
-Pomocnik do sprzedawania przedmiotow z **Diablo II: Resurrected**. Robisz zrzut ekranu
-w grze, program odczytuje tooltip modelem wizyjnym, rozpoznaje przedmiot, ocenia jakosc
-rzutu i przygotowuje ofere: na [Traderie](https://traderie.com/diablo2resurrected) albo
-jako gotowy post BBCode na d2jsp.
+A selling assistant for **Diablo II: Resurrected**. You take a screenshot in game, the tool
+reads the tooltip with a vision model, identifies the item, rates how well it rolled and
+prepares the offer: either on [Traderie](https://traderie.com/diablo2resurrected) or as a
+ready-to-paste BBCode post for d2jsp.
 
 ```
-F12 w grze  ->  odczyt tooltipa  ->  rozpoznanie przedmiotu  ->  ocena rzutu i cena
-                                                              ->  oferta na Traderie
-                                                              ->  post na d2jsp (BBCode)
+F12 in game  ->  read the tooltip  ->  identify the item  ->  roll quality and price
+                                                           ->  listing on Traderie
+                                                           ->  d2jsp post (BBCode)
 ```
 
-Okno jest po polsku; dostepne tez angielskie, niemieckie i koreanskie
-(Ustawienia -> Jezyk). Nazwy przedmiotow i statow zostaja po angielsku, bo tak nazywa
-je gra.
+The interface ships in Polish, English, German and Korean (Settings -> Language). Item and
+stat names stay in English, because that is what the game and Traderie call them.
 
 ---
 
-## Czego program nie robi
+## What this tool does not do
 
-To nie jest bot i nie ma byc.
+It is not a bot, and it is not meant to become one.
 
-- **Nie automatyzuje gry.** Czyta wylacznie zrzuty ekranu, ktore sam zrobisz skrotem F12.
-  Nie wysyla do gry zadnych klawiszy ani klikniec, nie czyta jej pamieci, nie podmienia
-  plikow.
-- **Nie automatyzuje d2jsp.** Regulamin d2jsp (pkt 20) zabrania automatyzacji, wiec
-  program tylko generuje BBCode do recznego wklejenia i otwiera watek w przegladarce.
-- **Nie ustawia ceny za Ciebie.** Pokazuje poziomy z prawdziwych transakcji; cene
-  zatwierdzasz Ty. Gdy danych jest za malo, program mowi wprost, ze ceny nie podaje -
-  lepiej jej nie podac niz podac mylaca.
+- **It does not automate the game.** It only reads screenshots that you take yourself with
+  F12. It sends no keystrokes or clicks to the game, does not read its memory and does not
+  touch its files.
+- **It does not automate d2jsp.** The d2jsp rules (section 20) forbid automation, so the tool
+  only generates BBCode for you to paste and opens the thread in your browser.
+- **It never sets a price for you.** It shows levels taken from real trades; you approve the
+  price. When there is not enough data it says so instead of guessing - a missing price is
+  better than a misleading one.
 
-Traderie obslugujemy przez jego (nieoficjalne) API, z losowa przerwa 45-90 s miedzy
-wystawieniami.
+Traderie is accessed through the same (unofficial) API its own website uses, with a random
+45-90 s pause between listings.
 
 ---
 
-## Czego potrzebujesz
+## What you need
 
 | | |
 |---|---|
-| System | Windows (globalny skrot F12 i zrzuty ekranu sa zrobione pod Windows) |
+| OS | Windows (the global F12 hotkey and screen capture are Windows-only) |
 | Python | 3.11 (`py -3.11`) |
-| Model do odczytu | **albo** lokalna [Ollama](https://ollama.com) na Twojej karcie, **albo** endpoint zgodny z OpenAI |
-| Konto Traderie | **opcjonalne** - patrz "Trzy tryby pracy" |
-| Diablo II: Resurrected na dysku | opcjonalne, ale bez tokenu Traderie to z tego biora sie dane o przedmiotach |
+| Vision model | **either** a local [Ollama](https://ollama.com) on your own GPU, **or** an OpenAI-compatible endpoint |
+| Traderie account | **optional** - see "Three ways to run it" |
+| D2R installed | optional, but without a Traderie token this is where item data comes from |
 
-### Instalacja
+### Install
 
 ```bat
-git clone <adres-repozytorium> d2trade
+git clone <repository-url> d2trade
 cd d2trade
 py -3.11 -m venv .venv
 .venv\Scripts\python -m pip install -r requirements.txt
 ```
 
-Uruchomienie: dwuklik na **`D2 Trade.bat`**. Okno otwiera sie na
-`http://127.0.0.1:8765` (w natywnym oknie, jesli jest `pywebview`).
-`D2 Trade (z konsola).bat` robi to samo z widoczna konsola - do diagnozy.
+To run it, double-click **`D2 Trade.bat`**. The window opens at `http://127.0.0.1:8765`
+(as a native window if `pywebview` is installed). `D2 Trade (z konsola).bat` does the same
+with a visible console, for diagnostics.
 
-Pliki `.bat` najpierw szukaja `.venv`, a gdy go nie ma, spadaja na `py -3.11`.
-Katalog projektu moze byc dowolny i mozna go przenosic - wszystkie sciezki w kodzie
-sa wzgledne.
+The `.bat` files prefer the project's `.venv` and fall back to `py -3.11`. The project
+directory can live anywhere and can be moved - every path in the code is relative.
 
 ---
 
-## Trzy tryby pracy
+## Three ways to run it
 
-Program dziala bez zadnych poswiadczen; im wiecej podasz, tym wiecej umie.
+The tool works with no credentials at all; the more you give it, the more it can do.
 
-| | odczyt screenow | przedmioty, staty, ikony | ocena rzutu | ceny z transakcji | wystawianie | post d2jsp |
+| | reading screenshots | items, stats, icons | roll quality | prices from trades | listing on Traderie | d2jsp post |
 |---|---|---|---|---|---|---|
-| **1. Nic nie podane** | lokalna Ollama | *brak* | - | - | - | - |
-| **2. Katalog z gra** | lokalna Ollama | z plikow gry | tak | - | - | **tak** |
-| **3. + token Traderie** | Ollama albo chmura | z Traderie | tak | **tak** | **tak** | tak |
+| **1. Nothing configured** | local Ollama | *none* | - | - | - | - |
+| **2. Game folder** | local Ollama | from game files | yes | - | - | **yes** |
+| **3. + Traderie token** | Ollama or cloud | from Traderie | yes | **yes** | **yes** | yes |
 
-**Tryb 2 to odpowiedz na pytanie "a skad statystyki i obrazki bez Traderie".**
-Wszystko, co trzeba, lezy w plikach gry na Twoim dysku: nazwy przedmiotow, zakresy
-statow unikatow, lista afiksow i ikony ekwipunku. Wystarczy raz je przeczytac.
+**Mode 2 answers the obvious question: where do stats and images come from without Traderie?**
+Everything needed is already in the game files on your disk - item names, unique item ranges,
+the affix tables and the inventory icons. They only have to be read once.
 
-### Jak zrobic baze z gry
+### Building the local database
 
-Dwuklik na **`Wyciagnij dane z gry.bat`** albo:
+Double-click **`Wyciagnij dane z gry.bat`** ("extract game data") or run:
 
 ```bat
 py -3.11 game_extract.py "C:\Program Files (x86)\Diablo II Resurrected"
-py -3.11 game_extract.py        REM szuka gry w typowych miejscach
+py -3.11 game_extract.py        REM looks for the game in the usual places
 ```
 
-Trwa to kilkadziesiat sekund i tworzy katalog `game_data/` (kilkanascie MB):
-tabele przedmiotow, szablony linii tooltipa i ikony PNG. Potem program dziala bez sieci.
-Po aktualizacji gry albo moda uruchom to ponownie - dojda nowe przedmioty.
+It takes a few seconds and creates a `game_data/` folder (about 15 MB) with item tables,
+tooltip line templates and PNG icons. After that the tool works with no network access at
+all. Run it again after a game or mod update to pick up new items.
 
-Program **tylko czyta** pliki gry. Nie zmienia instalacji, nie uruchamia gry i niczego
-nie wysyla - `game_data/` zostaje na Twoim dysku i jest w `.gitignore`.
+The tool **only reads** the game files. It does not modify your installation, does not launch
+the game and sends nothing anywhere - `game_data/` stays on your disk and is in `.gitignore`.
 
-Czytanie archiwum CASC wymaga pakietu `casc` (nakladka na CascLib):
+Reading the CASC archive needs the `casc` package (a CascLib wrapper):
 
 ```bat
 py -3.11 -m pip install casc
 ```
 
-Pakiet ma gotowe kolo tylko dla Windows x64 + Python 3.11. Jesli nie da sie go
-zainstalowac, wypakuj z gry katalog `data` dowolnym narzedziem do CASC (np. CascView)
-i wskaz `game_extract.py` ten katalog - reszta dziala tak samo.
+That package only ships a prebuilt wheel for Windows x64 + Python 3.11. If you cannot install
+it, extract the game's `data` folder with any CASC tool (CascView, for example) and point
+`game_extract.py` at that folder instead - everything else works the same.
 
-### Co dokladnie dziala bez Traderie
+### What exactly works without Traderie
 
-- rozpoznanie przedmiotu po nazwie: bazy, unikaty, sety, runewordy, runy i klejnoty;
-- rozbicie tooltipa na staty, razem z magic/rare i craftami;
-- **ocena jakosci rzutu** - wartosc statu na tle maksimum, ktore da sie wylosowac
-  (`affixes_data.json` jest w repozytorium, wiec to dziala od razu);
-- ikona przedmiotu z gry zamiast z CDN Traderie;
-- **post sprzedazowy na d2jsp** z cenami w runach i/lub FG;
-- pole "gdzie lezy" (postac i skrzynia), filtrowanie, stronicowanie, motyw jasny/ciemny.
+- identifying items by name: bases, uniques, set items, runewords, runes and gems;
+- splitting a tooltip into stats, including magic/rare items and crafts;
+- **roll quality** - each value against the highest that stat can roll (`affixes_data.json`
+  is in the repository, so this works out of the box);
+- the item icon taken from the game instead of Traderie's CDN;
+- the **d2jsp sale post**, with prices in runes and/or FG;
+- the "where is it" field (character and stash tab), filtering, paging, light/dark theme.
 
-Czego nie ma bez tokenu: cen z transakcji i wystawiania ofert. W miejscu ceny program
-pisze, dlaczego jej nie podaje. Przedmiot rozpoznany lokalnie ma w listingu znacznik
-`local` i **nie da sie go wystawic** - numery wlasciwosci sa wtedy wlasne, nie z bazy
-Traderie, wiec oferta bylaby bledna. Po wklejeniu tokenu odczytaj screena ponownie.
+What you do not get without a token: prices from trades, and listing items. Where a price
+would go, the tool explains why there is none. An item identified locally is marked `local`
+in its listing and **cannot be listed** - its property ids are generated locally rather than
+taken from Traderie's database, so the offer would be wrong. Paste a token and re-read the
+screenshot to list it.
 
-### Jak dodac token Traderie
+### Adding a Traderie token
 
-Ustawienia -> Konto Traderie. Token to naglowek `Authorization` z DevTools przegladarki
-(zakladka Siec, widok **Nieprzetworzone** - zwykly widok ucina go wielokropkiem).
-Zapisuje sie do `secrets/traderie_auth.txt`. Tam tez trafia klucz API modelu w chmurze.
-Caly katalog `secrets/` jest w `.gitignore` i **nigdy** nie wchodzi do `settings.json`
-ani do kopii zapasowych.
+Settings -> Traderie account. The token is the `Authorization` header from your browser's
+DevTools (Network tab, **Raw** view - the formatted view truncates it with an ellipsis).
+It is stored in `secrets/traderie_auth.txt`, together with the cloud model's API key. The
+whole `secrets/` folder is in `.gitignore` and **never** ends up in `settings.json` or in a
+backup.
 
 ---
 
-## Model do odczytu
+## The vision model
 
-Domyslnie **lokalna Ollama** - nic nie trzeba podawac i nic nie wychodzi z komputera:
+By default it uses **local Ollama** - nothing to configure and nothing leaves your machine:
 
 ```bat
 ollama pull qwen3-vl:4b-instruct
 ```
 
-Model zmienisz w Ustawieniach -> Model. Alternatywa to dowolny endpoint zgodny
-z OpenAI (program byl uzywany z OVH AI Endpoints): wybierz dostawce "openai", podaj
-adres i klucz API. Licznik zuzycia tokenow jest w Ustawieniach, obok tego, co raportuje
-dostawca - do kontroli rozliczen.
+You can change the model in Settings -> Model. The alternative is any OpenAI-compatible
+endpoint (this has been used with OVH AI Endpoints): pick the "openai" provider, then give it
+a URL and an API key. Token usage is tracked in Settings next to what the provider reports,
+so you can check the billing.
 
-Kazdy zrzut czytany jest w dwoch skalach i wynik "glosuje"; przy rozbieznosci dochodzi
-trzeci odczyt. Przedmiot z rozbieznym odczytem trafia do "do sprawdzenia", a nie do
-wystawienia.
-
----
-
-## Gdzie co lezy
-
-Dane robocze powstaja obok skryptow (albo tam, gdzie wskaze zmienna `D2_DANE`):
-
-```
-screenshots/      zrzuty .png + odczyt .json + mapowanie .listing.json
-cache/            definicje przedmiotow z Traderie, obrazki, wyniki price-check
-game_data/        baza wyciagnieta z gry (game_extract.py)
-logs/             log okna
-secrets/          token Traderie i klucz API            [nie zagladac, nie commitowac]
-settings.json     ustawienia (bez sekretow)
-posted.json       rejestr wystawionych przedmiotow
-backups/          kopie zapasowe danych (zip, bez secrets/)
-sample_data/      wzorzec danych do testow (w repozytorium)
-```
-
-Ustawienia -> Strefa niebezpieczna -> "Wyczysc wszystkie dane" robi najpierw kopie
-zapasowa, moze przy okazji zdjac Twoje oferty z Traderie i wymaga przepisania slowa
-potwierdzenia. Sekrety, ustawienia, `cache/` i `game_data/` zostaja.
+Every screenshot is read at two scales and the results vote; on disagreement a third read
+breaks the tie. An item with a disputed read goes to "needs review" rather than straight to
+listing.
 
 ---
 
-## Testy
+## Where things live
+
+Working data is created next to the scripts, or wherever the `D2_DANE` environment variable
+points:
+
+```
+screenshots/      .png captures + .json reads + .listing.json mappings
+cache/            item definitions from Traderie, images, price-check results
+game_data/        the database extracted from the game (game_extract.py)
+logs/             window log
+secrets/          Traderie token and API key          [do not open, do not commit]
+settings.json     settings (no secrets)
+posted.json       register of listed items
+backups/          data backups (zip, without secrets/)
+sample_data/      the test fixture (in the repository)
+```
+
+Settings -> Danger zone -> "Wipe all data" takes a backup first, can optionally pull your
+offers from Traderie on the way out, and refuses to run until you type a confirmation word.
+Secrets, settings, `cache/` and `game_data/` are kept.
+
+---
+
+## Tests
 
 ```bat
 .venv\Scripts\python -m pytest -q
 ```
 
-88 testow, ok. 90 s. Symuluja uzytkownika w oknie (`nicegui.testing.User`), bez
-przegladarki. **Nie ruszaja prawdziwych danych**: `conftest.py` przestawia `D2_DANE` na
-katalog tymczasowy i rozpakowuje tam wzorzec z `sample_data/`, a Traderie i model sa
-atrapami. Testy trybu lokalnego buduja sobie sztuczny zestaw tabel gry, wiec nie wymagaja
-zainstalowanego D2R.
+91 tests, about 90 s. They drive the real UI through `nicegui.testing.User`, without a
+browser. They **never touch real data**: `conftest.py` points `D2_DANE` at a temporary
+directory and unpacks the `sample_data/` fixture there, and both Traderie and the model are
+stubbed out. The local-mode tests build their own synthetic game tables, so they do not need
+D2R installed.
 
 ---
 
-## Legalnosc
+## Legal notes
 
-Czytanie plikow wlasnej, legalnie posiadanej kopii gry jest zwyklym odczytem danych
-z dysku - program nie modyfikuje gry ani nie obchodzi zadnego zabezpieczenia. Ale
-zawartosc gry (nazwy, tabele, grafiki) nalezy do Blizzarda, dlatego `game_data/` jest
-w `.gitignore` i **nie wolno go rozpowszechniac** - kazdy robi go sobie z wlasnej
-instalacji.
+Reading the files of your own, legally owned copy of the game is an ordinary disk read - the
+tool does not modify the game and does not circumvent any protection. The game's content
+(names, tables, artwork) belongs to Blizzard, which is why `game_data/` is in `.gitignore`
+and **must not be redistributed** - everyone generates it from their own installation.
 
-Traderie nie publikuje oficjalnego API; program korzysta z tego samego, co ich strona,
-z opoznieniami i bez masowych zapytan. Jesli Traderie to zmieni, tryb z tokenem
-przestanie dzialac - tryb lokalny nie.
-
----
-
-## Licencja
-
-Do ustalenia przez autora repozytorium. Bez pliku `LICENSE` obowiazuje domyslne
-"wszystkie prawa zastrzezone", czyli formalnie nikt nie ma prawa kopiowac ani uzywac
-kodu. Jesli projekt ma byc otwarty, dodaj `LICENSE` (np. MIT) i wpisz to tutaj.
+Traderie publishes no official API; this tool uses the same endpoints its website does, with
+delays and without bulk querying. If Traderie changes that, the token mode stops working -
+the local mode does not.
 
 ---
 
-## Dla programistow
+## License
 
-Opis architektury, przeplyw danych, nieoficjalne API Traderie, pulapki i dlug techniczny
-sa w [CLAUDE.md](CLAUDE.md).
+To be decided by the repository owner. With no `LICENSE` file the default is "all rights
+reserved", which formally means nobody may copy or use the code. If this is meant to be open
+source, add a `LICENSE` (MIT, for example) and say so here.
+
+---
+
+## For developers
+
+The architecture, data flow, the unofficial Traderie API, the traps worth knowing and the
+technical debt are documented in [CLAUDE.md](CLAUDE.md). That file is in Polish, like the code
+comments - it is the working notebook for this project rather than user-facing documentation.

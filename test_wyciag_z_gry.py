@@ -206,6 +206,14 @@ def test_na_szablon_bez_wartosci_dla_s():
     assert ge.na_szablon("%+d to %s") == (None, None)
 
 
+@pytest.mark.parametrize("param,zakres", [(12, (1, 148)), (6, (0, 74)), (8, (1, 99))])
+def test_zakres_per_poziom(param, zakres):
+    """Wartosci sprawdzone na opisach z Traderie: Harlequin Crest ma '+1-148 To Life'
+    (param 12), Enigma '+0-74 To Strength' (param 6) i '+1-99% MF' (param 8)."""
+    assert ge.zakres_per_poziom(param) == zakres
+    assert ge.zakres_per_poziom(None) == (None, None)
+
+
 def test_linia_opisu_czytelna_dla_parsera():
     """Zakres musi wrocic z traderie_map.parse_ranges - inaczej stat nie trafi do oferty."""
     linia = ge.linia_opisu("+{{value}} to Mana", 20, 30)
