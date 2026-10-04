@@ -1,8 +1,25 @@
 """Przeplyw glowny: lista, wycena, okno ceny, widoki, synchronizacja z Traderie."""
-import asyncio, json
+import asyncio, ast, json, pathlib
 from nicegui.testing import User
 from nicegui import ui
 import traderie_post as tp
+
+
+def test_dlugie_zadania_nie_wolaja_ui_notify():
+    """ui.notify dziala tylko w kontekscie zywego elementu strony.
+
+    Dlugie zadanie przebudowuje widok, element znika i leci
+    'The parent element this slot belongs to has been deleted'. Zdarzylo sie przy
+    'Wystawianie zakonczone' po wystawieniu ofert (4 X 2026). W funkcjach async
+    komunikaty maja isc przez say(), ktore w takim wypadku pisze do logu.
+    """
+    src = pathlib.Path(__file__).with_name("d2_web.py").read_text(encoding="utf-8")
+    asynchroniczne = [(w.lineno, w.end_lineno) for w in ast.walk(ast.parse(src))
+                      if isinstance(w, ast.AsyncFunctionDef)]
+    zle = [(i + 1, l.strip()) for i, l in enumerate(src.splitlines())
+           if "ui.notify(" in l and any(a <= i + 1 <= b for a, b in asynchroniczne)]
+    assert not zle, "ui.notify w funkcji async - uzyj say():\n" + "\n".join(
+        "  d2_web.py:%d  %s" % (nr, tekst[:90]) for nr, tekst in zle)
 
 async def test_flow(user: User):
     import d2_web as W

@@ -61,9 +61,9 @@ py -3.11 -m pip install nicegui pywebview keyboard mss pillow ollama
 | Plik | Co robi |
 |---|---|
 | `D2 Trade.bat` | nowe okno (NiceGUI + pywebview), bez konsoli |
-| `D2 Trade (z konsola).bat` | to samo z konsolą — do diagnozy |
-| `D2 Trade (stare okno).bat` | stare okno tkinter (`d2_gui.py`), zapasowe |
-| `Wyciagnij dane z gry.bat` | buduje `game_data/` z plików D2R (sekcja 11) |
+| `D2 Trade (console).bat` | to samo z konsolą — do diagnozy |
+| `D2 Trade (old window).bat` | stare okno tkinter (`d2_gui.py`), zapasowe |
+| `Extract game data.bat` | buduje `game_data/` z plików D2R (sekcja 11) |
 | `py -3.11 d2_trade.py` | tryb konsolowy: `[--send] [--redo] [--force] [--no-prices]` |
 
 Okno startuje na `http://127.0.0.1:8765` (w pywebview jako natywne okno).
@@ -307,26 +307,26 @@ asyncio_mode = auto
 main_file = run_app.py
 ```
 
-Scenariusze w repo (**91 testów**, `py -3.11 -m pytest -q` ≈ 90 s):
+Scenariusze w repo (**95 testów**, `py -3.11 -m pytest -q` ≈ 100 s):
 
 | plik | co sprawdza |
 |---|---|
-| `test_app.py` | przepływ główny, widoki, okno ceny, szybka wycena, synchronizacja |
+| `test_app.py` | przepływ główny, widoki, okno ceny, szybka wycena, synchronizacja; strażnik `ui.notify` w funkcjach async |
 | `test_actions.py` | wystawianie z potwierdzeniem, sprzedaż, usuwanie z listy, odblokowanie „do sprawdzenia”, kopertka z wiadomościami |
 | `test_rare2.py` | panel magic/rare ze statami na tle maksimum |
 | `test_llm.py`, `test_switch.py` | dostawca modelu, licznik tokenów, cennik, klucz API zapisany do pliku w `secrets/` (a nie do `settings.json`) |
-| `test_charmy.py` | reguły charmów (Grand Charm bez skillera nie dostaje ceny) |
-| `test_cache_cen.py` | cache price-check: TTL, inne filtry = inne pytanie, `force`, błąd sieci oddaje poprzedni wynik |
-| `test_katalog_gry.py` | katalog nazw z gry: rozpoznanie bez sieci, nazwy bez „The”, mniej zapytań |
-| `test_jakosc_rzutu.py` | opis słowny jakości rzutu i skala kolorów paska |
-| `test_tryb_lokalny.py` | praca bez tokenu: definicja z plików gry, odczyt rare'a, blokada wystawiania, brak cen, post d2jsp |
-| `test_wyciag_z_gry.py` | wyciąg z gry na sztucznych tabelach: formaty opisów, trudne staty (drzewka, klasy, per poziom), nazwy z tabel tekstowych |
-| `test_odnawianie.py` | odnawianie: PUT, zaznaczone vs wszystkie, „serwer potwierdził, ale nie odnowił”, padnięcie `ui.notify`, pole „gdzie leży”, samoczynne sprawdzenie ofert po wejściu w „Wystawione”, zerwane połączenie przy tym sprawdzeniu nie blokuje okna |
-| `test_mapowanie.py` | magic/rare bez fałszywych ostrzeżeń, staty bez liczby, staty których Traderie nie ma, ponowny odczyt nie gubi wpisów |
-| `test_stronicowanie.py` | podział listy na strony, numeracja, wybór 10/20/50 zapisany w `settings.json` |
+| `test_charms.py` | reguły charmów (Grand Charm bez skillera nie dostaje ceny) |
+| `test_price_cache.py` | cache price-check: TTL, inne filtry = inne pytanie, `force`, błąd sieci oddaje poprzedni wynik |
+| `test_game_catalog.py` | katalog nazw z gry: rozpoznanie bez sieci, nazwy bez „The”, mniej zapytań |
+| `test_roll_quality.py` | opis słowny jakości rzutu i skala kolorów paska |
+| `test_local_mode.py` | praca bez tokenu: definicja z plików gry, odczyt rare'a, blokada wystawiania, brak cen, post d2jsp, sekcja „Dane z gry” w Ustawieniach, podpowiedź w pasku bocznym |
+| `test_game_extract.py` | wyciąg z gry na sztucznych tabelach: formaty opisów, trudne staty (drzewka, klasy, per poziom), nazwy z tabel tekstowych |
+| `test_relisting.py` | odnawianie: PUT, zaznaczone vs wszystkie, „serwer potwierdził, ale nie odnowił”, padnięcie `ui.notify`, pole „gdzie leży”, samoczynne sprawdzenie ofert po wejściu w „Wystawione”, zerwane połączenie przy tym sprawdzeniu nie blokuje okna |
+| `test_mapping.py` | magic/rare bez fałszywych ostrzeżeń, staty bez liczby, staty których Traderie nie ma, ponowny odczyt nie gubi wpisów |
+| `test_paging.py` | podział listy na strony, numeracja, wybór 10/20/50 zapisany w `settings.json` |
 | `test_d2jsp.py` | ceny w poście: cztery kombinacje runy/FG, zaokrąglanie do pół FG, przelicznik kursów i ich cache |
-| `test_czyszczenie.py` | czyszczenie danych: kopia bez sekretów, co znika a co zostaje, błąd Traderie przerywa, słowo potwierdzenia blokuje przycisk |
-| `test_motyw.py` | jasny/ciemny: obie palety mają te same klucze, stałe kolorów wskazują na zmienne CSS, wybór zapisany w `settings.json` |
+| `test_wipe_data.py` | czyszczenie danych: kopia bez sekretów, co znika a co zostaje, błąd Traderie przerywa, słowo potwierdzenia blokuje przycisk |
+| `test_theme.py` | jasny/ciemny: obie palety mają te same klucze, stałe kolorów wskazują na zmienne CSS, wybór zapisany w `settings.json` |
 
 Wzorzec danych odświeżasz, kopiując wybrane pliki `.json`/`.listing.json` ze `screenshots/`
 do `sample_data/screenshots/` (+ `cache/<slug>.json`, jeśli to nowy przedmiot).
@@ -351,6 +351,22 @@ Przy zmianach w logice (bez UI) najszybszą kontrolą jest przepuszczenie prawdz
   („Unique Warlock Helm" to „Hellwarden's Will", „Wartraveler" to „War Traveler", „Hustle (armor)"
   to „Hysteria"). Dotyczyło to też `game_items.json` — plik jest przebudowany, stare zapisy
   zostały jako `aliases`, więc jedno i drugie nadal się rozpoznaje.
+- **Katalog gry w Ustawieniach (4 X 2026)** — sekcja „Dane z gry” pod „Kontem Traderie”:
+  pole ze ścieżką (podpowiadane przez `game_casc.zgadnij_gre()`), przycisk „Wyciągnij dane
+  z gry” / „Odśwież bazę” i stan bazy (ile przedmiotów, ile ikon, z kiedy). Wywołuje
+  `game_extract.zbuduj(ścieżka, log)` przez `run.io_bound`, a po zakończeniu zapomina leniwe
+  katalogi (`game_source.odswiez()`, `game_db._INDEKS`, `S.defs`, `S.imgs`) — inaczej okno
+  pokazywałoby stare dane. Ścieżka ląduje w `settings.json` jako `game_dir`.
+  Gdy nie ma tokenu, pasek boczny mówi, czy dane z gry są włączone, czy trzeba wskazać katalog.
+  **ID konta może być puste** — bez konta Traderie program i tak działa, więc walidacja
+  „same cyfry” nie może blokować zapisu ustawień.
+- **`start_post()` sprawdza `local` przed cenami** — przedmiot rozpoznany z plików gry nie da
+  się wystawić, więc mówimy o tym od razu. Wcześniej `build_payload()` przerywał w połowie
+  wystawiania, a użytkownik najpierw słyszał o złej cenie.
+- **Nazwy plików po angielsku, README po angielsku, licencja MIT (4 X 2026)** — repozytorium
+  ma trafić na GitHub. `.bat`, makiety i pliki testów dostały angielskie nazwy; treść plików
+  (komentarze, ten dokument, literały UI) zostaje po polsku. README ma instrukcję krok po
+  kroku dla kogoś, kto nigdy nie uruchamiał Pythona.
 
 - **Nowy wygląd okna (2 X 2026)** — ciemny, spokojny motyw zamiast jasnego i pastelowego.
   Zasada: **jedyne nasycone kolory to kolory rzadkości przedmiotów** (`RAR` w `d2_web.py`, takie jak
@@ -382,7 +398,7 @@ Przy zmianach w logice (bez UI) najszybszą kontrolą jest przepuszczenie prawdz
   W jasnej palecie kolory rzadkości są przyciemnione — growe złoto i żółć są na jasnym tle
   nieczytelne. Dwa miejsca zostają przy stałym hexie (`CROP_BOX`, `CROP_SEL`): to ramka wycinka
   rysowana **atrybutem** SVG, który nie rozumie `var()`, a leży na zrzucie z gry, nie na tle okna.
-  Podgląd palety: `makieta_jasny.html` (przycisk przełącza motyw).
+  Podgląd palety: `mockup_light_theme.html` (przycisk przełącza motyw).
 - **Etykiety sekcji bez wersalików** — „STATYSTYKI” → „Statystyki” itd. Teksty są kluczami
   tłumaczeń, więc razem z kodem zmieniły się `lang/en.json`, `de.json`, `ko.json` i asercje w testach.
 - **Katalogi po angielsku** — `screenshots/` (z `_crops/` i `_trash/`), `cache/`, `logs/`,
@@ -533,6 +549,12 @@ Przy zmianach w logice (bez UI) najszybszą kontrolą jest przepuszczenie prawdz
   — tak było przed zmianą i tak zostało.
 - `ui.notify` działa tylko w kontekście żywego elementu strony; długie zadanie przebudowuje widok
   i element znika, więc komunikaty idą przez `d2_web.say()` (przy błędzie — do logu).
+  **Zasada jest teraz pilnowana testem** (`test_app.py::test_dlugie_zadania_nie_wolaja_ui_notify`):
+  w żadnej funkcji `async` w `d2_web.py` nie może być `ui.notify`. Reguła powstała po tym, jak
+  po udanym wystawieniu ofert program wywalił się na ostatniej linii `do_post` —
+  `RuntimeError: The parent element this slot belongs to has been deleted` (4 X 2026). Oferty
+  poszły poprawnie, ale ślad wyjątku wyglądał, jakby coś się nie udało. Przy okazji poprawione
+  zostało 13 innych takich wywołań.
 
 ### Dług techniczny
 

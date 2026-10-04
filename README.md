@@ -34,6 +34,127 @@ Traderie is accessed through the same (unofficial) API its own website uses, wit
 
 ---
 
+# Getting started (no experience needed)
+
+If you have never run a Python program before, follow these steps in order. It takes about
+fifteen minutes, most of which is downloading. You need Windows and a copy of
+Diablo II: Resurrected.
+
+## Step 1 - install Python
+
+1. Go to [python.org/downloads](https://www.python.org/downloads/release/python-3119/) and
+   download **Python 3.11** for Windows (the "Windows installer (64-bit)" file).
+   Version 3.11 matters - newer versions are not supported by all the libraries used here.
+2. Run the installer. On the first screen tick **"Add python.exe to PATH"** at the bottom,
+   then click "Install Now".
+3. To check it worked, press `Win + R`, type `cmd`, press Enter, and in the black window type:
+
+   ```
+   py -3.11 --version
+   ```
+
+   You should see `Python 3.11.something`. If you see an error, the installer step was
+   missed - run it again and make sure the PATH box is ticked.
+
+## Step 2 - download this project
+
+**Easiest way:** on the project page click the green **Code** button -> **Download ZIP**.
+Unpack it anywhere, for example `C:\D2Trade`. Avoid folders synced by OneDrive - the tool
+writes files constantly and syncing slows it down.
+
+**If you have git:**
+
+```bat
+git clone <repository-url> C:\D2Trade
+```
+
+## Step 3 - install the libraries
+
+Open the folder you unpacked, click the address bar at the top of the window, type `cmd` and
+press Enter. A black window opens, already in the right folder. Paste this and press Enter:
+
+```bat
+py -3.11 -m venv .venv
+.venv\Scripts\python -m pip install -r requirements.txt
+```
+
+The first line creates a private Python environment inside the project folder, so nothing is
+installed system-wide. The second downloads the libraries - a few minutes.
+
+## Step 4 - install the model that reads screenshots
+
+The tool needs a vision model to read item tooltips. The simplest option runs on your own
+graphics card and costs nothing:
+
+1. Download and install [Ollama](https://ollama.com/download).
+2. In the black window type:
+
+   ```bat
+   ollama pull qwen3-vl:4b-instruct
+   ```
+
+   That downloads about 3 GB. You need a graphics card with roughly 6 GB of memory. **Close
+   the game while reading screenshots** - the game and the model compete for the same card.
+
+If your card is too small, you can use a cloud provider instead (Settings -> Model -> provider
+"openai", then paste the endpoint URL and your API key). That costs money per image.
+
+## Step 5 - first run
+
+Double-click **`D2 Trade.bat`**. A window opens. It is empty - that is expected.
+
+Now tell it where your game is, so it can recognise items:
+
+1. Click **Settings** in the left sidebar.
+2. Find the **Game data** section. The folder is usually filled in already; if not, paste the
+   path to your installation, for example `C:\Program Files (x86)\Diablo II Resurrected`.
+3. Click **Extract game data** and wait a few seconds. You should see
+   *"database ready: 1355 items, 375 icons"*.
+4. Click **Save**.
+
+Reading the game archive needs one extra package. If step 3 complains about it, type this in
+the black window and try again:
+
+```bat
+.venv\Scripts\python -m pip install casc
+```
+
+If that package will not install on your machine, see
+[Trouble with the game archive](#trouble-with-the-game-archive) below.
+
+## Step 6 - sell something
+
+1. Start the game, hover the mouse over an item in your stash and press **F12**. Nothing
+   visible happens - the tool saved a screenshot in the background. Do this for every item
+   you want to sell.
+2. **Close the game** (the model needs the graphics card).
+3. In the D2 Trade window click **Read screenshots**. Each item appears in the list with its
+   stats and a rating of how well it rolled.
+4. Switch to the **d2jsp post** view and click **Copy sales post**. Paste it into your d2jsp
+   thread.
+
+That is the whole loop. Everything above works without any account anywhere.
+
+## Step 7 (optional) - connect Traderie
+
+Only needed if you want **prices from real trades** and **listing items automatically**.
+
+1. Log in to [traderie.com](https://traderie.com/diablo2resurrected) in your browser.
+2. Press `F12` in the browser to open developer tools, go to the **Network** tab and reload
+   the page.
+3. Click any request to `traderie.com`, find the **Authorization** header and switch the view
+   to **Raw** - the formatted view cuts the value off with "...".
+4. Copy the whole line and paste it into Settings -> Traderie account -> Token.
+5. Paste your account id into the field above it. You will find it in the address of your own
+   listings page, after `seller=`.
+6. Click **Test connection**. It should say how many active offers you have.
+
+The token expires every few days; when it does, repeat these steps.
+
+---
+
+# Reference
+
 ## What you need
 
 | | |
@@ -41,26 +162,18 @@ Traderie is accessed through the same (unofficial) API its own website uses, wit
 | OS | Windows (the global F12 hotkey and screen capture are Windows-only) |
 | Python | 3.11 (`py -3.11`) |
 | Vision model | **either** a local [Ollama](https://ollama.com) on your own GPU, **or** an OpenAI-compatible endpoint |
-| Traderie account | **optional** - see "Three ways to run it" |
+| Traderie account | **optional** - see below |
 | D2R installed | optional, but without a Traderie token this is where item data comes from |
 
-### Install
+The `.bat` files prefer the project's `.venv` and fall back to `py -3.11`. The project folder
+can live anywhere and can be moved - every path in the code is relative.
 
-```bat
-git clone <repository-url> d2trade
-cd d2trade
-py -3.11 -m venv .venv
-.venv\Scripts\python -m pip install -r requirements.txt
-```
-
-To run it, double-click **`D2 Trade.bat`**. The window opens at `http://127.0.0.1:8765`
-(as a native window if `pywebview` is installed). `D2 Trade (z konsola).bat` does the same
-with a visible console, for diagnostics.
-
-The `.bat` files prefer the project's `.venv` and fall back to `py -3.11`. The project
-directory can live anywhere and can be moved - every path in the code is relative.
-
----
+| file | what it does |
+|---|---|
+| `D2 Trade.bat` | normal start, no console window |
+| `D2 Trade (console).bat` | the same with a visible console, for diagnostics |
+| `D2 Trade (old window).bat` | the older tkinter window, kept as a fallback |
+| `Extract game data.bat` | builds the local database from the game files |
 
 ## Three ways to run it
 
@@ -76,9 +189,9 @@ The tool works with no credentials at all; the more you give it, the more it can
 Everything needed is already in the game files on your disk - item names, unique item ranges,
 the affix tables and the inventory icons. They only have to be read once.
 
-### Building the local database
+## Building the local database
 
-Double-click **`Wyciagnij dane z gry.bat`** ("extract game data") or run:
+Settings -> Game data -> **Extract game data**, or from the command line:
 
 ```bat
 py -3.11 game_extract.py "C:\Program Files (x86)\Diablo II Resurrected"
@@ -92,15 +205,12 @@ all. Run it again after a game or mod update to pick up new items.
 The tool **only reads** the game files. It does not modify your installation, does not launch
 the game and sends nothing anywhere - `game_data/` stays on your disk and is in `.gitignore`.
 
-Reading the CASC archive needs the `casc` package (a CascLib wrapper):
+### Trouble with the game archive
 
-```bat
-py -3.11 -m pip install casc
-```
-
-That package only ships a prebuilt wheel for Windows x64 + Python 3.11. If you cannot install
-it, extract the game's `data` folder with any CASC tool (CascView, for example) and point
-`game_extract.py` at that folder instead - everything else works the same.
+Reading the CASC archive needs the `casc` package (a CascLib wrapper), which only ships a
+prebuilt wheel for Windows x64 + Python 3.11. If it will not install, extract the game's
+`data` folder with any CASC tool ([CascView](http://www.zezula.net/en/casc/main.html), for
+example) and point the tool at **that** folder instead - everything else works the same.
 
 ### What exactly works without Traderie
 
@@ -117,35 +227,6 @@ would go, the tool explains why there is none. An item identified locally is mar
 in its listing and **cannot be listed** - its property ids are generated locally rather than
 taken from Traderie's database, so the offer would be wrong. Paste a token and re-read the
 screenshot to list it.
-
-### Adding a Traderie token
-
-Settings -> Traderie account. The token is the `Authorization` header from your browser's
-DevTools (Network tab, **Raw** view - the formatted view truncates it with an ellipsis).
-It is stored in `secrets/traderie_auth.txt`, together with the cloud model's API key. The
-whole `secrets/` folder is in `.gitignore` and **never** ends up in `settings.json` or in a
-backup.
-
----
-
-## The vision model
-
-By default it uses **local Ollama** - nothing to configure and nothing leaves your machine:
-
-```bat
-ollama pull qwen3-vl:4b-instruct
-```
-
-You can change the model in Settings -> Model. The alternative is any OpenAI-compatible
-endpoint (this has been used with OVH AI Endpoints): pick the "openai" provider, then give it
-a URL and an API key. Token usage is tracked in Settings next to what the provider reports,
-so you can check the billing.
-
-Every screenshot is read at two scales and the results vote; on disagreement a third read
-breaks the tie. An item with a disputed read goes to "needs review" rather than straight to
-listing.
-
----
 
 ## Where things live
 
@@ -164,11 +245,9 @@ backups/          data backups (zip, without secrets/)
 sample_data/      the test fixture (in the repository)
 ```
 
-Settings -> Danger zone -> "Wipe all data" takes a backup first, can optionally pull your
+Settings -> Danger zone -> "Clear all data" takes a backup first, can optionally pull your
 offers from Traderie on the way out, and refuses to run until you type a confirmation word.
 Secrets, settings, `cache/` and `game_data/` are kept.
-
----
 
 ## Tests
 
@@ -176,7 +255,7 @@ Secrets, settings, `cache/` and `game_data/` are kept.
 .venv\Scripts\python -m pytest -q
 ```
 
-91 tests, about 90 s. They drive the real UI through `nicegui.testing.User`, without a
+95 tests, about 100 s. They drive the real UI through `nicegui.testing.User`, without a
 browser. They **never touch real data**: `conftest.py` points `D2_DANE` at a temporary
 directory and unpacks the `sample_data/` fixture there, and both Traderie and the model are
 stubbed out. The local-mode tests build their own synthetic game tables, so they do not need
@@ -195,15 +274,10 @@ Traderie publishes no official API; this tool uses the same endpoints its websit
 delays and without bulk querying. If Traderie changes that, the token mode stops working -
 the local mode does not.
 
----
-
 ## License
 
-To be decided by the repository owner. With no `LICENSE` file the default is "all rights
-reserved", which formally means nobody may copy or use the code. If this is meant to be open
-source, add a `LICENSE` (MIT, for example) and say so here.
-
----
+[MIT](LICENSE) - you may use, modify and redistribute this code, including commercially, as
+long as the copyright notice stays in place.
 
 ## For developers
 

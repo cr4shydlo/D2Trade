@@ -46,6 +46,10 @@ import quick_price
 import app_config
 import rare_eval
 import llm
+import game_casc
+import game_extract
+import game_source
+import game_db
 
 app_config.apply()
 t = i18n.tr
@@ -541,7 +545,7 @@ async def do_read(redo: bool):
         else t(f"Odczyt screenow w chmurze ({llm.model()}) - gre mozesz zostawic wlaczona"))
     res = await run.io_bound(d2_ocr.run, FOLDER, False, redo, False)
     if res is not None and res < 0:
-        ui.notify(t("Model nie miesci sie na karcie graficznej - zamknij gre i sprobuj ponownie."), type="negative")
+        say(t("Model nie miesci sie na karcie graficznej - zamknij gre i sprobuj ponownie."), "negative")
         return
     await run.io_bound(d2_ocr.unload_model)
     log(t("Dopasowanie do Traderie"))
@@ -559,7 +563,7 @@ async def do_sync(quiet=False):
     if sold:
         S.session_sold |= {i for i, it in S.items.items() if it["lst"].get("name") in sold}
         log(t(f"Sprzedane na Traderie: {', '.join(sold)}  - skopiuj post d2jsp ponownie, zeby je z niego usunac"))
-        ui.notify(t(f"Sprzedane na Traderie: {', '.join(sold)}"), type="positive")
+        say(t(f"Sprzedane na Traderie: {', '.join(sold)}"))
     if imported or sold:
         load_items()
         asyncio.create_task(prefetch_and_hints())
@@ -635,7 +639,7 @@ async def do_post(plan):
         if not resp.get("success") or not resp.get("listing"):
             it["status"] = "error"
             msg = tp.SESSION_EXPIRED if tp.is_expired(body) else body[:300]
-            ui.notify(t(f"{lst['name']}: nieoczekiwana odpowiedz Traderie:") + " " + msg, type="negative", timeout=10000)
+            say(t(f"{lst['name']}: nieoczekiwana odpowiedz Traderie:") + " " + msg, "negative", timeout=10000)
             return
         lst["posted"] = {"time": time.strftime("%Y-%m-%d %H:%M:%S"), "price": it["price"], "listing_id": resp["listing"]}
         lst.pop("planned_price", None)
@@ -649,7 +653,7 @@ async def do_post(plan):
         log(t(f"[{n}/{len(plan)}] {lst['name']}: wystawiono za {it['price']}"))
         S.dirty = True
     log(t("Wystawianie zakonczone."))
-    ui.notify(t("Wystawianie zakonczone."), type="positive")
+    say(t("Wystawianie zakonczone."))
 
 
 # ---------------- akcje ----------------
@@ -660,7 +664,7 @@ async def set_price(iid, val: str) -> bool:
         try:
             await run.io_bound(tp.parse_price, val)
         except ValueError as e:
-            ui.notify(t(f"{it['lst'].get('name')}: niepoprawna cena '{val}' ({e})"), type="negative")
+            say(t(f"{it['lst'].get('name')}: niepoprawna cena '{val}' ({e})"), "negative")
             return False
     it["price"], it["selected"] = val, bool(val)
     if val:
@@ -733,8 +737,8 @@ async def toggle_sold(iid):
     log(t(f"Oznaczono jako sprzedany: {lst.get('name', '')}  (skopiuj post d2jsp ponownie)"))
     if also:
         ok, msg = await run.io_bound(tp.mark_sold, lid, tm.load_auth())
-        ui.notify(t(f"Traderie: oferta {lst.get('name')} oznaczona jako sprzedana") if ok
-                  else t(f"Nie udalo sie oznaczyc na Traderie: {msg}"), type="positive" if ok else "negative")
+        say(t(f"Traderie: oferta {lst.get('name')} oznaczona jako sprzedana") if ok
+            else t(f"Nie udalo sie oznaczyc na Traderie: {msg}"), "positive" if ok else "negative")
     load_items()
 
 
@@ -745,11 +749,11 @@ async def toggle_hidden(iid):
     visible_now = bool(st and st["hidden"])
     ok, msg = await run.io_bound(tp.set_visible, lid, visible_now, tm.load_auth())
     if not ok:
-        ui.notify(msg, type="negative")
+        say(msg, "negative")
         return
     S.listing_state[lid] = {**(st or {"relist": False, "hours_left": 0, "offers": 0}), "hidden": not visible_now}
-    ui.notify(t(f"Przywrocono na Traderie: {it['lst'].get('name')}") if visible_now
-              else t(f"Ukryto na Traderie: {it['lst'].get('name')}"))
+    say(t(f"Przywrocono na Traderie: {it['lst'].get('name')}") if visible_now
+        else t(f"Ukryto na Traderie: {it['lst'].get('name')}"))
     S.dirty = True
 
 
@@ -975,7 +979,7 @@ async def remove_listing(iid):
         return
     ok, msg = await run.io_bound(tp.remove_listing, lid, tm.load_auth())
     if not ok:
-        ui.notify(t(f"Nie udalo sie usunac oferty: {msg}"), type="negative")
+        say(t(f"Nie udalo sie usunac oferty: {msg}"), "negative")
         return
     tp.unregister(lst)
     lst["removed"] = {"time": time.strftime("%Y-%m-%d %H:%M"), **lst.pop("posted")}
@@ -997,7 +1001,7 @@ async def delete_item(iid):
         if choice == "both":
             ok, msg = await run.io_bound(tp.remove_listing, lid, tm.load_auth())
             if not ok:
-                ui.notify(t(f"Nie udalo sie zdjac oferty z Traderie: {msg}"), type="negative")
+                say(t(f"Nie udalo sie zdjac oferty z Traderie: {msg}"), "negative")
                 return
             tp.unregister(lst)
             lst["removed"] = {"time": time.strftime("%Y-%m-%d %H:%M"), **lst.pop("posted")}
@@ -1103,22 +1107,30 @@ def wipe_dialog():
 
 
 async def start_post():
-    plan = []
-    for iid in S.order:
-        it = S.items[iid]
-        if it["selected"] and it["status"] in ("ready", "dup"):
-            try:
-                price, make_offer = await run.io_bound(tp.parse_price, it["price"])
-            except ValueError as e:
-                ui.notify(f"{it['lst']['name']}: {e}", type="negative")
-                return
-            plan.append((iid, it, price, make_offer))
-    if not plan:
-        ui.notify(t("Nic nie jest zaznaczone. Ustaw ceny przedmiotom, ktore chcesz wystawic."), type="warning")
+    wybrane = [(iid, S.items[iid]) for iid in S.order
+               if S.items[iid]["selected"] and S.items[iid]["status"] in ("ready", "dup")]
+    if not wybrane:
+        say(t("Nic nie jest zaznaczone. Ustaw ceny przedmiotom, ktore chcesz wystawic."), "warning")
         return
     if not tm.load_auth():
-        ui.notify(t(f"Brak lub niepoprawny plik {tm.AUTH_FILE}."), type="negative")
+        say(t(f"Brak lub niepoprawny plik {tm.AUTH_FILE}."), "negative")
         return
+    # Przedmiot rozpoznany z plikow gry ma wlasne numery wlasciwosci - oferta byla by bledna.
+    # Sprawdzamy to przed cenami: inaczej uzytkownik uslyszalby o zlej cenie, a prawdziwa
+    # przeszkoda jest inna. Bez tego build_payload przerywal w polowie wystawiania.
+    lokalne = [it["lst"]["name"] for _, it in wybrane if it["lst"].get("local")]
+    if lokalne:
+        say(t("Rozpoznane bez Traderie (odczytaj screeny ponownie, zeby wystawic): ")
+            + ", ".join(lokalne[:5]), "negative", timeout=10000)
+        return
+    plan = []
+    for iid, it in wybrane:
+        try:
+            price, make_offer = await run.io_bound(tp.parse_price, it["price"])
+        except ValueError as e:
+            say(f"{it['lst']['name']}: {e}", "negative")
+            return
+        plan.append((iid, it, price, make_offer))
     mins = round((len(plan) - 1) * sum(tp.DELAY) / 2 / 60) or 1
     body = "\n".join(f"{it['lst']['name']}  -  {it['price']}" for _, it, _, _ in plan[:25])
     if await confirm(t("Wystawic?"), t(f"{len(plan)} przedmiotow, potrwa ok. {mins} min:") + "\n\n" + body):
@@ -1290,6 +1302,8 @@ def settings_dialog():
     vals["d2jsp_fg"] = d2jsp_post.show_fg()
     vals["d2jsp_fg_per_ist"] = d2jsp_post.fg_per_ist()
     vals["fg_in_app"] = fg_in_app()
+    # katalog gry: zapamietany, a przy pierwszym uruchomieniu zgadniety z typowych miejsc
+    vals["game_dir"] = i18n.settings().get("game_dir") or (game_casc.zgadnij_gre() or "")
 
     def fg_hint():
         """Podglad: jak bedzie wygladac cena w poscie przy obecnych ustawieniach."""
@@ -1404,7 +1418,8 @@ def settings_dialog():
         if tok and app_config.token_problem(tok):
             msg.set_text(t("Popraw token: " + app_config.token_problem(tok)))
             return
-        if not vals["seller_id"].isdigit():
+        # puste ID jest w porzadku: bez konta Traderie program i tak dziala na danych z gry
+        if vals["seller_id"] and not vals["seller_id"].isdigit():
             msg.set_text(t("ID konta powinno skladac sie z samych cyfr (z adresu listy ofert: seller=...)."))
             return
         app_config.save(vals)
@@ -1431,6 +1446,63 @@ def settings_dialog():
         with ui.row().classes("w-full items-center gap-2 no-wrap"):
             info = ui.label("").classes("flex-grow").style("font-size:12.5px")
             ui.button(t("Testuj polaczenie"), on_click=test).props("unelevated no-caps dense").classes("ghost px-3")
+
+        ui.label(t("Dane z gry")).classes("sec pt-3")
+        ui.label(t("Bez tokenu Traderie program czyta przedmioty wprost z Twojej instalacji gry: "
+                   "staty, zakresy i ikony. Wskaz katalog i nacisnij przycisk - potrwa to "
+                   "kilkanascie sekund.")).style(f"color:{MUTED}; font-size:12px")
+        gra = ui.input(t("Katalog z Diablo II: Resurrected:"), value=vals["game_dir"],
+                       on_change=lambda e: vals.update(game_dir=e.value or "")) \
+            .props("outlined dense").classes("w-full")
+        editable(gra)
+        with ui.row().classes("w-full items-center gap-2 no-wrap"):
+            gra_info = ui.label("").classes("flex-grow").style("font-size:12.5px")
+            gra_btn = ui.button("", on_click=lambda: wyciagnij()).props("unelevated no-caps dense") \
+                .classes("ghost px-3")
+        ui.label(t("Program tylko czyta pliki gry - niczego w niej nie zmienia i nie wysyla ich dalej.")) \
+            .style(f"color:{FAINT}; font-size:11.5px")
+
+        def opisz_gre():
+            """Stan lokalnej bazy: ile przedmiotow, ile ikon, z kiedy."""
+            m = game_source.meta()
+            if game_source.dostepne() and m:
+                gra_info.set_text(t("baza gotowa: {0} przedmiotow, {1} ikon ({2})").format(
+                    m.get("items", 0), m.get("icons", 0), m.get("created", "")))
+                gra_info.style(f"color:{OK}")
+                gra_btn.set_text(t("Odswiez baze"))
+            else:
+                gra_info.set_text(t("brak lokalnej bazy"))
+                gra_info.style(f"color:{FAINT}")
+                gra_btn.set_text(t("Wyciagnij dane z gry"))
+
+        async def wyciagnij():
+            sciezka = (vals["game_dir"] or "").strip()
+            if not sciezka:
+                gra_info.set_text(t("Najpierw podaj katalog z gra."))
+                gra_info.style(f"color:{BAD}")
+                return
+            gra_btn.disable()
+            gra_info.set_text(t("czytam pliki gry..."))
+            gra_info.style(f"color:{MUTED}")
+            try:
+                await run.io_bound(game_extract.zbuduj, sciezka, log)
+            except Exception as e:
+                gra_info.set_text(str(e).splitlines()[0][:160])
+                gra_info.style(f"color:{BAD}")
+                log(traceback.format_exc())
+                return
+            finally:
+                gra_btn.enable()
+            # katalogi czytane leniwie - po przebudowie trzeba je zapomniec
+            game_source.odswiez()
+            game_db._INDEKS = None
+            S.defs.clear()
+            S.imgs.clear()
+            i18n.save_setting("game_dir", sciezka)
+            opisz_gre()
+            S.dirty = True
+
+        opisz_gre()
         ui.label(t("Domyslne ustawienia ofert")).classes("sec pt-3")
         with ui.grid(columns=2).classes("w-full gap-3"):
             for key, label in (("platform", "Platforma:"), ("mode", "Tryb:"), ("ladder", "Ladder:"), ("game_version", "Wersja gry:")):
@@ -1584,7 +1656,7 @@ def crop_dialog(iid):
         async def job():
             ok = await run.io_bound(d2_ocr.check_gpu)
             if not ok:
-                ui.notify(t("Model nie miesci sie na karcie graficznej - zamknij gre i sprobuj ponownie."), type="negative")
+                say(t("Model nie miesci sie na karcie graficznej - zamknij gre i sprobuj ponownie."), "negative")
                 return
             result = await run.io_bound(d2_ocr.read_tooltip, png, st["box"])
             png.with_suffix(".json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -1675,6 +1747,13 @@ def sidebar():
             tok_txt, tok_ok = ("brak tokenu" if not tok else "token zapisany"), bool(tok)
         with ui.column().classes("w-full gap-2 pt-3 px-2").style(f"border-top:1px solid {LINE}; flex-shrink:0"):
             status_card("Traderie", t(tok_txt), OK if tok_ok else ACT)
+            # Bez tokenu przedmioty musza sie brac z plikow gry - jak nie ma ani jednego,
+            # ani drugiego, program nie rozpozna niczego. Mowimy o tym tam, gdzie widac stan.
+            if not tok:
+                if game_source.dostepne():
+                    status_card(t("Dane z gry"), t("wlaczone"), OK)
+                else:
+                    status_card(t("Dane z gry"), t("wskaz katalog gry w Ustawieniach"), ACT)
             relist = c.get("relist", 0)
             if relist:
                 status_card(t("Do odnowienia"), f"{relist}", ACT)

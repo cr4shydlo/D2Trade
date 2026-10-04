@@ -5,9 +5,11 @@ Test buduje maly, sztuczny game_data/ w katalogu testowym - nie wymaga zainstalo
 ani prawdziwej bazy. Sprawdzamy to, co musi dzialac bez Traderie: rozpoznanie przedmiotu,
 odczyt statow z tooltipa, post d2jsp - i to, co dzialac NIE moze: wystawienie oferty.
 """
+import asyncio
 import json
 
 import pytest
+from nicegui.testing import User
 
 import paths
 import traderie_map as tm
@@ -166,3 +168,39 @@ def test_katalog_nazw_korzysta_z_danych_z_gry(lokalnie):
     """game_db ma znac nazwy z gry uzytkownika, nawet gdy nie ma ich w pliku z repozytorium."""
     n, wpis = game_db.najdluzsza_nazwa(["the", "stone", "of", "jordan", "fcr", "10"])
     assert n == 4 and wpis["name"] == "The Stone of Jordan"
+
+
+# ---------------- okno ----------------
+async def test_ustawienia_maja_sekcje_dane_z_gry(user: User, lokalnie):
+    import d2_web as W
+    await user.open("/")
+    W.settings_dialog()
+    await asyncio.sleep(0.4)
+    await user.should_see("Dane z gry")
+    await user.should_see("Katalog z Diablo II: Resurrected:")
+    await user.should_see("Odswiez baze")          # baza jest, wiec przycisk odswieza
+
+
+async def test_pasek_boczny_mowi_zeby_wskazac_gre(user: User, monkeypatch):
+    """Bez tokenu i bez danych z gry program nie rozpozna niczego - musi o tym powiedziec."""
+    monkeypatch.setattr(tm, "load_auth", lambda: {})
+    gs.odswiez()
+    import d2_web as W
+    await user.open("/")
+    await user.should_see("wskaz katalog gry w Ustawieniach")
+
+
+async def test_wystawianie_lokalnego_konczy_sie_komunikatem(user: User, lokalnie, monkeypatch):
+    """Zamiast przerwac w polowie wystawiania, program mowi o tym przed startem."""
+    import d2_web as W
+    await user.open("/")
+    monkeypatch.setattr(tm, "load_auth", lambda: {"Authorization": "Bearer test.test.test"})
+    powiedziane = []
+    monkeypatch.setattr(W, "say", lambda msg, kind="positive", **k: powiedziane.append((msg, kind)))
+    iid = next(iter(W.S.order))
+    it = W.S.items[iid]
+    it["lst"]["local"] = True
+    it["selected"], it["status"], it["price"] = True, "ready", "ist"
+    await W.start_post()
+    assert powiedziane and powiedziane[-1][1] == "negative"
+    assert "Traderie" in powiedziane[-1][0]

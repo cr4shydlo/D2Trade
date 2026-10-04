@@ -424,7 +424,7 @@ def mapa_hd(z, nazwa: str) -> dict:
     return out
 
 
-def zapisz_ikony(z, assety: set) -> dict:
+def zapisz_ikony(z, assety: set, mow=print) -> dict:
     """Konwertuje potrzebne ikony .sprite na PNG. Zwraca asset -> nazwa pliku."""
     IKONY.mkdir(parents=True, exist_ok=True)
     pliki = [n for n in z.lista(HD_IKONY, rek=True)
@@ -449,24 +449,19 @@ def zapisz_ikony(z, assety: set) -> dict:
                 continue
         out[asset] = nazwa
     if bledy:
-        print("  ikon nie udalo sie przerobic: %d" % bledy)
+        mow("  ikon nie udalo sie przerobic: %d" % bledy)
     return out
 
 
-def main(argv):
-    sciezka = argv[1] if len(argv) > 1 else gc.zgadnij_gre()
-    if not sciezka:
-        print("Nie znalazlem gry w typowych miejscach. Podaj katalog, na przyklad:")
-        print("    py -3.11 game_extract.py \"C:\\Program Files (x86)\\Diablo II Resurrected\"")
-        print("Mozesz tez wskazac katalog z wypakowanym 'data' (np. z CascView).")
-        return 2
-    try:
-        zrodlo = gc.otworz(sciezka)
-    except gc.BrakZrodla as e:
-        print("!!! %s" % e)
-        return 2
+def zbuduj(sciezka, mow=print) -> dict:
+    """Buduje game_data/ z plikow gry i zwraca meta.json.
+
+    Rzuca gc.BrakZrodla, gdy pod wskazana sciezka nie ma gry ani wypakowanego 'data'.
+    'mow' zbiera postep: konsola dostaje print, okno swoj log.
+    """
+    zrodlo = gc.otworz(sciezka)
     start = time.time()
-    print("zrodlo: %s (%s)" % (sciezka, zrodlo.etykieta))
+    mow("zrodlo: %s (%s)" % (sciezka, zrodlo.etykieta))
 
     with zrodlo as z:
         tab = {}
@@ -474,20 +469,18 @@ def main(argv):
             try:
                 tab[nazwa] = gc.tabela(z.czytaj("%s/%s.txt" % (EXCEL, nazwa)))
             except Exception as e:
-                print("!!! nie udalo sie wczytac tabeli %s: %s" % (nazwa, e))
-                return 2
-        print("tabele: " + ", ".join("%s %d" % (k, len(v)) for k, v in tab.items()))
+                raise gc.BrakZrodla("nie udalo sie wczytac tabeli %s: %s" % (nazwa, e)) from None
+        mow("tabele: " + ", ".join("%s %d" % (k, len(v)) for k, v in tab.items()))
 
         try:
             opisy = wczytaj_teksty(z, PLIKI_OPISOW)
             nazwy = wczytaj_teksty(z, PLIKI_NAZW)
             teksty_um = wczytaj_teksty(z, PLIKI_UMIEJETNOSCI)
         except Exception as e:
-            print("!!! nie udalo sie wczytac tekstow z %s: %s" % (STRINGI, e))
-            return 2
+            raise gc.BrakZrodla("nie udalo sie wczytac tekstow z %s: %s" % (STRINGI, e)) from None
         if not opisy or not nazwy:
-            print("!!! brak tekstow gry w %s - sprawdz, czy to na pewno katalog z D2R" % STRINGI)
-            return 2
+            raise gc.BrakZrodla(
+                "brak tekstow gry w %s - sprawdz, czy to na pewno katalog z D2R" % STRINGI)
 
         opis_statu = opisy_statow(tab["itemstatcost"], opisy)
         wl = wlasciwosci_gry(tab["properties"], opis_statu)
@@ -500,7 +493,7 @@ def main(argv):
             "per_poziom": opisy.get(PER_POZIOM),
         }
         rodzina = przodkowie(tab["itemtypes"])
-        print("teksty: opisy %d, nazwy %d | wlasciwosci %d | drzewka %d | klasy %d | umiejetnosci %d"
+        mow("teksty: opisy %d, nazwy %d | wlasciwosci %d | drzewka %d | klasy %d | umiejetnosci %d"
               % (len(opisy), len(nazwy), len(wl), len(kontekst["drzewka"]),
                  len(kontekst["klasy"]), len(tab["skills"])))
 
@@ -525,7 +518,7 @@ def main(argv):
                     par = (r.get("mod%dparam" % i) or "").strip() or None
                     for szablon, typ in opisy_wlasciwosci(kod, par, wl, kontekst):
                         pula.dodaj(szablon, typ)
-        print("wlasciwosci po afiksach: %d" % len(pula.lista))
+        mow("wlasciwosci po afiksach: %d" % len(pula.lista))
 
         # --- przedmioty ---
         hd_bazy = mapa_hd(z, "items.json")
@@ -647,11 +640,11 @@ def main(argv):
                   list(wspolne_pid) + list(ustawienia_pid) + [pid_obrona_dodana] + pids,
                   linie, runes=runy, itypes=itypes)
 
-        print("przedmioty: %s" % ", ".join(
+        mow("przedmioty: %s" % ", ".join(
             "%s %d" % (k, sum(1 for p in przedmioty if p["kind"] == k))
             for k in ("base", "unique", "set", "runeword")))
 
-        ikony = zapisz_ikony(z, assety)
+        ikony = zapisz_ikony(z, assety, mow)
 
     for p in przedmioty:
         p["icon"] = ikony.get(p["asset"] or "")
@@ -661,23 +654,40 @@ def main(argv):
     # tabela przedmiotu nie przewiduje: runa albo klejnot w gniezdzie, afiks na crafcie,
     # a w modzie takze afiksy, ktorych nie ma w tabelach afiksow.
     _zapisz("props.json", {"list": pula.lista,
-                           "statowe": [p["property_id"] for p in pula.lista if not p["required"]]})
-    _zapisz("items.json", przedmioty)
-    _zapisz("meta.json", {
+                           "statowe": [p["property_id"] for p in pula.lista if not p["required"]]}, mow)
+    _zapisz("items.json", przedmioty, mow)
+    meta = {
         "source": str(sciezka), "kind": zrodlo.etykieta,
         "created": time.strftime("%Y-%m-%d %H:%M"),
         "items": len(przedmioty), "props": len(pula.lista), "icons": len(ikony),
-    })
+    }
+    _zapisz("meta.json", meta, mow)
     z_ikona = sum(1 for p in przedmioty if p.get("icon"))
-    print("ikony: %d plikow, przedmiotow z ikona: %d/%d" % (len(ikony), z_ikona, len(przedmioty)))
-    print("gotowe w %.0f s -> %s" % (time.time() - start, KATALOG))
-    return 0
+    mow("ikony: %d plikow, przedmiotow z ikona: %d/%d" % (len(ikony), z_ikona, len(przedmioty)))
+    mow("gotowe w %.0f s -> %s" % (time.time() - start, KATALOG))
+    return meta
 
 
-def _zapisz(nazwa, dane):
+def _zapisz(nazwa, dane, mow=print):
     plik = KATALOG / nazwa
     plik.write_text(json.dumps(dane, ensure_ascii=False), encoding="utf-8")
-    print("  %-12s %7.1f MB" % (nazwa, plik.stat().st_size / 1048576.0))
+    mow("  %-12s %7.1f MB" % (nazwa, plik.stat().st_size / 1048576.0))
+
+
+def main(argv):
+    """Wejscie z konsoli. Katalog gry jako argument albo szukany w typowych miejscach."""
+    sciezka = argv[1] if len(argv) > 1 else gc.zgadnij_gre()
+    if not sciezka:
+        print("Nie znalazlem gry w typowych miejscach. Podaj katalog, na przyklad:")
+        print("    py -3.11 game_extract.py \"C:\\Program Files (x86)\\Diablo II Resurrected\"")
+        print("Mozesz tez wskazac katalog z wypakowanym 'data' (np. z CascView).")
+        return 2
+    try:
+        zbuduj(sciezka)
+    except gc.BrakZrodla as e:
+        print("!!! %s" % e)
+        return 2
+    return 0
 
 
 if __name__ == "__main__":
