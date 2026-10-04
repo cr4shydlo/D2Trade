@@ -279,6 +279,11 @@ the local mode does not.
 [MIT](LICENSE) - you may use, modify and redistribute this code, including commercially, as
 long as the copyright notice stays in place.
 
+The licence covers the source code of D2 Trade only. Diablo II: Resurrected and all of its
+content - item names, data tables and artwork - belong to Blizzard Entertainment. This project
+neither contains nor redistributes any of it: `game_data/` is generated on each user's own
+machine from their own copy of the game and is excluded from version control.
+
 ## For developers
 
 The architecture, data flow, the unofficial Traderie API, the traps worth knowing and the
