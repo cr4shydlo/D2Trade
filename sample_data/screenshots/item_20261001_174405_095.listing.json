@@ -1,0 +1,136 @@
+{
+  "source": "item_20261001_174405_095.png",
+  "ocr_name": "RENEWED CRACK OF THE HEAVENS",
+  "warnings": [],
+  "unmatched": [
+    "MONSTER LIGHTNING IMMUNITY IS SUNDERED"
+  ],
+  "properties": [
+    {
+      "property_id": 480,
+      "property": "+{{value}}% Faster Run/Walk",
+      "value": 10,
+      "variable": true,
+      "range_key": [
+        "faster",
+        "run",
+        "walk"
+      ]
+    },
+    {
+      "property_id": 736,
+      "property": "-{{value}}% to Enemy Lightning Resistance",
+      "value": 10,
+      "variable": true,
+      "range_key": [
+        "enemy",
+        "lightning",
+        "resistance"
+      ]
+    },
+    {
+      "property_id": 400,
+      "property": "+{{value}} to Mana",
+      "value": 42,
+      "variable": true,
+      "range_key": [
+        "mana"
+      ]
+    },
+    {
+      "property_id": 428,
+      "property": "Lightning Resist +{{value}}%",
+      "value": 70,
+      "variable": false,
+      "sign_in_game": "-"
+    },
+    {
+      "property_id": 414,
+      "property": "Magic Damage Reduced by {{value}}",
+      "value": 10,
+      "variable": true,
+      "range_key": [
+        "damage",
+        "magic",
+        "reduced"
+      ]
+    },
+    {
+      "property_id": 461,
+      "property": "{{value}}% Better Chance of Getting Magic Items",
+      "value": 24,
+      "variable": true,
+      "range_key": [
+        "better",
+        "chance",
+        "getting",
+        "items",
+        "magic"
+      ]
+    },
+    {
+      "property_id": 798,
+      "property": "Platform",
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "property": "Mode",
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "property": "Ladder",
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "property": "Game version",
+      "value": "reign of the warlock"
+    }
+  ],
+  "item_id": "4256920282",
+  "slug": "renewed-crack-of-the-heavens",
+  "name": "Renewed Crack of the Heavens",
+  "type": "uniques",
+  "kind": "unique",
+  "listing": [
+    {
+      "property_id": 480,
+      "value": 10
+    },
+    {
+      "property_id": 736,
+      "value": 10
+    },
+    {
+      "property_id": 400,
+      "value": 42
+    },
+    {
+      "property_id": 414,
+      "value": 10
+    },
+    {
+      "property_id": 461,
+      "value": 24
+    },
+    {
+      "property_id": 798,
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "value": "reign of the warlock"
+    }
+  ],
+  "needs_review": false
+}

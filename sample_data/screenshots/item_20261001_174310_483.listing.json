@@ -1,0 +1,153 @@
+{
+  "source": "item_20261001_174310_483.png",
+  "ocr_name": "HAVOC HEART",
+  "warnings": [],
+  "unmatched": [],
+  "properties": [
+    {
+      "property_id": 796,
+      "property": "Required Level {{value}}",
+      "value": 42,
+      "variable": true
+    },
+    {
+      "property_id": 514,
+      "property": "+{{value}} to Sorceress Skill Levels",
+      "value": 2,
+      "variable": true
+    },
+    {
+      "property_id": 520,
+      "property": "+{{value}}% Faster Cast Rate",
+      "value": 20,
+      "variable": true
+    },
+    {
+      "property_id": 482,
+      "property": "+{{value}} to Minimum Cold Damage",
+      "value": 6,
+      "variable": true
+    },
+    {
+      "property_id": 483,
+      "property": "+{{value}} to Maximum Cold Damage",
+      "value": 23,
+      "variable": true
+    },
+    {
+      "property_id": 1049,
+      "property": "+{{value}} to Lightning (Sorceress Only)",
+      "value": 1,
+      "variable": true
+    },
+    {
+      "property_id": 418,
+      "property": "+{{value}} to Life",
+      "value": 9,
+      "variable": true
+    },
+    {
+      "property_id": 414,
+      "property": "Magic Damage Reduced by {{value}}",
+      "value": 3,
+      "variable": true
+    },
+    {
+      "property_id": 422,
+      "property": "+{{value}} to Light Radius",
+      "value": 2,
+      "variable": true
+    },
+    {
+      "property_id": 798,
+      "property": "Platform",
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "property": "Mode",
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "property": "Ladder",
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "property": "Game version",
+      "value": "reign of the warlock"
+    },
+    {
+      "property_id": 797,
+      "property": "Rarity",
+      "value": "rare"
+    }
+  ],
+  "rarity": "rare",
+  "kind": "rare",
+  "rare_name": "Havoc Heart",
+  "item_id": "3278058413",
+  "slug": "jareds-stone",
+  "name": "Jared's Stone",
+  "type": "base",
+  "listing": [
+    {
+      "property_id": 796,
+      "value": 42
+    },
+    {
+      "property_id": 514,
+      "value": 2
+    },
+    {
+      "property_id": 520,
+      "value": 20
+    },
+    {
+      "property_id": 482,
+      "value": 6
+    },
+    {
+      "property_id": 483,
+      "value": 23
+    },
+    {
+      "property_id": 1049,
+      "value": 1
+    },
+    {
+      "property_id": 418,
+      "value": 9
+    },
+    {
+      "property_id": 414,
+      "value": 3
+    },
+    {
+      "property_id": 422,
+      "value": 2
+    },
+    {
+      "property_id": 798,
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "value": "reign of the warlock"
+    },
+    {
+      "property_id": 797,
+      "value": "rare"
+    }
+  ],
+  "needs_review": false
+}

@@ -1,0 +1,55 @@
+{
+  "source": "",
+  "imported": true,
+  "ocr_name": "Waterwalk",
+  "warnings": [],
+  "unmatched": [],
+  "properties": [],
+  "item_id": "3062063902",
+  "slug": "waterwalk",
+  "name": "Waterwalk",
+  "type": "uniques",
+  "listing": [
+    {
+      "property_id": 1855,
+      "value": 122,
+      "property": "Defense"
+    },
+    {
+      "property_id": 1854,
+      "value": "reign of the warlock",
+      "property": "Game version"
+    },
+    {
+      "property_id": 800,
+      "value": "Ladder",
+      "property": "Ladder"
+    },
+    {
+      "property_id": 418,
+      "value": 53,
+      "property": "+{{value}} to Life"
+    },
+    {
+      "property_id": 799,
+      "value": "softcore",
+      "property": "Mode"
+    },
+    {
+      "property_id": 798,
+      "value": "PC",
+      "property": "Platform"
+    },
+    {
+      "property_id": 425,
+      "value": 207,
+      "property": "+{{value}}% Enhanced Defense"
+    }
+  ],
+  "needs_review": false,
+  "posted": {
+    "listing_id": "1002527271778",
+    "price": "pul",
+    "time": "2026-09-30 13:22"
+  }
+}

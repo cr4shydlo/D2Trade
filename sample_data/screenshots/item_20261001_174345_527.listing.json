@@ -1,0 +1,124 @@
+{
+  "source": "item_20261001_174345_527.png",
+  "ocr_name": "HORAZON'S LEGACY",
+  "warnings": [],
+  "unmatched": [
+    "HORAZON'S SPLENDOR",
+    "HORAZON'S SECRETS"
+  ],
+  "properties": [
+    {
+      "property_id": 1855,
+      "property": "Defense",
+      "value": 60,
+      "variable": false
+    },
+    {
+      "property_id": 480,
+      "property": "+{{value}}% Faster Run/Walk",
+      "value": 30,
+      "variable": false
+    },
+    {
+      "property_id": 437,
+      "property": "+{{value}} to Strength",
+      "value": 13,
+      "variable": true,
+      "range_key": [
+        "strength"
+      ]
+    },
+    {
+      "property_id": 429,
+      "property": "+{{value}} to Dexterity",
+      "value": 12,
+      "variable": true,
+      "range_key": [
+        "dexterity"
+      ]
+    },
+    {
+      "property_id": 936,
+      "property": "Magic Resist +{{value}}%",
+      "value": 25,
+      "variable": true,
+      "range_key": [
+        "magic",
+        "resist"
+      ]
+    },
+    {
+      "property_id": 591,
+      "property": "Cannot Be Frozen",
+      "value": true,
+      "variable": false
+    },
+    {
+      "property_id": 420,
+      "property": "Requirements +{{value}}%",
+      "value": 30,
+      "variable": false,
+      "sign_in_game": "-"
+    },
+    {
+      "property_id": 798,
+      "property": "Platform",
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "property": "Mode",
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "property": "Ladder",
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "property": "Game version",
+      "value": "reign of the warlock"
+    }
+  ],
+  "item_id": "2037975948",
+  "slug": "horazons-legacy",
+  "name": "Horazon's Legacy",
+  "type": "sets",
+  "kind": "set",
+  "listing": [
+    {
+      "property_id": 1855,
+      "value": 60
+    },
+    {
+      "property_id": 437,
+      "value": 13
+    },
+    {
+      "property_id": 429,
+      "value": 12
+    },
+    {
+      "property_id": 936,
+      "value": 25
+    },
+    {
+      "property_id": 798,
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "value": "reign of the warlock"
+    }
+  ],
+  "needs_review": false
+}

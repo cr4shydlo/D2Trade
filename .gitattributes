@@ -1,0 +1,11 @@
+# Jedno zrodlo prawdy dla koncow linii: w repozytorium LF, na dysku to, czego chce system.
+* text=auto
+
+# .bat musi miec CRLF - cmd.exe potrafi sie wylozyc na plikach z samym LF
+*.bat text eol=crlf
+
+# binaria
+*.png binary
+*.jpg binary
+*.ico binary
+*.zip binary

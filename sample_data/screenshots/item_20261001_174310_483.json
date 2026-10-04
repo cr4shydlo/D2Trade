@@ -1,0 +1,122 @@
+{
+  "file": "item_20261001_174310_483.png",
+  "size": "974x851",
+  "tooltip_box": [
+    0,
+    341,
+    572,
+    851
+  ],
+  "manual_box": null,
+  "rarity_guess": "rare",
+  "mode": "plain/plain",
+  "needs_review": false,
+  "diffs": [],
+  "lines": [
+    "HAVOC HEART",
+    "JARED'S STONE",
+    "ONE-HAND DAMAGE: 8 TO 18",
+    "DURABILITY: 87 OF 150",
+    "(SORCERESS ONLY)",
+    "REQUIRED LEVEL: 42",
+    "STAFF CLASS - NORMAL ATTACK SPEED",
+    "+2 TO SORCERESS SKILL LEVELS",
+    "+20% FASTER CAST RATE",
+    "ADDS 6-23 COLD DAMAGE",
+    "+1 TO LIGHTNING (SORCERESS ONLY)",
+    "+9 TO LIFE",
+    "MAGIC DAMAGE REDUCED BY 3",
+    "+2 TO LIGHT RADIUS",
+    "SHIFT + LEFT CLICK TO EQUIP",
+    "CTRL + LEFT CLICK TO MOVE TO INVENTORY",
+    "HOLD SHIFT TO COMPARE"
+  ],
+  "reads": [
+    {
+      "scale": 1.5,
+      "mode": "plain",
+      "lines": [
+        "HAVOC HEART",
+        "JARED'S STONE",
+        "ONE-HAND DAMAGE: 8 TO 18",
+        "DURABILITY: 87 OF 150",
+        "(SORCERESS ONLY)",
+        "REQUIRED LEVEL: 42",
+        "STAFF CLASS - NORMAL ATTACK SPEED",
+        "+2 TO SORCERESS SKILL LEVELS",
+        "+20% FASTER CAST RATE",
+        "ADDS 6-23 COLD DAMAGE",
+        "+1 TO LIGHTNING (SORCERESS ONLY)",
+        "+9 TO LIFE",
+        "MAGIC DAMAGE REDUCED BY 3",
+        "+2 TO LIGHT RADIUS",
+        "SHIFT + LEFT CLICK TO EQUIP",
+        "CTRL + LEFT CLICK TO MOVE TO INVENTORY",
+        "HOLD SHIFT TO COMPARE"
+      ],
+      "calls": [
+        {
+          "schema": false,
+          "done_reason": "stop",
+          "eval_count": 152,
+          "thinking": "",
+          "prefill_s": 0.0,
+          "gen_s": 4.5,
+          "load_s": 0.0,
+          "tokens": {
+            "nasze_in": 892,
+            "nasze_out": 98,
+            "ich_in": 711,
+            "ich_out": 152
+          }
+        }
+      ]
+    },
+    {
+      "scale": 1.0,
+      "mode": "plain",
+      "lines": [
+        "HAVOC HEART",
+        "JARED'S STONE",
+        "ONE-HAND DAMAGE: 8 TO 18",
+        "DURABILITY: 87 OF 150",
+        "(SORCERESS ONLY)",
+        "REQUIRED LEVEL: 42",
+        "STAFF CLASS - NORMAL ATTACK SPEED",
+        "+2 TO SORCERESS SKILL LEVELS",
+        "+20% FASTER CAST RATE",
+        "ADDS 6-23 COLD DAMAGE",
+        "+1 TO LIGHTNING (SORCERESS ONLY)",
+        "+9 TO LIFE",
+        "MAGIC DAMAGE REDUCED BY 3",
+        "+2 TO LIGHT RADIUS",
+        "SHIFT + LEFT CLICK TO EQUIP",
+        "CTRL + LEFT CLICK TO MOVE TO INVENTORY",
+        "HOLD SHIFT TO COMPARE"
+      ],
+      "calls": [
+        {
+          "schema": false,
+          "done_reason": "stop",
+          "eval_count": 152,
+          "thinking": "",
+          "prefill_s": 0.0,
+          "gen_s": 4.6,
+          "load_s": 0.0,
+          "tokens": {
+            "nasze_in": 433,
+            "nasze_out": 98,
+            "ich_in": 351,
+            "ich_out": 152
+          }
+        }
+      ]
+    }
+  ],
+  "seconds": 14.3,
+  "timing": {
+    "load_s": 0.0,
+    "prefill_s": 0.0,
+    "gen_s": 9.1
+  }
+}

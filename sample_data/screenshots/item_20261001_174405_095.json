@@ -1,0 +1,107 @@
+{
+  "file": "item_20261001_174405_095.png",
+  "size": "1175x1055",
+  "tooltip_box": [
+    59,
+    0,
+    740,
+    370
+  ],
+  "manual_box": null,
+  "rarity_guess": "unique/runeword",
+  "mode": "plain/plain",
+  "needs_review": false,
+  "diffs": [],
+  "lines": [
+    "RENEWED CRACK OF THE HEAVENS",
+    "GRAND CHARM",
+    "KEEP IN INVENTORY TO GAIN BONUS",
+    "REQUIRED LEVEL: 75",
+    "MONSTER LIGHTNING IMMUNITY IS SUNDERED",
+    "+10% FASTER RUN/WALK",
+    "-10% TO ENEMY LIGHTNING RESISTANCE",
+    "+42 TO MANA",
+    "LIGHTNING RESIST -70%",
+    "MAGIC DAMAGE REDUCED BY 10",
+    "24% BETTER CHANCE OF GETTING MAGIC ITEMS",
+    "CTRL + LEFT CLICK TO MOVE TO INVENTORY"
+  ],
+  "reads": [
+    {
+      "scale": 1.5,
+      "mode": "plain",
+      "lines": [
+        "RENEWED CRACK OF THE HEAVENS",
+        "GRAND CHARM",
+        "KEEP IN INVENTORY TO GAIN BONUS",
+        "REQUIRED LEVEL: 75",
+        "MONSTER LIGHTNING IMMUNITY IS SUNDERED",
+        "+10% FASTER RUN/WALK",
+        "-10% TO ENEMY LIGHTNING RESISTANCE",
+        "+42 TO MANA",
+        "LIGHTNING RESIST -70%",
+        "MAGIC DAMAGE REDUCED BY 10",
+        "24% BETTER CHANCE OF GETTING MAGIC ITEMS",
+        "CTRL + LEFT CLICK TO MOVE TO INVENTORY"
+      ],
+      "calls": [
+        {
+          "schema": false,
+          "done_reason": "stop",
+          "eval_count": 117,
+          "thinking": "",
+          "prefill_s": 0.0,
+          "gen_s": 4.2,
+          "load_s": 0.0,
+          "tokens": {
+            "nasze_in": 758,
+            "nasze_out": 82,
+            "ich_in": 607,
+            "ich_out": 117
+          }
+        }
+      ]
+    },
+    {
+      "scale": 1.0,
+      "mode": "plain",
+      "lines": [
+        "RENEWED CRACK OF THE HEAVENS",
+        "GRAND CHARM",
+        "KEEP IN INVENTORY TO GAIN BONUS",
+        "REQUIRED LEVEL: 75",
+        "MONSTER LIGHTNING IMMUNITY IS SUNDERED",
+        "+10% FASTER RUN/WALK",
+        "-10% TO ENEMY LIGHTNING RESISTANCE",
+        "+42 TO MANA",
+        "LIGHTNING RESIST -70%",
+        "MAGIC DAMAGE REDUCED BY 10",
+        "24% BETTER CHANCE OF GETTING MAGIC ITEMS",
+        "CTRL + LEFT CLICK TO MOVE TO INVENTORY"
+      ],
+      "calls": [
+        {
+          "schema": false,
+          "done_reason": "stop",
+          "eval_count": 117,
+          "thinking": "",
+          "prefill_s": 0.0,
+          "gen_s": 3.5,
+          "load_s": 0.0,
+          "tokens": {
+            "nasze_in": 391,
+            "nasze_out": 82,
+            "ich_in": 315,
+            "ich_out": 117
+          }
+        }
+      ]
+    }
+  ],
+  "seconds": 11.9,
+  "timing": {
+    "load_s": 0.0,
+    "prefill_s": 0.0,
+    "gen_s": 7.7
+  }
+}

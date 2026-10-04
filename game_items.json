@@ -1,0 +1,7075 @@
+{
+ "source": "Diablo II: Resurrected - tabele gry (game_extract.py)",
+ "note": "katalog nazw z plikow gry; indeks buduje game_db.py przez normalize()",
+ "items": [
+  {
+   "name": "Cap",
+   "kind": "base",
+   "base": "cap"
+  },
+  {
+   "name": "Skull Cap",
+   "kind": "base",
+   "base": "skp"
+  },
+  {
+   "name": "Helm",
+   "kind": "base",
+   "base": "hlm"
+  },
+  {
+   "name": "Full Helm",
+   "kind": "base",
+   "base": "fhl"
+  },
+  {
+   "name": "Great Helm",
+   "kind": "base",
+   "base": "ghm"
+  },
+  {
+   "name": "Crown",
+   "kind": "base",
+   "base": "crn"
+  },
+  {
+   "name": "Mask",
+   "kind": "base",
+   "base": "msk"
+  },
+  {
+   "name": "Quilted Armor",
+   "kind": "base",
+   "base": "qui"
+  },
+  {
+   "name": "Leather Armor",
+   "kind": "base",
+   "base": "lea"
+  },
+  {
+   "name": "Hard Leather Armor",
+   "kind": "base",
+   "base": "hla"
+  },
+  {
+   "name": "Studded Leather",
+   "kind": "base",
+   "base": "stu"
+  },
+  {
+   "name": "Ring Mail",
+   "kind": "base",
+   "base": "rng"
+  },
+  {
+   "name": "Scale Mail",
+   "kind": "base",
+   "base": "scl"
+  },
+  {
+   "name": "Chain Mail",
+   "kind": "base",
+   "base": "chn"
+  },
+  {
+   "name": "Breast Plate",
+   "kind": "base",
+   "base": "brs"
+  },
+  {
+   "name": "Splint Mail",
+   "kind": "base",
+   "base": "spl"
+  },
+  {
+   "name": "Plate Mail",
+   "kind": "base",
+   "base": "plt"
+  },
+  {
+   "name": "Field Plate",
+   "kind": "base",
+   "base": "fld"
+  },
+  {
+   "name": "Gothic Plate",
+   "kind": "base",
+   "base": "gth"
+  },
+  {
+   "name": "Full Plate Mail",
+   "kind": "base",
+   "base": "ful"
+  },
+  {
+   "name": "Ancient Armor",
+   "kind": "base",
+   "base": "aar"
+  },
+  {
+   "name": "Light Plate",
+   "kind": "base",
+   "base": "ltp"
+  },
+  {
+   "name": "Buckler",
+   "kind": "base",
+   "base": "buc"
+  },
+  {
+   "name": "Small Shield",
+   "kind": "base",
+   "base": "sml"
+  },
+  {
+   "name": "Large Shield",
+   "kind": "base",
+   "base": "lrg"
+  },
+  {
+   "name": "Kite Shield",
+   "kind": "base",
+   "base": "kit"
+  },
+  {
+   "name": "Tower Shield",
+   "kind": "base",
+   "base": "tow"
+  },
+  {
+   "name": "Gothic Shield",
+   "kind": "base",
+   "base": "gts"
+  },
+  {
+   "name": "Leather Gloves",
+   "kind": "base",
+   "base": "lgl"
+  },
+  {
+   "name": "Heavy Gloves",
+   "kind": "base",
+   "base": "vgl"
+  },
+  {
+   "name": "Chain Gloves",
+   "kind": "base",
+   "base": "mgl"
+  },
+  {
+   "name": "Light Gauntlets",
+   "kind": "base",
+   "base": "tgl"
+  },
+  {
+   "name": "Gauntlets",
+   "kind": "base",
+   "base": "hgl"
+  },
+  {
+   "name": "Boots",
+   "kind": "base",
+   "base": "lbt"
+  },
+  {
+   "name": "Heavy Boots",
+   "kind": "base",
+   "base": "vbt"
+  },
+  {
+   "name": "Chain Boots",
+   "kind": "base",
+   "base": "mbt"
+  },
+  {
+   "name": "Light Plated Boots",
+   "kind": "base",
+   "base": "tbt"
+  },
+  {
+   "name": "Greaves",
+   "kind": "base",
+   "base": "hbt"
+  },
+  {
+   "name": "Sash",
+   "kind": "base",
+   "base": "lbl"
+  },
+  {
+   "name": "Light Belt",
+   "kind": "base",
+   "base": "vbl"
+  },
+  {
+   "name": "Belt",
+   "kind": "base",
+   "base": "mbl"
+  },
+  {
+   "name": "Heavy Belt",
+   "kind": "base",
+   "base": "tbl"
+  },
+  {
+   "name": "Plated Belt",
+   "kind": "base",
+   "base": "hbl"
+  },
+  {
+   "name": "Bone Helm",
+   "kind": "base",
+   "base": "bhm"
+  },
+  {
+   "name": "Bone Shield",
+   "kind": "base",
+   "base": "bsh"
+  },
+  {
+   "name": "Spiked Shield",
+   "kind": "base",
+   "base": "spk"
+  },
+  {
+   "name": "War Hat",
+   "kind": "base",
+   "base": "xap"
+  },
+  {
+   "name": "Sallet",
+   "kind": "base",
+   "base": "xkp"
+  },
+  {
+   "name": "Casque",
+   "kind": "base",
+   "base": "xlm"
+  },
+  {
+   "name": "Basinet",
+   "kind": "base",
+   "base": "xhl"
+  },
+  {
+   "name": "Winged Helm",
+   "kind": "base",
+   "base": "xhm"
+  },
+  {
+   "name": "Grand Crown",
+   "kind": "base",
+   "base": "xrn"
+  },
+  {
+   "name": "Death Mask",
+   "kind": "base",
+   "base": "xsk"
+  },
+  {
+   "name": "Ghost Armor",
+   "kind": "base",
+   "base": "xui"
+  },
+  {
+   "name": "Serpentskin Armor",
+   "kind": "base",
+   "base": "xea"
+  },
+  {
+   "name": "Demonhide Armor",
+   "kind": "base",
+   "base": "xla"
+  },
+  {
+   "name": "Trellised Armor",
+   "kind": "base",
+   "base": "xtu"
+  },
+  {
+   "name": "Linked Mail",
+   "kind": "base",
+   "base": "xng"
+  },
+  {
+   "name": "Tigulated Mail",
+   "kind": "base",
+   "base": "xcl"
+  },
+  {
+   "name": "Mesh Armor",
+   "kind": "base",
+   "base": "xhn"
+  },
+  {
+   "name": "Cuirass",
+   "kind": "base",
+   "base": "xrs"
+  },
+  {
+   "name": "Russet Armor",
+   "kind": "base",
+   "base": "xpl"
+  },
+  {
+   "name": "Templar Coat",
+   "kind": "base",
+   "base": "xlt"
+  },
+  {
+   "name": "Sharktooth Armor",
+   "kind": "base",
+   "base": "xld"
+  },
+  {
+   "name": "Embossed Plate",
+   "kind": "base",
+   "base": "xth"
+  },
+  {
+   "name": "Chaos Armor",
+   "kind": "base",
+   "base": "xul"
+  },
+  {
+   "name": "Ornate Plate",
+   "kind": "base",
+   "base": "xar",
+   "aliases": [
+    "Ornate Armor"
+   ]
+  },
+  {
+   "name": "Mage Plate",
+   "kind": "base",
+   "base": "xtp"
+  },
+  {
+   "name": "Defender",
+   "kind": "base",
+   "base": "xuc"
+  },
+  {
+   "name": "Round Shield",
+   "kind": "base",
+   "base": "xml"
+  },
+  {
+   "name": "Scutum",
+   "kind": "base",
+   "base": "xrg"
+  },
+  {
+   "name": "Dragon Shield",
+   "kind": "base",
+   "base": "xit"
+  },
+  {
+   "name": "Pavise",
+   "kind": "base",
+   "base": "xow"
+  },
+  {
+   "name": "Ancient Shield",
+   "kind": "base",
+   "base": "xts"
+  },
+  {
+   "name": "Demonhide Gloves",
+   "kind": "base",
+   "base": "xlg"
+  },
+  {
+   "name": "Sharkskin Gloves",
+   "kind": "base",
+   "base": "xvg"
+  },
+  {
+   "name": "Heavy Bracers",
+   "kind": "base",
+   "base": "xmg"
+  },
+  {
+   "name": "Battle Gauntlets",
+   "kind": "base",
+   "base": "xtg"
+  },
+  {
+   "name": "War Gauntlets",
+   "kind": "base",
+   "base": "xhg"
+  },
+  {
+   "name": "Demonhide Boots",
+   "kind": "base",
+   "base": "xlb"
+  },
+  {
+   "name": "Sharkskin Boots",
+   "kind": "base",
+   "base": "xvb"
+  },
+  {
+   "name": "Mesh Boots",
+   "kind": "base",
+   "base": "xmb"
+  },
+  {
+   "name": "Battle Boots",
+   "kind": "base",
+   "base": "xtb"
+  },
+  {
+   "name": "War Boots",
+   "kind": "base",
+   "base": "xhb"
+  },
+  {
+   "name": "Demonhide Sash",
+   "kind": "base",
+   "base": "zlb"
+  },
+  {
+   "name": "Sharkskin Belt",
+   "kind": "base",
+   "base": "zvb"
+  },
+  {
+   "name": "Mesh Belt",
+   "kind": "base",
+   "base": "zmb"
+  },
+  {
+   "name": "Battle Belt",
+   "kind": "base",
+   "base": "ztb"
+  },
+  {
+   "name": "War Belt",
+   "kind": "base",
+   "base": "zhb"
+  },
+  {
+   "name": "Grim Helm",
+   "kind": "base",
+   "base": "xh9"
+  },
+  {
+   "name": "Grim Shield",
+   "kind": "base",
+   "base": "xsh"
+  },
+  {
+   "name": "Barbed Shield",
+   "kind": "base",
+   "base": "xpk"
+  },
+  {
+   "name": "Wolf Head",
+   "kind": "base",
+   "base": "dr1"
+  },
+  {
+   "name": "Hawk Helm",
+   "kind": "base",
+   "base": "dr2"
+  },
+  {
+   "name": "Antlers",
+   "kind": "base",
+   "base": "dr3"
+  },
+  {
+   "name": "Falcon Mask",
+   "kind": "base",
+   "base": "dr4"
+  },
+  {
+   "name": "Spirit Mask",
+   "kind": "base",
+   "base": "dr5"
+  },
+  {
+   "name": "Jawbone Cap",
+   "kind": "base",
+   "base": "ba1"
+  },
+  {
+   "name": "Fanged Helm",
+   "kind": "base",
+   "base": "ba2"
+  },
+  {
+   "name": "Horned Helm",
+   "kind": "base",
+   "base": "ba3"
+  },
+  {
+   "name": "Assault Helmet",
+   "kind": "base",
+   "base": "ba4"
+  },
+  {
+   "name": "Avenger Guard",
+   "kind": "base",
+   "base": "ba5"
+  },
+  {
+   "name": "Targe",
+   "kind": "base",
+   "base": "pa1"
+  },
+  {
+   "name": "Rondache",
+   "kind": "base",
+   "base": "pa2"
+  },
+  {
+   "name": "Heraldic Shield",
+   "kind": "base",
+   "base": "pa3"
+  },
+  {
+   "name": "Aerin Shield",
+   "kind": "base",
+   "base": "pa4"
+  },
+  {
+   "name": "Crown Shield",
+   "kind": "base",
+   "base": "pa5"
+  },
+  {
+   "name": "Preserved Head",
+   "kind": "base",
+   "base": "ne1"
+  },
+  {
+   "name": "Zombie Head",
+   "kind": "base",
+   "base": "ne2"
+  },
+  {
+   "name": "Unraveller Head",
+   "kind": "base",
+   "base": "ne3"
+  },
+  {
+   "name": "Gargoyle Head",
+   "kind": "base",
+   "base": "ne4"
+  },
+  {
+   "name": "Demon Head",
+   "kind": "base",
+   "base": "ne5"
+  },
+  {
+   "name": "Circlet",
+   "kind": "base",
+   "base": "ci0"
+  },
+  {
+   "name": "Coronet",
+   "kind": "base",
+   "base": "ci1"
+  },
+  {
+   "name": "Tiara",
+   "kind": "base",
+   "base": "ci2"
+  },
+  {
+   "name": "Diadem",
+   "kind": "base",
+   "base": "ci3"
+  },
+  {
+   "name": "Shako",
+   "kind": "base",
+   "base": "uap"
+  },
+  {
+   "name": "Hydraskull",
+   "kind": "base",
+   "base": "ukp"
+  },
+  {
+   "name": "Armet",
+   "kind": "base",
+   "base": "ulm"
+  },
+  {
+   "name": "Giant Conch",
+   "kind": "base",
+   "base": "uhl"
+  },
+  {
+   "name": "Spired Helm",
+   "kind": "base",
+   "base": "uhm"
+  },
+  {
+   "name": "Corona",
+   "kind": "base",
+   "base": "urn"
+  },
+  {
+   "name": "Demonhead",
+   "kind": "base",
+   "base": "usk"
+  },
+  {
+   "name": "Dusk Shroud",
+   "kind": "base",
+   "base": "uui"
+  },
+  {
+   "name": "Wyrmhide",
+   "kind": "base",
+   "base": "uea"
+  },
+  {
+   "name": "Scarab Husk",
+   "kind": "base",
+   "base": "ula"
+  },
+  {
+   "name": "Wire Fleece",
+   "kind": "base",
+   "base": "utu"
+  },
+  {
+   "name": "Diamond Mail",
+   "kind": "base",
+   "base": "ung"
+  },
+  {
+   "name": "Loricated Mail",
+   "kind": "base",
+   "base": "ucl"
+  },
+  {
+   "name": "Boneweave",
+   "kind": "base",
+   "base": "uhn"
+  },
+  {
+   "name": "Great Hauberk",
+   "kind": "base",
+   "base": "urs"
+  },
+  {
+   "name": "Balrog Skin",
+   "kind": "base",
+   "base": "upl"
+  },
+  {
+   "name": "Hellforge Plate",
+   "kind": "base",
+   "base": "ult"
+  },
+  {
+   "name": "Kraken Shell",
+   "kind": "base",
+   "base": "uld"
+  },
+  {
+   "name": "Lacquered Plate",
+   "kind": "base",
+   "base": "uth"
+  },
+  {
+   "name": "Shadow Plate",
+   "kind": "base",
+   "base": "uul"
+  },
+  {
+   "name": "Sacred Armor",
+   "kind": "base",
+   "base": "uar"
+  },
+  {
+   "name": "Archon Plate",
+   "kind": "base",
+   "base": "utp"
+  },
+  {
+   "name": "Heater",
+   "kind": "base",
+   "base": "uuc"
+  },
+  {
+   "name": "Luna",
+   "kind": "base",
+   "base": "uml"
+  },
+  {
+   "name": "Hyperion",
+   "kind": "base",
+   "base": "urg"
+  },
+  {
+   "name": "Monarch",
+   "kind": "base",
+   "base": "uit"
+  },
+  {
+   "name": "Aegis",
+   "kind": "base",
+   "base": "uow"
+  },
+  {
+   "name": "Ward",
+   "kind": "base",
+   "base": "uts"
+  },
+  {
+   "name": "Bramble Mitts",
+   "kind": "base",
+   "base": "ulg"
+  },
+  {
+   "name": "Vampirebone Gloves",
+   "kind": "base",
+   "base": "uvg"
+  },
+  {
+   "name": "Vambraces",
+   "kind": "base",
+   "base": "umg"
+  },
+  {
+   "name": "Crusader Gauntlets",
+   "kind": "base",
+   "base": "utg"
+  },
+  {
+   "name": "Ogre Gauntlets",
+   "kind": "base",
+   "base": "uhg"
+  },
+  {
+   "name": "Wyrmhide Boots",
+   "kind": "base",
+   "base": "ulb"
+  },
+  {
+   "name": "Scarabshell Boots",
+   "kind": "base",
+   "base": "uvb"
+  },
+  {
+   "name": "Boneweave Boots",
+   "kind": "base",
+   "base": "umb"
+  },
+  {
+   "name": "Mirrored Boots",
+   "kind": "base",
+   "base": "utb"
+  },
+  {
+   "name": "Myrmidon Greaves",
+   "kind": "base",
+   "base": "uhb"
+  },
+  {
+   "name": "Spiderweb Sash",
+   "kind": "base",
+   "base": "ulc"
+  },
+  {
+   "name": "Vampirefang Belt",
+   "kind": "base",
+   "base": "uvc"
+  },
+  {
+   "name": "Mithril Coil",
+   "kind": "base",
+   "base": "umc"
+  },
+  {
+   "name": "Troll Belt",
+   "kind": "base",
+   "base": "utc"
+  },
+  {
+   "name": "Colossus Girdle",
+   "kind": "base",
+   "base": "uhc"
+  },
+  {
+   "name": "Bone Visage",
+   "kind": "base",
+   "base": "uh9"
+  },
+  {
+   "name": "Troll Nest",
+   "kind": "base",
+   "base": "ush"
+  },
+  {
+   "name": "Blade Barrier",
+   "kind": "base",
+   "base": "upk"
+  },
+  {
+   "name": "Alpha Helm",
+   "kind": "base",
+   "base": "dr6"
+  },
+  {
+   "name": "Griffon Headdress",
+   "kind": "base",
+   "base": "dr7",
+   "aliases": [
+    "Griffon Headress"
+   ]
+  },
+  {
+   "name": "Hunter's Guise",
+   "kind": "base",
+   "base": "dr8"
+  },
+  {
+   "name": "Sacred Feathers",
+   "kind": "base",
+   "base": "dr9"
+  },
+  {
+   "name": "Totemic Mask",
+   "kind": "base",
+   "base": "dra"
+  },
+  {
+   "name": "Jawbone Visor",
+   "kind": "base",
+   "base": "ba6"
+  },
+  {
+   "name": "Lion Helm",
+   "kind": "base",
+   "base": "ba7"
+  },
+  {
+   "name": "Rage Mask",
+   "kind": "base",
+   "base": "ba8"
+  },
+  {
+   "name": "Savage Helmet",
+   "kind": "base",
+   "base": "ba9"
+  },
+  {
+   "name": "Slayer Guard",
+   "kind": "base",
+   "base": "baa"
+  },
+  {
+   "name": "Akaran Targe",
+   "kind": "base",
+   "base": "pa6"
+  },
+  {
+   "name": "Akaran Rondache",
+   "kind": "base",
+   "base": "pa7"
+  },
+  {
+   "name": "Protector Shield",
+   "kind": "base",
+   "base": "pa8"
+  },
+  {
+   "name": "Gilded Shield",
+   "kind": "base",
+   "base": "pa9"
+  },
+  {
+   "name": "Royal Shield",
+   "kind": "base",
+   "base": "paa"
+  },
+  {
+   "name": "Mummified Trophy",
+   "kind": "base",
+   "base": "ne6"
+  },
+  {
+   "name": "Fetish Trophy",
+   "kind": "base",
+   "base": "ne7"
+  },
+  {
+   "name": "Sexton Trophy",
+   "kind": "base",
+   "base": "ne8"
+  },
+  {
+   "name": "Cantor Trophy",
+   "kind": "base",
+   "base": "ne9"
+  },
+  {
+   "name": "Hierophant Trophy",
+   "kind": "base",
+   "base": "nea",
+   "aliases": [
+    "Heirophant Trophy"
+   ]
+  },
+  {
+   "name": "Blood Spirit",
+   "kind": "base",
+   "base": "drb"
+  },
+  {
+   "name": "Sun Spirit",
+   "kind": "base",
+   "base": "drc"
+  },
+  {
+   "name": "Earth Spirit",
+   "kind": "base",
+   "base": "drd"
+  },
+  {
+   "name": "Sky Spirit",
+   "kind": "base",
+   "base": "dre"
+  },
+  {
+   "name": "Dream Spirit",
+   "kind": "base",
+   "base": "drf"
+  },
+  {
+   "name": "Carnage Helm",
+   "kind": "base",
+   "base": "bab"
+  },
+  {
+   "name": "Fury Visor",
+   "kind": "base",
+   "base": "bac"
+  },
+  {
+   "name": "Destroyer Helm",
+   "kind": "base",
+   "base": "bad"
+  },
+  {
+   "name": "Conqueror Crown",
+   "kind": "base",
+   "base": "bae"
+  },
+  {
+   "name": "Guardian Crown",
+   "kind": "base",
+   "base": "baf"
+  },
+  {
+   "name": "Sacred Targe",
+   "kind": "base",
+   "base": "pab"
+  },
+  {
+   "name": "Sacred Rondache",
+   "kind": "base",
+   "base": "pac"
+  },
+  {
+   "name": "Kurast Shield",
+   "kind": "base",
+   "base": "pad",
+   "aliases": [
+    "Ancient Shield"
+   ]
+  },
+  {
+   "name": "Zakarum Shield",
+   "kind": "base",
+   "base": "pae"
+  },
+  {
+   "name": "Vortex Shield",
+   "kind": "base",
+   "base": "paf"
+  },
+  {
+   "name": "Minion Skull",
+   "kind": "base",
+   "base": "neb"
+  },
+  {
+   "name": "Hellspawn Skull",
+   "kind": "base",
+   "base": "neg"
+  },
+  {
+   "name": "Overseer Skull",
+   "kind": "base",
+   "base": "ned"
+  },
+  {
+   "name": "Succubus Skull",
+   "kind": "base",
+   "base": "nee"
+  },
+  {
+   "name": "Bloodlord Skull",
+   "kind": "base",
+   "base": "nef"
+  },
+  {
+   "name": "Old Book",
+   "kind": "base",
+   "base": "wa1"
+  },
+  {
+   "name": "Tome",
+   "kind": "base",
+   "base": "wa2"
+  },
+  {
+   "name": "Codex",
+   "kind": "base",
+   "base": "wa3"
+  },
+  {
+   "name": "Compendium",
+   "kind": "base",
+   "base": "wa4"
+  },
+  {
+   "name": "Grimoire",
+   "kind": "base",
+   "base": "wa5"
+  },
+  {
+   "name": "Burnt Text",
+   "kind": "base",
+   "base": "wa6"
+  },
+  {
+   "name": "Dark Tome",
+   "kind": "base",
+   "base": "wa7"
+  },
+  {
+   "name": "Dark Codex",
+   "kind": "base",
+   "base": "wa8"
+  },
+  {
+   "name": "Possessed Compendium",
+   "kind": "base",
+   "base": "wa9"
+  },
+  {
+   "name": "Possessed Grimoire",
+   "kind": "base",
+   "base": "waa"
+  },
+  {
+   "name": "Forgotten Volume",
+   "kind": "base",
+   "base": "wab"
+  },
+  {
+   "name": "Occult Tome",
+   "kind": "base",
+   "base": "wac"
+  },
+  {
+   "name": "Occult Codex",
+   "kind": "base",
+   "base": "wad"
+  },
+  {
+   "name": "Blasphemous Compendium",
+   "kind": "base",
+   "base": "wae"
+  },
+  {
+   "name": "Blasphemous Grimoire",
+   "kind": "base",
+   "base": "waf"
+  },
+  {
+   "name": "Hand Axe",
+   "kind": "base",
+   "base": "hax"
+  },
+  {
+   "name": "Axe",
+   "kind": "base",
+   "base": "axe"
+  },
+  {
+   "name": "Double Axe",
+   "kind": "base",
+   "base": "2ax"
+  },
+  {
+   "name": "Military Pick",
+   "kind": "base",
+   "base": "mpi"
+  },
+  {
+   "name": "War Axe",
+   "kind": "base",
+   "base": "wax"
+  },
+  {
+   "name": "Large Axe",
+   "kind": "base",
+   "base": "lax"
+  },
+  {
+   "name": "Broad Axe",
+   "kind": "base",
+   "base": "bax"
+  },
+  {
+   "name": "Battle Axe",
+   "kind": "base",
+   "base": "btx"
+  },
+  {
+   "name": "Great Axe",
+   "kind": "base",
+   "base": "gax"
+  },
+  {
+   "name": "Giant Axe",
+   "kind": "base",
+   "base": "gix"
+  },
+  {
+   "name": "Wand",
+   "kind": "base",
+   "base": "wnd"
+  },
+  {
+   "name": "Yew Wand",
+   "kind": "base",
+   "base": "ywn"
+  },
+  {
+   "name": "Bone Wand",
+   "kind": "base",
+   "base": "bwn"
+  },
+  {
+   "name": "Grim Wand",
+   "kind": "base",
+   "base": "gwn"
+  },
+  {
+   "name": "Club",
+   "kind": "base",
+   "base": "clb"
+  },
+  {
+   "name": "Scepter",
+   "kind": "base",
+   "base": "scp"
+  },
+  {
+   "name": "Grand Scepter",
+   "kind": "base",
+   "base": "gsc"
+  },
+  {
+   "name": "War Scepter",
+   "kind": "base",
+   "base": "wsp"
+  },
+  {
+   "name": "Spiked Club",
+   "kind": "base",
+   "base": "spc"
+  },
+  {
+   "name": "Mace",
+   "kind": "base",
+   "base": "mac"
+  },
+  {
+   "name": "Morning Star",
+   "kind": "base",
+   "base": "mst"
+  },
+  {
+   "name": "Flail",
+   "kind": "base",
+   "base": "fla"
+  },
+  {
+   "name": "War Hammer",
+   "kind": "base",
+   "base": "whm"
+  },
+  {
+   "name": "Maul",
+   "kind": "base",
+   "base": "mau"
+  },
+  {
+   "name": "Great Maul",
+   "kind": "base",
+   "base": "gma"
+  },
+  {
+   "name": "Short Sword",
+   "kind": "base",
+   "base": "ssd"
+  },
+  {
+   "name": "Scimitar",
+   "kind": "base",
+   "base": "scm"
+  },
+  {
+   "name": "Sabre",
+   "kind": "base",
+   "base": "sbr",
+   "aliases": [
+    "Saber"
+   ]
+  },
+  {
+   "name": "Falchion",
+   "kind": "base",
+   "base": "flc"
+  },
+  {
+   "name": "Crystal Sword",
+   "kind": "base",
+   "base": "crs"
+  },
+  {
+   "name": "Broad Sword",
+   "kind": "base",
+   "base": "bsd"
+  },
+  {
+   "name": "Long Sword",
+   "kind": "base",
+   "base": "lsd"
+  },
+  {
+   "name": "War Sword",
+   "kind": "base",
+   "base": "wsd"
+  },
+  {
+   "name": "Two-Handed Sword",
+   "kind": "base",
+   "base": "2hs"
+  },
+  {
+   "name": "Claymore",
+   "kind": "base",
+   "base": "clm"
+  },
+  {
+   "name": "Giant Sword",
+   "kind": "base",
+   "base": "gis"
+  },
+  {
+   "name": "Bastard Sword",
+   "kind": "base",
+   "base": "bsw"
+  },
+  {
+   "name": "Flamberge",
+   "kind": "base",
+   "base": "flb"
+  },
+  {
+   "name": "Great Sword",
+   "kind": "base",
+   "base": "gsd"
+  },
+  {
+   "name": "Dagger",
+   "kind": "base",
+   "base": "dgr"
+  },
+  {
+   "name": "Dirk",
+   "kind": "base",
+   "base": "dir"
+  },
+  {
+   "name": "Kris",
+   "kind": "base",
+   "base": "kri",
+   "aliases": [
+    "Kriss"
+   ]
+  },
+  {
+   "name": "Blade",
+   "kind": "base",
+   "base": "bld"
+  },
+  {
+   "name": "Throwing Knife",
+   "kind": "base",
+   "base": "tkf"
+  },
+  {
+   "name": "Throwing Axe",
+   "kind": "base",
+   "base": "tax"
+  },
+  {
+   "name": "Balanced Knife",
+   "kind": "base",
+   "base": "bkf"
+  },
+  {
+   "name": "Balanced Axe",
+   "kind": "base",
+   "base": "bal"
+  },
+  {
+   "name": "Javelin",
+   "kind": "base",
+   "base": "jav"
+  },
+  {
+   "name": "Pilum",
+   "kind": "base",
+   "base": "pil"
+  },
+  {
+   "name": "Short Spear",
+   "kind": "base",
+   "base": "ssp"
+  },
+  {
+   "name": "Glaive",
+   "kind": "base",
+   "base": "glv"
+  },
+  {
+   "name": "Throwing Spear",
+   "kind": "base",
+   "base": "tsp"
+  },
+  {
+   "name": "Spear",
+   "kind": "base",
+   "base": "spr"
+  },
+  {
+   "name": "Trident",
+   "kind": "base",
+   "base": "tri"
+  },
+  {
+   "name": "Brandistock",
+   "kind": "base",
+   "base": "brn"
+  },
+  {
+   "name": "Spetum",
+   "kind": "base",
+   "base": "spt"
+  },
+  {
+   "name": "Pike",
+   "kind": "base",
+   "base": "pik"
+  },
+  {
+   "name": "Bardiche",
+   "kind": "base",
+   "base": "bar"
+  },
+  {
+   "name": "Voulge",
+   "kind": "base",
+   "base": "vou"
+  },
+  {
+   "name": "Scythe",
+   "kind": "base",
+   "base": "scy"
+  },
+  {
+   "name": "Poleaxe",
+   "kind": "base",
+   "base": "pax"
+  },
+  {
+   "name": "Halberd",
+   "kind": "base",
+   "base": "hal"
+  },
+  {
+   "name": "War Scythe",
+   "kind": "base",
+   "base": "wsc"
+  },
+  {
+   "name": "Short Staff",
+   "kind": "base",
+   "base": "sst"
+  },
+  {
+   "name": "Long Staff",
+   "kind": "base",
+   "base": "lst"
+  },
+  {
+   "name": "Gnarled Staff",
+   "kind": "base",
+   "base": "cst"
+  },
+  {
+   "name": "Battle Staff",
+   "kind": "base",
+   "base": "bst"
+  },
+  {
+   "name": "War Staff",
+   "kind": "base",
+   "base": "wst"
+  },
+  {
+   "name": "Short Bow",
+   "kind": "base",
+   "base": "sbw"
+  },
+  {
+   "name": "Hunter's Bow",
+   "kind": "base",
+   "base": "hbw"
+  },
+  {
+   "name": "Long Bow",
+   "kind": "base",
+   "base": "lbw"
+  },
+  {
+   "name": "Composite Bow",
+   "kind": "base",
+   "base": "cbw"
+  },
+  {
+   "name": "Short Battle Bow",
+   "kind": "base",
+   "base": "sbb"
+  },
+  {
+   "name": "Long Battle Bow",
+   "kind": "base",
+   "base": "lbb"
+  },
+  {
+   "name": "Short War Bow",
+   "kind": "base",
+   "base": "swb"
+  },
+  {
+   "name": "Long War Bow",
+   "kind": "base",
+   "base": "lwb"
+  },
+  {
+   "name": "Light Crossbow",
+   "kind": "base",
+   "base": "lxb"
+  },
+  {
+   "name": "Crossbow",
+   "kind": "base",
+   "base": "mxb"
+  },
+  {
+   "name": "Heavy Crossbow",
+   "kind": "base",
+   "base": "hxb"
+  },
+  {
+   "name": "Repeating Crossbow",
+   "kind": "base",
+   "base": "rxb"
+  },
+  {
+   "name": "Rancid Gas Potion",
+   "kind": "base",
+   "base": "gps"
+  },
+  {
+   "name": "Oil Potion",
+   "kind": "base",
+   "base": "ops"
+  },
+  {
+   "name": "Choking Gas Potion",
+   "kind": "base",
+   "base": "gpm"
+  },
+  {
+   "name": "Exploding Potion",
+   "kind": "base",
+   "base": "opm"
+  },
+  {
+   "name": "Strangling Gas Potion",
+   "kind": "base",
+   "base": "gpl"
+  },
+  {
+   "name": "Fulminating Potion",
+   "kind": "base",
+   "base": "opl"
+  },
+  {
+   "name": "Decoy Gidbinn",
+   "kind": "base",
+   "base": "d33"
+  },
+  {
+   "name": "The Gidbinn",
+   "kind": "base",
+   "base": "g33"
+  },
+  {
+   "name": "Wirt's Leg",
+   "kind": "base",
+   "base": "leg"
+  },
+  {
+   "name": "Horadric Malus",
+   "kind": "base",
+   "base": "hdm"
+  },
+  {
+   "name": "Hell Forge Hammer",
+   "kind": "base",
+   "base": "hfh",
+   "aliases": [
+    "Hellforge Hammer"
+   ]
+  },
+  {
+   "name": "Horadric Staff",
+   "kind": "base",
+   "base": "hst"
+  },
+  {
+   "name": "Shaft of the Horadric Staff",
+   "kind": "base",
+   "base": "msf",
+   "aliases": [
+    "Staff of Kings"
+   ]
+  },
+  {
+   "name": "Hatchet",
+   "kind": "base",
+   "base": "9ha"
+  },
+  {
+   "name": "Cleaver",
+   "kind": "base",
+   "base": "9ax"
+  },
+  {
+   "name": "Twin Axe",
+   "kind": "base",
+   "base": "92a"
+  },
+  {
+   "name": "Crowbill",
+   "kind": "base",
+   "base": "9mp"
+  },
+  {
+   "name": "Naga",
+   "kind": "base",
+   "base": "9wa"
+  },
+  {
+   "name": "Military Axe",
+   "kind": "base",
+   "base": "9la"
+  },
+  {
+   "name": "Bearded Axe",
+   "kind": "base",
+   "base": "9ba"
+  },
+  {
+   "name": "Tabar",
+   "kind": "base",
+   "base": "9bt"
+  },
+  {
+   "name": "Gothic Axe",
+   "kind": "base",
+   "base": "9ga"
+  },
+  {
+   "name": "Ancient Axe",
+   "kind": "base",
+   "base": "9gi"
+  },
+  {
+   "name": "Burnt Wand",
+   "kind": "base",
+   "base": "9wn"
+  },
+  {
+   "name": "Petrified Wand",
+   "kind": "base",
+   "base": "9yw"
+  },
+  {
+   "name": "Tomb Wand",
+   "kind": "base",
+   "base": "9bw"
+  },
+  {
+   "name": "Grave Wand",
+   "kind": "base",
+   "base": "9gw"
+  },
+  {
+   "name": "Cudgel",
+   "kind": "base",
+   "base": "9cl"
+  },
+  {
+   "name": "Rune Scepter",
+   "kind": "base",
+   "base": "9sc"
+  },
+  {
+   "name": "Holy Water Sprinkler",
+   "kind": "base",
+   "base": "9qs"
+  },
+  {
+   "name": "Divine Scepter",
+   "kind": "base",
+   "base": "9ws"
+  },
+  {
+   "name": "Barbed Club",
+   "kind": "base",
+   "base": "9sp"
+  },
+  {
+   "name": "Flanged Mace",
+   "kind": "base",
+   "base": "9ma"
+  },
+  {
+   "name": "Jagged Star",
+   "kind": "base",
+   "base": "9mt"
+  },
+  {
+   "name": "Knout",
+   "kind": "base",
+   "base": "9fl"
+  },
+  {
+   "name": "Battle Hammer",
+   "kind": "base",
+   "base": "9wh"
+  },
+  {
+   "name": "War Club",
+   "kind": "base",
+   "base": "9m9"
+  },
+  {
+   "name": "Martel de Fer",
+   "kind": "base",
+   "base": "9gm"
+  },
+  {
+   "name": "Gladius",
+   "kind": "base",
+   "base": "9ss"
+  },
+  {
+   "name": "Cutlass",
+   "kind": "base",
+   "base": "9sm"
+  },
+  {
+   "name": "Shamshir",
+   "kind": "base",
+   "base": "9sb"
+  },
+  {
+   "name": "Tulwar",
+   "kind": "base",
+   "base": "9fc"
+  },
+  {
+   "name": "Dimensional Blade",
+   "kind": "base",
+   "base": "9cr"
+  },
+  {
+   "name": "Battle Sword",
+   "kind": "base",
+   "base": "9bs"
+  },
+  {
+   "name": "Rune Sword",
+   "kind": "base",
+   "base": "9ls"
+  },
+  {
+   "name": "Ancient Sword",
+   "kind": "base",
+   "base": "9wd"
+  },
+  {
+   "name": "Espandon",
+   "kind": "base",
+   "base": "92h"
+  },
+  {
+   "name": "Dacian Falx",
+   "kind": "base",
+   "base": "9cm"
+  },
+  {
+   "name": "Tusk Sword",
+   "kind": "base",
+   "base": "9gs"
+  },
+  {
+   "name": "Gothic Sword",
+   "kind": "base",
+   "base": "9b9"
+  },
+  {
+   "name": "Zweihander",
+   "kind": "base",
+   "base": "9fb"
+  },
+  {
+   "name": "Executioner Sword",
+   "kind": "base",
+   "base": "9gd"
+  },
+  {
+   "name": "Poignard",
+   "kind": "base",
+   "base": "9dg"
+  },
+  {
+   "name": "Rondel",
+   "kind": "base",
+   "base": "9di"
+  },
+  {
+   "name": "Cinquedeas",
+   "kind": "base",
+   "base": "9kr"
+  },
+  {
+   "name": "Stiletto",
+   "kind": "base",
+   "base": "9bl",
+   "aliases": [
+    "Stilleto"
+   ]
+  },
+  {
+   "name": "Battle Dart",
+   "kind": "base",
+   "base": "9tk"
+  },
+  {
+   "name": "Francisca",
+   "kind": "base",
+   "base": "9ta"
+  },
+  {
+   "name": "War Dart",
+   "kind": "base",
+   "base": "9bk"
+  },
+  {
+   "name": "Hurlbat",
+   "kind": "base",
+   "base": "9b8"
+  },
+  {
+   "name": "War Javelin",
+   "kind": "base",
+   "base": "9ja"
+  },
+  {
+   "name": "Great Pilum",
+   "kind": "base",
+   "base": "9pi"
+  },
+  {
+   "name": "Simbilan",
+   "kind": "base",
+   "base": "9s9"
+  },
+  {
+   "name": "Spiculum",
+   "kind": "base",
+   "base": "9gl"
+  },
+  {
+   "name": "Harpoon",
+   "kind": "base",
+   "base": "9ts"
+  },
+  {
+   "name": "War Spear",
+   "kind": "base",
+   "base": "9sr"
+  },
+  {
+   "name": "Fuscina",
+   "kind": "base",
+   "base": "9tr"
+  },
+  {
+   "name": "War Fork",
+   "kind": "base",
+   "base": "9br"
+  },
+  {
+   "name": "Yari",
+   "kind": "base",
+   "base": "9st"
+  },
+  {
+   "name": "Lance",
+   "kind": "base",
+   "base": "9p9"
+  },
+  {
+   "name": "Lochaber Axe",
+   "kind": "base",
+   "base": "9b7"
+  },
+  {
+   "name": "Bill",
+   "kind": "base",
+   "base": "9vo"
+  },
+  {
+   "name": "Battle Scythe",
+   "kind": "base",
+   "base": "9s8"
+  },
+  {
+   "name": "Partizan",
+   "kind": "base",
+   "base": "9pa"
+  },
+  {
+   "name": "Bec-de-Corbin",
+   "kind": "base",
+   "base": "9h9"
+  },
+  {
+   "name": "Grim Scythe",
+   "kind": "base",
+   "base": "9wc"
+  },
+  {
+   "name": "Jo Staff",
+   "kind": "base",
+   "base": "8ss"
+  },
+  {
+   "name": "Quarterstaff",
+   "kind": "base",
+   "base": "8ls"
+  },
+  {
+   "name": "Cedar Staff",
+   "kind": "base",
+   "base": "8cs"
+  },
+  {
+   "name": "Gothic Staff",
+   "kind": "base",
+   "base": "8bs"
+  },
+  {
+   "name": "Rune Staff",
+   "kind": "base",
+   "base": "8ws"
+  },
+  {
+   "name": "Edge Bow",
+   "kind": "base",
+   "base": "8sb"
+  },
+  {
+   "name": "Razor Bow",
+   "kind": "base",
+   "base": "8hb"
+  },
+  {
+   "name": "Cedar Bow",
+   "kind": "base",
+   "base": "8lb"
+  },
+  {
+   "name": "Double Bow",
+   "kind": "base",
+   "base": "8cb"
+  },
+  {
+   "name": "Short Siege Bow",
+   "kind": "base",
+   "base": "8s8"
+  },
+  {
+   "name": "Large Siege Bow",
+   "kind": "base",
+   "base": "8l8",
+   "aliases": [
+    "Long Siege Bow"
+   ]
+  },
+  {
+   "name": "Rune Bow",
+   "kind": "base",
+   "base": "8sw"
+  },
+  {
+   "name": "Gothic Bow",
+   "kind": "base",
+   "base": "8lw"
+  },
+  {
+   "name": "Arbalest",
+   "kind": "base",
+   "base": "8lx"
+  },
+  {
+   "name": "Siege Crossbow",
+   "kind": "base",
+   "base": "8mx"
+  },
+  {
+   "name": "Ballista",
+   "kind": "base",
+   "base": "8hx"
+  },
+  {
+   "name": "Chu-Ko-Nu",
+   "kind": "base",
+   "base": "8rx"
+  },
+  {
+   "name": "Khalim's Flail",
+   "kind": "base",
+   "base": "qf1"
+  },
+  {
+   "name": "Khalim's Will",
+   "kind": "base",
+   "base": "qf2"
+  },
+  {
+   "name": "Katar",
+   "kind": "base",
+   "base": "ktr"
+  },
+  {
+   "name": "Wrist Blade",
+   "kind": "base",
+   "base": "wrb"
+  },
+  {
+   "name": "Hatchet Hands",
+   "kind": "base",
+   "base": "axf"
+  },
+  {
+   "name": "Cestus",
+   "kind": "base",
+   "base": "ces"
+  },
+  {
+   "name": "Claws",
+   "kind": "base",
+   "base": "clw"
+  },
+  {
+   "name": "Blade Talons",
+   "kind": "base",
+   "base": "btl"
+  },
+  {
+   "name": "Scissors Katar",
+   "kind": "base",
+   "base": "skr"
+  },
+  {
+   "name": "Quhab",
+   "kind": "base",
+   "base": "9ar"
+  },
+  {
+   "name": "Wrist Spike",
+   "kind": "base",
+   "base": "9wb"
+  },
+  {
+   "name": "Fascia",
+   "kind": "base",
+   "base": "9xf"
+  },
+  {
+   "name": "Hand Scythe",
+   "kind": "base",
+   "base": "9cs"
+  },
+  {
+   "name": "Greater Claws",
+   "kind": "base",
+   "base": "9lw"
+  },
+  {
+   "name": "Greater Talons",
+   "kind": "base",
+   "base": "9tw"
+  },
+  {
+   "name": "Scissors Quhab",
+   "kind": "base",
+   "base": "9qr"
+  },
+  {
+   "name": "Suwayyah",
+   "kind": "base",
+   "base": "7ar"
+  },
+  {
+   "name": "Wrist Sword",
+   "kind": "base",
+   "base": "7wb"
+  },
+  {
+   "name": "War Fist",
+   "kind": "base",
+   "base": "7xf"
+  },
+  {
+   "name": "Battle Cestus",
+   "kind": "base",
+   "base": "7cs"
+  },
+  {
+   "name": "Feral Claws",
+   "kind": "base",
+   "base": "7lw"
+  },
+  {
+   "name": "Runic Talons",
+   "kind": "base",
+   "base": "7tw"
+  },
+  {
+   "name": "Scissors Suwayyah",
+   "kind": "base",
+   "base": "7qr"
+  },
+  {
+   "name": "Tomahawk",
+   "kind": "base",
+   "base": "7ha"
+  },
+  {
+   "name": "Small Crescent",
+   "kind": "base",
+   "base": "7ax"
+  },
+  {
+   "name": "Ettin Axe",
+   "kind": "base",
+   "base": "72a"
+  },
+  {
+   "name": "War Spike",
+   "kind": "base",
+   "base": "7mp"
+  },
+  {
+   "name": "Berserker Axe",
+   "kind": "base",
+   "base": "7wa"
+  },
+  {
+   "name": "Feral Axe",
+   "kind": "base",
+   "base": "7la"
+  },
+  {
+   "name": "Silver-edged Axe",
+   "kind": "base",
+   "base": "7ba"
+  },
+  {
+   "name": "Decapitator",
+   "kind": "base",
+   "base": "7bt"
+  },
+  {
+   "name": "Champion Axe",
+   "kind": "base",
+   "base": "7ga"
+  },
+  {
+   "name": "Glorious Axe",
+   "kind": "base",
+   "base": "7gi"
+  },
+  {
+   "name": "Polished Wand",
+   "kind": "base",
+   "base": "7wn"
+  },
+  {
+   "name": "Ghost Wand",
+   "kind": "base",
+   "base": "7yw"
+  },
+  {
+   "name": "Lich Wand",
+   "kind": "base",
+   "base": "7bw"
+  },
+  {
+   "name": "Unearthed Wand",
+   "kind": "base",
+   "base": "7gw"
+  },
+  {
+   "name": "Truncheon",
+   "kind": "base",
+   "base": "7cl"
+  },
+  {
+   "name": "Mighty Scepter",
+   "kind": "base",
+   "base": "7sc"
+  },
+  {
+   "name": "Seraph Rod",
+   "kind": "base",
+   "base": "7qs"
+  },
+  {
+   "name": "Caduceus",
+   "kind": "base",
+   "base": "7ws"
+  },
+  {
+   "name": "Tyrant Club",
+   "kind": "base",
+   "base": "7sp"
+  },
+  {
+   "name": "Reinforced Mace",
+   "kind": "base",
+   "base": "7ma"
+  },
+  {
+   "name": "Devil Star",
+   "kind": "base",
+   "base": "7mt"
+  },
+  {
+   "name": "Scourge",
+   "kind": "base",
+   "base": "7fl"
+  },
+  {
+   "name": "Legendary Mallet",
+   "kind": "base",
+   "base": "7wh"
+  },
+  {
+   "name": "Ogre Maul",
+   "kind": "base",
+   "base": "7m7"
+  },
+  {
+   "name": "Thunder Maul",
+   "kind": "base",
+   "base": "7gm"
+  },
+  {
+   "name": "Falcata",
+   "kind": "base",
+   "base": "7ss"
+  },
+  {
+   "name": "Ataghan",
+   "kind": "base",
+   "base": "7sm"
+  },
+  {
+   "name": "Elegant Blade",
+   "kind": "base",
+   "base": "7sb"
+  },
+  {
+   "name": "Hydra Edge",
+   "kind": "base",
+   "base": "7fc"
+  },
+  {
+   "name": "Phase Blade",
+   "kind": "base",
+   "base": "7cr"
+  },
+  {
+   "name": "Conquest Sword",
+   "kind": "base",
+   "base": "7bs"
+  },
+  {
+   "name": "Cryptic Sword",
+   "kind": "base",
+   "base": "7ls"
+  },
+  {
+   "name": "Mythical Sword",
+   "kind": "base",
+   "base": "7wd"
+  },
+  {
+   "name": "Legend Sword",
+   "kind": "base",
+   "base": "72h"
+  },
+  {
+   "name": "Highland Blade",
+   "kind": "base",
+   "base": "7cm"
+  },
+  {
+   "name": "Balrog Blade",
+   "kind": "base",
+   "base": "7gs"
+  },
+  {
+   "name": "Champion Sword",
+   "kind": "base",
+   "base": "7b7"
+  },
+  {
+   "name": "Colossus Sword",
+   "kind": "base",
+   "base": "7fb",
+   "aliases": [
+    "Colossal Sword"
+   ]
+  },
+  {
+   "name": "Colossus Blade",
+   "kind": "base",
+   "base": "7gd"
+  },
+  {
+   "name": "Bone Knife",
+   "kind": "base",
+   "base": "7dg"
+  },
+  {
+   "name": "Mithril Point",
+   "kind": "base",
+   "base": "7di",
+   "aliases": [
+    "Mithral Point"
+   ]
+  },
+  {
+   "name": "Fanged Knife",
+   "kind": "base",
+   "base": "7kr"
+  },
+  {
+   "name": "Legend Spike",
+   "kind": "base",
+   "base": "7bl"
+  },
+  {
+   "name": "Flying Knife",
+   "kind": "base",
+   "base": "7tk"
+  },
+  {
+   "name": "Flying Axe",
+   "kind": "base",
+   "base": "7ta"
+  },
+  {
+   "name": "Winged Knife",
+   "kind": "base",
+   "base": "7bk"
+  },
+  {
+   "name": "Winged Axe",
+   "kind": "base",
+   "base": "7b8"
+  },
+  {
+   "name": "Hyperion Javelin",
+   "kind": "base",
+   "base": "7ja"
+  },
+  {
+   "name": "Stygian Pilum",
+   "kind": "base",
+   "base": "7pi"
+  },
+  {
+   "name": "Balrog Spear",
+   "kind": "base",
+   "base": "7s7"
+  },
+  {
+   "name": "Ghost Glaive",
+   "kind": "base",
+   "base": "7gl"
+  },
+  {
+   "name": "Winged Harpoon",
+   "kind": "base",
+   "base": "7ts"
+  },
+  {
+   "name": "Hyperion Spear",
+   "kind": "base",
+   "base": "7sr"
+  },
+  {
+   "name": "Stygian Pike",
+   "kind": "base",
+   "base": "7tr"
+  },
+  {
+   "name": "Mancatcher",
+   "kind": "base",
+   "base": "7br"
+  },
+  {
+   "name": "Ghost Spear",
+   "kind": "base",
+   "base": "7st"
+  },
+  {
+   "name": "War Pike",
+   "kind": "base",
+   "base": "7p7"
+  },
+  {
+   "name": "Ogre Axe",
+   "kind": "base",
+   "base": "7o7"
+  },
+  {
+   "name": "Colossus Voulge",
+   "kind": "base",
+   "base": "7vo"
+  },
+  {
+   "name": "Thresher",
+   "kind": "base",
+   "base": "7s8"
+  },
+  {
+   "name": "Cryptic Axe",
+   "kind": "base",
+   "base": "7pa"
+  },
+  {
+   "name": "Great Poleaxe",
+   "kind": "base",
+   "base": "7h7"
+  },
+  {
+   "name": "Giant Thresher",
+   "kind": "base",
+   "base": "7wc"
+  },
+  {
+   "name": "Walking Stick",
+   "kind": "base",
+   "base": "6ss"
+  },
+  {
+   "name": "Stalagmite",
+   "kind": "base",
+   "base": "6ls"
+  },
+  {
+   "name": "Elder Staff",
+   "kind": "base",
+   "base": "6cs"
+  },
+  {
+   "name": "Shillelagh",
+   "kind": "base",
+   "base": "6bs"
+  },
+  {
+   "name": "Archon Staff",
+   "kind": "base",
+   "base": "6ws"
+  },
+  {
+   "name": "Spider Bow",
+   "kind": "base",
+   "base": "6sb"
+  },
+  {
+   "name": "Blade Bow",
+   "kind": "base",
+   "base": "6hb"
+  },
+  {
+   "name": "Shadow Bow",
+   "kind": "base",
+   "base": "6lb"
+  },
+  {
+   "name": "Great Bow",
+   "kind": "base",
+   "base": "6cb"
+  },
+  {
+   "name": "Diamond Bow",
+   "kind": "base",
+   "base": "6s7"
+  },
+  {
+   "name": "Crusader Bow",
+   "kind": "base",
+   "base": "6l7"
+  },
+  {
+   "name": "Ward Bow",
+   "kind": "base",
+   "base": "6sw"
+  },
+  {
+   "name": "Hydra Bow",
+   "kind": "base",
+   "base": "6lw"
+  },
+  {
+   "name": "Pellet Bow",
+   "kind": "base",
+   "base": "6lx"
+  },
+  {
+   "name": "Gorgon Crossbow",
+   "kind": "base",
+   "base": "6mx"
+  },
+  {
+   "name": "Colossus Crossbow",
+   "kind": "base",
+   "base": "6hx"
+  },
+  {
+   "name": "Demon Crossbow",
+   "kind": "base",
+   "base": "6rx"
+  },
+  {
+   "name": "Eagle Orb",
+   "kind": "base",
+   "base": "ob1"
+  },
+  {
+   "name": "Sacred Globe",
+   "kind": "base",
+   "base": "ob2"
+  },
+  {
+   "name": "Smoked Sphere",
+   "kind": "base",
+   "base": "ob3"
+  },
+  {
+   "name": "Clasped Orb",
+   "kind": "base",
+   "base": "ob4"
+  },
+  {
+   "name": "Jared's Stone",
+   "kind": "base",
+   "base": "ob5"
+  },
+  {
+   "name": "Stag Bow",
+   "kind": "base",
+   "base": "am1"
+  },
+  {
+   "name": "Reflex Bow",
+   "kind": "base",
+   "base": "am2"
+  },
+  {
+   "name": "Maiden Spear",
+   "kind": "base",
+   "base": "am3"
+  },
+  {
+   "name": "Maiden Pike",
+   "kind": "base",
+   "base": "am4"
+  },
+  {
+   "name": "Maiden Javelin",
+   "kind": "base",
+   "base": "am5"
+  },
+  {
+   "name": "Glowing Orb",
+   "kind": "base",
+   "base": "ob6"
+  },
+  {
+   "name": "Crystalline Globe",
+   "kind": "base",
+   "base": "ob7"
+  },
+  {
+   "name": "Cloudy Sphere",
+   "kind": "base",
+   "base": "ob8"
+  },
+  {
+   "name": "Sparkling Ball",
+   "kind": "base",
+   "base": "ob9"
+  },
+  {
+   "name": "Swirling Crystal",
+   "kind": "base",
+   "base": "oba"
+  },
+  {
+   "name": "Ashwood Bow",
+   "kind": "base",
+   "base": "am6"
+  },
+  {
+   "name": "Ceremonial Bow",
+   "kind": "base",
+   "base": "am7"
+  },
+  {
+   "name": "Ceremonial Spear",
+   "kind": "base",
+   "base": "am8"
+  },
+  {
+   "name": "Ceremonial Pike",
+   "kind": "base",
+   "base": "am9"
+  },
+  {
+   "name": "Ceremonial Javelin",
+   "kind": "base",
+   "base": "ama"
+  },
+  {
+   "name": "Heavenly Stone",
+   "kind": "base",
+   "base": "obb"
+  },
+  {
+   "name": "Eldritch Orb",
+   "kind": "base",
+   "base": "obc"
+  },
+  {
+   "name": "Demon Heart",
+   "kind": "base",
+   "base": "obd"
+  },
+  {
+   "name": "Vortex Orb",
+   "kind": "base",
+   "base": "obe"
+  },
+  {
+   "name": "Dimensional Shard",
+   "kind": "base",
+   "base": "obf"
+  },
+  {
+   "name": "Matriarchal Bow",
+   "kind": "base",
+   "base": "amb"
+  },
+  {
+   "name": "Grand Matron Bow",
+   "kind": "base",
+   "base": "amc"
+  },
+  {
+   "name": "Matriarchal Spear",
+   "kind": "base",
+   "base": "amd"
+  },
+  {
+   "name": "Matriarchal Pike",
+   "kind": "base",
+   "base": "ame"
+  },
+  {
+   "name": "Matriarchal Javelin",
+   "kind": "base",
+   "base": "amf"
+  },
+  {
+   "name": "Elixir",
+   "kind": "base",
+   "base": "elx"
+  },
+  {
+   "name": "Healing Potion",
+   "kind": "base",
+   "base": "hpo"
+  },
+  {
+   "name": "Mana Potion",
+   "kind": "base",
+   "base": "mpo"
+  },
+  {
+   "name": "Full Healing Potion",
+   "kind": "base",
+   "base": "hpf"
+  },
+  {
+   "name": "Full Mana Potion",
+   "kind": "base",
+   "base": "mpf"
+  },
+  {
+   "name": "Stamina Potion",
+   "kind": "base",
+   "base": "vps"
+  },
+  {
+   "name": "Antidote Potion",
+   "kind": "base",
+   "base": "yps"
+  },
+  {
+   "name": "Rejuvenation Potion",
+   "kind": "base",
+   "base": "rvs"
+  },
+  {
+   "name": "Full Rejuvenation Potion",
+   "kind": "base",
+   "base": "rvl"
+  },
+  {
+   "name": "Thawing Potion",
+   "kind": "base",
+   "base": "wms"
+  },
+  {
+   "name": "Tome of Town Portal",
+   "kind": "base",
+   "base": "tbk"
+  },
+  {
+   "name": "Tome of Identify",
+   "kind": "base",
+   "base": "ibk"
+  },
+  {
+   "name": "Amulet",
+   "kind": "base",
+   "base": "amu"
+  },
+  {
+   "name": "Top of the Horadric Staff",
+   "kind": "base",
+   "base": "vip",
+   "aliases": [
+    "Amulet of the Viper"
+   ]
+  },
+  {
+   "name": "Ring",
+   "kind": "base",
+   "base": "rin"
+  },
+  {
+   "name": "Gold",
+   "kind": "base",
+   "base": "gld"
+  },
+  {
+   "name": "Scroll of Inifuss",
+   "kind": "base",
+   "base": "bks"
+  },
+  {
+   "name": "Key to the Cairn Stones",
+   "kind": "base",
+   "base": "bkd"
+  },
+  {
+   "name": "Arrows",
+   "kind": "base",
+   "base": "aqv"
+  },
+  {
+   "name": "Torch",
+   "kind": "base",
+   "base": "tch"
+  },
+  {
+   "name": "Bolts",
+   "kind": "base",
+   "base": "cqv"
+  },
+  {
+   "name": "Scroll of Town Portal",
+   "kind": "base",
+   "base": "tsc"
+  },
+  {
+   "name": "Scroll of Identify",
+   "kind": "base",
+   "base": "isc"
+  },
+  {
+   "name": "Heart",
+   "kind": "base",
+   "base": "hrt"
+  },
+  {
+   "name": "Brain",
+   "kind": "base",
+   "base": "brz"
+  },
+  {
+   "name": "Jawbone",
+   "kind": "base",
+   "base": "jaw"
+  },
+  {
+   "name": "Eye",
+   "kind": "base",
+   "base": "eyz"
+  },
+  {
+   "name": "Horn",
+   "kind": "base",
+   "base": "hrn"
+  },
+  {
+   "name": "Tail",
+   "kind": "base",
+   "base": "tal"
+  },
+  {
+   "name": "Flag",
+   "kind": "base",
+   "base": "flg"
+  },
+  {
+   "name": "Fang",
+   "kind": "base",
+   "base": "fng"
+  },
+  {
+   "name": "Quill",
+   "kind": "base",
+   "base": "qll"
+  },
+  {
+   "name": "Soul",
+   "kind": "base",
+   "base": "sol"
+  },
+  {
+   "name": "Scalp",
+   "kind": "base",
+   "base": "scz"
+  },
+  {
+   "name": "Spleen",
+   "kind": "base",
+   "base": "spe"
+  },
+  {
+   "name": "Key",
+   "kind": "base",
+   "base": "key"
+  },
+  {
+   "name": "The Black Tower Key",
+   "kind": "base",
+   "base": "luv"
+  },
+  {
+   "name": "Potion of Life",
+   "kind": "base",
+   "base": "xyz"
+  },
+  {
+   "name": "A Jade Figurine",
+   "kind": "base",
+   "base": "j34"
+  },
+  {
+   "name": "The Golden Bird",
+   "kind": "base",
+   "base": "g34"
+  },
+  {
+   "name": "Lam Esen's Tome",
+   "kind": "base",
+   "base": "bbb"
+  },
+  {
+   "name": "Horadric Cube",
+   "kind": "base",
+   "base": "box"
+  },
+  {
+   "name": "Horadric Scroll",
+   "kind": "base",
+   "base": "tr1"
+  },
+  {
+   "name": "Mephisto's Soulstone",
+   "kind": "base",
+   "base": "mss"
+  },
+  {
+   "name": "Book of Skill",
+   "kind": "base",
+   "base": "ass"
+  },
+  {
+   "name": "Khalim's Eye",
+   "kind": "base",
+   "base": "qey"
+  },
+  {
+   "name": "Khalim's Heart",
+   "kind": "base",
+   "base": "qhr"
+  },
+  {
+   "name": "Khalim's Brain",
+   "kind": "base",
+   "base": "qbr"
+  },
+  {
+   "name": "Ear",
+   "kind": "base",
+   "base": "ear"
+  },
+  {
+   "name": "Chipped Amethyst",
+   "kind": "base",
+   "base": "gcv"
+  },
+  {
+   "name": "Flawed Amethyst",
+   "kind": "base",
+   "base": "gfv"
+  },
+  {
+   "name": "Amethyst",
+   "kind": "base",
+   "base": "gsv"
+  },
+  {
+   "name": "Flawless Amethyst",
+   "kind": "base",
+   "base": "gzv"
+  },
+  {
+   "name": "Perfect Amethyst",
+   "kind": "base",
+   "base": "gpv"
+  },
+  {
+   "name": "Chipped Topaz",
+   "kind": "base",
+   "base": "gcy"
+  },
+  {
+   "name": "Flawed Topaz",
+   "kind": "base",
+   "base": "gfy"
+  },
+  {
+   "name": "Topaz",
+   "kind": "base",
+   "base": "gsy"
+  },
+  {
+   "name": "Flawless Topaz",
+   "kind": "base",
+   "base": "gly"
+  },
+  {
+   "name": "Perfect Topaz",
+   "kind": "base",
+   "base": "gpy"
+  },
+  {
+   "name": "Chipped Sapphire",
+   "kind": "base",
+   "base": "gcb"
+  },
+  {
+   "name": "Flawed Sapphire",
+   "kind": "base",
+   "base": "gfb"
+  },
+  {
+   "name": "Sapphire",
+   "kind": "base",
+   "base": "gsb"
+  },
+  {
+   "name": "Flawless Sapphire",
+   "kind": "base",
+   "base": "glb"
+  },
+  {
+   "name": "Perfect Sapphire",
+   "kind": "base",
+   "base": "gpb"
+  },
+  {
+   "name": "Chipped Emerald",
+   "kind": "base",
+   "base": "gcg"
+  },
+  {
+   "name": "Flawed Emerald",
+   "kind": "base",
+   "base": "gfg"
+  },
+  {
+   "name": "Emerald",
+   "kind": "base",
+   "base": "gsg"
+  },
+  {
+   "name": "Flawless Emerald",
+   "kind": "base",
+   "base": "glg"
+  },
+  {
+   "name": "Perfect Emerald",
+   "kind": "base",
+   "base": "gpg"
+  },
+  {
+   "name": "Chipped Ruby",
+   "kind": "base",
+   "base": "gcr"
+  },
+  {
+   "name": "Flawed Ruby",
+   "kind": "base",
+   "base": "gfr"
+  },
+  {
+   "name": "Ruby",
+   "kind": "base",
+   "base": "gsr"
+  },
+  {
+   "name": "Flawless Ruby",
+   "kind": "base",
+   "base": "glr"
+  },
+  {
+   "name": "Perfect Ruby",
+   "kind": "base",
+   "base": "gpr"
+  },
+  {
+   "name": "Chipped Diamond",
+   "kind": "base",
+   "base": "gcw"
+  },
+  {
+   "name": "Flawed Diamond",
+   "kind": "base",
+   "base": "gfw"
+  },
+  {
+   "name": "Diamond",
+   "kind": "base",
+   "base": "gsw"
+  },
+  {
+   "name": "Flawless Diamond",
+   "kind": "base",
+   "base": "glw"
+  },
+  {
+   "name": "Perfect Diamond",
+   "kind": "base",
+   "base": "gpw"
+  },
+  {
+   "name": "Minor Healing Potion",
+   "kind": "base",
+   "base": "hp1"
+  },
+  {
+   "name": "Light Healing Potion",
+   "kind": "base",
+   "base": "hp2"
+  },
+  {
+   "name": "Greater Healing Potion",
+   "kind": "base",
+   "base": "hp4"
+  },
+  {
+   "name": "Super Healing Potion",
+   "kind": "base",
+   "base": "hp5"
+  },
+  {
+   "name": "Minor Mana Potion",
+   "kind": "base",
+   "base": "mp1"
+  },
+  {
+   "name": "Light Mana Potion",
+   "kind": "base",
+   "base": "mp2"
+  },
+  {
+   "name": "Greater Mana Potion",
+   "kind": "base",
+   "base": "mp4"
+  },
+  {
+   "name": "Super Mana Potion",
+   "kind": "base",
+   "base": "mp5"
+  },
+  {
+   "name": "Chipped Skull",
+   "kind": "base",
+   "base": "skc"
+  },
+  {
+   "name": "Flawed Skull",
+   "kind": "base",
+   "base": "skf"
+  },
+  {
+   "name": "Skull",
+   "kind": "base",
+   "base": "sku"
+  },
+  {
+   "name": "Flawless Skull",
+   "kind": "base",
+   "base": "skl"
+  },
+  {
+   "name": "Perfect Skull",
+   "kind": "base",
+   "base": "skz"
+  },
+  {
+   "name": "Herb",
+   "kind": "base",
+   "base": "hrb"
+  },
+  {
+   "name": "Small Charm",
+   "kind": "base",
+   "base": "cm1"
+  },
+  {
+   "name": "Large Charm",
+   "kind": "base",
+   "base": "cm2"
+  },
+  {
+   "name": "Grand Charm",
+   "kind": "base",
+   "base": "cm3"
+  },
+  {
+   "name": "Small Red Potion",
+   "kind": "base",
+   "base": "rps"
+  },
+  {
+   "name": "Large Red Potion",
+   "kind": "base",
+   "base": "rpl"
+  },
+  {
+   "name": "Small Blue Potion",
+   "kind": "base",
+   "base": "bps"
+  },
+  {
+   "name": "Large Blue Potion",
+   "kind": "base",
+   "base": "bpl"
+  },
+  {
+   "name": "El Rune",
+   "kind": "base",
+   "base": "r01"
+  },
+  {
+   "name": "Eld Rune",
+   "kind": "base",
+   "base": "r02"
+  },
+  {
+   "name": "Tir Rune",
+   "kind": "base",
+   "base": "r03"
+  },
+  {
+   "name": "Nef Rune",
+   "kind": "base",
+   "base": "r04"
+  },
+  {
+   "name": "Eth Rune",
+   "kind": "base",
+   "base": "r05"
+  },
+  {
+   "name": "Ith Rune",
+   "kind": "base",
+   "base": "r06"
+  },
+  {
+   "name": "Tal Rune",
+   "kind": "base",
+   "base": "r07"
+  },
+  {
+   "name": "Ral Rune",
+   "kind": "base",
+   "base": "r08"
+  },
+  {
+   "name": "Ort Rune",
+   "kind": "base",
+   "base": "r09"
+  },
+  {
+   "name": "Thul Rune",
+   "kind": "base",
+   "base": "r10"
+  },
+  {
+   "name": "Amn Rune",
+   "kind": "base",
+   "base": "r11"
+  },
+  {
+   "name": "Sol Rune",
+   "kind": "base",
+   "base": "r12"
+  },
+  {
+   "name": "Shael Rune",
+   "kind": "base",
+   "base": "r13"
+  },
+  {
+   "name": "Dol Rune",
+   "kind": "base",
+   "base": "r14"
+  },
+  {
+   "name": "Hel Rune",
+   "kind": "base",
+   "base": "r15"
+  },
+  {
+   "name": "Io Rune",
+   "kind": "base",
+   "base": "r16"
+  },
+  {
+   "name": "Lum Rune",
+   "kind": "base",
+   "base": "r17"
+  },
+  {
+   "name": "Ko Rune",
+   "kind": "base",
+   "base": "r18"
+  },
+  {
+   "name": "Fal Rune",
+   "kind": "base",
+   "base": "r19"
+  },
+  {
+   "name": "Lem Rune",
+   "kind": "base",
+   "base": "r20"
+  },
+  {
+   "name": "Pul Rune",
+   "kind": "base",
+   "base": "r21"
+  },
+  {
+   "name": "Um Rune",
+   "kind": "base",
+   "base": "r22"
+  },
+  {
+   "name": "Mal Rune",
+   "kind": "base",
+   "base": "r23"
+  },
+  {
+   "name": "Ist Rune",
+   "kind": "base",
+   "base": "r24"
+  },
+  {
+   "name": "Gul Rune",
+   "kind": "base",
+   "base": "r25"
+  },
+  {
+   "name": "Vex Rune",
+   "kind": "base",
+   "base": "r26"
+  },
+  {
+   "name": "Ohm Rune",
+   "kind": "base",
+   "base": "r27"
+  },
+  {
+   "name": "Lo Rune",
+   "kind": "base",
+   "base": "r28"
+  },
+  {
+   "name": "Sur Rune",
+   "kind": "base",
+   "base": "r29"
+  },
+  {
+   "name": "Ber Rune",
+   "kind": "base",
+   "base": "r30"
+  },
+  {
+   "name": "Jah Rune",
+   "kind": "base",
+   "base": "r31"
+  },
+  {
+   "name": "Cham Rune",
+   "kind": "base",
+   "base": "r32"
+  },
+  {
+   "name": "Zod Rune",
+   "kind": "base",
+   "base": "r33"
+  },
+  {
+   "name": "Jewel",
+   "kind": "base",
+   "base": "jew"
+  },
+  {
+   "name": "Malah's Potion",
+   "kind": "base",
+   "base": "ice"
+  },
+  {
+   "name": "Scroll of Knowledge",
+   "kind": "base",
+   "base": "0sc"
+  },
+  {
+   "name": "Scroll of Resistance",
+   "kind": "base",
+   "base": "tr2"
+  },
+  {
+   "name": "Key of Terror",
+   "kind": "base",
+   "base": "pk1"
+  },
+  {
+   "name": "Key of Hate",
+   "kind": "base",
+   "base": "pk2"
+  },
+  {
+   "name": "Key of Destruction",
+   "kind": "base",
+   "base": "pk3"
+  },
+  {
+   "name": "Diablo's Horn",
+   "kind": "base",
+   "base": "dhn"
+  },
+  {
+   "name": "Baal's Eye",
+   "kind": "base",
+   "base": "bey"
+  },
+  {
+   "name": "Mephisto's Brain",
+   "kind": "base",
+   "base": "mbr"
+  },
+  {
+   "name": "Token of Absolution",
+   "kind": "base",
+   "base": "toa"
+  },
+  {
+   "name": "Twisted Essence of Suffering",
+   "kind": "base",
+   "base": "tes"
+  },
+  {
+   "name": "Charged Essence of Hatred",
+   "kind": "base",
+   "base": "ceh",
+   "aliases": [
+    "Charged Essense of Hatred"
+   ]
+  },
+  {
+   "name": "Burning Essence of Terror",
+   "kind": "base",
+   "base": "bet"
+  },
+  {
+   "name": "Festering Essence of Destruction",
+   "kind": "base",
+   "base": "fed"
+  },
+  {
+   "name": "Standard of Heroes",
+   "kind": "base",
+   "base": "std"
+  },
+  {
+   "name": "Western Worldstone Shard",
+   "kind": "base",
+   "base": "xa1"
+  },
+  {
+   "name": "Eastern Worldstone Shard",
+   "kind": "base",
+   "base": "xa2"
+  },
+  {
+   "name": "Southern Worldstone Shard",
+   "kind": "base",
+   "base": "xa3"
+  },
+  {
+   "name": "Deep Worldstone Shard",
+   "kind": "base",
+   "base": "xa4"
+  },
+  {
+   "name": "Northern Worldstone Shard",
+   "kind": "base",
+   "base": "xa5"
+  },
+  {
+   "name": "Talic's Anguish",
+   "kind": "base",
+   "base": "ua1",
+   "aliases": [
+    "Uber Ancient Summon Material Act 1"
+   ]
+  },
+  {
+   "name": "Korlic's Pain",
+   "kind": "base",
+   "base": "ua2",
+   "aliases": [
+    "Uber Ancient Summon Material Act 2"
+   ]
+  },
+  {
+   "name": "Madawc's Ire",
+   "kind": "base",
+   "base": "ua3",
+   "aliases": [
+    "Uber Ancient Summon Material Act 3"
+   ]
+  },
+  {
+   "name": "Bul-Kathos' Nightmare",
+   "kind": "base",
+   "base": "ua4",
+   "aliases": [
+    "Uber Ancient Summon Material Act 4"
+   ]
+  },
+  {
+   "name": "Worusk's End",
+   "kind": "base",
+   "base": "ua5",
+   "aliases": [
+    "Uber Ancient Summon Material Act5"
+   ]
+  },
+  {
+   "name": "Defender's Fire",
+   "kind": "base",
+   "base": "um1",
+   "aliases": [
+    "Uber Ancient Upgrade Material  Fire"
+   ]
+  },
+  {
+   "name": "Defender's Bile",
+   "kind": "base",
+   "base": "um2",
+   "aliases": [
+    "Uber Ancient Upgrade Material Poison"
+   ]
+  },
+  {
+   "name": "Protector's Frost",
+   "kind": "base",
+   "base": "um3",
+   "aliases": [
+    "Uber Ancient Upgrade Material  Cold"
+   ]
+  },
+  {
+   "name": "Protector's Stone",
+   "kind": "base",
+   "base": "um4",
+   "aliases": [
+    "Uber Ancient Upgrade Material Physical"
+   ]
+  },
+  {
+   "name": "Guardian's Thunder",
+   "kind": "base",
+   "base": "um5",
+   "aliases": [
+    "Uber Ancient Upgrade Material Lightning"
+   ]
+  },
+  {
+   "name": "Guardian's Light",
+   "kind": "base",
+   "base": "um6",
+   "aliases": [
+    "Uber Ancient Upgrade Material Magic"
+   ]
+  },
+  {
+   "name": "Colossal Jewel",
+   "kind": "base",
+   "base": "cjw"
+  },
+  {
+   "name": "Crafted Sunder Charm",
+   "kind": "base",
+   "base": "cs2"
+  },
+  {
+   "name": "The Gnasher",
+   "kind": "unique",
+   "base": "hax"
+  },
+  {
+   "name": "Deathspade",
+   "kind": "unique",
+   "base": "axe"
+  },
+  {
+   "name": "Bladebone",
+   "kind": "unique",
+   "base": "2ax"
+  },
+  {
+   "name": "Skull Splitter",
+   "kind": "unique",
+   "base": "mpi",
+   "aliases": [
+    "Mindrend"
+   ]
+  },
+  {
+   "name": "Rakescar",
+   "kind": "unique",
+   "base": "wax"
+  },
+  {
+   "name": "Axe of Fechmar",
+   "kind": "unique",
+   "base": "lax",
+   "aliases": [
+    "Fechmars Axe"
+   ]
+  },
+  {
+   "name": "Goreshovel",
+   "kind": "unique",
+   "base": "bax"
+  },
+  {
+   "name": "The Chieftain",
+   "kind": "unique",
+   "base": "btx",
+   "aliases": [
+    "The Chieftan"
+   ]
+  },
+  {
+   "name": "Brainhew",
+   "kind": "unique",
+   "base": "gax"
+  },
+  {
+   "name": "Humongous",
+   "kind": "unique",
+   "base": "gix",
+   "aliases": [
+    "The Humongous"
+   ]
+  },
+  {
+   "name": "Torch of Iro",
+   "kind": "unique",
+   "base": "wnd",
+   "aliases": [
+    "Iros Torch"
+   ]
+  },
+  {
+   "name": "Maelstrom",
+   "kind": "unique",
+   "base": "ywn",
+   "aliases": [
+    "Maelstromwrath"
+   ]
+  },
+  {
+   "name": "Gravenspine",
+   "kind": "unique",
+   "base": "bwn"
+  },
+  {
+   "name": "Ume's Lament",
+   "kind": "unique",
+   "base": "gwn",
+   "aliases": [
+    "Umes Lament"
+   ]
+  },
+  {
+   "name": "Felloak",
+   "kind": "unique",
+   "base": "clb"
+  },
+  {
+   "name": "Knell Striker",
+   "kind": "unique",
+   "base": "scp"
+  },
+  {
+   "name": "Rusthandle",
+   "kind": "unique",
+   "base": "gsc"
+  },
+  {
+   "name": "Stormeye",
+   "kind": "unique",
+   "base": "wsp"
+  },
+  {
+   "name": "Stoutnail",
+   "kind": "unique",
+   "base": "spc"
+  },
+  {
+   "name": "Crushflange",
+   "kind": "unique",
+   "base": "mac"
+  },
+  {
+   "name": "Bloodrise",
+   "kind": "unique",
+   "base": "mst"
+  },
+  {
+   "name": "The General's Tan Do Li Ga",
+   "kind": "unique",
+   "base": "fla",
+   "aliases": [
+    "The Generals Tan Do Li Ga"
+   ]
+  },
+  {
+   "name": "Ironstone",
+   "kind": "unique",
+   "base": "whm"
+  },
+  {
+   "name": "Bonesnap",
+   "kind": "unique",
+   "base": "mau",
+   "aliases": [
+    "Bonesob"
+   ]
+  },
+  {
+   "name": "Steeldriver",
+   "kind": "unique",
+   "base": "gma"
+  },
+  {
+   "name": "Rixot's Keen",
+   "kind": "unique",
+   "base": "ssd",
+   "aliases": [
+    "Rixots Keen"
+   ]
+  },
+  {
+   "name": "Blood Crescent",
+   "kind": "unique",
+   "base": "scm"
+  },
+  {
+   "name": "Skewer of Krintiz",
+   "kind": "unique",
+   "base": "sbr",
+   "aliases": [
+    "Krintizs Skewer"
+   ]
+  },
+  {
+   "name": "Gleamscythe",
+   "kind": "unique",
+   "base": "flc"
+  },
+  {
+   "name": "Azurewrath",
+   "kind": "unique",
+   "base": "crs"
+  },
+  {
+   "name": "Griswold's Edge",
+   "kind": "unique",
+   "base": "bsd",
+   "aliases": [
+    "Griswolds Edge"
+   ]
+  },
+  {
+   "name": "Hellplague",
+   "kind": "unique",
+   "base": "lsd"
+  },
+  {
+   "name": "Culwen's Point",
+   "kind": "unique",
+   "base": "wsd",
+   "aliases": [
+    "Culwens Point"
+   ]
+  },
+  {
+   "name": "Shadowfang",
+   "kind": "unique",
+   "base": "2hs"
+  },
+  {
+   "name": "Soulflay",
+   "kind": "unique",
+   "base": "clm"
+  },
+  {
+   "name": "Kinemil's Awl",
+   "kind": "unique",
+   "base": "gis",
+   "aliases": [
+    "Kinemils Awl"
+   ]
+  },
+  {
+   "name": "Blacktongue",
+   "kind": "unique",
+   "base": "bsw"
+  },
+  {
+   "name": "Ripsaw",
+   "kind": "unique",
+   "base": "flb"
+  },
+  {
+   "name": "The Patriarch",
+   "kind": "unique",
+   "base": "gsd"
+  },
+  {
+   "name": "Gull",
+   "kind": "unique",
+   "base": "dgr"
+  },
+  {
+   "name": "The Diggler",
+   "kind": "unique",
+   "base": "dir"
+  },
+  {
+   "name": "The Jade Tan Do",
+   "kind": "unique",
+   "base": "kri"
+  },
+  {
+   "name": "Spectral Shard",
+   "kind": "unique",
+   "base": "bld",
+   "aliases": [
+    "Irices Shard"
+   ]
+  },
+  {
+   "name": "The Dragon Chang",
+   "kind": "unique",
+   "base": "spr"
+  },
+  {
+   "name": "Razortine",
+   "kind": "unique",
+   "base": "tri"
+  },
+  {
+   "name": "Bloodthief",
+   "kind": "unique",
+   "base": "brn"
+  },
+  {
+   "name": "Lance of Yaggai",
+   "kind": "unique",
+   "base": "spt"
+  },
+  {
+   "name": "The Tannr Gorerod",
+   "kind": "unique",
+   "base": "pik"
+  },
+  {
+   "name": "Dimoak's Hew",
+   "kind": "unique",
+   "base": "bar",
+   "aliases": [
+    "Dimoaks Hew"
+   ]
+  },
+  {
+   "name": "Steelgoad",
+   "kind": "unique",
+   "base": "vou"
+  },
+  {
+   "name": "Soul Harvest",
+   "kind": "unique",
+   "base": "scy"
+  },
+  {
+   "name": "The Battlebranch",
+   "kind": "unique",
+   "base": "pax"
+  },
+  {
+   "name": "Woestave",
+   "kind": "unique",
+   "base": "hal"
+  },
+  {
+   "name": "The Grim Reaper",
+   "kind": "unique",
+   "base": "wsc"
+  },
+  {
+   "name": "Bane Ash",
+   "kind": "unique",
+   "base": "sst"
+  },
+  {
+   "name": "Serpent Lord",
+   "kind": "unique",
+   "base": "lst"
+  },
+  {
+   "name": "Spire of Lazarus",
+   "kind": "unique",
+   "base": "cst",
+   "aliases": [
+    "Lazarus Spire"
+   ]
+  },
+  {
+   "name": "The Salamander",
+   "kind": "unique",
+   "base": "bst"
+  },
+  {
+   "name": "The Iron Jang Bong",
+   "kind": "unique",
+   "base": "wst"
+  },
+  {
+   "name": "Pluckeye",
+   "kind": "unique",
+   "base": "sbw"
+  },
+  {
+   "name": "Witherstring",
+   "kind": "unique",
+   "base": "hbw"
+  },
+  {
+   "name": "Raven Claw",
+   "kind": "unique",
+   "base": "lbw",
+   "aliases": [
+    "Rimeraven"
+   ]
+  },
+  {
+   "name": "Rogue's Bow",
+   "kind": "unique",
+   "base": "cbw",
+   "aliases": [
+    "Piercerib"
+   ]
+  },
+  {
+   "name": "Stormstrike",
+   "kind": "unique",
+   "base": "sbb",
+   "aliases": [
+    "Pullspite"
+   ]
+  },
+  {
+   "name": "Wizendraw",
+   "kind": "unique",
+   "base": "lbb"
+  },
+  {
+   "name": "Hellclap",
+   "kind": "unique",
+   "base": "swb"
+  },
+  {
+   "name": "Blastbark",
+   "kind": "unique",
+   "base": "lwb"
+  },
+  {
+   "name": "Leadcrow",
+   "kind": "unique",
+   "base": "lxb"
+  },
+  {
+   "name": "Ichorsting",
+   "kind": "unique",
+   "base": "mxb"
+  },
+  {
+   "name": "Hellcast",
+   "kind": "unique",
+   "base": "hxb"
+  },
+  {
+   "name": "Doomslinger",
+   "kind": "unique",
+   "base": "rxb",
+   "aliases": [
+    "Doomspittle"
+   ]
+  },
+  {
+   "name": "Biggin's Bonnet",
+   "kind": "unique",
+   "base": "cap",
+   "aliases": [
+    "War Bonnet"
+   ]
+  },
+  {
+   "name": "Tarnhelm",
+   "kind": "unique",
+   "base": "skp"
+  },
+  {
+   "name": "Coif of Glory",
+   "kind": "unique",
+   "base": "hlm"
+  },
+  {
+   "name": "Duskdeep",
+   "kind": "unique",
+   "base": "fhl"
+  },
+  {
+   "name": "Wormskull",
+   "kind": "unique",
+   "base": "bhm"
+  },
+  {
+   "name": "Howltusk",
+   "kind": "unique",
+   "base": "ghm"
+  },
+  {
+   "name": "Undead Crown",
+   "kind": "unique",
+   "base": "crn"
+  },
+  {
+   "name": "The Face of Horror",
+   "kind": "unique",
+   "base": "msk"
+  },
+  {
+   "name": "Greyform",
+   "kind": "unique",
+   "base": "qui"
+  },
+  {
+   "name": "Blinkbat's Form",
+   "kind": "unique",
+   "base": "lea",
+   "aliases": [
+    "Blinkbats Form"
+   ]
+  },
+  {
+   "name": "The Centurion",
+   "kind": "unique",
+   "base": "hla"
+  },
+  {
+   "name": "Twitchthroe",
+   "kind": "unique",
+   "base": "stu"
+  },
+  {
+   "name": "Darkglow",
+   "kind": "unique",
+   "base": "rng"
+  },
+  {
+   "name": "Hawkmail",
+   "kind": "unique",
+   "base": "scl"
+  },
+  {
+   "name": "Sparking Mail",
+   "kind": "unique",
+   "base": "chn"
+  },
+  {
+   "name": "Venom Ward",
+   "kind": "unique",
+   "base": "brs",
+   "aliases": [
+    "Venomsward"
+   ]
+  },
+  {
+   "name": "Iceblink",
+   "kind": "unique",
+   "base": "spl"
+  },
+  {
+   "name": "Boneflesh",
+   "kind": "unique",
+   "base": "plt"
+  },
+  {
+   "name": "Rockfleece",
+   "kind": "unique",
+   "base": "fld"
+  },
+  {
+   "name": "Rattlecage",
+   "kind": "unique",
+   "base": "gth"
+  },
+  {
+   "name": "Goldskin",
+   "kind": "unique",
+   "base": "ful"
+  },
+  {
+   "name": "Silks of the Victor",
+   "kind": "unique",
+   "base": "aar",
+   "aliases": [
+    "Victors Silk"
+   ]
+  },
+  {
+   "name": "Heavenly Garb",
+   "kind": "unique",
+   "base": "ltp"
+  },
+  {
+   "name": "Pelta Lunata",
+   "kind": "unique",
+   "base": "buc"
+  },
+  {
+   "name": "Umbral Disk",
+   "kind": "unique",
+   "base": "sml"
+  },
+  {
+   "name": "Stormguild",
+   "kind": "unique",
+   "base": "lrg"
+  },
+  {
+   "name": "Wall of the Eyeless",
+   "kind": "unique",
+   "base": "bsh"
+  },
+  {
+   "name": "Swordback Hold",
+   "kind": "unique",
+   "base": "spk"
+  },
+  {
+   "name": "Steelclash",
+   "kind": "unique",
+   "base": "kit"
+  },
+  {
+   "name": "Bverrit Keep",
+   "kind": "unique",
+   "base": "tow"
+  },
+  {
+   "name": "The Ward",
+   "kind": "unique",
+   "base": "gts"
+  },
+  {
+   "name": "The Hand of Broc",
+   "kind": "unique",
+   "base": "lgl"
+  },
+  {
+   "name": "Bloodfist",
+   "kind": "unique",
+   "base": "vgl"
+  },
+  {
+   "name": "Chance Guards",
+   "kind": "unique",
+   "base": "mgl"
+  },
+  {
+   "name": "Magefist",
+   "kind": "unique",
+   "base": "tgl"
+  },
+  {
+   "name": "Frostburn",
+   "kind": "unique",
+   "base": "hgl"
+  },
+  {
+   "name": "Hotspur",
+   "kind": "unique",
+   "base": "lbt"
+  },
+  {
+   "name": "Gorefoot",
+   "kind": "unique",
+   "base": "vbt"
+  },
+  {
+   "name": "Treads of Cthon",
+   "kind": "unique",
+   "base": "mbt"
+  },
+  {
+   "name": "Goblin Toe",
+   "kind": "unique",
+   "base": "tbt"
+  },
+  {
+   "name": "Tearhaunch",
+   "kind": "unique",
+   "base": "hbt"
+  },
+  {
+   "name": "Lenymo",
+   "kind": "unique",
+   "base": "lbl",
+   "aliases": [
+    "Lenyms Cord"
+   ]
+  },
+  {
+   "name": "Snakecord",
+   "kind": "unique",
+   "base": "vbl"
+  },
+  {
+   "name": "Nightsmoke",
+   "kind": "unique",
+   "base": "mbl"
+  },
+  {
+   "name": "Goldwrap",
+   "kind": "unique",
+   "base": "tbl"
+  },
+  {
+   "name": "Bladebuckle",
+   "kind": "unique",
+   "base": "hbl"
+  },
+  {
+   "name": "Nokozan Relic",
+   "kind": "unique",
+   "base": "amu"
+  },
+  {
+   "name": "The Eye of Etlich",
+   "kind": "unique",
+   "base": "amu"
+  },
+  {
+   "name": "The Mahim-Oak Curio",
+   "kind": "unique",
+   "base": "amu"
+  },
+  {
+   "name": "Nagelring",
+   "kind": "unique",
+   "base": "rin"
+  },
+  {
+   "name": "Manald Heal",
+   "kind": "unique",
+   "base": "rin"
+  },
+  {
+   "name": "The Stone of Jordan",
+   "kind": "unique",
+   "base": "rin"
+  },
+  {
+   "name": "Amulet of the Viper",
+   "kind": "unique",
+   "base": "vip"
+  },
+  {
+   "name": "Staff of Kings",
+   "kind": "unique",
+   "base": "msf"
+  },
+  {
+   "name": "Coldkill",
+   "kind": "unique",
+   "base": "9ha"
+  },
+  {
+   "name": "Butcher's Pupil",
+   "kind": "unique",
+   "base": "9ax"
+  },
+  {
+   "name": "Islestrike",
+   "kind": "unique",
+   "base": "92a"
+  },
+  {
+   "name": "Pompeii's Wrath",
+   "kind": "unique",
+   "base": "9mp",
+   "aliases": [
+    "Pompe's Wrath"
+   ]
+  },
+  {
+   "name": "Guardian Naga",
+   "kind": "unique",
+   "base": "9wa"
+  },
+  {
+   "name": "Warlord's Trust",
+   "kind": "unique",
+   "base": "9la"
+  },
+  {
+   "name": "Spellsteel",
+   "kind": "unique",
+   "base": "9ba"
+  },
+  {
+   "name": "Stormrider",
+   "kind": "unique",
+   "base": "9bt"
+  },
+  {
+   "name": "Boneslayer Blade",
+   "kind": "unique",
+   "base": "9ga"
+  },
+  {
+   "name": "The Minotaur",
+   "kind": "unique",
+   "base": "9gi",
+   "aliases": [
+    "The Minataur"
+   ]
+  },
+  {
+   "name": "Suicide Branch",
+   "kind": "unique",
+   "base": "9wn"
+  },
+  {
+   "name": "Carin Shard",
+   "kind": "unique",
+   "base": "9yw"
+  },
+  {
+   "name": "Arm of King Leoric",
+   "kind": "unique",
+   "base": "9bw"
+  },
+  {
+   "name": "Blackhand Key",
+   "kind": "unique",
+   "base": "9gw"
+  },
+  {
+   "name": "Dark Clan Crusher",
+   "kind": "unique",
+   "base": "9cl"
+  },
+  {
+   "name": "Zakarum's Hand",
+   "kind": "unique",
+   "base": "9sc"
+  },
+  {
+   "name": "The Fetid Sprinkler",
+   "kind": "unique",
+   "base": "9qs"
+  },
+  {
+   "name": "Hand of Blessed Light",
+   "kind": "unique",
+   "base": "9ws"
+  },
+  {
+   "name": "Fleshrender",
+   "kind": "unique",
+   "base": "9sp"
+  },
+  {
+   "name": "Sureshrill Frost",
+   "kind": "unique",
+   "base": "9ma"
+  },
+  {
+   "name": "Moonfall",
+   "kind": "unique",
+   "base": "9mt"
+  },
+  {
+   "name": "Baezil's Vortex",
+   "kind": "unique",
+   "base": "9fl"
+  },
+  {
+   "name": "Earthshaker",
+   "kind": "unique",
+   "base": "9wh"
+  },
+  {
+   "name": "Bloodtree Stump",
+   "kind": "unique",
+   "base": "9m9"
+  },
+  {
+   "name": "The Gavel of Pain",
+   "kind": "unique",
+   "base": "9gm"
+  },
+  {
+   "name": "Bloodletter",
+   "kind": "unique",
+   "base": "9ss"
+  },
+  {
+   "name": "Coldsteel Eye",
+   "kind": "unique",
+   "base": "9sm"
+  },
+  {
+   "name": "Hexfire",
+   "kind": "unique",
+   "base": "9sb"
+  },
+  {
+   "name": "Blade of Ali Baba",
+   "kind": "unique",
+   "base": "9fc"
+  },
+  {
+   "name": "Ginther's Rift",
+   "kind": "unique",
+   "base": "9cr"
+  },
+  {
+   "name": "Headstriker",
+   "kind": "unique",
+   "base": "9bs"
+  },
+  {
+   "name": "Plague Bearer",
+   "kind": "unique",
+   "base": "9ls"
+  },
+  {
+   "name": "The Atlantean",
+   "kind": "unique",
+   "base": "9wd",
+   "aliases": [
+    "The Atlantian"
+   ]
+  },
+  {
+   "name": "Crainte Vomir",
+   "kind": "unique",
+   "base": "92h"
+  },
+  {
+   "name": "Bing Sz Wang",
+   "kind": "unique",
+   "base": "9cm"
+  },
+  {
+   "name": "The Vile Husk",
+   "kind": "unique",
+   "base": "9gs"
+  },
+  {
+   "name": "Cloudcrack",
+   "kind": "unique",
+   "base": "9b9"
+  },
+  {
+   "name": "Todesfaelle Flamme",
+   "kind": "unique",
+   "base": "9fb"
+  },
+  {
+   "name": "Swordguard",
+   "kind": "unique",
+   "base": "9gd"
+  },
+  {
+   "name": "Spineripper",
+   "kind": "unique",
+   "base": "9dg"
+  },
+  {
+   "name": "Heart Carver",
+   "kind": "unique",
+   "base": "9di"
+  },
+  {
+   "name": "Blackbog's Sharp",
+   "kind": "unique",
+   "base": "9kr"
+  },
+  {
+   "name": "Stormspike",
+   "kind": "unique",
+   "base": "9bl"
+  },
+  {
+   "name": "The Impaler",
+   "kind": "unique",
+   "base": "9sr"
+  },
+  {
+   "name": "Kelpie Snare",
+   "kind": "unique",
+   "base": "9tr"
+  },
+  {
+   "name": "Soulfeast Tine",
+   "kind": "unique",
+   "base": "9br"
+  },
+  {
+   "name": "Hone Sundan",
+   "kind": "unique",
+   "base": "9st"
+  },
+  {
+   "name": "Spire of Honor",
+   "kind": "unique",
+   "base": "9p9"
+  },
+  {
+   "name": "The Meat Scraper",
+   "kind": "unique",
+   "base": "9b7"
+  },
+  {
+   "name": "Blackleach Blade",
+   "kind": "unique",
+   "base": "9vo"
+  },
+  {
+   "name": "Athena's Wrath",
+   "kind": "unique",
+   "base": "9s8"
+  },
+  {
+   "name": "Pierre Tombale Couant",
+   "kind": "unique",
+   "base": "9pa"
+  },
+  {
+   "name": "Husoldal Evo",
+   "kind": "unique",
+   "base": "9h9"
+  },
+  {
+   "name": "Grim's Burning Dead",
+   "kind": "unique",
+   "base": "9wc"
+  },
+  {
+   "name": "Razorswitch",
+   "kind": "unique",
+   "base": "8ss"
+  },
+  {
+   "name": "Ribcracker",
+   "kind": "unique",
+   "base": "8ls"
+  },
+  {
+   "name": "Chromatic Ire",
+   "kind": "unique",
+   "base": "8cs"
+  },
+  {
+   "name": "Warpspear",
+   "kind": "unique",
+   "base": "8bs"
+  },
+  {
+   "name": "Skull Collector",
+   "kind": "unique",
+   "base": "8ws",
+   "aliases": [
+    "Skullcollector"
+   ]
+  },
+  {
+   "name": "Skystrike",
+   "kind": "unique",
+   "base": "8sb"
+  },
+  {
+   "name": "Riphook",
+   "kind": "unique",
+   "base": "8hb"
+  },
+  {
+   "name": "Kuko Shakaku",
+   "kind": "unique",
+   "base": "8lb"
+  },
+  {
+   "name": "Endlesshail",
+   "kind": "unique",
+   "base": "8cb"
+  },
+  {
+   "name": "Witchwild String",
+   "kind": "unique",
+   "base": "8s8",
+   "aliases": [
+    "Whichwild String"
+   ]
+  },
+  {
+   "name": "Cliffkiller",
+   "kind": "unique",
+   "base": "8l8"
+  },
+  {
+   "name": "Magewrath",
+   "kind": "unique",
+   "base": "8sw"
+  },
+  {
+   "name": "Goldstrike Arch",
+   "kind": "unique",
+   "base": "8lw",
+   "aliases": [
+    "Godstrike Arch"
+   ]
+  },
+  {
+   "name": "Langer Briser",
+   "kind": "unique",
+   "base": "8lx"
+  },
+  {
+   "name": "Pus Spitter",
+   "kind": "unique",
+   "base": "8mx",
+   "aliases": [
+    "Pus Spiter"
+   ]
+  },
+  {
+   "name": "Buriza-Do Kyanon",
+   "kind": "unique",
+   "base": "8hx"
+  },
+  {
+   "name": "Demon Machine",
+   "kind": "unique",
+   "base": "8rx"
+  },
+  {
+   "name": "Peasant Crown",
+   "kind": "unique",
+   "base": "xap",
+   "aliases": [
+    "Peasent Crown"
+   ]
+  },
+  {
+   "name": "Rockstopper",
+   "kind": "unique",
+   "base": "xkp"
+  },
+  {
+   "name": "Stealskull",
+   "kind": "unique",
+   "base": "xlm"
+  },
+  {
+   "name": "Darksight Helm",
+   "kind": "unique",
+   "base": "xhl"
+  },
+  {
+   "name": "Valkyrie Wing",
+   "kind": "unique",
+   "base": "xhm",
+   "aliases": [
+    "Valkiry Wing"
+   ]
+  },
+  {
+   "name": "Crown of Thieves",
+   "kind": "unique",
+   "base": "xrn"
+  },
+  {
+   "name": "Blackhorn's Face",
+   "kind": "unique",
+   "base": "xsk"
+  },
+  {
+   "name": "Vampire Gaze",
+   "kind": "unique",
+   "base": "xh9",
+   "aliases": [
+    "Vampiregaze"
+   ]
+  },
+  {
+   "name": "The Spirit Shroud",
+   "kind": "unique",
+   "base": "xui"
+  },
+  {
+   "name": "Skin of the Vipermagi",
+   "kind": "unique",
+   "base": "xea"
+  },
+  {
+   "name": "Skin of the Flayed One",
+   "kind": "unique",
+   "base": "xla",
+   "aliases": [
+    "Skin of the Flayerd One"
+   ]
+  },
+  {
+   "name": "Iron Pelt",
+   "kind": "unique",
+   "base": "xtu",
+   "aliases": [
+    "Ironpelt"
+   ]
+  },
+  {
+   "name": "Spirit Forge",
+   "kind": "unique",
+   "base": "xng",
+   "aliases": [
+    "Spiritforge"
+   ]
+  },
+  {
+   "name": "Crow Caw",
+   "kind": "unique",
+   "base": "xcl"
+  },
+  {
+   "name": "Shaftstop",
+   "kind": "unique",
+   "base": "xhn"
+  },
+  {
+   "name": "Duriel's Shell",
+   "kind": "unique",
+   "base": "xrs"
+  },
+  {
+   "name": "Skullder's Ire",
+   "kind": "unique",
+   "base": "xpl"
+  },
+  {
+   "name": "Guardian Angel",
+   "kind": "unique",
+   "base": "xlt"
+  },
+  {
+   "name": "Toothrow",
+   "kind": "unique",
+   "base": "xld"
+  },
+  {
+   "name": "Atma's Wail",
+   "kind": "unique",
+   "base": "xth"
+  },
+  {
+   "name": "Black Hades",
+   "kind": "unique",
+   "base": "xul"
+  },
+  {
+   "name": "Corpsemourn",
+   "kind": "unique",
+   "base": "xar"
+  },
+  {
+   "name": "Que-Hegan's Wisdom",
+   "kind": "unique",
+   "base": "xtp",
+   "aliases": [
+    "Que-Hegan's Wisdon"
+   ]
+  },
+  {
+   "name": "Visceratuant",
+   "kind": "unique",
+   "base": "xuc"
+  },
+  {
+   "name": "Moser's Blessed Circle",
+   "kind": "unique",
+   "base": "xml",
+   "aliases": [
+    "Mosers Blessed Circle"
+   ]
+  },
+  {
+   "name": "Stormchaser",
+   "kind": "unique",
+   "base": "xrg"
+  },
+  {
+   "name": "Tiamat's Rebuke",
+   "kind": "unique",
+   "base": "xit"
+  },
+  {
+   "name": "Gerke's Sanctuary",
+   "kind": "unique",
+   "base": "xow",
+   "aliases": [
+    "Kerke's Sanctuary"
+   ]
+  },
+  {
+   "name": "Radament's Sphere",
+   "kind": "unique",
+   "base": "xts",
+   "aliases": [
+    "Radimant's Sphere"
+   ]
+  },
+  {
+   "name": "Lidless Wall",
+   "kind": "unique",
+   "base": "xsh"
+  },
+  {
+   "name": "Lance Guard",
+   "kind": "unique",
+   "base": "xpk"
+  },
+  {
+   "name": "Venom Grip",
+   "kind": "unique",
+   "base": "xlg"
+  },
+  {
+   "name": "Gravepalm",
+   "kind": "unique",
+   "base": "xvg"
+  },
+  {
+   "name": "Ghoulhide",
+   "kind": "unique",
+   "base": "xmg"
+  },
+  {
+   "name": "Lava Gout",
+   "kind": "unique",
+   "base": "xtg",
+   "aliases": [
+    "Lavagout"
+   ]
+  },
+  {
+   "name": "Hellmouth",
+   "kind": "unique",
+   "base": "xhg"
+  },
+  {
+   "name": "Infernostride",
+   "kind": "unique",
+   "base": "xlb"
+  },
+  {
+   "name": "Waterwalk",
+   "kind": "unique",
+   "base": "xvb"
+  },
+  {
+   "name": "Silkweave",
+   "kind": "unique",
+   "base": "xmb"
+  },
+  {
+   "name": "War Traveler",
+   "kind": "unique",
+   "base": "xtb",
+   "aliases": [
+    "Wartraveler"
+   ]
+  },
+  {
+   "name": "Gore Rider",
+   "kind": "unique",
+   "base": "xhb",
+   "aliases": [
+    "Gorerider"
+   ]
+  },
+  {
+   "name": "String of Ears",
+   "kind": "unique",
+   "base": "zlb"
+  },
+  {
+   "name": "Razortail",
+   "kind": "unique",
+   "base": "zvb"
+  },
+  {
+   "name": "Gloom's Trap",
+   "kind": "unique",
+   "base": "zmb",
+   "aliases": [
+    "Gloomstrap"
+   ]
+  },
+  {
+   "name": "Snowclash",
+   "kind": "unique",
+   "base": "ztb"
+  },
+  {
+   "name": "Thundergod's Vigor",
+   "kind": "unique",
+   "base": "zhb",
+   "aliases": [
+    "Thudergod's Vigor"
+   ]
+  },
+  {
+   "name": "Harlequin Crest",
+   "kind": "unique",
+   "base": "uap"
+  },
+  {
+   "name": "Veil of Steel",
+   "kind": "unique",
+   "base": "uhm"
+  },
+  {
+   "name": "The Gladiator's Bane",
+   "kind": "unique",
+   "base": "utu"
+  },
+  {
+   "name": "Arkaine's Valor",
+   "kind": "unique",
+   "base": "upl"
+  },
+  {
+   "name": "Blackoak Shield",
+   "kind": "unique",
+   "base": "uml"
+  },
+  {
+   "name": "Stormshield",
+   "kind": "unique",
+   "base": "uit"
+  },
+  {
+   "name": "Hellslayer",
+   "kind": "unique",
+   "base": "7bt"
+  },
+  {
+   "name": "Messerschmidt's Reaver",
+   "kind": "unique",
+   "base": "7ga"
+  },
+  {
+   "name": "Baranar's Star",
+   "kind": "unique",
+   "base": "7mt"
+  },
+  {
+   "name": "Schaefer's Hammer",
+   "kind": "unique",
+   "base": "7wh"
+  },
+  {
+   "name": "The Cranium Basher",
+   "kind": "unique",
+   "base": "7gm"
+  },
+  {
+   "name": "Lightsabre",
+   "kind": "unique",
+   "base": "7cr"
+  },
+  {
+   "name": "Doombringer",
+   "kind": "unique",
+   "base": "7b7"
+  },
+  {
+   "name": "The Grandfather",
+   "kind": "unique",
+   "base": "7gd"
+  },
+  {
+   "name": "Wizardspike",
+   "kind": "unique",
+   "base": "7dg"
+  },
+  {
+   "name": "Constricting Ring",
+   "kind": "unique",
+   "base": "rin"
+  },
+  {
+   "name": "Stormspire",
+   "kind": "unique",
+   "base": "7wc"
+  },
+  {
+   "name": "Eaglehorn",
+   "kind": "unique",
+   "base": "6l7"
+  },
+  {
+   "name": "Windforce",
+   "kind": "unique",
+   "base": "6lw"
+  },
+  {
+   "name": "Bul-Kathos' Wedding Band",
+   "kind": "unique",
+   "base": "rin",
+   "aliases": [
+    "Bul Katho's Wedding Band"
+   ]
+  },
+  {
+   "name": "The Cat's Eye",
+   "kind": "unique",
+   "base": "amu"
+  },
+  {
+   "name": "The Rising Sun",
+   "kind": "unique",
+   "base": "amu"
+  },
+  {
+   "name": "Crescent Moon",
+   "kind": "unique",
+   "base": "amu"
+  },
+  {
+   "name": "Mara's Kaleidoscope",
+   "kind": "unique",
+   "base": "amu"
+  },
+  {
+   "name": "Atma's Scarab",
+   "kind": "unique",
+   "base": "amu"
+  },
+  {
+   "name": "Dwarf Star",
+   "kind": "unique",
+   "base": "rin"
+  },
+  {
+   "name": "Raven Frost",
+   "kind": "unique",
+   "base": "rin"
+  },
+  {
+   "name": "Highlord's Wrath",
+   "kind": "unique",
+   "base": "amu"
+  },
+  {
+   "name": "Saracen's Chance",
+   "kind": "unique",
+   "base": "amu"
+  },
+  {
+   "name": "Arreat's Face",
+   "kind": "unique",
+   "base": "baa"
+  },
+  {
+   "name": "Homunculus",
+   "kind": "unique",
+   "base": "nea"
+  },
+  {
+   "name": "Titan's Revenge",
+   "kind": "unique",
+   "base": "ama"
+  },
+  {
+   "name": "Lycander's Aim",
+   "kind": "unique",
+   "base": "am7"
+  },
+  {
+   "name": "Lycander's Flank",
+   "kind": "unique",
+   "base": "am9"
+  },
+  {
+   "name": "The Oculus",
+   "kind": "unique",
+   "base": "oba"
+  },
+  {
+   "name": "Herald of Zakarum",
+   "kind": "unique",
+   "base": "pa9"
+  },
+  {
+   "name": "Bartuc's Cut-Throat",
+   "kind": "unique",
+   "base": "9tw",
+   "aliases": [
+    "Cutthroat1"
+   ]
+  },
+  {
+   "name": "Jalal's Mane",
+   "kind": "unique",
+   "base": "dra"
+  },
+  {
+   "name": "The Scalper",
+   "kind": "unique",
+   "base": "9ta"
+  },
+  {
+   "name": "Bloodmoon",
+   "kind": "unique",
+   "base": "7sb"
+  },
+  {
+   "name": "Djinn Slayer",
+   "kind": "unique",
+   "base": "7sm",
+   "aliases": [
+    "Djinnslayer"
+   ]
+  },
+  {
+   "name": "Deathbit",
+   "kind": "unique",
+   "base": "9tk"
+  },
+  {
+   "name": "Warshrike",
+   "kind": "unique",
+   "base": "7bk"
+  },
+  {
+   "name": "Gut Siphon",
+   "kind": "unique",
+   "base": "6rx",
+   "aliases": [
+    "Gutsiphon"
+   ]
+  },
+  {
+   "name": "Razor's Edge",
+   "kind": "unique",
+   "base": "7ha",
+   "aliases": [
+    "Razoredge"
+   ]
+  },
+  {
+   "name": "Demon Limb",
+   "kind": "unique",
+   "base": "7sp",
+   "aliases": [
+    "Demonlimb"
+   ]
+  },
+  {
+   "name": "Steel Shade",
+   "kind": "unique",
+   "base": "ulm",
+   "aliases": [
+    "Steelshade"
+   ]
+  },
+  {
+   "name": "Tomb Reaver",
+   "kind": "unique",
+   "base": "7pa"
+  },
+  {
+   "name": "Death's Web",
+   "kind": "unique",
+   "base": "7gw",
+   "aliases": [
+    "Deaths's Web"
+   ]
+  },
+  {
+   "name": "Nature's Peace",
+   "kind": "unique",
+   "base": "rin"
+  },
+  {
+   "name": "Seraph's Hymn",
+   "kind": "unique",
+   "base": "amu"
+  },
+  {
+   "name": "Fleshripper",
+   "kind": "unique",
+   "base": "7kr"
+  },
+  {
+   "name": "Horizon's Tornado",
+   "kind": "unique",
+   "base": "7fl"
+  },
+  {
+   "name": "Stone Crusher",
+   "kind": "unique",
+   "base": "7wh"
+  },
+  {
+   "name": "Jade Talon",
+   "kind": "unique",
+   "base": "7wb",
+   "aliases": [
+    "Jadetalon"
+   ]
+  },
+  {
+   "name": "Shadow Dancer",
+   "kind": "unique",
+   "base": "uhb",
+   "aliases": [
+    "Shadowdancer"
+   ]
+  },
+  {
+   "name": "Cerebus' Bite",
+   "kind": "unique",
+   "base": "drb",
+   "aliases": [
+    "Cerebus"
+   ]
+  },
+  {
+   "name": "Tyrael's Might",
+   "kind": "unique",
+   "base": "uar"
+  },
+  {
+   "name": "Soul Drainer",
+   "kind": "unique",
+   "base": "umg",
+   "aliases": [
+    "Souldrain"
+   ]
+  },
+  {
+   "name": "Rune Master",
+   "kind": "unique",
+   "base": "72a",
+   "aliases": [
+    "Runemaster"
+   ]
+  },
+  {
+   "name": "Death Cleaver",
+   "kind": "unique",
+   "base": "7wa",
+   "aliases": [
+    "Deathcleaver"
+   ]
+  },
+  {
+   "name": "Executioner's Justice",
+   "kind": "unique",
+   "base": "7gi"
+  },
+  {
+   "name": "Stoneraven",
+   "kind": "unique",
+   "base": "amd"
+  },
+  {
+   "name": "Leviathan",
+   "kind": "unique",
+   "base": "uld"
+  },
+  {
+   "name": "Wisp Projector",
+   "kind": "unique",
+   "base": "rin",
+   "aliases": [
+    "Wisp"
+   ]
+  },
+  {
+   "name": "Gargoyle's Bite",
+   "kind": "unique",
+   "base": "7ts"
+  },
+  {
+   "name": "Lacerator",
+   "kind": "unique",
+   "base": "7b8"
+  },
+  {
+   "name": "Mang Song's Lesson",
+   "kind": "unique",
+   "base": "6ws"
+  },
+  {
+   "name": "Viperfork",
+   "kind": "unique",
+   "base": "7br"
+  },
+  {
+   "name": "Ethereal Edge",
+   "kind": "unique",
+   "base": "7ba"
+  },
+  {
+   "name": "Demonhorn's Edge",
+   "kind": "unique",
+   "base": "bad"
+  },
+  {
+   "name": "The Reaper's Toll",
+   "kind": "unique",
+   "base": "7s8"
+  },
+  {
+   "name": "Spirit Keeper",
+   "kind": "unique",
+   "base": "drd",
+   "aliases": [
+    "Spiritkeeper"
+   ]
+  },
+  {
+   "name": "Hellrack",
+   "kind": "unique",
+   "base": "6hx"
+  },
+  {
+   "name": "Alma Negra",
+   "kind": "unique",
+   "base": "pac"
+  },
+  {
+   "name": "Darkforce Spawn",
+   "kind": "unique",
+   "base": "nef",
+   "aliases": [
+    "Darkforge Spawn"
+   ]
+  },
+  {
+   "name": "Widowmaker",
+   "kind": "unique",
+   "base": "6sw"
+  },
+  {
+   "name": "Blood Raven's Charge",
+   "kind": "unique",
+   "base": "amb",
+   "aliases": [
+    "Bloodraven's Charge"
+   ]
+  },
+  {
+   "name": "Ghostflame",
+   "kind": "unique",
+   "base": "7bl"
+  },
+  {
+   "name": "Shadow Killer",
+   "kind": "unique",
+   "base": "7cs",
+   "aliases": [
+    "Shadowkiller"
+   ]
+  },
+  {
+   "name": "Gimmershred",
+   "kind": "unique",
+   "base": "7ta"
+  },
+  {
+   "name": "Griffon's Eye",
+   "kind": "unique",
+   "base": "ci3"
+  },
+  {
+   "name": "Windhammer",
+   "kind": "unique",
+   "base": "7m7"
+  },
+  {
+   "name": "Thunderstroke",
+   "kind": "unique",
+   "base": "amf"
+  },
+  {
+   "name": "Demon's Arch",
+   "kind": "unique",
+   "base": "7s7"
+  },
+  {
+   "name": "Boneflame",
+   "kind": "unique",
+   "base": "nee"
+  },
+  {
+   "name": "Steel Pillar",
+   "kind": "unique",
+   "base": "7p7",
+   "aliases": [
+    "Steelpillar"
+   ]
+  },
+  {
+   "name": "Nightwing's Veil",
+   "kind": "unique",
+   "base": "uhm"
+  },
+  {
+   "name": "Crown of Ages",
+   "kind": "unique",
+   "base": "urn"
+  },
+  {
+   "name": "Andariel's Visage",
+   "kind": "unique",
+   "base": "usk"
+  },
+  {
+   "name": "Darkfear",
+   "kind": "unique",
+   "base": "ulm"
+  },
+  {
+   "name": "Dragonscale",
+   "kind": "unique",
+   "base": "pae"
+  },
+  {
+   "name": "Steel Carapace",
+   "kind": "unique",
+   "base": "uul",
+   "aliases": [
+    "Steel Carapice"
+   ]
+  },
+  {
+   "name": "Medusa's Gaze",
+   "kind": "unique",
+   "base": "uow"
+  },
+  {
+   "name": "Ravenlore",
+   "kind": "unique",
+   "base": "dre"
+  },
+  {
+   "name": "Boneshade",
+   "kind": "unique",
+   "base": "7bw"
+  },
+  {
+   "name": "Flamebellow",
+   "kind": "unique",
+   "base": "7gs"
+  },
+  {
+   "name": "Death's Fathom",
+   "kind": "unique",
+   "base": "obf",
+   "aliases": [
+    "Fathom"
+   ]
+  },
+  {
+   "name": "Wolfhowl",
+   "kind": "unique",
+   "base": "bac"
+  },
+  {
+   "name": "Spirit Ward",
+   "kind": "unique",
+   "base": "uts"
+  },
+  {
+   "name": "Kira's Guardian",
+   "kind": "unique",
+   "base": "ci2"
+  },
+  {
+   "name": "Ormus' Robes",
+   "kind": "unique",
+   "base": "uui"
+  },
+  {
+   "name": "Gheed's Fortune",
+   "kind": "unique",
+   "base": "cm3"
+  },
+  {
+   "name": "Stormlash",
+   "kind": "unique",
+   "base": "7fl"
+  },
+  {
+   "name": "Halaberd's Reign",
+   "kind": "unique",
+   "base": "bae"
+  },
+  {
+   "name": "Spike Thorn",
+   "kind": "unique",
+   "base": "upk"
+  },
+  {
+   "name": "Dracul's Grasp",
+   "kind": "unique",
+   "base": "uvg"
+  },
+  {
+   "name": "Frostwind",
+   "kind": "unique",
+   "base": "7ls"
+  },
+  {
+   "name": "Templar's Might",
+   "kind": "unique",
+   "base": "uar"
+  },
+  {
+   "name": "Eschuta's Temper",
+   "kind": "unique",
+   "base": "obc",
+   "aliases": [
+    "Eschuta's temper"
+   ]
+  },
+  {
+   "name": "Firelizard's Talons",
+   "kind": "unique",
+   "base": "7lw"
+  },
+  {
+   "name": "Sandstorm Trek",
+   "kind": "unique",
+   "base": "uvb"
+  },
+  {
+   "name": "Marrowwalk",
+   "kind": "unique",
+   "base": "umb"
+  },
+  {
+   "name": "Heaven's Light",
+   "kind": "unique",
+   "base": "7sc"
+  },
+  {
+   "name": "Arachnid Mesh",
+   "kind": "unique",
+   "base": "ulc"
+  },
+  {
+   "name": "Nosferatu's Coil",
+   "kind": "unique",
+   "base": "uvc"
+  },
+  {
+   "name": "Metalgrid",
+   "kind": "unique",
+   "base": "amu"
+  },
+  {
+   "name": "Verdungo's Hearty Cord",
+   "kind": "unique",
+   "base": "umc",
+   "aliases": [
+    "Verdugo's Hearty Cord"
+   ]
+  },
+  {
+   "name": "Carrion Wind",
+   "kind": "unique",
+   "base": "rin"
+  },
+  {
+   "name": "Giant Skull",
+   "kind": "unique",
+   "base": "uh9",
+   "aliases": [
+    "Giantskull"
+   ]
+  },
+  {
+   "name": "Astreon's Iron Ward",
+   "kind": "unique",
+   "base": "7ws",
+   "aliases": [
+    "Ironward"
+   ]
+  },
+  {
+   "name": "Annihilus",
+   "kind": "unique",
+   "base": "cm1"
+  },
+  {
+   "name": "Arioc's Needle",
+   "kind": "unique",
+   "base": "7sr"
+  },
+  {
+   "name": "Cranebeak",
+   "kind": "unique",
+   "base": "7mp"
+  },
+  {
+   "name": "Nord's Tenderizer",
+   "kind": "unique",
+   "base": "7cl"
+  },
+  {
+   "name": "Earth Shifter",
+   "kind": "unique",
+   "base": "7gm",
+   "aliases": [
+    "Earthshifter"
+   ]
+  },
+  {
+   "name": "Wraith Flight",
+   "kind": "unique",
+   "base": "7gl",
+   "aliases": [
+    "Wraithflight"
+   ]
+  },
+  {
+   "name": "Bonehew",
+   "kind": "unique",
+   "base": "7o7"
+  },
+  {
+   "name": "Ondal's Wisdom",
+   "kind": "unique",
+   "base": "6cs"
+  },
+  {
+   "name": "The Redeemer",
+   "kind": "unique",
+   "base": "7sc",
+   "aliases": [
+    "The Reedeemer"
+   ]
+  },
+  {
+   "name": "Head Hunter's Glory",
+   "kind": "unique",
+   "base": "ush",
+   "aliases": [
+    "Headhunter's Glory"
+   ]
+  },
+  {
+   "name": "Steelrend",
+   "kind": "unique",
+   "base": "uhg"
+  },
+  {
+   "name": "Rainbow Facet",
+   "kind": "unique",
+   "base": "jew"
+  },
+  {
+   "name": "Hellfire Torch",
+   "kind": "unique",
+   "base": "cm2"
+  },
+  {
+   "name": "Cold Rupture",
+   "kind": "unique",
+   "base": "cm3"
+  },
+  {
+   "name": "Flame Rift",
+   "kind": "unique",
+   "base": "cm3"
+  },
+  {
+   "name": "Crack of the Heavens",
+   "kind": "unique",
+   "base": "cm3"
+  },
+  {
+   "name": "Rotting Fissure",
+   "kind": "unique",
+   "base": "cm3"
+  },
+  {
+   "name": "Bone Break",
+   "kind": "unique",
+   "base": "cm3"
+  },
+  {
+   "name": "Black Cleft",
+   "kind": "unique",
+   "base": "cm3"
+  },
+  {
+   "name": "Ars Al'Diabolos",
+   "kind": "unique",
+   "base": "waf",
+   "aliases": [
+    "Ars Al'Diablolos"
+   ]
+  },
+  {
+   "name": "Ars Tor'Baalos",
+   "kind": "unique",
+   "base": "wae"
+  },
+  {
+   "name": "Ars Dul'Mephistos",
+   "kind": "unique",
+   "base": "wac"
+  },
+  {
+   "name": "Measured Wrath",
+   "kind": "unique",
+   "base": "wa6"
+  },
+  {
+   "name": "Dreadfang",
+   "kind": "unique",
+   "base": "72h"
+  },
+  {
+   "name": "Wraithstep",
+   "kind": "unique",
+   "base": "utb"
+  },
+  {
+   "name": "Bloodpact Shard",
+   "kind": "unique",
+   "base": "7di"
+  },
+  {
+   "name": "Sling",
+   "kind": "unique",
+   "base": "rin"
+  },
+  {
+   "name": "Opalvein",
+   "kind": "unique",
+   "base": "rin"
+  },
+  {
+   "name": "Entropy Locket",
+   "kind": "unique",
+   "base": "amu"
+  },
+  {
+   "name": "Gheed's Wager",
+   "kind": "unique",
+   "base": "utc"
+  },
+  {
+   "name": "Hellwarden's Will",
+   "kind": "unique",
+   "base": "xsk",
+   "aliases": [
+    "Unique Warlock Helm"
+   ]
+  },
+  {
+   "name": "Latent Cold Rupture",
+   "kind": "unique",
+   "base": "cm3",
+   "aliases": [
+    "PreCrafted Cold Rupture"
+   ]
+  },
+  {
+   "name": "Renewed Cold Rupture",
+   "kind": "unique",
+   "base": "cs2",
+   "aliases": [
+    "Crafted Cold Rupture"
+   ]
+  },
+  {
+   "name": "Latent Flame Rift",
+   "kind": "unique",
+   "base": "cm3",
+   "aliases": [
+    "PreCrafted Flame Rift"
+   ]
+  },
+  {
+   "name": "Latent Crack of the Heavens",
+   "kind": "unique",
+   "base": "cm3",
+   "aliases": [
+    "PreCrafted Crack of the Heavens"
+   ]
+  },
+  {
+   "name": "Latent Rotting Fissure",
+   "kind": "unique",
+   "base": "cm3",
+   "aliases": [
+    "PreCrafted Rotting Fissure"
+   ]
+  },
+  {
+   "name": "Latent Bone Break",
+   "kind": "unique",
+   "base": "cm3",
+   "aliases": [
+    "PreCrafted Bone Break"
+   ]
+  },
+  {
+   "name": "Latent Black Cleft",
+   "kind": "unique",
+   "base": "cm3",
+   "aliases": [
+    "PreCrafted Black Cleft"
+   ]
+  },
+  {
+   "name": "Renewed Flame Rift",
+   "kind": "unique",
+   "base": "cs2",
+   "aliases": [
+    "Crafted Flame Rift"
+   ]
+  },
+  {
+   "name": "Renewed Crack of the Heavens",
+   "kind": "unique",
+   "base": "cs2",
+   "aliases": [
+    "Crafted Crack of the Heavens"
+   ]
+  },
+  {
+   "name": "Renewed Rotting Fissure",
+   "kind": "unique",
+   "base": "cs2",
+   "aliases": [
+    "Crafted Rotting Fissure"
+   ]
+  },
+  {
+   "name": "Renewed Bone Break",
+   "kind": "unique",
+   "base": "cs2",
+   "aliases": [
+    "Crafted Bone Break"
+   ]
+  },
+  {
+   "name": "Renewed Black Cleft",
+   "kind": "unique",
+   "base": "cs2",
+   "aliases": [
+    "Crafted Black Cleft"
+   ]
+  },
+  {
+   "name": "Civerb's Ward",
+   "kind": "set",
+   "base": "lrg"
+  },
+  {
+   "name": "Civerb's Icon",
+   "kind": "set",
+   "base": "amu"
+  },
+  {
+   "name": "Civerb's Cudgel",
+   "kind": "set",
+   "base": "gsc"
+  },
+  {
+   "name": "Hsarus' Iron Heel",
+   "kind": "set",
+   "base": "mbt"
+  },
+  {
+   "name": "Hsarus' Iron Fist",
+   "kind": "set",
+   "base": "buc"
+  },
+  {
+   "name": "Hsarus' Iron Stay",
+   "kind": "set",
+   "base": "mbl"
+  },
+  {
+   "name": "Cleglaw's Tooth",
+   "kind": "set",
+   "base": "lsd"
+  },
+  {
+   "name": "Cleglaw's Claw",
+   "kind": "set",
+   "base": "sml"
+  },
+  {
+   "name": "Cleglaw's Pincers",
+   "kind": "set",
+   "base": "mgl"
+  },
+  {
+   "name": "Iratha's Collar",
+   "kind": "set",
+   "base": "amu"
+  },
+  {
+   "name": "Iratha's Cuff",
+   "kind": "set",
+   "base": "tgl"
+  },
+  {
+   "name": "Iratha's Coil",
+   "kind": "set",
+   "base": "crn"
+  },
+  {
+   "name": "Iratha's Cord",
+   "kind": "set",
+   "base": "tbl"
+  },
+  {
+   "name": "Isenhart's Lightbrand",
+   "kind": "set",
+   "base": "bsd"
+  },
+  {
+   "name": "Isenhart's Parry",
+   "kind": "set",
+   "base": "gts"
+  },
+  {
+   "name": "Isenhart's Case",
+   "kind": "set",
+   "base": "brs"
+  },
+  {
+   "name": "Isenhart's Horns",
+   "kind": "set",
+   "base": "fhl"
+  },
+  {
+   "name": "Vidala's Barb",
+   "kind": "set",
+   "base": "lbb"
+  },
+  {
+   "name": "Vidala's Fetlock",
+   "kind": "set",
+   "base": "tbt"
+  },
+  {
+   "name": "Vidala's Ambush",
+   "kind": "set",
+   "base": "lea"
+  },
+  {
+   "name": "Vidala's Snare",
+   "kind": "set",
+   "base": "amu"
+  },
+  {
+   "name": "Milabrega's Orb",
+   "kind": "set",
+   "base": "kit"
+  },
+  {
+   "name": "Milabrega's Rod",
+   "kind": "set",
+   "base": "wsp"
+  },
+  {
+   "name": "Milabrega's Diadem",
+   "kind": "set",
+   "base": "crn"
+  },
+  {
+   "name": "Milabrega's Robe",
+   "kind": "set",
+   "base": "aar"
+  },
+  {
+   "name": "Cathan's Rule",
+   "kind": "set",
+   "base": "bst"
+  },
+  {
+   "name": "Cathan's Mesh",
+   "kind": "set",
+   "base": "chn"
+  },
+  {
+   "name": "Cathan's Visage",
+   "kind": "set",
+   "base": "msk"
+  },
+  {
+   "name": "Cathan's Sigil",
+   "kind": "set",
+   "base": "amu"
+  },
+  {
+   "name": "Cathan's Seal",
+   "kind": "set",
+   "base": "rin"
+  },
+  {
+   "name": "Tancred's Crowbill",
+   "kind": "set",
+   "base": "mpi"
+  },
+  {
+   "name": "Tancred's Spine",
+   "kind": "set",
+   "base": "ful"
+  },
+  {
+   "name": "Tancred's Hobnails",
+   "kind": "set",
+   "base": "lbt"
+  },
+  {
+   "name": "Tancred's Weird",
+   "kind": "set",
+   "base": "amu"
+  },
+  {
+   "name": "Tancred's Skull",
+   "kind": "set",
+   "base": "bhm"
+  },
+  {
+   "name": "Sigon's Gage",
+   "kind": "set",
+   "base": "hgl"
+  },
+  {
+   "name": "Sigon's Visor",
+   "kind": "set",
+   "base": "ghm"
+  },
+  {
+   "name": "Sigon's Shelter",
+   "kind": "set",
+   "base": "gth"
+  },
+  {
+   "name": "Sigon's Sabot",
+   "kind": "set",
+   "base": "hbt"
+  },
+  {
+   "name": "Sigon's Wrap",
+   "kind": "set",
+   "base": "hbl"
+  },
+  {
+   "name": "Sigon's Guard",
+   "kind": "set",
+   "base": "tow"
+  },
+  {
+   "name": "Infernal Cranium",
+   "kind": "set",
+   "base": "cap"
+  },
+  {
+   "name": "Infernal Torch",
+   "kind": "set",
+   "base": "gwn"
+  },
+  {
+   "name": "Infernal Sign",
+   "kind": "set",
+   "base": "tbl"
+  },
+  {
+   "name": "Berserker's Headgear",
+   "kind": "set",
+   "base": "hlm"
+  },
+  {
+   "name": "Berserker's Hauberk",
+   "kind": "set",
+   "base": "spl"
+  },
+  {
+   "name": "Berserker's Hatchet",
+   "kind": "set",
+   "base": "2ax"
+  },
+  {
+   "name": "Death's Hand",
+   "kind": "set",
+   "base": "lgl"
+  },
+  {
+   "name": "Death's Guard",
+   "kind": "set",
+   "base": "lbl"
+  },
+  {
+   "name": "Death's Touch",
+   "kind": "set",
+   "base": "wsd"
+  },
+  {
+   "name": "Angelic Sickle",
+   "kind": "set",
+   "base": "sbr"
+  },
+  {
+   "name": "Angelic Mantle",
+   "kind": "set",
+   "base": "rng"
+  },
+  {
+   "name": "Angelic Halo",
+   "kind": "set",
+   "base": "rin"
+  },
+  {
+   "name": "Angelic Wings",
+   "kind": "set",
+   "base": "amu"
+  },
+  {
+   "name": "Arctic Horn",
+   "kind": "set",
+   "base": "swb"
+  },
+  {
+   "name": "Arctic Furs",
+   "kind": "set",
+   "base": "qui"
+  },
+  {
+   "name": "Arctic Binding",
+   "kind": "set",
+   "base": "vbl"
+  },
+  {
+   "name": "Arctic Mitts",
+   "kind": "set",
+   "base": "tgl"
+  },
+  {
+   "name": "Arcanna's Sign",
+   "kind": "set",
+   "base": "amu"
+  },
+  {
+   "name": "Arcanna's Deathwand",
+   "kind": "set",
+   "base": "wst"
+  },
+  {
+   "name": "Arcanna's Head",
+   "kind": "set",
+   "base": "skp"
+  },
+  {
+   "name": "Arcanna's Flesh",
+   "kind": "set",
+   "base": "ltp"
+  },
+  {
+   "name": "Natalya's Totem",
+   "kind": "set",
+   "base": "xh9"
+  },
+  {
+   "name": "Natalya's Mark",
+   "kind": "set",
+   "base": "7qr"
+  },
+  {
+   "name": "Natalya's Shadow",
+   "kind": "set",
+   "base": "ucl"
+  },
+  {
+   "name": "Natalya's Soul",
+   "kind": "set",
+   "base": "xmb"
+  },
+  {
+   "name": "Aldur's Stony Gaze",
+   "kind": "set",
+   "base": "dr8"
+  },
+  {
+   "name": "Aldur's Deception",
+   "kind": "set",
+   "base": "uul"
+  },
+  {
+   "name": "Aldur's Rhythm",
+   "kind": "set",
+   "base": "9mt",
+   "aliases": [
+    "Aldur's Gauntlet"
+   ]
+  },
+  {
+   "name": "Aldur's Advance",
+   "kind": "set",
+   "base": "xtb"
+  },
+  {
+   "name": "Immortal King's Will",
+   "kind": "set",
+   "base": "ba5"
+  },
+  {
+   "name": "Immortal King's Soul Cage",
+   "kind": "set",
+   "base": "uar"
+  },
+  {
+   "name": "Immortal King's Detail",
+   "kind": "set",
+   "base": "zhb"
+  },
+  {
+   "name": "Immortal King's Forge",
+   "kind": "set",
+   "base": "xhg"
+  },
+  {
+   "name": "Immortal King's Pillar",
+   "kind": "set",
+   "base": "xhb"
+  },
+  {
+   "name": "Immortal King's Stone Crusher",
+   "kind": "set",
+   "base": "7m7"
+  },
+  {
+   "name": "Tal Rasha's Fine-Spun Cloth",
+   "kind": "set",
+   "base": "zmb",
+   "aliases": [
+    "Tal Rasha's Fire-Spun Cloth"
+   ]
+  },
+  {
+   "name": "Tal Rasha's Adjudication",
+   "kind": "set",
+   "base": "amu"
+  },
+  {
+   "name": "Tal Rasha's Lidless Eye",
+   "kind": "set",
+   "base": "oba"
+  },
+  {
+   "name": "Tal Rasha's Guardianship",
+   "kind": "set",
+   "base": "uth",
+   "aliases": [
+    "Tal Rasha's Howling Wind"
+   ]
+  },
+  {
+   "name": "Tal Rasha's Horadric Crest",
+   "kind": "set",
+   "base": "xsk"
+  },
+  {
+   "name": "Griswold's Valor",
+   "kind": "set",
+   "base": "urn"
+  },
+  {
+   "name": "Griswold's Heart",
+   "kind": "set",
+   "base": "xar"
+  },
+  {
+   "name": "Griswold's Redemption",
+   "kind": "set",
+   "base": "7ws",
+   "aliases": [
+    "Griswolds's Redemption"
+   ]
+  },
+  {
+   "name": "Griswold's Honor",
+   "kind": "set",
+   "base": "paf"
+  },
+  {
+   "name": "Trang-Oul's Guise",
+   "kind": "set",
+   "base": "uh9"
+  },
+  {
+   "name": "Trang-Oul's Scales",
+   "kind": "set",
+   "base": "xul"
+  },
+  {
+   "name": "Trang-Oul's Wing",
+   "kind": "set",
+   "base": "ne9"
+  },
+  {
+   "name": "Trang-Oul's Claws",
+   "kind": "set",
+   "base": "xmg"
+  },
+  {
+   "name": "Trang-Oul's Girth",
+   "kind": "set",
+   "base": "utc"
+  },
+  {
+   "name": "M'avina's True Sight",
+   "kind": "set",
+   "base": "ci3"
+  },
+  {
+   "name": "M'avina's Embrace",
+   "kind": "set",
+   "base": "uld"
+  },
+  {
+   "name": "M'avina's Icy Clutch",
+   "kind": "set",
+   "base": "xtg"
+  },
+  {
+   "name": "M'avina's Tenet",
+   "kind": "set",
+   "base": "zvb"
+  },
+  {
+   "name": "M'avina's Caster",
+   "kind": "set",
+   "base": "amc"
+  },
+  {
+   "name": "Telling of Beads",
+   "kind": "set",
+   "base": "amu"
+  },
+  {
+   "name": "Laying of Hands",
+   "kind": "set",
+   "base": "ulg"
+  },
+  {
+   "name": "Rite of Passage",
+   "kind": "set",
+   "base": "xlb"
+  },
+  {
+   "name": "Dark Adherent",
+   "kind": "set",
+   "base": "uui",
+   "aliases": [
+    "Spiritual Custodian"
+   ]
+  },
+  {
+   "name": "Credendum",
+   "kind": "set",
+   "base": "umc"
+  },
+  {
+   "name": "Dangoon's Teaching",
+   "kind": "set",
+   "base": "7ma"
+  },
+  {
+   "name": "Taebaek's Glory",
+   "kind": "set",
+   "base": "uts",
+   "aliases": [
+    "Heaven's Taebaek"
+   ]
+  },
+  {
+   "name": "Haemosu's Adamant",
+   "kind": "set",
+   "base": "xrs",
+   "aliases": [
+    "Haemosu's Adament"
+   ]
+  },
+  {
+   "name": "Ondal's Almighty",
+   "kind": "set",
+   "base": "uhm"
+  },
+  {
+   "name": "Guillaume's Face",
+   "kind": "set",
+   "base": "xhm"
+  },
+  {
+   "name": "Wilhelm's Pride",
+   "kind": "set",
+   "base": "ztb"
+  },
+  {
+   "name": "Magnus' Skin",
+   "kind": "set",
+   "base": "xvg"
+  },
+  {
+   "name": "Whitstan's Guard",
+   "kind": "set",
+   "base": "xml",
+   "aliases": [
+    "Wihtstan's Guard"
+   ]
+  },
+  {
+   "name": "Hwanin's Splendor",
+   "kind": "set",
+   "base": "xrn"
+  },
+  {
+   "name": "Hwanin's Refuge",
+   "kind": "set",
+   "base": "xcl"
+  },
+  {
+   "name": "Hwanin's Blessing",
+   "kind": "set",
+   "base": "mbl",
+   "aliases": [
+    "Hwanin's Seal"
+   ]
+  },
+  {
+   "name": "Hwanin's Justice",
+   "kind": "set",
+   "base": "9vo"
+  },
+  {
+   "name": "Sazabi's Cobalt Redeemer",
+   "kind": "set",
+   "base": "7ls"
+  },
+  {
+   "name": "Sazabi's Ghost Liberator",
+   "kind": "set",
+   "base": "upl"
+  },
+  {
+   "name": "Sazabi's Mental Sheath",
+   "kind": "set",
+   "base": "xhl"
+  },
+  {
+   "name": "Bul-Kathos' Sacred Charge",
+   "kind": "set",
+   "base": "7gd"
+  },
+  {
+   "name": "Bul-Kathos' Tribal Guardian",
+   "kind": "set",
+   "base": "7wd"
+  },
+  {
+   "name": "Cow King's Horns",
+   "kind": "set",
+   "base": "xap"
+  },
+  {
+   "name": "Cow King's Hide",
+   "kind": "set",
+   "base": "stu"
+  },
+  {
+   "name": "Cow King's Hooves",
+   "kind": "set",
+   "base": "vbt",
+   "aliases": [
+    "Cow King's Hoofs"
+   ]
+  },
+  {
+   "name": "Naj's Puzzler",
+   "kind": "set",
+   "base": "6cs"
+  },
+  {
+   "name": "Naj's Light Plate",
+   "kind": "set",
+   "base": "ult"
+  },
+  {
+   "name": "Naj's Circlet",
+   "kind": "set",
+   "base": "ci0"
+  },
+  {
+   "name": "Sander's Paragon",
+   "kind": "set",
+   "base": "cap",
+   "aliases": [
+    "McAuley's Paragon"
+   ]
+  },
+  {
+   "name": "Sander's Riprap",
+   "kind": "set",
+   "base": "vbt",
+   "aliases": [
+    "McAuley's Riprap"
+   ]
+  },
+  {
+   "name": "Sander's Taboo",
+   "kind": "set",
+   "base": "vgl",
+   "aliases": [
+    "McAuley's Taboo"
+   ]
+  },
+  {
+   "name": "Sander's Superstition",
+   "kind": "set",
+   "base": "bwn",
+   "aliases": [
+    "McAuley's Superstition"
+   ]
+  },
+  {
+   "name": "Warlord's Conquest",
+   "kind": "set",
+   "base": "hgl"
+  },
+  {
+   "name": "Warlord's Lust",
+   "kind": "set",
+   "base": "ghm"
+  },
+  {
+   "name": "Warlord's Mantle",
+   "kind": "set",
+   "base": "ful"
+  },
+  {
+   "name": "Warlord's Crushers",
+   "kind": "set",
+   "base": "hbt"
+  },
+  {
+   "name": "Warlord's Authority",
+   "kind": "set",
+   "base": "hbl"
+  },
+  {
+   "name": "Bane's Oathmaker",
+   "kind": "set",
+   "base": "kri"
+  },
+  {
+   "name": "Bane's Wraithskin",
+   "kind": "set",
+   "base": "hla"
+  },
+  {
+   "name": "Bane's Authority",
+   "kind": "set",
+   "base": "vbl"
+  },
+  {
+   "name": "Horazon's Countenance",
+   "kind": "set",
+   "base": "usk"
+  },
+  {
+   "name": "Horazon's Dominion",
+   "kind": "set",
+   "base": "xpl"
+  },
+  {
+   "name": "Horazon's Hold",
+   "kind": "set",
+   "base": "xlg"
+  },
+  {
+   "name": "Horazon's Legacy",
+   "kind": "set",
+   "base": "utb"
+  },
+  {
+   "name": "Horazon's Secrets",
+   "kind": "set",
+   "base": "wad"
+  },
+  {
+   "name": "Ancients' Pledge",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Authority",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Beast",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Black",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Bone",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Bramble",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Brand",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Breath of the Dying",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Call to Arms",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Chains of Honor",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Chaos",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Death",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Delirium",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Destruction",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Doom",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Dragon",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Dream",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Duress",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Edge",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Enigma",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Enlightenment",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Eternity",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Exile",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Faith",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Famine",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Flickering Flame",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Fortitude",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Fury",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Gloom",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Grief",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Hand of Justice",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Harmony",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Heart of the Oak",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Holy Thunder",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Honor",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Ice",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Infinity",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Insight",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "King's Grace",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Kingslayer",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Last Wish",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Lawbringer",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Leaf",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Lionheart",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Lore",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Malice",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Melody",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Memory",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Mist",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Myth",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Nadir",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Oath",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Obedience",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Obsession",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Passion",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Pattern",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Peace",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Voice of Reason",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Phoenix",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Plague",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Pride",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Principle",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Prudence",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Radiance",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Rain",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Rhyme",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Rift",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Sanctuary",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Silence",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Smoke",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Spirit",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Splendor",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Stealth",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Steel",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Stone",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Strength",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Treachery",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Unbending Will",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Venom",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Void",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Wealth",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "White",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Wind",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Wisdom",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Wrath",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Zephyr",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Hysteria",
+   "kind": "runeword",
+   "base": null,
+   "aliases": [
+    "Hustle (armor)"
+   ]
+  },
+  {
+   "name": "Mania",
+   "kind": "runeword",
+   "base": null,
+   "aliases": [
+    "Hustle (weapon)"
+   ]
+  },
+  {
+   "name": "Mosaic",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Metamorphosis",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Ground",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Temper",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Hearth",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Cure",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Bulwark",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Coven",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Vigilance",
+   "kind": "runeword",
+   "base": null
+  },
+  {
+   "name": "Ritual",
+   "kind": "runeword",
+   "base": null
+  }
+ ]
+}

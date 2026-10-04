@@ -1,0 +1,88 @@
+{
+  "file": "item_20261001_175615_369.png",
+  "size": "1279x977",
+  "tooltip_box": [
+    194,
+    170,
+    773,
+    299
+  ],
+  "manual_box": [
+    194,
+    170,
+    773,
+    299
+  ],
+  "rarity_guess": "socketed/eth",
+  "mode": "plain/plain",
+  "needs_review": false,
+  "diffs": [],
+  "lines": [
+    "GLACIAL AMULET OF LUCK",
+    "REQUIRED LEVEL: 45",
+    "+3 TO COLD SKILLS (SORCERESS ONLY)",
+    "34% BETTER CHANCE OF GETTING MAGIC ITEMS"
+  ],
+  "reads": [
+    {
+      "scale": 1.5,
+      "mode": "plain",
+      "lines": [
+        "GLACIAL AMULET OF LUCK",
+        "REQUIRED LEVEL: 45",
+        "+3 TO COLD SKILLS (SORCERESS ONLY)",
+        "34% BETTER CHANCE OF GETTING MAGIC ITEMS"
+      ],
+      "calls": [
+        {
+          "schema": false,
+          "done_reason": "stop",
+          "eval_count": 45,
+          "thinking": "",
+          "prefill_s": 0.0,
+          "gen_s": 2.1,
+          "load_s": 0.0,
+          "tokens": {
+            "nasze_in": 272,
+            "nasze_out": 29,
+            "ich_in": 225,
+            "ich_out": 45
+          }
+        }
+      ]
+    },
+    {
+      "scale": 1.0,
+      "mode": "plain",
+      "lines": [
+        "GLACIAL AMULET OF LUCK",
+        "REQUIRED LEVEL: 45",
+        "+3 TO COLD SKILLS (SORCERESS ONLY)",
+        "34% BETTER CHANCE OF GETTING MAGIC ITEMS"
+      ],
+      "calls": [
+        {
+          "schema": false,
+          "done_reason": "stop",
+          "eval_count": 45,
+          "thinking": "",
+          "prefill_s": 0.0,
+          "gen_s": 1.6,
+          "load_s": 0.0,
+          "tokens": {
+            "nasze_in": 160,
+            "nasze_out": 29,
+            "ich_in": 135,
+            "ich_out": 45
+          }
+        }
+      ]
+    }
+  ],
+  "seconds": 3.8,
+  "timing": {
+    "load_s": 0.0,
+    "prefill_s": 0.0,
+    "gen_s": 3.7
+  }
+}

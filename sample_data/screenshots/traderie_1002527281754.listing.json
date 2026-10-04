@@ -1,0 +1,55 @@
+{
+  "source": "",
+  "imported": true,
+  "ocr_name": "Tal Rasha's Lidless Eye",
+  "warnings": [],
+  "unmatched": [],
+  "properties": [],
+  "item_id": "2185308355",
+  "slug": "tal-rashas-lidless-eye",
+  "name": "Tal Rasha's Lidless Eye",
+  "type": "sets",
+  "listing": [
+    {
+      "property_id": 1051,
+      "value": 1,
+      "property": "+{{value}} to Lightning Mastery (Sorceress Only)"
+    },
+    {
+      "property_id": 1053,
+      "value": 1,
+      "property": "+{{value}} to Cold Mastery (Sorceress Only)"
+    },
+    {
+      "property_id": 1050,
+      "value": 2,
+      "property": "+{{value}} to Fire Mastery (Sorceress Only)"
+    },
+    {
+      "property_id": 1854,
+      "value": "reign of the warlock",
+      "property": "Game version"
+    },
+    {
+      "property_id": 799,
+      "value": "softcore",
+      "property": "Mode"
+    },
+    {
+      "property_id": 798,
+      "value": "PC",
+      "property": "Platform"
+    },
+    {
+      "property_id": 800,
+      "value": "Ladder",
+      "property": "Ladder"
+    }
+  ],
+  "needs_review": false,
+  "posted": {
+    "listing_id": "1002527281754",
+    "price": "pul",
+    "time": "2026-09-30 13:30"
+  }
+}

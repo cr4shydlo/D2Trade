@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>Makieta - dane z gry w Ustawieniach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;450;500&display=swap" rel="stylesheet">
+<style>
+:root[data-theme="dark"] {
+  --bg:#15171b; --panel:#1b1e23; --panel3:#262b32; --line:#2c313a;
+  --ink:#dde1e8; --muted:#98a1ae; --faint:#6b7482;
+  --ok:#5f9e76; --warn:#c7a04f; --bad:#c56a5e; --act:#c08043;
+  --accent:#e6eaf1; --accent-fg:#15171b;
+}
+:root[data-theme="light"] {
+  --bg:#e9ebef; --panel:#f7f8fa; --panel3:#e2e6ec; --line:#d2d7df;
+  --ink:#1b1e24; --muted:#59616d; --faint:#848c99;
+  --ok:#3d7a53; --warn:#8a6718; --bad:#a44336; --act:#96581b;
+  --accent:#272b33; --accent-fg:#f5f7fa;
+}
+* { box-sizing:border-box; }
+body { margin:0; padding:28px 16px 64px; background:var(--bg); color:var(--ink);
+       font-family:'IBM Plex Sans','Segoe UI',system-ui,sans-serif; font-size:13px; }
+.mono { font-family:'IBM Plex Mono',Consolas,monospace; }
+.wrap { max-width:720px; margin:0 auto; }
+h1 { font-size:17px; font-weight:500; margin:0 0 4px; }
+.lead { color:var(--muted); font-size:12.5px; margin:0 0 22px; line-height:1.55; }
+.toggle { position:fixed; top:14px; right:14px; background:var(--accent); color:var(--accent-fg);
+          border:0; border-radius:3px; padding:7px 13px; font:inherit; font-size:12px; cursor:pointer; }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:5px;
+        padding:18px 20px; margin:0 0 20px; }
+.sec { font-size:11px; font-weight:450; color:var(--faint); margin:16px 0 8px; }
+.sec:first-child { margin-top:0; }
+.field { border:1px solid var(--line); border-radius:3px; padding:7px 10px; background:var(--bg);
+         color:var(--muted); margin:0 0 7px; font-size:12.5px; }
+.hint { color:var(--muted); font-size:12px; margin:0 0 4px; line-height:1.5; }
+.row { display:flex; align-items:center; gap:10px; }
+.grow { flex:1 1 auto; }
+button.ghost { background:transparent; border:1px solid var(--line); color:var(--ink);
+               border-radius:3px; padding:6px 12px; font:inherit; font-size:12px; cursor:pointer; }
+button.primary { background:var(--accent); color:var(--accent-fg); border:0; border-radius:3px;
+                 padding:6px 12px; font:inherit; font-size:12px; cursor:pointer; }
+.dot { width:7px; height:7px; border-radius:50%; display:inline-block; margin-right:6px; }
+.ok { color:var(--ok); } .warn { color:var(--warn); } .faint { color:var(--faint); }
+.d-ok { background:var(--ok); } .d-warn { background:var(--warn); } .d-faint { background:var(--faint); }
+.vlabel { font-size:11px; color:var(--faint); letter-spacing:.04em; margin:26px 0 8px; }
+.note { color:var(--faint); font-size:11.5px; margin:10px 0 0; line-height:1.5; }
+.bar { height:4px; border-radius:1px; background:var(--panel3); overflow:hidden; margin:8px 0 0; }
+.bar > div { height:4px; background:var(--ok); }
+</style>
+</head>
+<body>
+<button class="toggle" onclick="var r=document.documentElement;r.dataset.theme=r.dataset.theme==='dark'?'light':'dark'">motyw</button>
+<div class="wrap">
+
+<h1>Nowa sekcja w Ustawieniach: Dane z gry</h1>
+<p class="lead">Jedna sekcja pod "Konto Traderie". Pokazuje, czy program ma lokalna baze przedmiotow,
+i pozwala ja zrobic albo odswiezyc. Nic poza ta sekcja sie nie zmienia &mdash; reszta okna zostaje,
+jak jest. Ponizej trzy stany, w jakich uzytkownik moze ja zobaczyc.</p>
+
+<div class="vlabel">STAN 1 &mdash; NIE MA DANYCH, NIE MA TOKENU (nowy uzytkownik)</div>
+<div class="card">
+  <div class="sec">Konto Traderie</div>
+  <div class="field">ID konta (seller): &bull;&bull;&bull;&bull;&bull;&bull;</div>
+  <div class="field">Token (naglowek Authorization):</div>
+  <div class="row">
+    <span class="grow warn"><span class="dot d-warn"></span>brak tokenu &mdash; wystawianie i ceny nie beda dzialac</span>
+    <button class="ghost">Testuj polaczenie</button>
+  </div>
+
+  <div class="sec">Dane z gry</div>
+  <p class="hint">Bez tokenu Traderie program moze czytac przedmioty wprost z Twojej instalacji
+  Diablo II: Resurrected &mdash; statystyki, zakresy i ikony. Wtedy dziala odczyt screenow, ocena
+  rzutu i post na d2jsp; ceny i wystawianie wymagaja tokenu.</p>
+  <div class="field mono">C:\Program Files (x86)\Diablo II Resurrected</div>
+  <div class="row">
+    <span class="grow faint"><span class="dot d-faint"></span>brak lokalnej bazy</span>
+    <button class="primary">Wyciagnij dane z gry</button>
+  </div>
+  <p class="note">Trwa pol minuty. Program tylko czyta pliki gry &mdash; nic w niej nie zmienia
+  i nie wysyla ich nigdzie.</p>
+</div>
+
+<div class="vlabel">STAN 2 &mdash; W TRAKCIE</div>
+<div class="card">
+  <div class="sec">Dane z gry</div>
+  <div class="field mono">C:\Program Files (x86)\Diablo II Resurrected</div>
+  <div class="row">
+    <span class="grow">czytam tabele i ikony&hellip;</span>
+    <button class="ghost" disabled>Wyciagnij dane z gry</button>
+  </div>
+  <div class="bar"><div style="width:62%"></div></div>
+</div>
+
+<div class="vlabel">STAN 3 &mdash; JEST BAZA</div>
+<div class="card">
+  <div class="sec">Dane z gry</div>
+  <div class="field mono">C:\Program Files (x86)\Diablo II Resurrected</div>
+  <div class="row">
+    <span class="grow ok"><span class="dot d-ok"></span>1355 przedmiotow, 375 ikon &mdash; 4 X 2026</span>
+    <button class="ghost">Odswiez</button>
+  </div>
+  <p class="note">Odswiez po aktualizacji gry albo moda &mdash; wtedy dochodza nowe przedmioty.</p>
+</div>
+
+<div class="vlabel">CO Z TEGO WYNIKA DLA RESZTY OKNA</div>
+<div class="card">
+  <p class="hint">Bez tokenu, ale z baza z gry:</p>
+  <p class="hint">&bull; karta przedmiotu ma ikone z gry zamiast z CDN Traderie,<br>
+  &bull; panel pokazuje staty i jakosc rzutu jak dotad (maksima i tak byly z plikow gry),<br>
+  &bull; w miejscu ceny jest jedno zdanie: <span class="faint">"ceny biora sie z transakcji na
+  Traderie &mdash; bez tokenu ich nie ma"</span>,<br>
+  &bull; "Wystaw" odmawia i mowi, co zrobic; post na d2jsp dziala normalnie.</p>
+  <p class="note">Zadnego nowego koloru ani ukladu &mdash; kropka stanu i tekst, tak jak przy tokenie.</p>
+</div>
+
+</div>
+</body>
+</html>

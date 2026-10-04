@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="pl" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D2 Trade - motyw jasny</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;450;500;600&display=swap" rel="stylesheet">
+<style>
+/* Ciemny = dokladnie to, co jest teraz w d2_web.py. Jasny = propozycja do oceny.
+   Nazwy zmiennych sa te same, wiec w kodzie nie zmienia sie zadne style(...). */
+:root[data-theme="dark"] {
+  --bg:#15171b; --panel:#1b1e23; --panel2:#21252b; --panel3:#262b32;
+  --line:#2c313a; --line2:#3b424d;
+  --ink:#dde1e8; --muted:#98a1ae; --faint:#6b7482;
+  --ok:#5f9e76; --warn:#c7a04f; --bad:#c56a5e; --info:#6f93cf; --act:#c08043;
+  --accent:#e6eaf1; --accent-fg:#15171b; --thumb:#23272d;
+  --rar-unique:#c5a059; --rar-set:#5a9e5e; --rar-runeword:#9589c4; --rar-rare:#cdbb5c;
+  --rar-magic:#6f93cf; --rar-crafted:#c08043; --rar-baza:#8b93a1;
+}
+:root[data-theme="light"] {
+  --bg:#e9ebef; --panel:#f7f8fa; --panel2:#ffffff; --panel3:#e2e6ec;
+  --line:#d2d7df; --line2:#b4bcc8;
+  --ink:#1b1e24; --muted:#59616d; --faint:#848c99;
+  --ok:#3d7a53; --warn:#8a6718; --bad:#a44336; --info:#3a63a6; --act:#96581b;
+  --accent:#272b33; --accent-fg:#f5f7fa; --thumb:#e6e9ee;
+  --rar-unique:#846321; --rar-set:#2c6a33; --rar-runeword:#584f93; --rar-rare:#746512;
+  --rar-magic:#3a63a6; --rar-crafted:#96581b; --rar-baza:#59616d;
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font-weight:450;
+       font-family:'IBM Plex Sans','Segoe UI',system-ui,sans-serif; font-size:13px; }
+.mono { font-family:'IBM Plex Mono',Consolas,monospace; font-variant-numeric:tabular-nums; }
+.app { display:flex; min-height:100vh; }
+
+/* pasek boczny */
+.side { width:216px; flex-shrink:0; background:var(--panel); border-right:1px solid var(--line);
+        padding:12px; display:flex; flex-direction:column; gap:2px; }
+.brand { display:flex; align-items:center; gap:8px; padding:0 8px 16px; }
+.mark { width:26px; height:26px; border-radius:3px; background:var(--panel2);
+        border:1px solid var(--line2); display:flex; align-items:center; justify-content:center;
+        color:var(--muted); font-size:14px; }
+.brand b { font-size:14px; font-weight:600; display:block; }
+.brand span { font-size:11px; color:var(--faint); }
+.nav { display:flex; align-items:center; width:100%; height:32px; padding:0 10px; gap:8px;
+       border:0; border-radius:3px; background:transparent; color:var(--muted); cursor:pointer;
+       font:inherit; font-weight:450; text-align:left; }
+.nav:hover { background:var(--panel2); color:var(--ink); }
+.nav.on { background:var(--panel3); color:var(--ink); box-shadow:inset 2px 0 0 var(--muted); }
+.nav .n { margin-left:auto; font-size:11px; color:var(--faint); }
+.nav.on .n { color:var(--ink); }
+.foot { margin-top:auto; padding-top:12px; border-top:1px solid var(--line);
+        display:flex; flex-direction:column; gap:8px; }
+.stat { display:flex; justify-content:space-between; align-items:baseline;
+        background:var(--panel2); border:1px solid var(--line); border-radius:3px; padding:6px 8px; }
+.stat span:first-child { font-size:11px; color:var(--faint); }
+
+/* naglowek */
+.main { flex:1; padding:20px 24px; display:flex; flex-direction:column; gap:14px; min-width:0; }
+.head { display:flex; align-items:center; gap:8px; }
+h1 { font-size:21px; font-weight:600; letter-spacing:-0.01em; margin:0; flex-grow:1; }
+input[type=text] { background:var(--panel2); border:1px solid var(--line); border-radius:3px;
+                   color:var(--ink); padding:6px 10px; font:inherit; width:240px; }
+input[type=text]::placeholder { color:var(--faint); }
+input[type=text]:focus { outline:none; border-color:var(--line2); }
+.btn { border-radius:3px; border:1px solid var(--line); background:var(--panel);
+       color:var(--muted); padding:6px 12px; font:inherit; font-weight:500; cursor:pointer; }
+.btn:hover { background:var(--panel2); border-color:var(--line2); color:var(--ink); }
+.btn.primary { background:var(--accent); border-color:var(--accent); color:var(--accent-fg); }
+.btn.primary:hover { filter:brightness(1.12); }
+
+/* licznik stanow */
+.counts { display:inline-flex; align-self:flex-start; background:var(--panel);
+          border:1px solid var(--line); border-radius:5px; }
+.counts div { padding:4px 16px; display:flex; align-items:baseline; gap:8px; }
+.counts div + div { border-left:1px solid var(--line); }
+.counts b { font-size:17px; font-weight:400; }
+.counts span { font-size:12px; color:var(--muted); }
+
+/* lista */
+.list { background:var(--panel); border:1px solid var(--line); border-radius:5px; overflow:hidden; }
+.row { display:flex; align-items:center; gap:12px; padding:8px 12px 8px 0;
+       border-top:1px solid var(--line); position:relative; }
+.list > .row:first-child { border-top:0; }
+.row:hover { background:var(--panel2); }
+.row.sel { background:var(--panel3); }
+.row.sel:after { content:""; position:absolute; inset:0; border:1px solid var(--line2);
+                 pointer-events:none; }
+.rar { width:3px; align-self:stretch; background:var(--rar-baza); }
+.thumb { width:34px; height:34px; background:var(--thumb); border:1px solid var(--line);
+         border-radius:2px; flex-shrink:0; }
+.name { flex-grow:1; min-width:0; }
+.name b { font-weight:500; display:block; }
+.tag { font-size:10.5px; font-weight:500; padding:1px 5px; border-radius:2px;
+       border:1px solid currentColor; }
+.pill { font-size:11.5px; padding:0 5px; border-radius:2px; background:var(--panel2);
+        border:1px solid var(--line); color:var(--muted); }
+.row.sel .pill { background:var(--panel); }
+.sub { font-size:11.5px; color:var(--faint); display:flex; gap:8px; align-items:center;
+       margin-top:2px; }
+.price { border:1px solid var(--line); border-radius:3px; background:transparent;
+         color:var(--ink); padding:5px 10px; min-width:92px; font-weight:450; cursor:pointer; }
+.price:hover { border-color:var(--line2); background:var(--panel2); }
+.state { width:140px; flex-shrink:0; display:flex; align-items:center; gap:8px; }
+.dot { width:6px; height:6px; border-radius:1px; flex-shrink:0; }
+.badge { font-size:12px; color:var(--muted); }
+.badge.strong { color:var(--ink); }
+
+/* panel szczegolow */
+.card { background:var(--panel); border:1px solid var(--line); border-radius:5px; padding:16px; }
+.sec { font-size:11px; color:var(--faint); margin-bottom:6px; }
+.lvls { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+.lvl { border:1px solid var(--line); border-radius:3px; background:var(--panel2);
+       padding:8px; text-align:center; }
+.lvl.on { background:var(--panel3); border-color:var(--line2);
+          box-shadow:inset 0 -2px 0 var(--muted); }
+.lvl span { font-size:11px; color:var(--faint); display:block; }
+.lvl b { font-size:13px; font-weight:400; }
+.note { font-size:12px; color:var(--muted); margin-top:10px; }
+
+.switch { position:fixed; right:18px; bottom:18px; }
+@media (max-width:760px) { .side { display:none; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand">
+      <div class="mark">&#9733;</div>
+      <div><b>D2 Trade</b><span>Traderie &middot; d2jsp</span></div>
+    </div>
+    <button class="nav on">Przedmioty <span class="n">14</span></button>
+    <button class="nav">Szybka wycena</button>
+    <button class="nav">Wystawione <span class="n">23</span></button>
+    <button class="nav">Post d2jsp</button>
+    <button class="nav">Ustawienia</button>
+    <div class="foot">
+      <div class="stat"><span>Traderie</span><span style="color:var(--ok)">token wa&#380;ny 23 dni</span></div>
+      <div class="stat"><span>Do odnowienia</span><span class="mono" style="color:var(--act)">3</span></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="head">
+      <h1>Przedmioty</h1>
+      <input type="text" placeholder="Szukaj lub wyce&#324;: shako def 140">
+      <button class="btn">Odczytaj screeny</button>
+      <button class="btn primary">Wystaw zaznaczone (2)</button>
+    </div>
+
+    <div class="counts">
+      <div><b class="mono">9</b><span>Gotowe</span></div>
+      <div><b class="mono" style="color:var(--warn)">2</b><span>Do sprawdzenia</span></div>
+      <div><b class="mono">23</b><span>Wystawione</span></div>
+      <div><b class="mono" style="color:var(--act)">3</b><span>Do odnowienia</span></div>
+      <div><b class="mono" style="color:var(--faint)">41</b><span>Sprzedane</span></div>
+    </div>
+
+    <div class="list">
+      <div class="row sel">
+        <div class="rar" style="background:var(--rar-unique)"></div>
+        <div class="thumb"></div>
+        <div class="name">
+          <b>Harlequin Crest <span class="tag" style="color:var(--rar-unique)">unique</span></b>
+          <div class="sub"><span>Defense 141 &middot; +2 All Skills &middot; 10% DR</span>
+            <span class="pill">Sorc &middot; Skrzynia wsp&oacute;lna 2</span></div>
+        </div>
+        <button class="price mono">ist + mal <span style="color:var(--muted)">(~87.5 fg)</span></button>
+        <div class="state"><span class="dot" style="background:var(--ok)"></span>
+          <span class="badge strong">gotowy</span></div>
+      </div>
+      <div class="row">
+        <div class="rar" style="background:var(--rar-runeword)"></div>
+        <div class="thumb"></div>
+        <div class="name">
+          <b>Spirit <span class="tag" style="color:var(--rar-runeword)">runeword</span></b>
+          <div class="sub"><span>+2 All Skills &middot; 35% FCR &middot; 112 Mana</span></div>
+        </div>
+        <button class="price mono">2 pamy</button>
+        <div class="state"><span class="dot" style="background:var(--ok)"></span>
+          <span class="badge strong">gotowy</span></div>
+      </div>
+      <div class="row">
+        <div class="rar" style="background:var(--rar-crafted)"></div>
+        <div class="thumb"></div>
+        <div class="name">
+          <b>Wraith Turn - Ring <span class="tag" style="color:var(--rar-crafted)">crafted</span></b>
+          <div class="sub"><span>Traderie nie ma takiego statu: Regenerate Mana 9%</span></div>
+        </div>
+        <button class="price mono" style="color:var(--faint)">bez ceny</button>
+        <div class="state"><span class="dot" style="background:var(--warn)"></span>
+          <span class="badge">do sprawdzenia</span></div>
+      </div>
+      <div class="row">
+        <div class="rar" style="background:var(--rar-rare)"></div>
+        <div class="thumb"></div>
+        <div class="name">
+          <b>Jared's Stone <span class="tag" style="color:var(--rar-rare)">rare</span></b>
+          <div class="sub"><span>+1 Sorceress Skills &middot; 45 Life &middot; 12% FHR</span></div>
+        </div>
+        <button class="price mono">offer</button>
+        <div class="state"><span class="dot" style="background:var(--info)"></span>
+          <span class="badge">wystawiony</span></div>
+      </div>
+      <div class="row">
+        <div class="rar" style="background:var(--rar-set)"></div>
+        <div class="thumb"></div>
+        <div class="name">
+          <b>Tal Rasha's Howling Wind <span class="tag" style="color:var(--rar-set)">set</span></b>
+          <div class="sub"><span>Defense 487 &middot; +15 All Resist</span></div>
+        </div>
+        <button class="price mono">um</button>
+        <div class="state"><span class="dot" style="background:var(--act)"></span>
+          <span class="badge strong">do odnowienia</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="sec">Cena z ostatnich transakcji</div>
+      <div class="lvls">
+        <div class="lvl"><span>tanio</span><b class="mono">pul</b></div>
+        <div class="lvl on"><span>typowo</span><b class="mono">ist</b></div>
+        <div class="lvl"><span>dobrze</span><b class="mono">ist + mal</b></div>
+        <div class="lvl"><span>drogo</span><b class="mono">vex</b></div>
+      </div>
+      <div class="note">transakcje (ostatnie 30 dni, 48 cen) &middot; rzut: <b>WYSOKI</b></div>
+      <div class="note" style="color:var(--bad)">! crafted: Traderie nie ma takiej rzadko&#347;ci -
+        zostanie wystawiony jako rare</div>
+    </div>
+  </main>
+</div>
+
+<button class="btn switch" onclick="
+  var r=document.documentElement;
+  r.dataset.theme = r.dataset.theme==='light' ? 'dark' : 'light';
+  this.textContent = r.dataset.theme==='light' ? 'Pokaz ciemny' : 'Pokaz jasny';
+">Poka&#380; ciemny</button>
+</body>
+</html>

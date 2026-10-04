@@ -1,0 +1,86 @@
+{
+  "file": "item_20261001_174317_634.png",
+  "size": "1376x1057",
+  "tooltip_box": [
+    300,
+    202,
+    861,
+    353
+  ],
+  "manual_box": null,
+  "rarity_guess": "magic",
+  "mode": "plain/plain",
+  "needs_review": false,
+  "diffs": [],
+  "lines": [
+    "EMERALD GRAND CHARM",
+    "KEEP IN INVENTORY TO GAIN BONUS",
+    "REQUIRED LEVEL: 22",
+    "POISON RESIST +29%",
+    "CTRL + LEFT CLICK TO MOVE TO INVENTORY"
+  ],
+  "reads": [
+    {
+      "scale": 1.5,
+      "mode": "plain",
+      "lines": [
+        "EMERALD GRAND CHARM",
+        "KEEP IN INVENTORY TO GAIN BONUS",
+        "REQUIRED LEVEL: 22",
+        "POISON RESIST +29%",
+        "CTRL + LEFT CLICK TO MOVE TO INVENTORY"
+      ],
+      "calls": [
+        {
+          "schema": false,
+          "done_reason": "stop",
+          "eval_count": 43,
+          "thinking": "",
+          "prefill_s": 0.0,
+          "gen_s": 1.4,
+          "load_s": 0.0,
+          "tokens": {
+            "nasze_in": 295,
+            "nasze_out": 32,
+            "ich_in": 245,
+            "ich_out": 43
+          }
+        }
+      ]
+    },
+    {
+      "scale": 1.0,
+      "mode": "plain",
+      "lines": [
+        "EMERALD GRAND CHARM",
+        "KEEP IN INVENTORY TO GAIN BONUS",
+        "REQUIRED LEVEL: 22",
+        "POISON RESIST +29%",
+        "CTRL + LEFT CLICK TO MOVE TO INVENTORY"
+      ],
+      "calls": [
+        {
+          "schema": false,
+          "done_reason": "stop",
+          "eval_count": 43,
+          "thinking": "",
+          "prefill_s": 0.0,
+          "gen_s": 1.5,
+          "load_s": 0.0,
+          "tokens": {
+            "nasze_in": 181,
+            "nasze_out": 32,
+            "ich_in": 153,
+            "ich_out": 43
+          }
+        }
+      ]
+    }
+  ],
+  "seconds": 7.0,
+  "timing": {
+    "load_s": 0.0,
+    "prefill_s": 0.0,
+    "gen_s": 2.9
+  }
+}

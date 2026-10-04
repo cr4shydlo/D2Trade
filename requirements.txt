@@ -1,0 +1,16 @@
+# py -3.11 -m pip install -r requirements.txt
+nicegui>=3.0
+pywebview        # natywne okno; bez niego program otworzy sie w przegladarce
+pillow
+ollama           # klient lokalnego modelu (tryb "ollama")
+keyboard         # globalny skrot F12
+mss              # zrzuty ekranu
+# testy:
+pytest
+pytest-asyncio
+
+# Opcjonalnie: czytanie archiwum CASC gry przez game_extract.py (praca bez Traderie).
+# Pakiet ma gotowe kolo tylko dla Windows x64 + Python 3.11, dlatego nie jest wymagany -
+# bez niego mozna wskazac katalog z juz wypakowanym 'data' (np. przez CascView).
+# py -3.11 -m pip install casc
+

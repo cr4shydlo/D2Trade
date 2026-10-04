@@ -1,0 +1,83 @@
+{
+  "source": "item_20261001_190150_936.png",
+  "ocr_name": "Jewel of Fervor",
+  "warnings": [],
+  "unmatched": [],
+  "properties": [
+    {
+      "property_id": 796,
+      "property": "Required Level {{value}}",
+      "value": 31,
+      "variable": true
+    },
+    {
+      "property_id": 457,
+      "property": "+{{value}}% Increased Attack Speed",
+      "value": 15,
+      "variable": true
+    },
+    {
+      "property_id": 798,
+      "property": "Platform",
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "property": "Mode",
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "property": "Ladder",
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "property": "Game version",
+      "value": "reign of the warlock"
+    },
+    {
+      "property_id": 797,
+      "property": "Rarity",
+      "value": "magic"
+    }
+  ],
+  "rarity": "magic",
+  "kind": "magic",
+  "rare_name": "Jewel Of Fervor",
+  "item_id": "2732223103",
+  "slug": "jewel",
+  "name": "Jewel",
+  "type": "misc",
+  "listing": [
+    {
+      "property_id": 796,
+      "value": 31
+    },
+    {
+      "property_id": 457,
+      "value": 15
+    },
+    {
+      "property_id": 798,
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "value": "reign of the warlock"
+    },
+    {
+      "property_id": 797,
+      "value": "magic"
+    }
+  ],
+  "needs_review": false
+}

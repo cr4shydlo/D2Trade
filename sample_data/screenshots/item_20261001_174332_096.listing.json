@@ -1,0 +1,137 @@
+{
+  "source": "item_20261001_174332_096.png",
+  "ocr_name": "Wraith Turn",
+  "warnings": [
+    "crafted: Traderie nie ma takiej rzadkosci - zostanie wystawiony jako rare, sprawdz przed wystawieniem"
+  ],
+  "unmatched": [
+    "Regenerate Mana 9%"
+  ],
+  "properties": [
+    {
+      "property_id": 796,
+      "property": "Required Level {{value}}",
+      "value": 52,
+      "variable": true
+    },
+    {
+      "property_id": 423,
+      "property": "+{{value}} to Attack Rating",
+      "value": 68,
+      "variable": true
+    },
+    {
+      "property_id": 458,
+      "property": "+{{value}} to Minimum Fire Damage",
+      "value": 1,
+      "variable": true
+    },
+    {
+      "property_id": 459,
+      "property": "+{{value}} to Maximum Fire Damage",
+      "value": 4,
+      "variable": true
+    },
+    {
+      "property_id": 421,
+      "property": "+{{value}} to Energy",
+      "value": 3,
+      "variable": true
+    },
+    {
+      "property_id": 400,
+      "property": "+{{value}} to Mana",
+      "value": 17,
+      "variable": true
+    },
+    {
+      "property_id": 461,
+      "property": "{{value}}% Better Chance of Getting Magic Items",
+      "value": 5,
+      "variable": true
+    },
+    {
+      "property_id": 798,
+      "property": "Platform",
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "property": "Mode",
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "property": "Ladder",
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "property": "Game version",
+      "value": "reign of the warlock"
+    },
+    {
+      "property_id": 797,
+      "property": "Rarity",
+      "value": "rare"
+    }
+  ],
+  "rarity": "rare",
+  "kind": "crafted",
+  "rare_name": "Wraith Turn",
+  "item_id": "2390453209",
+  "slug": "ring",
+  "name": "Ring",
+  "type": "misc",
+  "listing": [
+    {
+      "property_id": 796,
+      "value": 52
+    },
+    {
+      "property_id": 423,
+      "value": 68
+    },
+    {
+      "property_id": 458,
+      "value": 1
+    },
+    {
+      "property_id": 459,
+      "value": 4
+    },
+    {
+      "property_id": 421,
+      "value": 3
+    },
+    {
+      "property_id": 400,
+      "value": 17
+    },
+    {
+      "property_id": 461,
+      "value": 5
+    },
+    {
+      "property_id": 798,
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "value": "reign of the warlock"
+    },
+    {
+      "property_id": 797,
+      "value": "rare"
+    }
+  ],
+  "needs_review": true
+}

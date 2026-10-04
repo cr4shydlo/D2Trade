@@ -1,0 +1,119 @@
+{
+  "source": "item_20260930_163823_092.png",
+  "ocr_name": "SKIN OF THE VIPERMAGI",
+  "warnings": [],
+  "unmatched": [],
+  "properties": [
+    {
+      "property_id": 1855,
+      "property": "Defense",
+      "value": 279,
+      "variable": false
+    },
+    {
+      "property_id": 796,
+      "property": "Required Level {{value}}",
+      "value": 29,
+      "variable": false
+    },
+    {
+      "property_id": 587,
+      "property": "+{{value}} to All Skills",
+      "value": 1,
+      "variable": false
+    },
+    {
+      "property_id": 520,
+      "property": "+{{value}}% Faster Cast Rate",
+      "value": 30,
+      "variable": false
+    },
+    {
+      "property_id": 425,
+      "property": "+{{value}}% Enhanced Defense",
+      "value": 120,
+      "variable": false
+    },
+    {
+      "property_id": 441,
+      "property": "+{{value}} to All Resistances",
+      "value": 24,
+      "variable": true,
+      "range_key": [
+        "all",
+        "resistances"
+      ]
+    },
+    {
+      "property_id": 414,
+      "property": "Magic Damage Reduced by {{value}}",
+      "value": 13,
+      "variable": true,
+      "range_key": [
+        "damage",
+        "magic",
+        "reduced"
+      ]
+    },
+    {
+      "property_id": 798,
+      "property": "Platform",
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "property": "Mode",
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "property": "Ladder",
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "property": "Game version",
+      "value": "reign of the warlock"
+    }
+  ],
+  "item_id": "2180987142",
+  "slug": "skin-of-the-vipermagi",
+  "name": "Skin of the Vipermagi",
+  "type": "uniques",
+  "listing": [
+    {
+      "property_id": 1855,
+      "value": 279
+    },
+    {
+      "property_id": 441,
+      "value": 24
+    },
+    {
+      "property_id": 414,
+      "value": 13
+    },
+    {
+      "property_id": 798,
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "value": "reign of the warlock"
+    }
+  ],
+  "needs_review": false,
+  "posted": {
+    "time": "2026-09-30 16:40:36",
+    "price": "ist",
+    "listing_id": "1002527376994"
+  }
+}

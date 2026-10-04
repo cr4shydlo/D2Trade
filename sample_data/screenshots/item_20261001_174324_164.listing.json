@@ -1,0 +1,105 @@
+{
+  "source": "item_20261001_174324_164.png",
+  "ocr_name": "RUBY SMALL CHARM OF STRENGTH",
+  "warnings": [
+    "+{{value}} to Strength: 2, oczekiwano stalej wartosci 1",
+    "Fire Resist +{{value}}%: 11, oczekiwano stalej wartosci 3",
+    "nie odczytano zmiennego statu: & ar| dmg | |fine| (1-3)",
+    "nie odczytano zmiennego statu: element| one resist resist| | |single (3-11)",
+    "nie odczytano zmiennego statu: all resist| | |all (3-5)",
+    "nie odczytano zmiennego statu: ar| | |ar| (2-36)",
+    "nie odczytano zmiennego statu: & cold dmg*| dmg| max min | |cld (1-10)",
+    "nie odczytano zmiennego statu: & dmg*| dmg| fire max min | |fir (1-7)",
+    "nie odczytano zmiennego statu: & dmg*| dmg| lightning max min |lgt (6-71)",
+    "nie odczytano zmiennego statu: dmg*| dmg, psn s.| | |psn (6-50)",
+    "nie odczytano zmiennego statu: life| | |hp| (5-20)",
+    "nie odczytano zmiennego statu: mf| | |mf| (3-7)",
+    "nie odczytano zmiennego statu: & cold dmg*| dmg| max | |cld (2-5)",
+    "nie odczytano zmiennego statu: & dmg*| dmg| fire max min | |fir (1-7)",
+    "nie odczytano zmiennego statu: & dmg*| dmg| lightning max min | |lgt (3-28)",
+    "nie odczytano zmiennego statu: dmg*| dmg, psn s.| | |psn (6-50)",
+    "nie odczytano zmiennego statu: mana| | |mana| (1-17)",
+    "nie odczytano zmiennego statu: str| | |str| (1-2)",
+    "nie odczytano zmiennego statu: dex| | |dex| (1-2)",
+    "nie odczytano zmiennego statu: find| gold | |gold| (5-10)"
+  ],
+  "unmatched": [],
+  "properties": [
+    {
+      "property_id": 796,
+      "property": "Required Level {{value}}",
+      "value": 32,
+      "variable": true
+    },
+    {
+      "property_id": 437,
+      "property": "+{{value}} to Strength",
+      "value": 2,
+      "variable": true
+    },
+    {
+      "property_id": 427,
+      "property": "Fire Resist +{{value}}%",
+      "value": 11,
+      "variable": true
+    },
+    {
+      "property_id": 798,
+      "property": "Platform",
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "property": "Mode",
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "property": "Ladder",
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "property": "Game version",
+      "value": "reign of the warlock"
+    }
+  ],
+  "rarity": "magic",
+  "kind": "magic",
+  "rare_name": "Ruby Small Charm Of Strength",
+  "item_id": "3551993524",
+  "slug": "small-charm",
+  "name": "Small Charm",
+  "type": "charms",
+  "listing": [
+    {
+      "property_id": 796,
+      "value": 32
+    },
+    {
+      "property_id": 437,
+      "value": 2
+    },
+    {
+      "property_id": 427,
+      "value": 11
+    },
+    {
+      "property_id": 798,
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "value": "reign of the warlock"
+    }
+  ],
+  "needs_review": true
+}

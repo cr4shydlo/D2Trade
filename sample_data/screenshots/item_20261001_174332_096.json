@@ -1,0 +1,107 @@
+{
+  "file": "item_20261001_174332_096.png",
+  "size": "1329x1080",
+  "tooltip_box": [
+    212,
+    243,
+    861,
+    613
+  ],
+  "manual_box": null,
+  "rarity_guess": "crafted",
+  "mode": "plain/plain",
+  "needs_review": false,
+  "diffs": [],
+  "lines": [
+    "Wraith Turn",
+    "Ring",
+    "Required Level: 52",
+    "+68 to Attack Rating",
+    "Adds 1-4 fire damage",
+    "+3 to Energy",
+    "+17 to Mana",
+    "Regenerate Mana 9%",
+    "5% Better Chance of Getting Magic Items",
+    "Shift + Left Click to Equip",
+    "Ctrl + Left Click to Move to Inventory",
+    "Hold Shift to Compare"
+  ],
+  "reads": [
+    {
+      "scale": 1.5,
+      "mode": "plain",
+      "lines": [
+        "Wraith Turn",
+        "Ring",
+        "Required Level: 52",
+        "+68 to Attack Rating",
+        "Adds 1-4 fire damage",
+        "+3 to Energy",
+        "+17 to Mana",
+        "Regenerate Mana 9%",
+        "5% Better Chance of Getting Magic Items",
+        "Shift + Left Click to Equip",
+        "Ctrl + Left Click to Move to Inventory",
+        "Hold Shift to Compare"
+      ],
+      "calls": [
+        {
+          "schema": false,
+          "done_reason": "stop",
+          "eval_count": 76,
+          "thinking": "",
+          "prefill_s": 0.0,
+          "gen_s": 2.3,
+          "load_s": 0.0,
+          "tokens": {
+            "nasze_in": 701,
+            "nasze_out": 62,
+            "ich_in": 573,
+            "ich_out": 76
+          }
+        }
+      ]
+    },
+    {
+      "scale": 1.0,
+      "mode": "plain",
+      "lines": [
+        "WRAITH TURN",
+        "RING",
+        "REQUIRED LEVEL: 52",
+        "+68 TO ATTACK RATING",
+        "ADDS 1-4 FIRE DAMAGE",
+        "+3 TO ENERGY",
+        "+17 TO MANA",
+        "REGENERATE MANA 9%",
+        "5% BETTER CHANCE OF GETTING MAGIC ITEMS",
+        "SHIFT + LEFT CLICK TO EQUIP",
+        "CTRL + LEFT CLICK TO MOVE TO INVENTORY",
+        "HOLD SHIFT TO COMPARE"
+      ],
+      "calls": [
+        {
+          "schema": false,
+          "done_reason": "stop",
+          "eval_count": 89,
+          "thinking": "",
+          "prefill_s": 0.0,
+          "gen_s": 2.6,
+          "load_s": 0.0,
+          "tokens": {
+            "nasze_in": 377,
+            "nasze_out": 62,
+            "ich_in": 303,
+            "ich_out": 89
+          }
+        }
+      ]
+    }
+  ],
+  "seconds": 9.5,
+  "timing": {
+    "load_s": 0.0,
+    "prefill_s": 0.0,
+    "gen_s": 4.9
+  }
+}

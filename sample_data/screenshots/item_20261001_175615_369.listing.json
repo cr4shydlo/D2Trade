@@ -1,0 +1,93 @@
+{
+  "source": "item_20261001_175615_369.png",
+  "ocr_name": "GLACIAL AMULET OF LUCK",
+  "warnings": [],
+  "unmatched": [],
+  "properties": [
+    {
+      "property_id": 796,
+      "property": "Required Level {{value}}",
+      "value": 45,
+      "variable": true
+    },
+    {
+      "property_id": 517,
+      "property": "+{{value}} to Cold Skills (Sorceress Only)",
+      "value": 3,
+      "variable": true
+    },
+    {
+      "property_id": 461,
+      "property": "{{value}}% Better Chance of Getting Magic Items",
+      "value": 34,
+      "variable": true
+    },
+    {
+      "property_id": 798,
+      "property": "Platform",
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "property": "Mode",
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "property": "Ladder",
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "property": "Game version",
+      "value": "reign of the warlock"
+    },
+    {
+      "property_id": 797,
+      "property": "Rarity",
+      "value": "magic"
+    }
+  ],
+  "rarity": "magic",
+  "kind": "magic",
+  "rare_name": "Glacial Amulet Of Luck",
+  "item_id": "3209126938",
+  "slug": "amulet",
+  "name": "Amulet",
+  "type": "misc",
+  "listing": [
+    {
+      "property_id": 796,
+      "value": 45
+    },
+    {
+      "property_id": 517,
+      "value": 3
+    },
+    {
+      "property_id": 461,
+      "value": 34
+    },
+    {
+      "property_id": 798,
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "value": "reign of the warlock"
+    },
+    {
+      "property_id": 797,
+      "value": "magic"
+    }
+  ],
+  "needs_review": false
+}

@@ -1,0 +1,32 @@
+# sekrety - NIGDY do repozytorium (caly katalog; stare lokalizacje na wszelki wypadek)
+secrets/
+sekrety/
+traderie_auth.txt
+api_OVH.txt
+
+# dane robocze (sciezki od korzenia projektu - sample_data/ ma zostac w repo)
+/screenshots/
+/cache/
+/logs/
+/backups/
+# baza wyciagnieta z wlasnej instalacji gry (game_extract.py) - kazdy robi ja sobie sam,
+# wazy kilkanascie MB i zawiera tresc gry, ktorej nie wolno rozpowszechniac
+/game_data/
+/screeny/
+/kopie/
+/posted.json
+/prices.json
+/settings.json
+/token_usage.csv
+/notifications_seen.json
+/d2jsp_threads.json
+/d2jsp_fg.json
+/d2_gui_error.log
+/unid_map.json
+
+# python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.idea/

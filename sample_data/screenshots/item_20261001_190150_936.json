@@ -1,0 +1,86 @@
+{
+  "file": "item_20261001_190150_936.png",
+  "size": "970x826",
+  "tooltip_box": [
+    0,
+    46,
+    580,
+    209
+  ],
+  "manual_box": null,
+  "rarity_guess": "socketed/eth",
+  "mode": "plain/plain",
+  "needs_review": false,
+  "diffs": [],
+  "lines": [
+    "Jewel of Fervor",
+    "Can be inserted into socketed items",
+    "Required Level: 31",
+    "+15% Increased Attack Speed",
+    "Ctrl + Left Click to Move to Inventory"
+  ],
+  "reads": [
+    {
+      "scale": 1.5,
+      "mode": "plain",
+      "lines": [
+        "Jewel of Fervor",
+        "Can be inserted into socketed items",
+        "Required Level: 31",
+        "+15% Increased Attack Speed",
+        "Ctrl + Left Click to Move to Inventory"
+      ],
+      "calls": [
+        {
+          "schema": false,
+          "done_reason": "stop",
+          "eval_count": 39,
+          "thinking": "",
+          "prefill_s": 0.0,
+          "gen_s": 1.9,
+          "load_s": 0.0,
+          "tokens": {
+            "nasze_in": 334,
+            "nasze_out": 34,
+            "ich_in": 279,
+            "ich_out": 39
+          }
+        }
+      ]
+    },
+    {
+      "scale": 1.0,
+      "mode": "plain",
+      "lines": [
+        "Jewel of Fervor",
+        "Can be inserted into socketed items",
+        "Required Level: 31",
+        "+15% Increased Attack Speed",
+        "Ctrl + Left Click to Move to Inventory"
+      ],
+      "calls": [
+        {
+          "schema": false,
+          "done_reason": "stop",
+          "eval_count": 39,
+          "thinking": "",
+          "prefill_s": 0.0,
+          "gen_s": 1.3,
+          "load_s": 0.0,
+          "tokens": {
+            "nasze_in": 181,
+            "nasze_out": 34,
+            "ich_in": 153,
+            "ich_out": 39
+          }
+        }
+      ]
+    }
+  ],
+  "seconds": 7.7,
+  "timing": {
+    "load_s": 0.0,
+    "prefill_s": 0.0,
+    "gen_s": 3.2
+  }
+}

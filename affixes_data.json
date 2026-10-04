@@ -1,0 +1,4125 @@
+{
+ "source": "CASC Diablo II Resurrected (d2r_assets) - maksima osiagalne, z pominieciem afiksow ponad ilvl 99",
+ "slots": {
+  "shie": {
+   "fhr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fbr": {
+    "magic": 30,
+    "rare": 30
+   },
+   "allres": {
+    "magic": 30,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 60,
+    "rare": 60
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "dex": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ar": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ed_def": {
+    "magic": 200,
+    "rare": 200
+   },
+   "maxdmg": {
+    "magic": 4,
+    "rare": 4
+   },
+   "dr": {
+    "magic": 15,
+    "rare": 7
+   },
+   "mdr": {
+    "magic": 6,
+    "rare": 3
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "tors": {
+   "fhr": {
+    "magic": 24,
+    "rare": 24
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 100,
+    "rare": 60
+   },
+   "mana": {
+    "magic": 40,
+    "rare": 40
+   },
+   "str": {
+    "magic": 20,
+    "rare": 20
+   },
+   "dex": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ar": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ed_def": {
+    "magic": 200,
+    "rare": 200
+   },
+   "mindmg": {
+    "magic": 2,
+    "rare": 2
+   },
+   "dr": {
+    "magic": 15,
+    "rare": 7
+   },
+   "mdr": {
+    "magic": 6,
+    "rare": 3
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "ring": {
+   "fcr": {
+    "magic": 10,
+    "rare": 10
+   },
+   "allres": {
+    "magic": 15,
+    "rare": 15
+   },
+   "fres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "cres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "lres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "pres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 120,
+    "rare": 90
+   },
+   "str": {
+    "magic": 20,
+    "rare": 20
+   },
+   "dex": {
+    "magic": 20,
+    "rare": 15
+   },
+   "enr": {
+    "magic": 20,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 8,
+    "rare": 8
+   },
+   "ml": {
+    "magic": 8,
+    "rare": 8
+   },
+   "mf": {
+    "magic": 25,
+    "rare": 19
+   },
+   "gf": {
+    "magic": 60,
+    "rare": 60
+   },
+   "ar": {
+    "magic": 150,
+    "rare": 150
+   },
+   "mindmg": {
+    "magic": 13,
+    "rare": 9
+   },
+   "maxdmg": {
+    "magic": 4,
+    "rare": 4
+   },
+   "dr": {
+    "magic": 2,
+    "rare": 2
+   },
+   "mdr": {
+    "magic": 2,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 9,
+    "rare": 9
+   },
+   "manakill": {
+    "magic": 1,
+    "rare": 1
+   }
+  },
+  "amul": {
+   "fcr": {
+    "magic": 10,
+    "rare": 10
+   },
+   "allres": {
+    "magic": 30,
+    "rare": 25
+   },
+   "fres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "cres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "lres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "pres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "life": {
+    "magic": 100,
+    "rare": 60
+   },
+   "mana": {
+    "magic": 120,
+    "rare": 90
+   },
+   "str": {
+    "magic": 30,
+    "rare": 30
+   },
+   "dex": {
+    "magic": 30,
+    "rare": 20
+   },
+   "enr": {
+    "magic": 30,
+    "rare": 20
+   },
+   "ll": {
+    "magic": 7,
+    "rare": 7
+   },
+   "ml": {
+    "magic": 8,
+    "rare": 8
+   },
+   "mf": {
+    "magic": 35,
+    "rare": 35
+   },
+   "gf": {
+    "magic": 120,
+    "rare": 120
+   },
+   "ar": {
+    "magic": 30,
+    "rare": 30
+   },
+   "mindmg": {
+    "magic": 13,
+    "rare": 9
+   },
+   "maxdmg": {
+    "magic": 4,
+    "rare": 4
+   },
+   "dr": {
+    "magic": 25,
+    "rare": 4
+   },
+   "mdr": {
+    "magic": 6,
+    "rare": 4
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 15,
+    "rare": 10
+   }
+  },
+  "boot": {
+   "fhr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "frw": {
+    "magic": 40,
+    "rare": 30
+   },
+   "fres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "cres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "lres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "pres": {
+    "magic": 40,
+    "rare": 40
+   },
+   "life": {
+    "magic": 30,
+    "rare": 30
+   },
+   "mana": {
+    "magic": 40,
+    "rare": 40
+   },
+   "str": {
+    "magic": 20,
+    "rare": 20
+   },
+   "dex": {
+    "magic": 15,
+    "rare": 15
+   },
+   "mf": {
+    "magic": 35,
+    "rare": 35
+   },
+   "gf": {
+    "magic": 120,
+    "rare": 120
+   },
+   "ar": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ed_def": {
+    "magic": 200,
+    "rare": 200
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   }
+  },
+  "glov": {
+   "ias": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 40,
+    "rare": 40
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "dex": {
+    "magic": 20,
+    "rare": 20
+   },
+   "ll": {
+    "magic": 3,
+    "rare": 3
+   },
+   "ml": {
+    "magic": 3,
+    "rare": 3
+   },
+   "mf": {
+    "magic": 35,
+    "rare": 35
+   },
+   "gf": {
+    "magic": 120,
+    "rare": 120
+   },
+   "ar": {
+    "magic": 20,
+    "rare": 20
+   },
+   "ed_def": {
+    "magic": 200,
+    "rare": 200
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   }
+  },
+  "belt": {
+   "fhr": {
+    "magic": 24,
+    "rare": 24
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 100,
+    "rare": 60
+   },
+   "mana": {
+    "magic": 30,
+    "rare": 30
+   },
+   "str": {
+    "magic": 30,
+    "rare": 30
+   },
+   "dex": {
+    "magic": 15,
+    "rare": 15
+   },
+   "gf": {
+    "magic": 120,
+    "rare": 120
+   },
+   "ar": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ed_def": {
+    "magic": 200,
+    "rare": 200
+   },
+   "regen": {
+    "magic": 9,
+    "rare": 9
+   }
+  },
+  "scep": {
+   "fcr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 40,
+    "rare": 40
+   },
+   "cres": {
+    "magic": 40,
+    "rare": 40
+   },
+   "lres": {
+    "magic": 40,
+    "rare": 40
+   },
+   "pres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "life": {
+    "magic": 20,
+    "rare": 20
+   },
+   "mana": {
+    "magic": 120,
+    "rare": 90
+   },
+   "str": {
+    "magic": 20,
+    "rare": 20
+   },
+   "dex": {
+    "magic": 15,
+    "rare": 15
+   },
+   "enr": {
+    "magic": 15,
+    "rare": 10
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 15,
+    "rare": 10
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "wand": {
+   "fcr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "ias": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "cres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "lres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "pres": {
+    "magic": 40,
+    "rare": 40
+   },
+   "life": {
+    "magic": 20,
+    "rare": 20
+   },
+   "mana": {
+    "magic": 120,
+    "rare": 90
+   },
+   "enr": {
+    "magic": 30,
+    "rare": 20
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 120,
+    "rare": 120
+   },
+   "ed": {
+    "magic": 65,
+    "rare": 65
+   },
+   "mindmg": {
+    "magic": 5,
+    "rare": 5
+   },
+   "maxdmg": {
+    "magic": 10,
+    "rare": 10
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "staf": {
+   "fcr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "ias": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "cres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "lres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "pres": {
+    "magic": 40,
+    "rare": 40
+   },
+   "life": {
+    "magic": 20,
+    "rare": 20
+   },
+   "mana": {
+    "magic": 120,
+    "rare": 90
+   },
+   "enr": {
+    "magic": 30,
+    "rare": 20
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 120,
+    "rare": 120
+   },
+   "ed": {
+    "magic": 65,
+    "rare": 65
+   },
+   "mindmg": {
+    "magic": 5,
+    "rare": 5
+   },
+   "maxdmg": {
+    "magic": 10,
+    "rare": 10
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "bow": {
+   "ias": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 20,
+    "rare": 20
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "dex": {
+    "magic": 30,
+    "rare": 20
+   },
+   "ll": {
+    "magic": 7,
+    "rare": 7
+   },
+   "ml": {
+    "magic": 8,
+    "rare": 8
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "axe": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "club": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 30,
+    "rare": 30
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "swor": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "hamm": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 30,
+    "rare": 30
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "knif": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "spea": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "pole": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "xbow": {
+   "ias": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 20,
+    "rare": 20
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "dex": {
+    "magic": 30,
+    "rare": 20
+   },
+   "ll": {
+    "magic": 7,
+    "rare": 7
+   },
+   "ml": {
+    "magic": 8,
+    "rare": 8
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "mace": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 20,
+    "rare": 20
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "helm": {
+   "fhr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 60,
+    "rare": 60
+   },
+   "mana": {
+    "magic": 40,
+    "rare": 40
+   },
+   "dex": {
+    "magic": 15,
+    "rare": 15
+   },
+   "enr": {
+    "magic": 15,
+    "rare": 10
+   },
+   "ar": {
+    "magic": 30,
+    "rare": 30
+   },
+   "ed_def": {
+    "magic": 200,
+    "rare": 200
+   },
+   "mindmg": {
+    "magic": 2,
+    "rare": 2
+   },
+   "dr": {
+    "magic": 1,
+    "rare": 1
+   },
+   "mdr": {
+    "magic": 1,
+    "rare": 1
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 3,
+    "rare": 3
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "tpot": {
+   "ias": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 20,
+    "rare": 20
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "ll": {
+    "magic": 7,
+    "rare": 7
+   },
+   "ml": {
+    "magic": 8,
+    "rare": 8
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   }
+  },
+  "tkni": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   }
+  },
+  "taxe": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   }
+  },
+  "jave": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   }
+  },
+  "weap": {
+   "ias": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 20,
+    "rare": 20
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "ll": {
+    "magic": 7,
+    "rare": 7
+   },
+   "ml": {
+    "magic": 8,
+    "rare": 8
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "mele": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "miss": {
+   "ias": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 20,
+    "rare": 20
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "dex": {
+    "magic": 30,
+    "rare": 20
+   },
+   "ll": {
+    "magic": 7,
+    "rare": 7
+   },
+   "ml": {
+    "magic": 8,
+    "rare": 8
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "thro": {
+   "ias": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 20,
+    "rare": 20
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "ll": {
+    "magic": 7,
+    "rare": 7
+   },
+   "ml": {
+    "magic": 8,
+    "rare": 8
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   }
+  },
+  "comb": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   }
+  },
+  "armo": {
+   "fhr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 30,
+    "rare": 30
+   },
+   "mana": {
+    "magic": 5,
+    "rare": 5
+   },
+   "dex": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ar": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ed_def": {
+    "magic": 200,
+    "rare": 200
+   }
+  },
+  "shld": {
+   "fhr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fbr": {
+    "magic": 30,
+    "rare": 30
+   },
+   "allres": {
+    "magic": 30,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 60,
+    "rare": 60
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "dex": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ar": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ed_def": {
+    "magic": 200,
+    "rare": 200
+   },
+   "maxdmg": {
+    "magic": 4,
+    "rare": 4
+   },
+   "dr": {
+    "magic": 15,
+    "rare": 7
+   },
+   "mdr": {
+    "magic": 6,
+    "rare": 3
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "rod": {
+   "fcr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 40,
+    "rare": 40
+   },
+   "cres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "lres": {
+    "magic": 40,
+    "rare": 40
+   },
+   "pres": {
+    "magic": 40,
+    "rare": 40
+   },
+   "life": {
+    "magic": 20,
+    "rare": 20
+   },
+   "mana": {
+    "magic": 120,
+    "rare": 90
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "blun": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "jewl": {
+   "ias": {
+    "magic": 15,
+    "rare": 0
+   },
+   "fhr": {
+    "magic": 7,
+    "rare": 7
+   },
+   "allres": {
+    "magic": 15,
+    "rare": 10
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 20,
+    "rare": 8
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 15
+   },
+   "str": {
+    "magic": 9,
+    "rare": 9
+   },
+   "dex": {
+    "magic": 9,
+    "rare": 9
+   },
+   "enr": {
+    "magic": 9,
+    "rare": 9
+   },
+   "mf": {
+    "magic": 10,
+    "rare": 10
+   },
+   "gf": {
+    "magic": 30,
+    "rare": 30
+   },
+   "ar": {
+    "magic": 100,
+    "rare": 60
+   },
+   "ed": {
+    "magic": 40,
+    "rare": 30
+   },
+   "mindmg": {
+    "magic": 10,
+    "rare": 10
+   },
+   "maxdmg": {
+    "magic": 15,
+    "rare": 9
+   },
+   "regen": {
+    "magic": 4,
+    "rare": 4
+   },
+   "manakill": {
+    "magic": 3,
+    "rare": 3
+   }
+  },
+  "h2h": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "orb": {
+   "fcr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "ias": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 40,
+    "rare": 40
+   },
+   "cres": {
+    "magic": 40,
+    "rare": 40
+   },
+   "lres": {
+    "magic": 40,
+    "rare": 40
+   },
+   "pres": {
+    "magic": 40,
+    "rare": 40
+   },
+   "life": {
+    "magic": 20,
+    "rare": 20
+   },
+   "mana": {
+    "magic": 120,
+    "rare": 90
+   },
+   "enr": {
+    "magic": 30,
+    "rare": 20
+   },
+   "ll": {
+    "magic": 7,
+    "rare": 7
+   },
+   "ml": {
+    "magic": 8,
+    "rare": 8
+   },
+   "ar": {
+    "magic": 150,
+    "rare": 150
+   },
+   "ed": {
+    "magic": 100,
+    "rare": 100
+   },
+   "mindmg": {
+    "magic": 5,
+    "rare": 5
+   },
+   "maxdmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "mdr": {
+    "magic": 6,
+    "rare": 3
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "head": {
+   "fhr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fbr": {
+    "magic": 30,
+    "rare": 30
+   },
+   "allres": {
+    "magic": 30,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 60,
+    "rare": 60
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "dex": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ar": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ed_def": {
+    "magic": 200,
+    "rare": 200
+   },
+   "maxdmg": {
+    "magic": 4,
+    "rare": 4
+   },
+   "dr": {
+    "magic": 15,
+    "rare": 7
+   },
+   "mdr": {
+    "magic": 6,
+    "rare": 3
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "ashd": {
+   "fhr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fbr": {
+    "magic": 30,
+    "rare": 30
+   },
+   "allres": {
+    "magic": 30,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 60,
+    "rare": 60
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "dex": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ar": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ed_def": {
+    "magic": 200,
+    "rare": 200
+   },
+   "maxdmg": {
+    "magic": 4,
+    "rare": 4
+   },
+   "dr": {
+    "magic": 15,
+    "rare": 7
+   },
+   "mdr": {
+    "magic": 6,
+    "rare": 3
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "phlm": {
+   "fhr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 100,
+    "rare": 60
+   },
+   "mana": {
+    "magic": 40,
+    "rare": 40
+   },
+   "dex": {
+    "magic": 15,
+    "rare": 15
+   },
+   "enr": {
+    "magic": 15,
+    "rare": 10
+   },
+   "ar": {
+    "magic": 30,
+    "rare": 30
+   },
+   "ed_def": {
+    "magic": 200,
+    "rare": 200
+   },
+   "mindmg": {
+    "magic": 2,
+    "rare": 2
+   },
+   "dr": {
+    "magic": 1,
+    "rare": 1
+   },
+   "mdr": {
+    "magic": 1,
+    "rare": 1
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 3,
+    "rare": 3
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "pelt": {
+   "fhr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 60,
+    "rare": 60
+   },
+   "mana": {
+    "magic": 40,
+    "rare": 40
+   },
+   "dex": {
+    "magic": 15,
+    "rare": 15
+   },
+   "enr": {
+    "magic": 15,
+    "rare": 10
+   },
+   "ar": {
+    "magic": 30,
+    "rare": 30
+   },
+   "ed_def": {
+    "magic": 200,
+    "rare": 200
+   },
+   "mindmg": {
+    "magic": 2,
+    "rare": 2
+   },
+   "dr": {
+    "magic": 1,
+    "rare": 1
+   },
+   "mdr": {
+    "magic": 1,
+    "rare": 1
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 3,
+    "rare": 3
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "cloa": {
+   "fhr": {
+    "magic": 24,
+    "rare": 24
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 100,
+    "rare": 60
+   },
+   "mana": {
+    "magic": 40,
+    "rare": 40
+   },
+   "str": {
+    "magic": 20,
+    "rare": 20
+   },
+   "dex": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ar": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ed_def": {
+    "magic": 200,
+    "rare": 200
+   },
+   "mindmg": {
+    "magic": 2,
+    "rare": 2
+   },
+   "dr": {
+    "magic": 15,
+    "rare": 7
+   },
+   "mdr": {
+    "magic": 6,
+    "rare": 3
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "circ": {
+   "fcr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fhr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "frw": {
+    "magic": 30,
+    "rare": 30
+   },
+   "allres": {
+    "magic": 30,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 40,
+    "rare": 40
+   },
+   "cres": {
+    "magic": 40,
+    "rare": 40
+   },
+   "lres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "pres": {
+    "magic": 40,
+    "rare": 40
+   },
+   "life": {
+    "magic": 100,
+    "rare": 60
+   },
+   "mana": {
+    "magic": 120,
+    "rare": 90
+   },
+   "str": {
+    "magic": 30,
+    "rare": 30
+   },
+   "dex": {
+    "magic": 30,
+    "rare": 20
+   },
+   "enr": {
+    "magic": 30,
+    "rare": 20
+   },
+   "ll": {
+    "magic": 8,
+    "rare": 8
+   },
+   "ml": {
+    "magic": 8,
+    "rare": 8
+   },
+   "mf": {
+    "magic": 35,
+    "rare": 25
+   },
+   "gf": {
+    "magic": 80,
+    "rare": 80
+   },
+   "ar": {
+    "magic": 120,
+    "rare": 120
+   },
+   "ed": {
+    "magic": 30,
+    "rare": 30
+   },
+   "ed_def": {
+    "magic": 200,
+    "rare": 200
+   },
+   "mindmg": {
+    "magic": 13,
+    "rare": 9
+   },
+   "maxdmg": {
+    "magic": 12,
+    "rare": 8
+   },
+   "dr": {
+    "magic": 25,
+    "rare": 7
+   },
+   "mdr": {
+    "magic": 6,
+    "rare": 3
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 15,
+    "rare": 10
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "scha": {
+   "fhr": {
+    "magic": 5,
+    "rare": 5
+   },
+   "frw": {
+    "magic": 3,
+    "rare": 0
+   },
+   "allres": {
+    "magic": 5,
+    "rare": 0
+   },
+   "fres": {
+    "magic": 11,
+    "rare": 11
+   },
+   "cres": {
+    "magic": 11,
+    "rare": 9
+   },
+   "lres": {
+    "magic": 11,
+    "rare": 9
+   },
+   "pres": {
+    "magic": 11,
+    "rare": 9
+   },
+   "life": {
+    "magic": 20,
+    "rare": 15
+   },
+   "mana": {
+    "magic": 17,
+    "rare": 12
+   },
+   "str": {
+    "magic": 2,
+    "rare": 2
+   },
+   "dex": {
+    "magic": 2,
+    "rare": 2
+   },
+   "mf": {
+    "magic": 7,
+    "rare": 5
+   },
+   "gf": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ar": {
+    "magic": 36,
+    "rare": 24
+   },
+   "mindmg": {
+    "magic": 1,
+    "rare": 1
+   },
+   "maxdmg": {
+    "magic": 3,
+    "rare": 1
+   }
+  },
+  "mcha": {
+   "fhr": {
+    "magic": 8,
+    "rare": 8
+   },
+   "frw": {
+    "magic": 5,
+    "rare": 5
+   },
+   "allres": {
+    "magic": 8,
+    "rare": 0
+   },
+   "fres": {
+    "magic": 15,
+    "rare": 12
+   },
+   "cres": {
+    "magic": 15,
+    "rare": 12
+   },
+   "lres": {
+    "magic": 15,
+    "rare": 12
+   },
+   "pres": {
+    "magic": 15,
+    "rare": 12
+   },
+   "life": {
+    "magic": 35,
+    "rare": 25
+   },
+   "mana": {
+    "magic": 34,
+    "rare": 34
+   },
+   "str": {
+    "magic": 5,
+    "rare": 5
+   },
+   "dex": {
+    "magic": 5,
+    "rare": 5
+   },
+   "mf": {
+    "magic": 6,
+    "rare": 1
+   },
+   "gf": {
+    "magic": 22,
+    "rare": 22
+   },
+   "ar": {
+    "magic": 77,
+    "rare": 51
+   },
+   "mindmg": {
+    "magic": 2,
+    "rare": 1
+   },
+   "maxdmg": {
+    "magic": 6,
+    "rare": 6
+   }
+  },
+  "lcha": {
+   "fhr": {
+    "magic": 12,
+    "rare": 12
+   },
+   "frw": {
+    "magic": 7,
+    "rare": 7
+   },
+   "allres": {
+    "magic": 15,
+    "rare": 0
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 25
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 25
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 25
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 25
+   },
+   "life": {
+    "magic": 45,
+    "rare": 35
+   },
+   "mana": {
+    "magic": 59,
+    "rare": 59
+   },
+   "str": {
+    "magic": 6,
+    "rare": 6
+   },
+   "dex": {
+    "magic": 6,
+    "rare": 6
+   },
+   "mf": {
+    "magic": 12,
+    "rare": 4
+   },
+   "gf": {
+    "magic": 40,
+    "rare": 40
+   },
+   "ar": {
+    "magic": 132,
+    "rare": 87
+   },
+   "mindmg": {
+    "magic": 3,
+    "rare": 2
+   },
+   "maxdmg": {
+    "magic": 10,
+    "rare": 10
+   },
+   "tab": {
+    "magic": 1,
+    "rare": 1
+   }
+  },
+  "abow": {
+   "ias": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 50,
+    "rare": 50
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 20,
+    "rare": 20
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "dex": {
+    "magic": 30,
+    "rare": 20
+   },
+   "ll": {
+    "magic": 7,
+    "rare": 7
+   },
+   "ml": {
+    "magic": 8,
+    "rare": 8
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "aspe": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "ajav": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   }
+  },
+  "h2h2": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "blde": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "sppl": {
+   "ias": {
+    "magic": 40,
+    "rare": 40
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 40,
+    "rare": 40
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ll": {
+    "magic": 10,
+    "rare": 10
+   },
+   "ml": {
+    "magic": 12,
+    "rare": 12
+   },
+   "ar": {
+    "magic": 450,
+    "rare": 300
+   },
+   "ed": {
+    "magic": 300,
+    "rare": 300
+   },
+   "mindmg": {
+    "magic": 20,
+    "rare": 20
+   },
+   "maxdmg": {
+    "magic": 63,
+    "rare": 20
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "manakill": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "grim": {
+   "fhr": {
+    "magic": 20,
+    "rare": 20
+   },
+   "fbr": {
+    "magic": 30,
+    "rare": 30
+   },
+   "allres": {
+    "magic": 30,
+    "rare": 20
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 60,
+    "rare": 60
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 20
+   },
+   "str": {
+    "magic": 15,
+    "rare": 15
+   },
+   "dex": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ar": {
+    "magic": 15,
+    "rare": 15
+   },
+   "ed_def": {
+    "magic": 200,
+    "rare": 200
+   },
+   "maxdmg": {
+    "magic": 4,
+    "rare": 4
+   },
+   "dr": {
+    "magic": 15,
+    "rare": 7
+   },
+   "mdr": {
+    "magic": 6,
+    "rare": 3
+   },
+   "classsk": {
+    "magic": 2,
+    "rare": 2
+   },
+   "tab": {
+    "magic": 3,
+    "rare": 2
+   },
+   "regen": {
+    "magic": 5,
+    "rare": 5
+   },
+   "sock": {
+    "magic": 2,
+    "rare": 2
+   }
+  },
+  "cjwl": {
+   "ias": {
+    "magic": 15,
+    "rare": 0
+   },
+   "fhr": {
+    "magic": 7,
+    "rare": 7
+   },
+   "allres": {
+    "magic": 15,
+    "rare": 10
+   },
+   "fres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "cres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "lres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "pres": {
+    "magic": 30,
+    "rare": 30
+   },
+   "life": {
+    "magic": 20,
+    "rare": 8
+   },
+   "mana": {
+    "magic": 20,
+    "rare": 15
+   },
+   "str": {
+    "magic": 9,
+    "rare": 9
+   },
+   "dex": {
+    "magic": 9,
+    "rare": 9
+   },
+   "enr": {
+    "magic": 9,
+    "rare": 9
+   },
+   "mf": {
+    "magic": 10,
+    "rare": 10
+   },
+   "gf": {
+    "magic": 30,
+    "rare": 30
+   },
+   "ar": {
+    "magic": 100,
+    "rare": 60
+   },
+   "ed": {
+    "magic": 40,
+    "rare": 30
+   },
+   "mindmg": {
+    "magic": 10,
+    "rare": 10
+   },
+   "maxdmg": {
+    "magic": 15,
+    "rare": 9
+   },
+   "regen": {
+    "magic": 4,
+    "rare": 4
+   },
+   "manakill": {
+    "magic": 3,
+    "rare": 3
+   }
+  }
+ }
+}

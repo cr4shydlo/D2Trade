@@ -1,0 +1,113 @@
+{
+  "file": "item_20261001_174345_527.png",
+  "size": "1100x931",
+  "tooltip_box": [
+    0,
+    388,
+    631,
+    823
+  ],
+  "manual_box": null,
+  "rarity_guess": "set",
+  "mode": "plain/plain",
+  "needs_review": false,
+  "diffs": [],
+  "lines": [
+    "HORAZON'S LEGACY",
+    "MIRRORED BOOTS",
+    "DEFENSE: 60",
+    "DURABILITY: 16 OF 18",
+    "REQUIRED STRENGTH: 115",
+    "REQUIRED LEVEL: 67",
+    "+30% FASTER RUN/WALK",
+    "+13 TO STRENGTH",
+    "+12 TO DEXTERITY",
+    "MAGIC RESIST +25%",
+    "CANNOT BE FROZEN",
+    "REQUIREMENTS -30%",
+    "HORAZON'S SPLENDOR",
+    "HORAZON'S SECRETS"
+  ],
+  "reads": [
+    {
+      "scale": 1.5,
+      "mode": "plain",
+      "lines": [
+        "HORAZON'S LEGACY",
+        "MIRRORED BOOTS",
+        "DEFENSE: 60",
+        "DURABILITY: 16 OF 18",
+        "REQUIRED STRENGTH: 115",
+        "REQUIRED LEVEL: 67",
+        "+30% FASTER RUN/WALK",
+        "+13 TO STRENGTH",
+        "+12 TO DEXTERITY",
+        "MAGIC RESIST +25%",
+        "CANNOT BE FROZEN",
+        "REQUIREMENTS -30%",
+        "HORAZON'S SPLENDOR",
+        "HORAZON'S SECRETS"
+      ],
+      "calls": [
+        {
+          "schema": false,
+          "done_reason": "stop",
+          "eval_count": 118,
+          "thinking": "",
+          "prefill_s": 0.0,
+          "gen_s": 3.8,
+          "load_s": 0.0,
+          "tokens": {
+            "nasze_in": 837,
+            "nasze_out": 62,
+            "ich_in": 663,
+            "ich_out": 118
+          }
+        }
+      ]
+    },
+    {
+      "scale": 1.0,
+      "mode": "plain",
+      "lines": [
+        "Horazon's Legacy",
+        "Mirrored Boots",
+        "Defense: 60",
+        "Durability: 16 of 18",
+        "Required Strength: 115",
+        "Required Level: 67",
+        "+30% Faster Run/Walk",
+        "+13 to Strength",
+        "+12 to Dexterity",
+        "Magic Resist +25%",
+        "Cannot Be Frozen",
+        "Requirements -30%",
+        "Horazon's Splendor",
+        "Horazon's Secrets"
+      ],
+      "calls": [
+        {
+          "schema": false,
+          "done_reason": "stop",
+          "eval_count": 91,
+          "thinking": "",
+          "prefill_s": 0.0,
+          "gen_s": 27.2,
+          "load_s": 0.0,
+          "tokens": {
+            "nasze_in": 423,
+            "nasze_out": 62,
+            "ich_in": 343,
+            "ich_out": 91
+          }
+        }
+      ]
+    }
+  ],
+  "seconds": 34.7,
+  "timing": {
+    "load_s": 0.0,
+    "prefill_s": 0.0,
+    "gen_s": 31.0
+  }
+}

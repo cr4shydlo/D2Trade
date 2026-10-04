@@ -1,0 +1,74 @@
+{
+  "source": "item_20261001_174317_634.png",
+  "ocr_name": "EMERALD GRAND CHARM",
+  "warnings": [],
+  "unmatched": [],
+  "properties": [
+    {
+      "property_id": 796,
+      "property": "Required Level {{value}}",
+      "value": 22,
+      "variable": true
+    },
+    {
+      "property_id": 401,
+      "property": "Poison Resist +{{value}}%",
+      "value": 29,
+      "variable": true
+    },
+    {
+      "property_id": 798,
+      "property": "Platform",
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "property": "Mode",
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "property": "Ladder",
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "property": "Game version",
+      "value": "reign of the warlock"
+    }
+  ],
+  "rarity": "magic",
+  "kind": "magic",
+  "rare_name": "Emerald Grand Charm",
+  "item_id": "3779798752",
+  "slug": "grand-charm",
+  "name": "Grand Charm",
+  "type": "charms",
+  "listing": [
+    {
+      "property_id": 796,
+      "value": 22
+    },
+    {
+      "property_id": 401,
+      "value": 29
+    },
+    {
+      "property_id": 798,
+      "value": "PC"
+    },
+    {
+      "property_id": 799,
+      "value": "softcore"
+    },
+    {
+      "property_id": 800,
+      "value": "Ladder"
+    },
+    {
+      "property_id": 1854,
+      "value": "reign of the warlock"
+    }
+  ],
+  "needs_review": false
+}

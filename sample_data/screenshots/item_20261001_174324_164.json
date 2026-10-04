@@ -1,0 +1,89 @@
+{
+  "file": "item_20261001_174324_164.png",
+  "size": "1328x1080",
+  "tooltip_box": [
+    226,
+    314,
+    834,
+    503
+  ],
+  "manual_box": null,
+  "rarity_guess": "magic",
+  "mode": "plain/plain",
+  "needs_review": false,
+  "diffs": [],
+  "lines": [
+    "RUBY SMALL CHARM OF STRENGTH",
+    "KEEP IN INVENTORY TO GAIN BONUS",
+    "REQUIRED LEVEL: 32",
+    "+2 TO STRENGTH",
+    "FIRE RESIST +11%",
+    "CTRL + LEFT CLICK TO MOVE TO INVENTORY"
+  ],
+  "reads": [
+    {
+      "scale": 1.5,
+      "mode": "plain",
+      "lines": [
+        "RUBY SMALL CHARM OF STRENGTH",
+        "KEEP IN INVENTORY TO GAIN BONUS",
+        "REQUIRED LEVEL: 32",
+        "+2 TO STRENGTH",
+        "FIRE RESIST +11%",
+        "CTRL + LEFT CLICK TO MOVE TO INVENTORY"
+      ],
+      "calls": [
+        {
+          "schema": false,
+          "done_reason": "stop",
+          "eval_count": 53,
+          "thinking": "",
+          "prefill_s": 0.0,
+          "gen_s": 1.8,
+          "load_s": 0.0,
+          "tokens": {
+            "nasze_in": 375,
+            "nasze_out": 38,
+            "ich_in": 315,
+            "ich_out": 53
+          }
+        }
+      ]
+    },
+    {
+      "scale": 1.0,
+      "mode": "plain",
+      "lines": [
+        "RUBY SMALL CHARM OF STRENGTH",
+        "KEEP IN INVENTORY TO GAIN BONUS",
+        "REQUIRED LEVEL: 32",
+        "+2 TO STRENGTH",
+        "FIRE RESIST +11%",
+        "CTRL + LEFT CLICK TO MOVE TO INVENTORY"
+      ],
+      "calls": [
+        {
+          "schema": false,
+          "done_reason": "stop",
+          "eval_count": 53,
+          "thinking": "",
+          "prefill_s": 0.0,
+          "gen_s": 1.7,
+          "load_s": 0.0,
+          "tokens": {
+            "nasze_in": 209,
+            "nasze_out": 38,
+            "ich_in": 177,
+            "ich_out": 53
+          }
+        }
+      ]
+    }
+  ],
+  "seconds": 8.7,
+  "timing": {
+    "load_s": 0.0,
+    "prefill_s": 0.0,
+    "gen_s": 3.5
+  }
+}
