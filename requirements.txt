@@ -9,8 +9,10 @@ mss              # zrzuty ekranu
 pytest
 pytest-asyncio
 
-# Opcjonalnie: czytanie archiwum CASC gry przez game_extract.py (praca bez Traderie).
-# Pakiet ma gotowe kolo tylko dla Windows x64 + Python 3.11, dlatego nie jest wymagany -
-# bez niego mozna wskazac katalog z juz wypakowanym 'data' (np. przez CascView).
-# py -3.11 -m pip install casc
-
+# Czytanie archiwum CASC gry (game_extract.py - praca bez Traderie).
+# Na PyPI jest tylko jedno kolo: cp311 / win_amd64, bez zrodel. Warunek nizej sprawia,
+# ze pip probuje go wylacznie tam, gdzie to kolo pasuje - na innym systemie czy innej
+# wersji Pythona pozycja jest pomijana i instalacja reszty sie nie wywala.
+# Bez tego pakietu program dziala, ale dane z gry trzeba wypakowac samemu (np. CascView)
+# i wskazac katalog z 'data'.
+casc; sys_platform == "win32" and platform_machine == "AMD64" and python_version == "3.11"

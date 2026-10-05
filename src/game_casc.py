@@ -16,6 +16,7 @@ import io
 import os
 import re
 import struct
+import sys
 from pathlib import Path
 
 # naglowek ikony D2R (.sprite): 40 bajtow, potem surowe RGBA8888, jedna klatka.
@@ -23,13 +24,32 @@ from pathlib import Path
 SPRITE_MAGIC = b"SpA1"
 SPRITE_HEAD = 40
 
-CASC_BRAK = (
-    "Czytanie archiwum gry wymaga pakietu 'casc' (wrapper CascLib):\n"
-    "    py -3.11 -m pip install casc\n"
-    "Pakiet ma gotowe kolo tylko dla Windows x64 + Python 3.11. Jesli nie da sie go\n"
-    "zainstalowac, wypakuj katalog 'data' dowolnym narzedziem do CASC (np. CascView)\n"
-    "i wskaz ten katalog zamiast katalogu z gra."
-)
+# Pakiet 'casc' ma na PyPI dokladnie jedno kolo i zadnych zrodel, wiec instaluje sie
+# tylko na tym jednym zestawie. Na innym pip mowi "from versions: none", co brzmi tak,
+# jakby pakiet nie istnial - dlatego komunikat pokazuje, co uzytkownik ma u siebie.
+CASC_WYMAGA = ("win32", "AMD64", (3, 11))
+
+
+def _czym_jestem() -> str:
+    import platform
+    return "%s / %s / Python %d.%d" % (sys.platform, platform.machine() or "?",
+                                       sys.version_info[0], sys.version_info[1])
+
+
+def brak_casc() -> str:
+    """Komunikat o braku pakietu 'casc' - z diagnoza, a nie samym 'doinstaluj'."""
+    system, maszyna, wersja = CASC_WYMAGA
+    import platform
+    pasuje = (sys.platform == system and (platform.machine() or "") == maszyna
+              and sys.version_info[:2] == wersja)
+    rada = ("    py -3.11 -m pip install casc"
+            if pasuje else
+            "    Twoj Python tego pakietu nie zainstaluje - pip powie 'from versions: none'.\n"
+            "    Albo uzyj Pythona 3.11 (64-bit) na Windows, albo wypakuj katalog 'data'\n"
+            "    narzedziem do CASC (np. CascView) i wskaz programowi TEN katalog.")
+    return ("Czytanie archiwum gry wymaga pakietu 'casc' (nakladka na CascLib).\n"
+            "Jest on tylko dla Windows x64 + Python 3.11 - masz: %s\n%s"
+            % (_czym_jestem(), rada))
 
 
 class BrakZrodla(Exception):
@@ -81,7 +101,7 @@ class Casc:
         try:
             import _casc
         except ImportError:
-            raise BrakZrodla(CASC_BRAK) from None
+            raise BrakZrodla(brak_casc()) from None
         self._casc = _casc
         self.h = _casc.open(self.gra)
         return self

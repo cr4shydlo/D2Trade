@@ -54,11 +54,16 @@ Diablo II: Resurrected.
 3. To check it worked, press `Win + R`, type `cmd`, press Enter, and in the black window type:
 
    ```
-   py -3.11 --version
+   py -3.11 -c "import sys, platform; print(sys.version, platform.machine())"
    ```
 
-   You should see `Python 3.11.something`. If you see an error, the installer step was
-   missed - run it again and make sure the PATH box is ticked.
+   You want to see `3.11.something` and `AMD64`. If you see an error instead, the installer
+   step was missed - run it again and make sure the PATH box is ticked.
+
+   **Why 3.11 and not something newer:** reading the game archive relies on a package that
+   was built for Python 3.11 (64-bit) only. Everything else in the tool works on other
+   versions too, but on those you would have to extract the game data by hand - see
+   [Trouble with the game archive](#trouble-with-the-game-archive).
 
 ## Step 2 - download this project
 
@@ -116,15 +121,12 @@ Now tell it where your game is, so it can recognise items:
    *"database ready: 1355 items, 375 icons"*.
 4. Click **Save**.
 
-Reading the game archive needs one extra package. If step 3 complains about it, type this in
-the black window and try again:
-
-```bat
-.venv\Scripts\python -m pip install casc
-```
-
-If that package will not install on your machine, see
-[Trouble with the game archive](#trouble-with-the-game-archive) below.
+Reading the game archive needs the `casc` package, and step 3 of the install already pulled
+it in - **as long as your Python is 3.11, 64-bit**. That package exists as a single prebuilt
+file for exactly that combination and nothing else, so on Python 3.10 or 3.12 it is silently
+skipped and this is the one thing that will not work. See
+[Trouble with the game archive](#trouble-with-the-game-archive) - there is a way round it
+that does not need 3.11.
 
 ## Step 6 - sell something
 
@@ -216,10 +218,28 @@ the game and sends nothing anywhere - `data/game_data/` stays on your disk and i
 
 ### Trouble with the game archive
 
-Reading the CASC archive needs the `casc` package (a CascLib wrapper), which only ships a
-prebuilt wheel for Windows x64 + Python 3.11. If it will not install, extract the game's
-`data` folder with any CASC tool ([CascView](http://www.zezula.net/en/casc/main.html), for
-example) and point the tool at **that** folder instead - everything else works the same.
+Reading the CASC archive needs the `casc` package (a CascLib wrapper). On PyPI it exists as
+**one single file**, built for Windows x64 + Python 3.11, with no source to compile from.
+So:
+
+- **on Python 3.11 (64-bit)** it installs with everything else and you need to do nothing;
+- **on any other version** pip answers `No matching distribution found for casc` - which
+  looks like the package does not exist, but it only means it was not built for your Python.
+
+Check what you have:
+
+```bat
+.venv\Scripts\python -c "import sys, platform; print(sys.version, platform.machine())"
+```
+
+You want `3.11.x` and `AMD64`. If you have something else, you have two ways out, and both
+work:
+
+1. Install Python 3.11 (64-bit), delete the `.venv` folder and redo step 3 of the install.
+2. Keep the Python you have and extract the game data yourself: open the game folder with
+   [CascView](http://www.zezula.net/en/casc/main.html), extract the `data` folder anywhere,
+   and in Settings point **Game data** at the folder that *contains* `data` instead of at the
+   game. Everything else behaves exactly the same - the program reads either source.
 
 ### What exactly works without Traderie
 
