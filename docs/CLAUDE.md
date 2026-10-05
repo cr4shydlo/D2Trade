@@ -329,10 +329,11 @@ main_file = src/run_app.py
 `pythonpath = src` zastępuje sztuczki z `sys.path` — testy importują moduły po nazwie, tak jak
 program. `main_file` wtyczka NiceGUI liczy względem pliku `pytest.ini`.
 
-Scenariusze w repo (**96 testów**, `py -3.11 -m pytest -q` ≈ 100 s):
+Scenariusze w repo (**98 testów**, `py -3.11 -m pytest -q` ≈ 100 s):
 
 | plik | co sprawdza |
 |---|---|
+| `test_launch.py` | **czy program w ogóle wstaje** — uruchamia `python src\d2_web.py` jak plik `.bat` i czeka na odpowiedź serwera; drugi test dla `game_extract.py` |
 | `test_app.py` | przepływ główny, widoki, okno ceny, szybka wycena, synchronizacja; strażnik `ui.notify` w funkcjach async |
 | `test_actions.py` | wystawianie z potwierdzeniem, sprzedaż, usuwanie z listy, odblokowanie „do sprawdzenia”, kopertka z wiadomościami |
 | `test_rare2.py` | panel magic/rare ze statami na tle maksimum |
@@ -570,6 +571,15 @@ Przy zmianach w logice (bez UI) najszybszą kontrolą jest przepuszczenie prawdz
 - **Stronicowanie dotyczy tylko tego, co widać.** „Wystaw zaznaczone”, „Zaznacz gotowe” i
   „Odnów wszystkie” działają na **wszystkich** pasujących przedmiotach, także spoza bieżącej strony
   — tak było przed zmianą i tak zostało.
+- **Testy importujące moduł to nie to samo, co uruchomienie programu.** Po przeniesieniu kodu
+  do `src/` okno przestało wstawać: `sys.argv[0]` jest wtedy ścieżką **względną**
+  (`src\d2_web.py`), a `paths.use_data_dir()` robi `os.chdir` na `data/` — pywebview liczy
+  z `argv[0]` swoją ścieżkę bazową i wywala się przy samym imporcie NiceGUI
+  (`Path ...\data\src does not exist`). Wszystkie 96 testów przechodziło, bo żaden nie
+  uruchamiał programu jako programu — importowały moduł przez wtyczkę NiceGUI, gdzie
+  `argv[0]` to pytest. Naprawia to `paths._utrwal_argv0()` (robi ścieżkę bezwzględną **przed**
+  chdir), a pilnuje `test_launch.py`. Sprawdzone przez cofnięcie poprawki: test wtedy pada
+  z tym samym błędem, który zgłosił autor.
 - `ui.notify` działa tylko w kontekście żywego elementu strony; długie zadanie przebudowuje widok
   i element znika, więc komunikaty idą przez `d2_web.say()` (przy błędzie — do logu).
   **Zasada jest teraz pilnowana testem** (`test_app.py::test_dlugie_zadania_nie_wolaja_ui_notify`):

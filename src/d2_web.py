@@ -2405,11 +2405,16 @@ def index():
     ui.timer(NOTIFY_EVERY, notify_tick)
 
 
+PORT = int(os.environ.get("D2_PORT") or 8765)
+# D2_BEZ_OKNA ustawia test startu: ma sprawdzic, czy program wstaje, a nie otwierac okno
+BEZ_OKNA = bool(os.environ.get("D2_BEZ_OKNA"))
+
 if __name__ in {"__main__", "__mp_main__"}:
     try:
         import webview  # noqa: F401  (pywebview -> natywne okno)
-        native = True
+        native = not BEZ_OKNA
     except Exception:
         native = False
     ui.run(title="D2 Trade", native=native, window_size=(1440, 900) if native else None, reload=False,
-           show=not native, port=8765, favicon="⚔", show_welcome_message=False, uvicorn_logging_level="warning")
+           show=not native and not BEZ_OKNA, port=PORT, favicon="⚔",
+           show_welcome_message=False, uvicorn_logging_level="warning")

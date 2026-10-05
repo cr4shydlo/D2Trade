@@ -12,6 +12,7 @@ i nie moga skasowac prawdziwych ofert, cen ani ustawien. Zadna sciezka w program
 nie jest bezwzgledna, wiec katalog projektu mozna przenosic.
 """
 import os
+import sys
 from pathlib import Path
 
 PROGRAM = Path(__file__).resolve().parent
@@ -38,11 +39,27 @@ def secret(name: str) -> Path:
 
 def use_data_dir():
     """Przestawia katalog biezacy na DATA (wywolywane raz, przy starcie okna/konsoli)."""
+    _utrwal_argv0()
     collect_data()
     DATA.mkdir(parents=True, exist_ok=True)
     os.chdir(DATA)
     migrate_layout()
     return DATA
+
+
+def _utrwal_argv0():
+    """Zamienia sys.argv[0] na sciezke bezwzgledna, zanim zmienimy katalog biezacy.
+
+    Uruchamiany z pliku .bat program dostaje sciezke wzgledna ('src\\d2_web.py'). Po chdir
+    taka sciezka wskazuje w inne miejsce, a biblioteki, ktore licza z niej swoje polozenie,
+    wywalaja sie przy starcie - pywebview robi tak przy samym imporcie NiceGUI
+    ('Path ...\\data\\src does not exist'). Okno w ogole sie nie otwieralo.
+    """
+    if sys.argv and sys.argv[0]:
+        try:
+            sys.argv[0] = str(Path(sys.argv[0]).resolve())
+        except OSError:
+            pass
 
 
 def collect_data():
