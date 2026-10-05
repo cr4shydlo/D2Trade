@@ -102,11 +102,16 @@ graphics card and costs nothing:
    ollama pull qwen3-vl:4b-instruct
    ```
 
-   That downloads about 3 GB. You need a graphics card with roughly 6 GB of memory. **Close
-   the game while reading screenshots** - the game and the model compete for the same card.
+   That downloads about 3 GB and needs roughly 6 GB of video memory to run.
 
-If your card is too small, you can use a cloud provider instead (Settings -> Model -> provider
-"openai", then paste the endpoint URL and your API key). That costs money per image.
+The model and the game share the graphics card, so how much memory you have decides whether
+they fit together. The program checks this for you before every read: it loads the model and
+verifies it sits **entirely** in video memory. If it does not, it stops and tells you to close
+the game and retry, instead of reading at CPU speed for half an hour.
+
+If your card is too small, or you would rather not tie it up at all, use a cloud provider
+instead (Settings -> Model -> provider "openai", then paste the endpoint URL and your API
+key). That costs money per image, and the graphics card stops mattering completely.
 
 ## Step 5 - first run
 
@@ -133,10 +138,15 @@ that does not need 3.11.
 1. Start the game, hover the mouse over an item in your stash and press **F12**. Nothing
    visible happens - the tool saved a screenshot in the background. Do this for every item
    you want to sell.
-2. **Close the game** (the model needs the graphics card).
-3. In the D2 Trade window click **Read screenshots**. Each item appears in the list with its
+2. In the D2 Trade window click **Read screenshots**. Each item appears in the list with its
    stats and a rating of how well it rolled.
-4. Switch to the **d2jsp post** view and click **Copy sales post**. Paste it into your d2jsp
+
+   You do **not** have to close the game first. Whether you can leave it running depends on
+   your setup: with a cloud model it never matters, and with a local model it comes down to
+   how much video memory the card has - 8 GB usually means closing the game, more than that
+   usually does not. You do not have to work it out yourself: if the model will not fit
+   alongside the game, the program says so and reads nothing until you close it.
+3. Switch to the **d2jsp post** view and click **Copy sales post**. Paste it into your d2jsp
    thread.
 
 That is the whole loop. Everything above works without any account anywhere.

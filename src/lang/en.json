@@ -125,8 +125,6 @@
     "Nie udalo sie zdjac oferty z Traderie: {0}": "Could not take the listing off Traderie: {0}",
     "Nie znaleziono przedmiotu '{0}' na Traderie.": "Item '{0}' not found on Traderie.",
     "Nie znaleziono screena {0}.png": "Screenshot {0}.png not found",
-    "Odczyt screenow (gra musi byc zamknieta - model potrzebuje karty graficznej)": "Reading screenshots (the game must be closed - the model needs the graphics card)",
-    "Odczyt screenow w chmurze ({0}) - gre mozesz zostawic wlaczona": "Reading screenshots in the cloud ({0}) - you can leave the game running",
     "Odczytaj ponownie": "Read again",
     "Odczytaj screeny": "Read screenshots",
     "Odczytaj wszystkie od nowa": "Read all again",
@@ -397,7 +395,9 @@
     "wskaz katalog gry w Ustawieniach": "point at the game folder in Settings",
     "ceny biora sie z transakcji na Traderie - bez tokenu ich nie ma. Jakosc rzutu wyzej policzona jest z plikow gry; cene ustal sam (np. po d2jsp)": "prices come from Traderie trades - there are none without a token. The roll quality above is computed from the game files; set the price yourself (d2jsp, for example)",
     "Rozpoznane bez Traderie (odczytaj screeny ponownie, zeby wystawic): ": "Identified without Traderie (re-read the screenshots to list them): ",
-    "Nie podano ID konta Traderie. Wpisz je w Ustawieniach - znajdziesz je w adresie listy swoich ofert na Traderie, po 'seller='.": "No Traderie account id. Enter it in Settings - you will find it in the address of your own listings page on Traderie, after 'seller='."
+    "Nie podano ID konta Traderie. Wpisz je w Ustawieniach - znajdziesz je w adresie listy swoich ofert na Traderie, po 'seller='.": "No Traderie account id. Enter it in Settings - you will find it in the address of your own listings page on Traderie, after 'seller='.",
+    "Odczyt screenow modelem lokalnym - jesli nie zmiesci sie obok gry, program o tym powie": "Reading screenshots with the local model - if it will not fit alongside the game, the program will say so",
+    "Odczyt screenow w chmurze ({0}) - karta graficzna nie jest potrzebna": "Reading screenshots in the cloud ({0}) - no graphics card needed"
   },
   "phrases": {
     "token OK": "token OK",

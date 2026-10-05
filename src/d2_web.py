@@ -541,8 +541,11 @@ async def task(coro_fn, *args):
 
 async def do_read(redo: bool):
     import d2_ocr
-    log(t("Odczyt screenow (gra musi byc zamknieta - model potrzebuje karty graficznej)") if llm.is_local()
-        else t(f"Odczyt screenow w chmurze ({llm.model()}) - gre mozesz zostawic wlaczona"))
+    # Nie piszemy "zamknij gre": model dzieli karte z gra, ale przy duzym VRAM miesci sie
+    # obok niej. Czy sie zmiescil, sprawdza d2_ocr.check_gpu() i to on powie, gdy nie.
+    log(t("Odczyt screenow modelem lokalnym - jesli nie zmiesci sie obok gry, program o tym powie")
+        if llm.is_local()
+        else t(f"Odczyt screenow w chmurze ({llm.model()}) - karta graficzna nie jest potrzebna"))
     res = await run.io_bound(d2_ocr.run, FOLDER, False, redo, False)
     if res is not None and res < 0:
         say(t("Model nie miesci sie na karcie graficznej - zamknij gre i sprobuj ponownie."), "negative")

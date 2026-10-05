@@ -125,8 +125,6 @@
     "Nie udalo sie zdjac oferty z Traderie: {0}": "Angebot konnte nicht von Traderie entfernt werden: {0}",
     "Nie znaleziono przedmiotu '{0}' na Traderie.": "Gegenstand '{0}' auf Traderie nicht gefunden.",
     "Nie znaleziono screena {0}.png": "Screenshot {0}.png nicht gefunden",
-    "Odczyt screenow (gra musi byc zamknieta - model potrzebuje karty graficznej)": "Screenshots lesen (Spiel muss geschlossen sein - das Modell braucht die Grafikkarte)",
-    "Odczyt screenow w chmurze ({0}) - gre mozesz zostawic wlaczona": "Screenshots werden in der Cloud gelesen ({0}) - das Spiel kann laufen bleiben",
     "Odczytaj ponownie": "Erneut lesen",
     "Odczytaj screeny": "Screenshots lesen",
     "Odczytaj wszystkie od nowa": "Alle neu lesen",
@@ -397,7 +395,9 @@
     "wskaz katalog gry w Ustawieniach": "Spielordner in den Einstellungen angeben",
     "ceny biora sie z transakcji na Traderie - bez tokenu ich nie ma. Jakosc rzutu wyzej policzona jest z plikow gry; cene ustal sam (np. po d2jsp)": "Preise stammen aus Traderie-Handeln - ohne Token gibt es keine. Die Wurfqualitaet oben stammt aus den Spieldateien; den Preis legst du selbst fest (z. B. nach d2jsp)",
     "Rozpoznane bez Traderie (odczytaj screeny ponownie, zeby wystawic): ": "Ohne Traderie erkannt (Screenshots erneut einlesen, um sie einzustellen): ",
-    "Nie podano ID konta Traderie. Wpisz je w Ustawieniach - znajdziesz je w adresie listy swoich ofert na Traderie, po 'seller='.": "Keine Traderie-Konto-ID angegeben. Trage sie in den Einstellungen ein - du findest sie in der Adresse deiner eigenen Angebotsliste auf Traderie, nach 'seller='."
+    "Nie podano ID konta Traderie. Wpisz je w Ustawieniach - znajdziesz je w adresie listy swoich ofert na Traderie, po 'seller='.": "Keine Traderie-Konto-ID angegeben. Trage sie in den Einstellungen ein - du findest sie in der Adresse deiner eigenen Angebotsliste auf Traderie, nach 'seller='.",
+    "Odczyt screenow modelem lokalnym - jesli nie zmiesci sie obok gry, program o tym powie": "Lese Screenshots mit dem lokalen Modell - passt es nicht neben das Spiel, sagt das Programm Bescheid",
+    "Odczyt screenow w chmurze ({0}) - karta graficzna nie jest potrzebna": "Lese Screenshots in der Cloud ({0}) - keine Grafikkarte noetig"
   },
   "phrases": {
     "token OK": "Token OK",
