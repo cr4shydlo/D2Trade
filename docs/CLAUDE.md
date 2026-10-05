@@ -329,7 +329,7 @@ main_file = src/run_app.py
 `pythonpath = src` zastępuje sztuczki z `sys.path` — testy importują moduły po nazwie, tak jak
 program. `main_file` wtyczka NiceGUI liczy względem pliku `pytest.ini`.
 
-Scenariusze w repo (**98 testów**, `py -3.11 -m pytest -q` ≈ 100 s):
+Scenariusze w repo (**97 testów**, `py -3.11 -m pytest -q` ≈ 100 s):
 
 | plik | co sprawdza |
 |---|---|

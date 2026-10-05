@@ -34,6 +34,9 @@ async def test_czyszczenie_kasuje_dane_ale_nie_ustawienia(user: User):
     (paths.DATA / "posted.json").write_text("{}", encoding="utf-8")
     paths.SECRETS.mkdir(parents=True, exist_ok=True)
     (paths.SECRETS / "api_OVH.txt").write_text("klucz", encoding="utf-8")
+    # baza z gry powstaje kilkanascie sekund z plikow gracza - czyszczenie nie moze jej zjesc
+    (paths.DATA / "game_data").mkdir(parents=True, exist_ok=True)
+    (paths.DATA / "game_data" / "items.json").write_text("[]", encoding="utf-8")
     ustawienia_przed = (paths.DATA / "settings.json").read_text(encoding="utf-8")
     cache_przed = len(list((paths.DATA / "cache").glob("*.json")))
 
@@ -44,6 +47,7 @@ async def test_czyszczenie_kasuje_dane_ale_nie_ustawienia(user: User):
     assert not W.S.items
     assert not (paths.DATA / "posted.json").exists() and not (paths.DATA / "prices.json").exists()
     assert (paths.SECRETS / "api_OVH.txt").exists()                      # sekrety nietkniete
+    assert (paths.DATA / "game_data" / "items.json").exists()            # baza z gry zostaje
     assert (paths.DATA / "settings.json").read_text(encoding="utf-8") == ustawienia_przed
     assert len(list((paths.DATA / "cache").glob("*.json"))) == cache_przed
     assert (paths.DATA / "screenshots").is_dir()                         # katalog zostaje, pusty

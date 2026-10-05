@@ -168,6 +168,11 @@ The token expires every few days; when it does, repeat these steps.
 The `.bat` files prefer the project's `.venv` and fall back to `py -3.11`. The project folder
 can live anywhere and can be moved - every path in the code is relative.
 
+Two environment variables change how it starts, if you need them: `D2_PORT` picks a port
+other than 8765 (useful when something else has it, or when you want two copies side by
+side), and `D2_BEZ_OKNA=1` skips the native window and leaves only the server, so you can
+open it in your own browser. `D2_DANE` points the data folder somewhere else.
+
 | file | what it does |
 |---|---|
 | `D2 Trade.bat` | normal start, no console window |
@@ -279,7 +284,7 @@ Secrets, settings, `cache/` and `game_data/` are kept.
 .venv\Scripts\python -m pytest -q
 ```
 
-98 tests, about 100 s. They drive the real UI through `nicegui.testing.User`, without a
+97 tests, about 100 s. They drive the real UI through `nicegui.testing.User`, without a
 browser, plus one that launches the program the way the .bat does and waits for it to
 answer - importing a module is not the same as starting it. They **never touch real data**: `conftest.py` points `D2_DANE` at a temporary
 directory and unpacks the `tests/sample_data/` fixture there, and both Traderie and the model are

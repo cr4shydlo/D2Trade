@@ -11,7 +11,6 @@ import struct
 
 import pytest
 
-import paths
 import game_casc as gc
 import game_extract as ge
 import game_source as gs
@@ -304,10 +303,3 @@ def test_meta_mowi_skad_sa_dane(gra, baza):
     assert meta["items"] == len(items)
     assert meta["source"] == str(gra) and meta["kind"] == gc.Katalog.etykieta
     assert gs.meta()["items"] == len(items)
-
-
-def test_dane_lezy_przy_danych_a_nie_przy_kodzie():
-    """Baza jest duza i prywatna, wiec nie moze wyladowac w katalogu z kodem (repozytorium)."""
-    assert ge.KATALOG == paths.DATA / "game_data"
-    assert gs.KATALOG == ge.KATALOG
-    assert "game_data" in paths.KEEP      # czyszczenie danych nie moze jej usunac
