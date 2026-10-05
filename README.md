@@ -313,9 +313,3 @@ The licence covers the source code of D2 Trade only. Diablo II: Resurrected and 
 content - item names, data tables and artwork - belong to Blizzard Entertainment. This project
 neither contains nor redistributes any of it: `game_data/` is generated on each user's own
 machine from their own copy of the game and is excluded from version control.
-
-## For developers
-
-The architecture, data flow, the unofficial Traderie API, the traps worth knowing and the
-technical debt are documented in [CLAUDE.md](CLAUDE.md). That file is in Polish, like the code
-comments - it is the working notebook for this project rather than user-facing documentation.
