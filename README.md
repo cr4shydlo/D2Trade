@@ -249,15 +249,19 @@ your token, so it is in `.gitignore` and never gets pushed anywhere:
 
 ```
 data/
-  screenshots/      .png captures + .json reads + .listing.json mappings
-  cache/            item definitions from Traderie, images, price-check results
-  game_data/        the database extracted from the game (Extract game data.bat)
-  logs/             window log
-  secrets/          Traderie token and API key        [do not open, do not commit]
-  backups/          data backups (zip, without secrets/)
-  settings.json     settings (no secrets)
-  posted.json       register of listed items
+  screenshots/      .png captures + .json reads + .listing.json mappings   [on start]
+  cache/            item definitions from Traderie, images, price-check    [on start]
+  logs/             window log                                             [on start]
+  secrets/          Traderie token and API key                             [on start]
+  game_data/        the database extracted from the game       [after Extract game data]
+  backups/          data backups (zip, without secrets/)       [at the first backup]
+  settings.json     settings (no secrets)                      [when you press Save]
+  posted.json       register of listed items                   [at the first listing]
 ```
+
+The four marked `[on start]` are created the moment you launch the program, even before
+you do anything - so you can see straight away where your screenshots will land. The rest
+appear when they are first needed.
 
 Everything you care about is in that one folder, so backing the tool up means copying
 `data/`. Set the `D2_DANE` environment variable to put it somewhere else - that is how
