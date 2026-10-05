@@ -12,7 +12,10 @@ def test_dlugie_zadania_nie_wolaja_ui_notify():
     'Wystawianie zakonczone' po wystawieniu ofert (4 X 2026). W funkcjach async
     komunikaty maja isc przez say(), ktore w takim wypadku pisze do logu.
     """
-    src = pathlib.Path(__file__).with_name("d2_web.py").read_text(encoding="utf-8")
+    # bez importu d2_web: ten test jest synchroniczny, a import okna w takim tescie
+    # gubi rejestracje strony dla wszystkich nastepnych testow (wpadka z 3 X 2026)
+    plik = pathlib.Path(__file__).resolve().parent.parent / "src" / "d2_web.py"
+    src = plik.read_text(encoding="utf-8")
     asynchroniczne = [(w.lineno, w.end_lineno) for w in ast.walk(ast.parse(src))
                       if isinstance(w, ast.AsyncFunctionDef)]
     zle = [(i + 1, l.strip()) for i, l in enumerate(src.splitlines())

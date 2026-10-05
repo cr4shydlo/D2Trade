@@ -1,23 +1,33 @@
 """
 paths.py - gdzie leza pliki programu, a gdzie dane robocze.
 
-PROGRAM = katalog ze skryptami (lang/, affixes_data.json) - zawsze obok .py.
-DATA    = dane robocze (screenshots/, cache/, secrets/, settings.json, posted.json).
+PROGRAM = katalog ze skryptami: src/ (lang/, affixes_data.json) - zawsze obok .py.
+KORZEN  = katalog projektu, czyli ten z plikami .bat.
+DATA    = dane robocze: KORZEN/data (screenshots/, cache/, secrets/, settings.json...).
 
-Domyslnie jedno i drugie to ten sam katalog. Zmienna srodowiskowa D2_DANE przenosi
-same dane gdzie indziej - dzieki temu testy pracuja na kopii i nie moga skasowac
-prawdziwych ofert, cen ani ustawien. Zadna sciezka w programie nie jest bezwzgledna,
-wiec katalog projektu mozna przenosic.
+Dane leza osobno od kodu, zeby po sklonowaniu repozytorium nie mieszaly sie z plikami
+programu i zeby caly dorobek pracy dalo sie skopiowac jednym katalogiem. Zmienna
+srodowiskowa D2_DANE przenosi je gdzie indziej - dzieki temu testy pracuja na kopii
+i nie moga skasowac prawdziwych ofert, cen ani ustawien. Zadna sciezka w programie
+nie jest bezwzgledna, wiec katalog projektu mozna przenosic.
 """
 import os
 from pathlib import Path
 
 PROGRAM = Path(__file__).resolve().parent
-DATA = Path(os.environ.get("D2_DANE") or PROGRAM).resolve()
+KORZEN = PROGRAM.parent
+DATA = Path(os.environ.get("D2_DANE") or (KORZEN / "data")).resolve()
 SECRETS = DATA / "secrets"      # token Traderie i klucz API - jedno miejsce, caly katalog w .gitignore
 # nazwy katalogow sa po angielsku (jak cache/, logs/, lang/); stare polskie nazwy przenosimy przy starcie
 OLD_DIRS = {"screeny": "screenshots", "kopie": "backups", "sekrety": "secrets"}
 OLD_SECRETS = ("traderie_auth.txt", "api_OVH.txt")
+# Dane lezaly kiedys luzem w katalogu projektu, obok kodu. Przy starcie przenosimy je
+# do data/ - inaczej po aktualizacji program zobaczylby pusta liste i wygladaloby to
+# tak, jakby dorobek pracy przepadl.
+PRZENIES_DO_DATA = ("screenshots", "cache", "logs", "backups", "secrets", "game_data",
+                    "settings.json", "posted.json", "prices.json", "token_usage.csv",
+                    "notifications_seen.json", "d2jsp_threads.json", "d2jsp_fg.json",
+                    "unid_map.json")
 
 
 def secret(name: str) -> Path:
@@ -28,10 +38,29 @@ def secret(name: str) -> Path:
 
 def use_data_dir():
     """Przestawia katalog biezacy na DATA (wywolywane raz, przy starcie okna/konsoli)."""
+    collect_data()
     DATA.mkdir(parents=True, exist_ok=True)
     os.chdir(DATA)
     migrate_layout()
     return DATA
+
+
+def collect_data():
+    """Przenosi dane lezace jeszcze w katalogu projektu do data/.
+
+    Dziala tylko przy domyslnym polozeniu danych: gdy ktos wskazal D2_DANE, to on
+    decyduje, gdzie one sa, i nie ma czego przenosic.
+    """
+    if os.environ.get("D2_DANE") or not KORZEN.is_dir():
+        return
+    stare = [KORZEN / n for n in PRZENIES_DO_DATA]
+    if not any(p.exists() for p in stare):
+        return
+    DATA.mkdir(parents=True, exist_ok=True)
+    for p in stare:
+        cel = DATA / p.name
+        if p.exists() and not cel.exists():
+            _move(p, cel)
 
 
 def migrate_layout():

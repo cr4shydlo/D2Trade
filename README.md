@@ -193,16 +193,17 @@ the affix tables and the inventory icons. They only have to be read once.
 Settings -> Game data -> **Extract game data**, or from the command line:
 
 ```bat
-py -3.11 game_extract.py "C:\Program Files (x86)\Diablo II Resurrected"
-py -3.11 game_extract.py        REM looks for the game in the usual places
+py -3.11 src\game_extract.py "C:\Program Files (x86)\Diablo II Resurrected"
+py -3.11 src\game_extract.py        REM looks for the game in the usual places
 ```
 
-It takes a few seconds and creates a `game_data/` folder (about 15 MB) with item tables,
+It takes a few seconds and creates `data/game_data/` (about 15 MB) with item tables,
 tooltip line templates and PNG icons. After that the tool works with no network access at
 all. Run it again after a game or mod update to pick up new items.
 
 The tool **only reads** the game files. It does not modify your installation, does not launch
-the game and sends nothing anywhere - `game_data/` stays on your disk and is in `.gitignore`.
+the game and sends nothing anywhere - `data/game_data/` stays on your disk and is in
+`.gitignore`.
 
 ### Trouble with the game archive
 
@@ -230,20 +231,39 @@ screenshot to list it.
 
 ## Where things live
 
-Working data is created next to the scripts, or wherever the `D2_DANE` environment variable
-points:
+The repository holds three folders and the launchers:
 
 ```
-screenshots/      .png captures + .json reads + .listing.json mappings
-cache/            item definitions from Traderie, images, price-check results
-game_data/        the database extracted from the game (game_extract.py)
-logs/             window log
-secrets/          Traderie token and API key          [do not open, do not commit]
-settings.json     settings (no secrets)
-posted.json       register of listed items
-backups/          data backups (zip, without secrets/)
-sample_data/      the test fixture (in the repository)
+D2 Trade.bat              start the window
+D2 Trade (console).bat    the same with a console, for diagnostics
+Extract game data.bat     build the local database from the game files
+
+src/        the program: modules, lang/ (translations), affixes_data.json
+tests/      the test suite and sample_data/ (the fixture it runs against)
+docs/       CLAUDE.md (developer notes) and the theme mockup
 ```
+
+**`data/` is not in the repository** - it does not exist until you run the program,
+and then it holds everything the program makes. That is your stash, your offers and
+your token, so it is in `.gitignore` and never gets pushed anywhere:
+
+```
+data/
+  screenshots/      .png captures + .json reads + .listing.json mappings
+  cache/            item definitions from Traderie, images, price-check results
+  game_data/        the database extracted from the game (Extract game data.bat)
+  logs/             window log
+  secrets/          Traderie token and API key        [do not open, do not commit]
+  backups/          data backups (zip, without secrets/)
+  settings.json     settings (no secrets)
+  posted.json       register of listed items
+```
+
+Everything you care about is in that one folder, so backing the tool up means copying
+`data/`. Set the `D2_DANE` environment variable to put it somewhere else - that is how
+the tests get their own throwaway copy. If you are upgrading from an older version where
+these files sat loose in the project folder, the program moves them into `data/` on the
+next start.
 
 Settings -> Danger zone -> "Clear all data" takes a backup first, can optionally pull your
 offers from Traderie on the way out, and refuses to run until you type a confirmation word.
@@ -257,7 +277,7 @@ Secrets, settings, `cache/` and `game_data/` are kept.
 
 96 tests, about 100 s. They drive the real UI through `nicegui.testing.User`, without a
 browser. They **never touch real data**: `conftest.py` points `D2_DANE` at a temporary
-directory and unpacks the `sample_data/` fixture there, and both Traderie and the model are
+directory and unpacks the `tests/sample_data/` fixture there, and both Traderie and the model are
 stubbed out. The local-mode tests build their own synthetic game tables, so they do not need
 D2R installed.
 
@@ -267,8 +287,8 @@ D2R installed.
 
 Reading the files of your own, legally owned copy of the game is an ordinary disk read - the
 tool does not modify the game and does not circumvent any protection. The game's content
-(names, tables, artwork) belongs to Blizzard, which is why `game_data/` is in `.gitignore`
-and **must not be redistributed** - everyone generates it from their own installation.
+(names, tables, artwork) belongs to Blizzard, which is why `data/` is in `.gitignore`
+and **must not be redistributed** - everyone generates it into their own `data/` folder.
 
 Traderie publishes no official API; this tool uses the same endpoints its website does, with
 delays and without bulk querying. If Traderie changes that, the token mode stops working -

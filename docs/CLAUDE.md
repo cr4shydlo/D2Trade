@@ -12,8 +12,13 @@ Opis dla osoby z zewnątrz jest w [README.md](README.md) — ten plik jest dla p
 
 Projekt powstał w rozmowie z Claude (wrzesień–październik 2026) i dopiero teraz trafia do IDE.
 Kod działa na komputerze autora (Windows, Python 3.11, `py -3.11`). Katalog projektu jest dowolny —
-wszystkie ścieżki w kodzie są względne względem pliku `.py` (okna robią `os.chdir` na swój katalog,
-a pliki `.bat` zaczynają od `cd /d "%~dp0"`).
+wszystkie ścieżki w kodzie są względne (okna robią `os.chdir` na katalog danych, a pliki `.bat`
+zaczynają od `cd /d "%~dp0"`).
+
+**Układ katalogów (od 5 X 2026):** `src/` — kod, `tests/` — testy z `sample_data/`, `docs/` — ten
+plik i makieta, `data/` — dane robocze (poza repozytorium). W korzeniu zostają tylko pliki `.bat`
+oraz to, czego git i GitHub tam wymagają: `README.md`, `LICENSE`, `.gitignore`, `.gitattributes`,
+`requirements.txt`, `pytest.ini`.
 
 ---
 
@@ -36,8 +41,8 @@ Te reguły wynikły z pracy nad projektem i trzeba je utrzymać.
    testem — patrz sekcja 9. W tym projekcie testy wyłapały kilka realnych błędów.
 6. **Repozytorium ma być klonowalne przez obcą osobę.** Żadnych danych autora w plikach
    wchodzących do repo: ID konta, tokenu, nazw postaci, zrzutów z czytelnymi danymi konta.
-   `settings.json`, `screenshots/`, `posted.json`, `secrets/` i `game_data/` są w `.gitignore`;
-   wzorzec `sample_data/` ma wartości zastępcze (`seller_id: 0000000000`). Prawdziwe ID konta
+   cały katalog `data/` jest w `.gitignore`;
+   wzorzec `tests/sample_data/` ma wartości zastępcze (`seller_id: 0000000000`). Prawdziwe ID konta
    siedziało kiedyś na stałe w `traderie_sync.SELLER_ID` — teraz to pusty string i bierze się
    z ustawień. Przed commitem sprawdzaj, czy nie wraca.
 7. **Zawartości gry nie rozpowszechniamy.** Czytanie plików własnej instalacji jest w porządku,
@@ -63,7 +68,7 @@ py -3.11 -m pip install nicegui pywebview keyboard mss pillow ollama
 | `D2 Trade.bat` | nowe okno (NiceGUI + pywebview), bez konsoli |
 | `D2 Trade (console).bat` | to samo z konsolą — do diagnozy |
 | `Extract game data.bat` | buduje `game_data/` z plików D2R (sekcja 11) |
-| `py -3.11 d2_trade.py` | tryb konsolowy: `[--send] [--redo] [--force] [--no-prices]` |
+| `py -3.11 src\d2_trade.py` | tryb konsolowy: `[--send] [--redo] [--force] [--no-prices]` |
 
 Okno startuje na `http://127.0.0.1:8765` (w pywebview jako natywne okno).
 
@@ -92,7 +97,7 @@ Okno startuje na `http://127.0.0.1:8765` (w pywebview jako natywne okno).
 | `d2jsp_post.py` | skróty statów i generowanie BBCode posta sprzedażowego |
 | `app_config.py` | ustawienia konta i modelu; test połączenia |
 | `i18n.py` | tłumaczenie UI + `settings.json` |
-| `paths.py` | gdzie leżą pliki programu, a gdzie dane (`D2_DANE` przestawia dane — tego używają testy) |
+| `paths.py` | gdzie leży kod (`PROGRAM` = `src/`), a gdzie dane (`DATA` = `data/`; `D2_DANE` je przestawia — tego używają testy) |
 
 ### Interfejs
 
@@ -100,12 +105,12 @@ Okno startuje na `http://127.0.0.1:8765` (w pywebview jako natywne okno).
 |---|---|
 | `d2_web.py` | **okno programu** (NiceGUI). ~2000 linii — kandydat do podziału, patrz sekcja 10 |
 
-### Dane (tworzone w czasie pracy, nie w repo)
+### Dane (`data/` — tworzone w czasie pracy, nie w repo)
 
 ```
-screenshots/          zrzuty .png + <nazwa>.json (OCR) + <nazwa>.listing.json (mapowanie)
-screenshots/_crops/   wycięte tooltipy do podglądu
-screenshots/_trash/   kosz (ręczne usunięcie z listy)
+data/screenshots/     zrzuty .png + <nazwa>.json (OCR) + <nazwa>.listing.json (mapowanie)
+data/screenshots/_crops/   wycięte tooltipy do podglądu
+data/screenshots/_trash/   kosz (ręczne usunięcie z listy)
 cache/<slug>.json     definicje przedmiotów z Traderie
 cache/img/            obrazki przedmiotów z CDN
 cache/price_check.json   wyniki price-check (TTL 12 h) — mniej zapytań przy tej samej wycenie
@@ -119,12 +124,16 @@ secrets/traderie_auth.txt   nagłówek Authorization do Traderie  [sekret, nie z
 secrets/api_OVH.txt         klucz API do OVH AI Endpoints       [sekret, nie zaglądać]
 d2jsp_threads.json    linki do własnych wątków
 d2jsp_fg.json         opcjonalny kurs run na FG
-sample_data/          wzorzec danych do testow (w repo: screenshots + cache + settings bez sekretow)
 backups/              kopie zapasowe danych (zip, poza repo)
 ```
 
-Katalog danych ustawia `paths.py`: domyślnie obok skryptów, a `D2_DANE=<ścieżka>` przenosi go
-w inne miejsce. Dzięki temu testy nie mogą dotknąć prawdziwych ofert, cen i ustawień.
+(poza pierwszymi trzema wierszami ścieżki są względem `data/`; wzorzec do testów leży osobno
+w `tests/sample_data/`)
+
+Katalog danych ustawia `paths.py`: domyślnie `data/` obok plików `.bat`, a `D2_DANE=<ścieżka>`
+przenosi go w inne miejsce. Dzięki temu testy nie mogą dotknąć prawdziwych ofert, cen i ustawień.
+`paths.collect_data()` przy starcie przenosi do `data/` pliki, które w starszych wersjach leżały
+luzem w katalogu projektu — bez tego po aktualizacji lista przedmiotów wyglądałaby na pustą.
 
 ---
 
@@ -302,18 +311,23 @@ W projekcie są testy dla NiceGUI (`nicegui.testing.User`) — symulują użytko
 > teraz przebieg, gdy `paths` jest już w `sys.modules` albo gdy `paths.DATA` nie jest katalogiem
 > testowym. Audyt wymagający własnej wtyczki uruchamiaj z `D2_DANE=<katalog tymczasowy>` w poleceniu.
 
-Testy **nie ruszają prawdziwych danych**: `conftest.py` ustawia `D2_DANE` na katalog tymczasowy
-i przed każdym testem rozpakowuje tam `sample_data/`. `posted.json`, `prices.json`, `screenshots/`
+Testy **nie ruszają prawdziwych danych**: `tests/conftest.py` ustawia `D2_DANE` na katalog
+tymczasowy i przed każdym testem rozpakowuje tam `tests/sample_data/`. `posted.json`, `prices.json`, `screenshots/`
 i `settings.json` w projekcie zostają nietknięte. Traderie i model nie są odpytywane
 (`traderie_map.http_json` to atrapa).
 
-Wymagane `pytest.ini`:
+Wymagane `pytest.ini` (w korzeniu projektu):
 
 ```ini
 [pytest]
 asyncio_mode = auto
-main_file = run_app.py
+pythonpath = src
+testpaths = tests
+main_file = src/run_app.py
 ```
+
+`pythonpath = src` zastępuje sztuczki z `sys.path` — testy importują moduły po nazwie, tak jak
+program. `main_file` wtyczka NiceGUI liczy względem pliku `pytest.ini`.
 
 Scenariusze w repo (**96 testów**, `py -3.11 -m pytest -q` ≈ 100 s):
 
@@ -337,7 +351,7 @@ Scenariusze w repo (**96 testów**, `py -3.11 -m pytest -q` ≈ 100 s):
 | `test_theme.py` | jasny/ciemny: obie palety mają te same klucze, stałe kolorów wskazują na zmienne CSS, wybór zapisany w `settings.json` |
 
 Wzorzec danych odświeżasz, kopiując wybrane pliki `.json`/`.listing.json` ze `screenshots/`
-do `sample_data/screenshots/` (+ `cache/<slug>.json`, jeśli to nowy przedmiot).
+do `tests/sample_data/screenshots/` (+ `cache/<slug>.json`, jeśli to nowy przedmiot).
 
 Przy zmianach w logice (bez UI) najszybszą kontrolą jest przepuszczenie prawdziwych plików
 `screenshots/*.json` przez `traderie_map.map_item()` i porównanie wyniku.

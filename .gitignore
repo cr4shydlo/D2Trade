@@ -1,16 +1,20 @@
 # sekrety - NIGDY do repozytorium (caly katalog; stare lokalizacje na wszelki wypadek)
+data/secrets/
 secrets/
 sekrety/
 traderie_auth.txt
 api_OVH.txt
 
-# dane robocze (sciezki od korzenia projektu - sample_data/ ma zostac w repo)
+# dane robocze: wszystko, co program tworzy w czasie pracy - screeny, cache, oferty,
+# ustawienia, logi, kopie i baza wyciagnieta z gry. Katalog powstaje przy pierwszym
+# uruchomieniu; wzorzec do testow siedzi osobno w tests/sample_data/.
+/data/
+
+# stary uklad (dane lezaly kiedys luzem w katalogu projektu)
 /screenshots/
 /cache/
 /logs/
 /backups/
-# baza wyciagnieta z wlasnej instalacji gry (game_extract.py) - kazdy robi ja sobie sam,
-# wazy kilkanascie MB i zawiera tresc gry, ktorej nie wolno rozpowszechniac
 /game_data/
 /screeny/
 /kopie/
@@ -21,8 +25,8 @@ api_OVH.txt
 /notifications_seen.json
 /d2jsp_threads.json
 /d2jsp_fg.json
-/d2_gui_error.log
 /unid_map.json
+/d2_gui_error.log
 
 # python
 __pycache__/
