@@ -1,5 +1,7 @@
 # D2 Trade
 
+
+
 A selling assistant for **Diablo II: Resurrected**. You take a screenshot in game, the tool
 reads the tooltip with a vision model, identifies the item, rates how well it rolled and
 prepares the offer: either on [Traderie](https://traderie.com/diablo2resurrected) or as a
@@ -15,6 +17,8 @@ The interface ships in Polish, English, German and Korean (Settings -> Language)
 stat names stay in English, because that is what the game and Traderie call them.
 
 ---
+
+How its work : https://www.youtube.com/watch?v=Xi_YYSxKrT0
 
 ## What this tool does not do
 
