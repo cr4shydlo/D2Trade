@@ -146,7 +146,12 @@ that does not need 3.11.
    how much video memory the card has - 8 GB usually means closing the game, more than that
    usually does not. You do not have to work it out yourself: if the model will not fit
    alongside the game, the program says so and reads nothing until you close it.
-3. Switch to the **d2jsp post** view and click **Copy sales post**. Paste it into your d2jsp
+3. Tidy the list if you need to. **Sort** arranges it by kind (unique, set, runeword...),
+   name, price, status or roll quality - sorting by kind also groups the list and shows how
+   many of each you have. To throw several items out at once, click **Select to delete**,
+   tick them and confirm; they move to a trash folder inside the screenshots directory, so a
+   bad reading is never lost for good.
+4. Switch to the **d2jsp post** view and click **Copy sales post**. Paste it into your d2jsp
    thread.
 
 That is the whole loop. Everything above works without any account anywhere.

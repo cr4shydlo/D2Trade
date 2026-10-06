@@ -64,8 +64,9 @@ def fg_table() -> dict:
     return table
 
 
-def price_fg(price: str, table: dict):
-    """'ist+mal' -> suma FG (tansza z alternatyw) albo None, gdy brak kursu ktorejs waluty."""
+def price_value(price: str, table: dict):
+    """'ist+mal' -> suma wartosci wedlug tabeli (tansza z alternatyw) albo None, gdy brak kursu
+    ktorejs waluty. Tabela decyduje o jednostce: kursy w FG daja FG, kursy w Ist daja Ist."""
     if not table or not price or price == "offer":
         return None
     try:
@@ -81,7 +82,13 @@ def price_fg(price: str, table: dict):
         else:
             g[0] += v * it["quantity"]
     vals = [v for v, ok in groups.values() if ok]
-    return fg_round(min(vals)) if vals else None
+    return min(vals) if vals else None
+
+
+def price_fg(price: str, table: dict):
+    """'ist+mal' -> suma FG (tansza z alternatyw) albo None, gdy brak kursu ktorejs waluty."""
+    v = price_value(price, table)
+    return fg_round(v) if v is not None else None
 
 
 def price_text(price: str) -> str:

@@ -397,7 +397,22 @@
     "Rozpoznane bez Traderie (odczytaj screeny ponownie, zeby wystawic): ": "Ohne Traderie erkannt (Screenshots erneut einlesen, um sie einzustellen): ",
     "Nie podano ID konta Traderie. Wpisz je w Ustawieniach - znajdziesz je w adresie listy swoich ofert na Traderie, po 'seller='.": "Keine Traderie-Konto-ID angegeben. Trage sie in den Einstellungen ein - du findest sie in der Adresse deiner eigenen Angebotsliste auf Traderie, nach 'seller='.",
     "Odczyt screenow modelem lokalnym - jesli nie zmiesci sie obok gry, program o tym powie": "Lese Screenshots mit dem lokalen Modell - passt es nicht neben das Spiel, sagt das Programm Bescheid",
-    "Odczyt screenow w chmurze ({0}) - karta graficzna nie jest potrzebna": "Lese Screenshots in der Cloud ({0}) - keine Grafikkarte noetig"
+    "Odczyt screenow w chmurze ({0}) - karta graficzna nie jest potrzebna": "Lese Screenshots in der Cloud ({0}) - keine Grafikkarte noetig",
+    "Zaznacz do usuniecia": "Zum Löschen auswählen",
+    "Usun zaznaczone ({0})": "Ausgewählte löschen ({0})",
+    "Zaznacz przedmioty, ktore maja zniknac z listy.": "Markiere die Gegenstände, die von der Liste verschwinden sollen.",
+    "Usunac zaznaczone przedmioty ({0})?": "Ausgewählte Gegenstände löschen ({0})?",
+    "...i jeszcze {0}": "...und {0} weitere",
+    "Pliki trafia do kosza w katalogu ze zrzutami - nic nie znika z dysku na stale.": "Die Dateien landen im Papierkorb im Screenshot-Ordner - nichts wird endgültig von der Festplatte gelöscht.",
+    "Usunieto z listy: {0} szt.": "Von der Liste entfernt: {0}",
+    "Nic nie jest zaznaczone.": "Nichts ausgewählt.",
+    "Sortuj:": "Sortieren:",
+    "najnowsze": "neueste",
+    "rodzaj": "Art",
+    "nazwa": "Name",
+    "cena": "Preis",
+    "stan": "Status",
+    "jakosc rzutu": "Wurfqualität"
   },
   "phrases": {
     "token OK": "Token OK",

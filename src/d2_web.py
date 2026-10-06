@@ -18,6 +18,7 @@ import random
 import asyncio
 import traceback
 import webbrowser
+from collections import Counter
 from pathlib import Path
 from datetime import datetime
 
@@ -144,6 +145,15 @@ STASH = ["Ekwipunek", "Skrzynia osobista", "Skrzynia wspolna 1", "Skrzynia wspol
          "Skrzynia wspolna 4", "Skrzynia wspolna 5"]   # gdzie lezy przedmiot - do odbioru po sprzedazy
 PAGE_SIZES = (10, 20, 50)        # ile pozycji na stronie listy; wybor zapisuje sie w settings.json
 PAGE_DEFAULT = 20
+# Kolejnosc listy. Klucz zapisuje sie w settings.json, etykieta jest kluczem tlumaczenia.
+SORTY = (("newest", "najnowsze"), ("kind", "rodzaj"), ("name", "nazwa"),
+         ("price", "cena"), ("status", "stan"), ("roll", "jakosc rzutu"))
+SORT_DEFAULT = "newest"
+# Kolejnosc grup przy sortowaniu po rodzaju - od najrzadszych. Nie bierzemy jej z RAR, bo tam
+# kolory sa ulozone pod paleta, a nie pod rzadkosc (magic stoi przed crafted).
+KIND_ORDER = ("unique", "set", "runeword", "rare", "crafted", "magic", "baza")
+# Kolejnosc przy sortowaniu po stanie: najpierw to, co czeka na decyzje, na koncu zamkniete sprawy.
+STATUS_ORDER = ("review", "dup", "error", "ready", "sending", "relist", "posted", "sold", "skipped")
 SYNC_GAP = 120                   # s - jak czesto najwyzej samo sprawdzac oferty po wejsciu w "Wystawione"
 MAX_MESSAGES = 50                # ile ostatnich wiadomosci z Traderie trzymamy w oknie
 TRADERIE_WWW = "https://traderie.com/notifications"
@@ -230,6 +240,14 @@ div:focus, div:focus-visible {{ outline:none; }}
 .d2row:hover {{ background:{PANEL2}; }}
 .d2row.sel {{ background:{PANEL3}; }}
 .d2row.sel:after {{ content:""; position:absolute; inset:0; border:1px solid {LINE2}; pointer-events:none; }}
+/* wiersz zaznaczony do usuniecia - przebarwienie przez nakladke, bo tlo wiersza niesie juz
+   zaznaczenie i najechanie myszka; czerwony kwadracik sam w sobie bywa przeoczony */
+.d2row.del:before {{ content:""; position:absolute; inset:0; background:{BAD}; opacity:.10; pointer-events:none; }}
+.delbox .q-checkbox__inner {{ color:{BAD} !important; }}
+.delbox .q-checkbox__inner--truthy {{ color:{BAD} !important; }}
+/* naglowek grupy przy sortowaniu po rodzaju */
+.d2grp {{ background:{PANEL2}; border-top:1px solid {LINE}; }}
+.d2list > .d2grp:first-child {{ border-top:0; }}
 .rar {{ width:3px; align-self:stretch; background:{RAR['baza']}; }}
 .pill {{ font-size:11.5px; font-weight:400; padding:0 5px; border-radius:2px;
          background:{PANEL2}; border:1px solid {LINE}; color:{MUTED}; }}
@@ -331,6 +349,9 @@ class State:
         self.filter_char = ""      # pokaz tylko przedmioty z tej postaci ("" = wszystkie)
         self.page = 1                # strona listy
         self.page_size = next((n for n in PAGE_SIZES if n == i18n.settings().get("page_size")), PAGE_DEFAULT)
+        self.sort = next((k for k, _ in SORTY if k == i18n.settings().get("sort")), SORT_DEFAULT)
+        self.delete_mode = False     # lista pokazuje czerwone zaznaczenia zamiast tych do wystawienia
+        self.to_delete = set()       # iid zaznaczone w trybie usuwania (osobne od it["selected"])
         self.listing_state = {}      # id oferty -> {'relist','hours_left','offers','hidden'}
         self.last_sync = 0.0         # kiedy ostatnio pobrano stan ofert (time.monotonic)
         self.session_sold = set()
@@ -474,6 +495,12 @@ def visible(it, iid=None):
     return st in ("ready", "review", "dup", "sending", "error") or (st == "sold" and iid in S.session_sold)
 
 
+def rodzaj_of(it) -> str:
+    """Rzadkosc przedmiotu uzywana do grupowania. 'baza' tez dla przedmiotow bez rozpoznanej
+    rzadkosci - inaczej robila by sie grupa bez nazwy i bez koloru."""
+    return it["lst"].get("kind") or "baza"
+
+
 def stem_of(it):
     src = Path(it["lst"].get("source", ""))
     return Path(src.name).stem if src.name else it["file"].name.replace(".listing.json", "")
@@ -494,6 +521,52 @@ def counts():
 def img_url(name):
     p = S.imgs.get(name)
     return f"/cache/img/{p.name}" if p else None
+
+
+def jakosc_rzutu(it) -> float:
+    """Srednia jakosc statow (0..1) - to samo, co paski w panelu obok listy.
+    -1 oznacza "nie ma czego liczyc": takie przedmioty ida na koniec przy sortowaniu po rzucie."""
+    lst = it["lst"]
+    item = S.defs.get(lst.get("name"))     # tylko juz pobrane definicje - sortowanie nie czeka na siec
+    if not item or not lst.get("listing"):
+        return -1.0
+    try:
+        rzuty = rare_eval.rolls(lst, item) if lst.get("rarity") else tpr.rolls(lst, item)
+    except Exception:                      # niekompletna definicja nie moze wywalic calej listy
+        return -1.0
+    udzialy = [r[5] for r in rzuty if r[5] is not None]
+    return sum(udzialy) / len(udzialy) if udzialy else -1.0
+
+
+def posortuj(ids):
+    """Kolejnosc pozycji na liscie wedlug wyboru z paska.
+
+    S.order idzie od najstarszego (nazwa pliku to data zrzutu), wiec odwracamy go na wejsciu.
+    Sortowanie w Pythonie jest stabilne, dzieki czemu kazdy remis - i caly tryb "najnowsze",
+    ktory nie ma wlasnego klucza - zostaje ulozony od najnowszego.
+    """
+    tryb = S.sort
+
+    def klucz(iid):
+        it = S.items[iid]
+        lst = it["lst"]
+        if tryb == "kind":
+            rodzaj = rodzaj_of(it)
+            return (KIND_ORDER.index(rodzaj) if rodzaj in KIND_ORDER else len(KIND_ORDER),)
+        if tryb == "name":
+            return ((lst.get("name") or lst.get("ocr_name") or "").lower(),)
+        if tryb == "price":
+            # kursy walut sa w Ist, wiec i wynik; bez kursu albo przy "offer" cena jest nieporownywalna
+            wart = d2jsp_post.price_value(it["price"], tpr.load_runes())
+            return (wart is None, -(wart or 0))
+        if tryb == "status":
+            stan = eff_status(it)
+            return (STATUS_ORDER.index(stan) if stan in STATUS_ORDER else len(STATUS_ORDER),)
+        if tryb == "roll":
+            return (-jakosc_rzutu(it),)
+        return ()
+
+    return sorted(reversed(ids), key=klucz)
 
 
 # ---------------- zadania w tle ----------------
@@ -1011,6 +1084,15 @@ async def delete_item(iid):
             save_lst(it)
     elif not await confirm(t("Usun z listy"), t(f"Usunac {lst.get('name') or lst.get('ocr_name')} z listy?")):
         return
+    do_kosza(it)
+    log(t(f"Usunieto z listy: {lst.get('name') or lst.get('ocr_name')}"))
+    S.selected = None
+    load_items()
+
+
+def do_kosza(it):
+    """Przenosi pliki przedmiotu (opis, zrzut, wycinek) do kosza w katalogu zrzutow.
+    Nic nie kasujemy z dysku - zly odczyt da sie odzyskac, wystarczy wyjac plik z kosza."""
     trash = FOLDER / traderie_sync.TRASH
     trash.mkdir(exist_ok=True)
     stem = stem_of(it)
@@ -1019,8 +1101,48 @@ async def delete_item(iid):
     for p in files:
         if p.exists():
             p.replace(trash / p.name)
-    log(t(f"Usunieto z listy: {lst.get('name') or lst.get('ocr_name')}"))
+
+
+def delete_mode(on: bool):
+    """Tryb usuwania: lista dostaje wlasne, czerwone zaznaczenia - niezalezne od tych do wystawienia.
+    Osobne, bo zaznaczenie do wystawienia zaklada sie samo kazdemu gotowemu przedmiotowi z cena;
+    wspolne znaczyloby czerwony przycisk 'usun 16 rzeczy' zaraz po uruchomieniu programu."""
+    S.delete_mode, S.to_delete = bool(on), set()
+    S.dirty = True
+
+
+def toggle_delete(iid):
+    S.to_delete.discard(iid) if iid in S.to_delete else S.to_delete.add(iid)
+    S.dirty = True
+
+
+def do_usuniecia() -> list:
+    """Zaznaczone do usuniecia, ktore naprawde widac na liscie. Filtr postaci albo przelacznik
+    'pokaz tez pominiete' moga schowac wiersz razem z jego zaznaczeniem - takiego nie ruszamy."""
+    return [i for i in S.order if i in S.to_delete and visible(S.items[i], i)
+            and S.items[i]["status"] != "posted"]
+
+
+async def delete_selected():
+    """Usuwa hurtem zaznaczone przedmioty - tak samo jak pojedyncze 'Usun z listy'.
+    Wystawionych tu nie ma: ich usuniecie dotyka konta na Traderie i idzie przez delete_item."""
+    wybrane = do_usuniecia()
+    if not wybrane:
+        say(t("Nic nie jest zaznaczone."), "warning")
+        return
+    nazwy = [S.items[i]["lst"].get("name") or S.items[i]["lst"].get("ocr_name") or "?" for i in wybrane]
+    spis = "\n".join(nazwy[:15])
+    if len(nazwy) > 15:
+        spis += "\n" + t(f"...i jeszcze {len(nazwy) - 15}")
+    if not await confirm(t("Usun z listy"), t(f"Usunac zaznaczone przedmioty ({len(wybrane)})?")
+                         + "\n\n" + spis + "\n\n"
+                         + t("Pliki trafia do kosza w katalogu ze zrzutami - nic nie znika z dysku na stale.")):
+        return
+    for iid in wybrane:
+        do_kosza(S.items[iid])
+    log(t(f"Usunieto z listy: {len(wybrane)} szt."))
     S.selected = None
+    delete_mode(False)
     load_items()
 
 
@@ -1701,6 +1823,7 @@ def auto_sync():
 def switch_view(view):
     """Przelaczenie widoku z paska bocznego."""
     S.view, S.page = view, 1
+    delete_mode(False)          # tryb usuwania nie przechodzi miedzy widokami
     if view in ("items", "listed") and (S.selected not in S.items or not visible(S.items[S.selected], S.selected)):
         S.selected = next((i for i in S.order if visible(S.items[i], i)), None)
     if view == "listed":
@@ -1861,6 +1984,16 @@ def toggle_capture(e=None):
     S.dirty = True
 
 
+def group_header(rodzaj, ile):
+    """Pasek nad grupa przy sortowaniu po rodzaju. Nazwa rzadkosci zostaje po angielsku - tak samo
+    jak plakietka przy przedmiocie, bo to nazwy z gry, a nie tekst interfejsu."""
+    kolor = RAR.get(rodzaj, RAR["baza"])
+    with ui.row().classes("d2grp w-full items-center gap-2 px-3 py-1 no-wrap"):
+        ui.element("div").style(f"width:3px; height:11px; background:{kolor}")
+        ui.label(rodzaj.upper()).style(f"font-size:11px; font-weight:500; letter-spacing:.06em; color:{kolor}")
+        ui.label(str(ile)).classes("mono").style(f"font-size:11.5px; color:{FAINT}")
+
+
 def item_card(iid):
     it = S.items[iid]
     lst = it["lst"]
@@ -1877,12 +2010,20 @@ def item_card(iid):
     # w widoku wystawionych zaznaczamy to, co da sie odnowic - checkbox jest tylko przy takich ofertach
     can_check = can or (S.view == "listed" and st_key == "relist")
     faded = "opacity:.6" if it["status"] in ("sold", "skipped") else ""
-    with ui.row().classes("d2row w-full items-center gap-3 pr-3 py-2 no-wrap" + (" sel" if S.selected == iid else "")) \
+    with ui.row().classes("d2row w-full items-center gap-3 pr-3 py-2 no-wrap"
+                          + (" sel" if S.selected == iid else "")
+                          + (" del" if S.delete_mode and iid in S.to_delete else "")) \
             .on("click", lambda: select(iid)):
         # pasek rzadkosci - kolor jak w grze, zeby rodzaj przedmiotu czytalo sie bez etykiety
         ui.element("div").classes("rar").style(f"background:{RAR.get(lst.get('kind'), RAR['baza'])}")
         with ui.element("div").style("width:22px"):
-            if can_check:
+            if S.delete_mode:
+                # w trybie usuwania zaznaczyc mozna tez to, czego nie da sie wystawic (do sprawdzenia,
+                # bez ceny, pominiete) - a to wlasnie takie przedmioty najczesciej ida do kosza
+                if it["status"] != "posted":
+                    ui.checkbox(value=iid in S.to_delete).props("dense size=xs").classes("delbox") \
+                        .on("click.stop", lambda: toggle_delete(iid))
+            elif can_check:
                 ui.checkbox(value=bool(it["selected"])).props("dense size=xs") \
                     .on("click.stop", lambda: toggle_check(iid))
         with ui.element("div").classes("thumb").style(f"width:38px; height:38px; flex-shrink:0; {faded}"):
@@ -2106,6 +2247,14 @@ def set_page_size(n):
     S.dirty = True
 
 
+def set_sort(key):
+    """Kolejnosc listy. Wybor zostaje na nastepne uruchomienie (settings.json)."""
+    S.sort = key if key in dict(SORTY) else SORT_DEFAULT
+    S.page = 1
+    i18n.save_setting("sort", S.sort)
+    S.dirty = True
+
+
 def page_numbers(cur, pages):
     """Numery stron do pokazania: pierwsza, ostatnia i okolice biezacej; 0 = przerwa '...'."""
     keep = {1, pages, cur - 1, cur, cur + 1}
@@ -2146,11 +2295,21 @@ def pager(total, pages):
 def items_view(title):
     header(title)
     with ui.row().classes("w-full items-center gap-2 pt-1"):
-        if S.view == "items":
+        if S.view == "items" and S.delete_mode:
+            ile = len(do_usuniecia())
+            ui.button(t(f"Usun zaznaczone ({ile})"), on_click=delete_selected) \
+                .props("unelevated no-caps dense").classes("ghost px-3") \
+                .style(f"color:{BAD}; border-color:{BAD}").set_enabled(bool(ile))
+            ui.button(t("Anuluj"), on_click=lambda: delete_mode(False)) \
+                .props("unelevated no-caps dense").classes("ghost px-3")
+            ui.label(t("Zaznacz przedmioty, ktore maja zniknac z listy.")).classes("sec")
+        elif S.view == "items":
             ui.button(t("Uzyj podpowiedzi dla wszystkich bez ceny"), on_click=fill_hints).props("unelevated no-caps dense") \
                 .classes("ghost px-3")
             ui.button(t("Odczytaj wszystkie od nowa"), on_click=lambda: task(do_read, True)).props("unelevated no-caps dense") \
                 .classes("ghost px-3")
+            ui.button(t("Zaznacz do usuniecia"), on_click=lambda: delete_mode(True)) \
+                .props("unelevated no-caps dense").classes("ghost px-3")
             ui.checkbox(t("pokaz tez pominiete i dawniej sprzedane"), value=S.show_all,
                         on_change=lambda e: (setattr(S, "show_all", e.value), setattr(S, "page", 1),
                                              setattr(S, "dirty", True))).props("dense size=xs")
@@ -2171,6 +2330,9 @@ def items_view(title):
                     .props("unelevated no-caps dense").classes("ghost px-3")
         ui.button(t("Co wyjac (sprzedane)"), on_click=pickup_dialog) \
             .props("unelevated no-caps dense").classes("ghost px-3")
+        ui.select({k: t(etykieta) for k, etykieta in SORTY}, value=S.sort, label=t("Sortuj:"),
+                  on_change=lambda e: set_sort(e.value)) \
+            .props("outlined dense options-dense").style("min-width:150px")
         kto = chars_known()
         if kto:
             ui.select([""] + kto, value=S.filter_char, label=t("Postac:"),
@@ -2179,7 +2341,7 @@ def items_view(title):
                 .props("outlined dense options-dense").style("min-width:150px")
     with ui.row().classes("w-full gap-4 items-start no-wrap pt-1"):
         with ui.column().classes("gap-2 flex-grow").style("min-width:0"):
-            shown = [i for i in S.order if visible(S.items[i], i)]
+            shown = posortuj([i for i in S.order if visible(S.items[i], i)])
             total = len(shown)
             pages = max(1, -(-total // S.page_size))
             S.page = min(max(1, S.page), pages)
@@ -2191,8 +2353,21 @@ def items_view(title):
                         .style(f"color:{MUTED}")
             else:
                 with ui.column().classes("d2list w-full gap-0"):
-                    for iid in shown[(S.page - 1) * S.page_size:S.page * S.page_size]:
-                        item_card(iid)
+                    strona = shown[(S.page - 1) * S.page_size:S.page * S.page_size]
+                    if S.sort == "kind":
+                        # liczba przy naglowku dotyczy calej grupy, nie samej strony - inaczej
+                        # "ile czego mam" zmienialoby sie przy przewracaniu stron
+                        wielkosc = Counter(rodzaj_of(S.items[i]) for i in shown)
+                        poprzedni = None
+                        for iid in strona:
+                            rodzaj = rodzaj_of(S.items[iid])
+                            if rodzaj != poprzedni:
+                                poprzedni = rodzaj
+                                group_header(rodzaj, wielkosc[rodzaj])
+                            item_card(iid)
+                    else:
+                        for iid in strona:
+                            item_card(iid)
             if total > min(PAGE_SIZES):
                 pager(total, pages)
         details()

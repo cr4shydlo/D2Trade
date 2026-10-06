@@ -20,7 +20,8 @@ async def test_strony_i_zapamietany_rozmiar(user: User):
     W.set_page_size(10)
     await asyncio.sleep(0.6)
 
-    widoczne = [i for i in W.S.order if W.visible(W.S.items[i], i)]
+    # ta sama kolejnosc, ktora rysuje widok - inaczej "druga strona" w tescie i w oknie to co innego
+    widoczne = W.posortuj([i for i in W.S.order if W.visible(W.S.items[i], i)])
     assert len(widoczne) > 10, "wzorzec powinien miec wiecej niz 10 przedmiotow"
     assert json.loads(i18n.SETTINGS.read_text(encoding="utf-8"))["page_size"] == 10
     await user.should_see("Pokaz po:")

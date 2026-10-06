@@ -329,7 +329,7 @@ main_file = src/run_app.py
 `pythonpath = src` zastępuje sztuczki z `sys.path` — testy importują moduły po nazwie, tak jak
 program. `main_file` wtyczka NiceGUI liczy względem pliku `pytest.ini`.
 
-Scenariusze w repo (**97 testów**, `py -3.11 -m pytest -q` ≈ 100 s):
+Scenariusze w repo (**102 testy**, `py -3.11 -m pytest -q` ≈ 100 s):
 
 | plik | co sprawdza |
 |---|---|
@@ -347,6 +347,7 @@ Scenariusze w repo (**97 testów**, `py -3.11 -m pytest -q` ≈ 100 s):
 | `test_relisting.py` | odnawianie: PUT, zaznaczone vs wszystkie, „serwer potwierdził, ale nie odnowił”, padnięcie `ui.notify`, pole „gdzie leży”, samoczynne sprawdzenie ofert po wejściu w „Wystawione”, zerwane połączenie przy tym sprawdzeniu nie blokuje okna |
 | `test_mapping.py` | magic/rare bez fałszywych ostrzeżeń, staty bez liczby, staty których Traderie nie ma, ponowny odczyt nie gubi wpisów |
 | `test_paging.py` | podział listy na strony, numeracja, wybór 10/20/50 zapisany w `settings.json` |
+| `test_sorting_and_delete.py` | kolejność listy (sześć kryteriów, grupy po rodzaju, wybór w `settings.json`) i usuwanie hurtem: własne zaznaczenia trybu, pliki do kosza, wystawionych nie rusza |
 | `test_d2jsp.py` | ceny w poście: cztery kombinacje runy/FG, zaokrąglanie do pół FG, przelicznik kursów i ich cache |
 | `test_wipe_data.py` | czyszczenie danych: kopia bez sekretów, co znika a co zostaje, błąd Traderie przerywa, słowo potwierdzenia blokuje przycisk |
 | `test_theme.py` | jasny/ciemny: obie palety mają te same klucze, stałe kolorów wskazują na zmienne CSS, wybór zapisany w `settings.json` |
@@ -362,6 +363,21 @@ Przy zmianach w logice (bez UI) najszybszą kontrolą jest przepuszczenie prawdz
 ## 10. Stan i co dalej
 
 ### Zrobione (październik 2026, po przeniesieniu do IDE)
+
+- **Sortowanie listy i usuwanie hurtem (6 X 2026)** — `SORTY` (najnowsze / rodzaj / nazwa /
+  cena / stan / jakość rzutu), wybór zapisany w `settings.json`, pole „Sortuj:” obok filtra
+  postaci. Sortuje `posortuj()`: odwraca `S.order` (nazwa pliku to data zrzutu, więc odwrócenie
+  daje „najnowsze na górze”) i sortuje stabilnie, dzięki czemu każdy remis — i cały tryb
+  „najnowsze”, który nie ma własnego klucza — zostaje po nowszej stronie. Przy `kind` lista
+  dostaje nagłówki grup (`group_header`), a liczba przy nagłówku dotyczy **całej** grupy, nie
+  strony. Cena idzie przez `d2jsp_post.price_value()` — to wydzielona z `price_fg()` suma bez
+  zaokrąglania, liczona po kursach w Ist, żeby sortowanie działało bez wpisanego kursu FG.
+  **Usuwanie hurtem ma własny tryb** (`S.delete_mode`, `S.to_delete`), a nie `it["selected"]`:
+  `load_items()` zaznacza każdy gotowy przedmiot z ceną, więc wspólne zaznaczenie znaczyłoby
+  czerwony przycisk „usuń 16 rzeczy” zaraz po starcie programu. W trybie usuwania kwadracik ma
+  **każdy** przedmiot poza wystawionym (te idą przez `delete_item`, bo dotykają konta na
+  Traderie) — właśnie „do sprawdzenia” i te bez ceny najczęściej lądują w koszu, a normalnie
+  nie da się ich zaznaczyć. Pliki przenosi `do_kosza()`, wydzielone z `delete_item()`.
 
 - **Repozytorium git i praca bez Traderie (4 X 2026)** — projekt da się sklonować i uruchomić
   bez żadnych poświadczeń. Szczegóły w sekcji 11; tu dwie rzeczy warte zapamiętania.

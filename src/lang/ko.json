@@ -397,7 +397,22 @@
     "Rozpoznane bez Traderie (odczytaj screeny ponownie, zeby wystawic): ": "Traderie 없이 인식됨 (등록하려면 스크린샷을 다시 읽으세요): ",
     "Nie podano ID konta Traderie. Wpisz je w Ustawieniach - znajdziesz je w adresie listy swoich ofert na Traderie, po 'seller='.": "Traderie 계정 ID가 없습니다. 설정에서 입력하세요 - Traderie 내 판매 목록 주소의 'seller=' 뒤에 있습니다.",
     "Odczyt screenow modelem lokalnym - jesli nie zmiesci sie obok gry, program o tym powie": "로컬 모델로 스크린샷을 읽는 중 - 게임과 함께 올리지 못하면 프로그램이 알려줍니다",
-    "Odczyt screenow w chmurze ({0}) - karta graficzna nie jest potrzebna": "클라우드에서 스크린샷을 읽는 중 ({0}) - 그래픽 카드가 필요 없습니다"
+    "Odczyt screenow w chmurze ({0}) - karta graficzna nie jest potrzebna": "클라우드에서 스크린샷을 읽는 중 ({0}) - 그래픽 카드가 필요 없습니다",
+    "Zaznacz do usuniecia": "삭제할 항목 선택",
+    "Usun zaznaczone ({0})": "선택 항목 삭제 ({0})",
+    "Zaznacz przedmioty, ktore maja zniknac z listy.": "목록에서 지울 아이템을 선택하세요.",
+    "Usunac zaznaczone przedmioty ({0})?": "선택한 아이템 {0}개를 삭제할까요?",
+    "...i jeszcze {0}": "...외 {0}개",
+    "Pliki trafia do kosza w katalogu ze zrzutami - nic nie znika z dysku na stale.": "파일은 스크린샷 폴더의 휴지통으로 이동합니다 - 디스크에서 완전히 사라지지 않습니다.",
+    "Usunieto z listy: {0} szt.": "목록에서 제거: {0}개",
+    "Nic nie jest zaznaczone.": "선택된 항목이 없습니다.",
+    "Sortuj:": "정렬:",
+    "najnowsze": "최신순",
+    "rodzaj": "종류",
+    "nazwa": "이름",
+    "cena": "가격",
+    "stan": "상태",
+    "jakosc rzutu": "옵션 품질"
   },
   "phrases": {
     "token OK": "토큰 정상",

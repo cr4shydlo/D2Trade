@@ -397,7 +397,22 @@
     "Rozpoznane bez Traderie (odczytaj screeny ponownie, zeby wystawic): ": "Identified without Traderie (re-read the screenshots to list them): ",
     "Nie podano ID konta Traderie. Wpisz je w Ustawieniach - znajdziesz je w adresie listy swoich ofert na Traderie, po 'seller='.": "No Traderie account id. Enter it in Settings - you will find it in the address of your own listings page on Traderie, after 'seller='.",
     "Odczyt screenow modelem lokalnym - jesli nie zmiesci sie obok gry, program o tym powie": "Reading screenshots with the local model - if it will not fit alongside the game, the program will say so",
-    "Odczyt screenow w chmurze ({0}) - karta graficzna nie jest potrzebna": "Reading screenshots in the cloud ({0}) - no graphics card needed"
+    "Odczyt screenow w chmurze ({0}) - karta graficzna nie jest potrzebna": "Reading screenshots in the cloud ({0}) - no graphics card needed",
+    "Zaznacz do usuniecia": "Select to delete",
+    "Usun zaznaczone ({0})": "Delete selected ({0})",
+    "Zaznacz przedmioty, ktore maja zniknac z listy.": "Tick the items that should disappear from the list.",
+    "Usunac zaznaczone przedmioty ({0})?": "Delete the selected items ({0})?",
+    "...i jeszcze {0}": "...and {0} more",
+    "Pliki trafia do kosza w katalogu ze zrzutami - nic nie znika z dysku na stale.": "The files go to the trash folder inside the screenshots directory - nothing is erased from the disk for good.",
+    "Usunieto z listy: {0} szt.": "Removed from the list: {0}",
+    "Nic nie jest zaznaczone.": "Nothing is selected.",
+    "Sortuj:": "Sort:",
+    "najnowsze": "newest",
+    "rodzaj": "kind",
+    "nazwa": "name",
+    "cena": "price",
+    "stan": "status",
+    "jakosc rzutu": "roll quality"
   },
   "phrases": {
     "token OK": "token OK",
