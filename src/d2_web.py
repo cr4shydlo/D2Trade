@@ -358,6 +358,8 @@ class State:
         self.busy = False
         self.stop = False
         self.progress = None         # (tekst, 0..1) podczas wystawiania
+        self.progbox = None          # uchwyt na pasek postepu - odswieza sie bez przebudowy okna
+        self.progress_shown = None   # co pasek juz pokazuje (zeby wiedziec, kiedy go przerysowac)
         self.capture_on = False
         self.notify_on = bool(i18n.settings().get("notify", True))   # domyslnie wlaczone
         self.notify_new = 0          # ile nieprzeczytanych (plakietka przy kopertce)
@@ -699,8 +701,8 @@ async def do_post(plan):
                 if S.stop:
                     log(t("Zatrzymano - reszta zostaje z zapamietanymi cenami."))
                     return
+                # samo odliczanie: bez S.dirty, bo przebudowa okna co sekunde miga lista
                 S.progress = (f"{t('Wystawianie')} {n - 1} / {len(plan)} · {left} s", (n - 1) / len(plan))
-                S.dirty = True
                 await asyncio.sleep(1)
         lst, f = it["lst"], it["file"]
         item = await run.io_bound(tm.get_item, lst["name"])
@@ -928,13 +930,11 @@ async def do_relist_all():
                     log(t(f"Zatrzymano - wyslano {len(zrobione)} z {len(plan)}."))
                     break
                 S.progress = (f"{t('Odnawianie')} {n - 1} / {len(plan)} · {left} s", (n - 1) / len(plan))
-                S.dirty = True
                 await asyncio.sleep(1)
             if S.stop:
                 break
         nazwa = S.items[iid]["lst"].get("name", "?")
         S.progress = (f"{t('Odnawianie')} {n} / {len(plan)} · {nazwa}", (n - 1) / len(plan))
-        S.dirty = True
         ok, msg = await run.io_bound(tp.refresh_listing, lid, auth)
         if not ok:
             log(f"! {nazwa} ({lid}): {msg}")
@@ -1177,14 +1177,12 @@ async def wipe_everything(z_traderie: bool):
                         break
                     S.progress = (f"{t('Zdejmowanie ofert')} {n - 1} / {len(oferty)} · {left} s",
                                   (n - 1) / len(oferty))
-                    S.dirty = True
                     await asyncio.sleep(1)
             if S.stop:
                 say(t(f"Zatrzymano - zdjeto {n - 1} z {len(oferty)}. Nic nie zostalo skasowane."), "warning")
                 return
             nazwa = S.items[iid]["lst"].get("name", "?")
             S.progress = (f"{t('Zdejmowanie ofert')} {n} / {len(oferty)} · {nazwa}", (n - 1) / len(oferty))
-            S.dirty = True
             ok, msg = await run.io_bound(tp.remove_listing, lid, auth)
             if not ok:
                 log(f"! {nazwa} ({lid}): {msg}")
@@ -2227,8 +2225,25 @@ def details():
 
 
 def progress_box():
-    if S.progress:
-        text, frac = S.progress
+    """Miejsce na pasek postepu. Zostaje puste, dopoki nie ma zadania.
+
+    Pasek odswieza sie co sekunde (odliczanie przerwy miedzy ofertami) i dlatego ma wlasny
+    uchwyt: gdyby szedl przez S.dirty, kazde tykniecie przebudowywaloby cale okno, a lista
+    migalaby ikonami i nazwami przez cale wystawianie.
+    """
+    S.progbox = ui.column().classes("w-full gap-0")
+    rysuj_progress()
+
+
+def rysuj_progress():
+    """Przerysowuje sam pasek postepu - bez dotykania listy przedmiotow."""
+    if S.progbox is None:
+        return
+    S.progbox.clear()
+    if not S.progress:
+        return
+    text, frac = S.progress
+    with S.progbox:
         with ui.column().classes("w-full gap-2 p-3").style(f"border:1px solid {LINE}; border-radius:3px; background:{PANEL2}"):
             ui.label(text).style("font-size:12.5px")
             with ui.element("div").classes("bar w-full"):
@@ -2557,6 +2572,8 @@ def index():
                                                                             f"user-select:text; color:{MUTED}")
 
     def render():
+        S.progbox = None            # stary uchwyt zaraz przestanie istniec
+        S.progress_shown = S.progress
         side.clear()
         with side:
             sidebar()
@@ -2576,6 +2593,10 @@ def index():
         if S.dirty and not S.editing:
             S.dirty = False
             render()
+        elif S.progress != S.progress_shown:
+            # sam postep - przerysowujemy pasek, lista zostaje taka, jaka jest
+            S.progress_shown = S.progress
+            rysuj_progress()
 
     render()
     first_visit()

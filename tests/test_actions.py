@@ -113,3 +113,63 @@ async def test_fg_przy_cenach_w_oknie(user: User):
     i18n.save_setting("d2jsp_fg_per_ist", 0)         # bez kursu nie ma czego pokazywac
     W._FG["when"] = 0
     assert W.fg_text("ist+mal") == ""
+
+
+async def test_odliczanie_nie_przebudowuje_listy(user: User, monkeypatch):
+    """Podczas przerwy miedzy ofertami lista ma stac w miejscu.
+
+    Kazda sekunda odliczania ustawiala S.dirty, wiec okno przebudowywalo sie w calosci -
+    ikony i nazwy migaly przez cale wystawianie (zgloszone 6 X 2026). Pasek postepu ma
+    wlasny uchwyt i przerysowuje sie sam; reszta widoku nie ma powodu znikac.
+    """
+    import d2_web as W
+    monkeypatch.setattr(tp, "DELAY", (6, 6))
+    monkeypatch.setattr(tp, "post", lambda payload, auth: (200, json.dumps({"success": True, "listing": "777"})))
+    await user.open('/')
+    await asyncio.sleep(1.5)
+
+    ready = [i for i in W.S.order if W.S.items[i]['status'] == 'ready'][:2]
+    assert len(ready) == 2, "wzorzec powinien miec dwa gotowe przedmioty"
+    for i in ready:
+        await W.set_price(i, 'ist')
+    await asyncio.sleep(0.5)
+
+    rysowan = {"n": 0}
+    karta = W.item_card
+    monkeypatch.setattr(W, "item_card", lambda iid: (rysowan.__setitem__("n", rysowan["n"] + 1), karta(iid))[1])
+
+    zadanie = asyncio.create_task(W.start_post())
+    await asyncio.sleep(0.5)
+    user.find('Tak').click()
+
+    # czekamy, az program wejdzie w odliczanie przerwy przed druga oferta
+    for _ in range(120):
+        await asyncio.sleep(0.1)
+        if W.S.progress and W.S.progress[0].endswith(" s"):
+            break
+    assert W.S.progress and W.S.progress[0].endswith(" s"), "nie doczekalem sie odliczania"
+
+    # pierwsza oferta poszla przed chwila i slusznie zazadala przebudowy - dajemy jej dojsc,
+    # zeby pomiar dotyczyl juz samego odliczania
+    await asyncio.sleep(1.0)
+    przed, tekst_przed = rysowan["n"], W.S.progress[0]
+    await user.should_see("Wystawianie")        # pasek sam sie rysuje, mimo ze lista stoi
+    await asyncio.sleep(2.0)
+    tekst_po = W.S.progress[0]
+    print("odliczanie:", tekst_przed, "->", tekst_po, "| przerysowanych kart:", rysowan["n"] - przed)
+    # bez tego sprawdzenia test przechodzilby takze wtedy, gdyby odliczanie w ogole nie ruszylo
+    assert tekst_przed != tekst_po, "pasek postepu stoi - test nic by nie sprawdzil"
+    assert rysowan["n"] == przed, "lista przebudowala sie w trakcie odliczania"
+
+    # ...a licznik faktycznie widzi przebudowe - inaczej zero wyzej nic by nie znaczylo
+    W.S.dirty = True
+    await asyncio.sleep(0.8)
+    print("po wymuszonej przebudowie:", rysowan["n"] - przed)
+    assert rysowan["n"] > przed, "licznik nie wykrywa przebudowy - test bylby slepy"
+
+    await zadanie
+    for _ in range(40):
+        await asyncio.sleep(0.2)
+        if not W.S.busy:
+            break
+    assert all(W.S.items[i]['status'] == 'posted' for i in ready)

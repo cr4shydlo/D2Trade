@@ -329,13 +329,13 @@ main_file = src/run_app.py
 `pythonpath = src` zastępuje sztuczki z `sys.path` — testy importują moduły po nazwie, tak jak
 program. `main_file` wtyczka NiceGUI liczy względem pliku `pytest.ini`.
 
-Scenariusze w repo (**102 testy**, `py -3.11 -m pytest -q` ≈ 100 s):
+Scenariusze w repo (**103 testy**, `py -3.11 -m pytest -q` ≈ 100 s):
 
 | plik | co sprawdza |
 |---|---|
 | `test_launch.py` | **czy program w ogóle wstaje** — uruchamia `python src\d2_web.py` jak plik `.bat` i czeka na odpowiedź serwera; drugi test dla `game_extract.py` |
 | `test_app.py` | przepływ główny, widoki, okno ceny, szybka wycena, synchronizacja; strażnik `ui.notify` w funkcjach async |
-| `test_actions.py` | wystawianie z potwierdzeniem, sprzedaż, usuwanie z listy, odblokowanie „do sprawdzenia”, kopertka z wiadomościami |
+| `test_actions.py` | wystawianie z potwierdzeniem, sprzedaż, usuwanie z listy, odblokowanie „do sprawdzenia”, kopertka z wiadomościami, lista nie przebudowuje się podczas odliczania przerwy |
 | `test_rare2.py` | panel magic/rare ze statami na tle maksimum |
 | `test_llm.py`, `test_switch.py` | dostawca modelu, licznik tokenów, cennik, klucz API zapisany do pliku w `secrets/` (a nie do `settings.json`) |
 | `test_charms.py` | reguły charmów (Grand Charm bez skillera nie dostaje ceny) |
@@ -363,6 +363,18 @@ Przy zmianach w logice (bez UI) najszybszą kontrolą jest przepuszczenie prawdz
 ## 10. Stan i co dalej
 
 ### Zrobione (październik 2026, po przeniesieniu do IDE)
+
+- **Lista przestała migać podczas wystawiania (6 X 2026)** — zgłoszone przez autora: przez całą
+  przerwę między ofertami ikony i nazwy mrugały. Odliczanie ustawiało `S.progress` **i**
+  `S.dirty` co sekundę, a `render()` czyści i buduje od nowa cały `main` razem z paskiem bocznym
+  — więc raz na sekundę znikała i wracała cała lista z obrazkami. Pasek postępu ma teraz własny
+  uchwyt (`S.progbox`) i `rysuj_progress()`, a `tick()` przerysowuje sam pasek, gdy zmienił się
+  tylko `S.progress` (`S.progress_shown` pilnuje, czy jest co odświeżać). Z trzech pętli
+  odliczania (wystawianie, odnawianie, zdejmowanie ofert) zniknęło `S.dirty`. **Zasada na
+  przyszłość: `S.dirty` znaczy „zmieniły się dane", a nie „minęła sekunda".** Wszystko, co tyka
+  częściej niż raz na kilka sekund, musi mieć własny kawałek widoku. Pilnuje tego
+  `test_actions.py::test_odliczanie_nie_przebudowuje_listy`, który liczy wywołania `item_card()`
+  w trakcie odliczania — i osobno sprawdza, że licznik w ogóle widzi przebudowę.
 
 - **Sortowanie listy i usuwanie hurtem (6 X 2026)** — `SORTY` (najnowsze / rodzaj / nazwa /
   cena / stan / jakość rzutu), wybór zapisany w `settings.json`, pole „Sortuj:” obok filtra
