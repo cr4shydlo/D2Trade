@@ -135,6 +135,18 @@ def has_props(data) -> bool:
     return bool(data.get("items")) and all("properties" in it for it in data["items"])
 
 
+def ujednolic_props(data):
+    """Traderie przezwalo pole z szablonem wlasciwosci: bylo 'property', jest 'name'.
+    Definicje sciagniete do 5 X 2026 (i wzorzec testow) maja stara nazwe, nowsze - nowa,
+    a caly kod czyta 'property'. Sprowadzamy to do jednego zaraz po odczycie, bo inaczej
+    kazda swiezo pobrana definicja wywalala odczyt na KeyError: 'property'."""
+    for it in data.get("items") or []:
+        for p in it.get("properties") or []:
+            if "property" not in p and "name" in p:
+                p["property"] = p["name"]
+    return data
+
+
 LOOKUP_FAILED = set()      # slugi, ktorych nie udalo sie pobrac (blad sieci) w tym przebiegu
 
 
@@ -174,6 +186,8 @@ def get_item(name: str):
         if not has_props(data):
             cached.unlink()  # stary, niepelny wpis
             data = None
+        else:
+            ujednolic_props(data)
     if data is None and have_auth():
         for extra in ITEM_QUERY_VARIANTS:
             try:
@@ -183,7 +197,7 @@ def get_item(name: str):
                 LOOKUP_FAILED.add(slug)      # blad sieci - NIE traktujemy tego jak "brak w Traderie"
                 break
             if has_props(d):
-                data = d
+                data = ujednolic_props(d)   # do cache trafia juz postac z 'property'
                 break
         if data:
             cached.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
