@@ -716,6 +716,9 @@ async def do_post(plan):
             resp = {}
         if not resp.get("success") or not resp.get("listing"):
             it["status"] = "error"
+            # cala odpowiedz do logu: przy odmowie walidacji powod siedzi w dalszej czesci
+            # (lista 'issues' z nazwami pol), a w okienku zmiesci sie tylko poczatek
+            log(f"{lst['name']}: {status} <- /listings/create\n{body}")
             msg = tp.SESSION_EXPIRED if tp.is_expired(body) else body[:300]
             say(t(f"{lst['name']}: nieoczekiwana odpowiedz Traderie:") + " " + msg, "negative", timeout=10000)
             return

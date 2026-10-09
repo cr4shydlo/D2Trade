@@ -330,6 +330,7 @@
     "nazwa postaci": "Charaktername",
     "nie rozpoznano przedmiotu ani bazy (linie: '{0}' / '{1}')": "weder Gegenstand noch Basis erkannt (Zeilen: '{0}' / '{1}')",
     "nie udalo sie pobrac '{0}' z Traderie (blad polaczenia) - sprobuj odczytac ponownie, zanim wystawisz": "'{0}' konnte nicht von Traderie geladen werden (Verbindungsfehler) - vor dem Einstellen erneut auslesen",
+    "dopasowanie przerwal blad programu ({0}) - szczegoly w logu, sprobuj odczytac ponownie": "Zuordnung durch einen Programmfehler abgebrochen ({0}) - Details im Log, Screenshot erneut auslesen",
     "nie znaleziono przedmiotu '{0}'": "Gegenstand '{0}' nicht gefunden",
     "niezidentyfikowany - pominiety": "unidentifiziert - übersprungen",
     "niski": "niedrig",

@@ -156,10 +156,18 @@ def build_properties(listing: dict, item: dict) -> list:
         value = e["value"]
         if d["property"] == "Ladder":
             value = (value == "Ladder")          # Traderie: Ladder = true, Non Ladder = false
+        # Kszalt pozycji po zmianie API (pazdziernik 2026), zdjety z zadania samej strony:
+        # nazwa jako 'name', wartosc pod kluczem o nazwie typu ('number' / 'string' / 'bool').
+        # Pola 'property' i 'option' sa w nowym schemacie zadeklarowane jako "never" - ich
+        # obecnosc to 400, a brak wartosci pod kluczem typu tez ("properties.2.bool:
+        # expected boolean, received undefined").
         if d["property"] == "Game version":
-            out.append({**d, "id": d["property_id"], "option": value})  # tak wysyla to strona: pelna definicja + option
+            # ta jedna pozycja idzie cala definicja (tak robi strona) - bez 'property', bo to
+            # pole jest zakazane, i bez 'preferred' na wierzchu, ktorego strona tu nie wysyla
+            echo = {k: v for k, v in d.items() if k != "property"}
+            out.append({**echo, "id": d["property_id"], "name": d["property"], d["type"]: value})
             continue
-        prop = {"id": d["property_id"], "property": d["property"], "option": value, "type": d["type"]}
+        prop = {"id": d["property_id"], "name": d["property"], "type": d["type"], d["type"]: value}
         if d["property"] in REQUIRED:
             prop["preferred"] = True
         out.append(prop)
@@ -195,8 +203,13 @@ def post(payload: dict, auth: dict):
                  "Origin": "https://traderie.com", "Referer": "https://traderie.com/diablo2resurrected",
                  **auth},
     )
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return r.status, r.read().decode("utf-8", "replace")
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return r.status, r.read().decode("utf-8", "replace")
+    except urllib.error.HTTPError as e:
+        # powod odmowy Traderie podaje w CIELE odpowiedzi; bez tego z okna leci goly
+        # "HTTP Error 400: Bad Request" ze sladem wyjatku, a do_post() umie pokazac powod
+        return e.code, e.read().decode("utf-8", "replace")
 
 
 def ask_prices(todo: list, hints: bool, prices: dict, registry: dict = None) -> list:

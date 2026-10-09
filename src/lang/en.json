@@ -330,6 +330,7 @@
     "nazwa postaci": "character name",
     "nie rozpoznano przedmiotu ani bazy (linie: '{0}' / '{1}')": "neither the item nor its base was recognized (lines: '{0}' / '{1}')",
     "nie udalo sie pobrac '{0}' z Traderie (blad polaczenia) - sprobuj odczytac ponownie, zanim wystawisz": "could not fetch '{0}' from Traderie (connection error) - read the screenshot again before listing",
+    "dopasowanie przerwal blad programu ({0}) - szczegoly w logu, sprobuj odczytac ponownie": "matching was cut short by a program error ({0}) - details in the log, try reading the screenshot again",
     "nie znaleziono przedmiotu '{0}'": "item '{0}' not found",
     "niezidentyfikowany - pominiety": "unidentified - skipped",
     "niski": "low",

@@ -13,6 +13,7 @@ Definicje przedmiotow sa cache'owane w folderze cache/ (mozna tam tez recznie
 wrzucic plik <slug>.json zapisany z przegladarki, jesli pobieranie nie dziala).
 """
 import re
+import traceback
 import unicodedata
 import sys
 import json
@@ -138,12 +139,17 @@ def has_props(data) -> bool:
 def ujednolic_props(data):
     """Traderie przezwalo pole z szablonem wlasciwosci: bylo 'property', jest 'name'.
     Definicje sciagniete do 5 X 2026 (i wzorzec testow) maja stara nazwe, nowsze - nowa,
-    a caly kod czyta 'property'. Sprowadzamy to do jednego zaraz po odczycie, bo inaczej
-    kazda swiezo pobrana definicja wywalala odczyt na KeyError: 'property'."""
+    a caly kod czyta 'property'. Sprowadzamy je do siebie zaraz po odczycie, bo inaczej
+    kazda swiezo pobrana definicja wywalala odczyt na KeyError: 'property'.
+
+    Uzupelniamy oba kierunki, bo przy wystawianiu cale definicje wracaja do Traderie
+    (pozycja "Game version", przedmioty w cenie) i nie wiadomo, ktorej nazwy teraz pilnuje."""
     for it in data.get("items") or []:
         for p in it.get("properties") or []:
             if "property" not in p and "name" in p:
                 p["property"] = p["name"]
+            elif "name" not in p and "property" in p:
+                p["name"] = p["property"]
     return data
 
 
@@ -601,6 +607,22 @@ def map_item(ocr: dict) -> dict:
     return out
 
 
+def awaria(f: Path, ocr: dict, prev: dict, e: Exception) -> dict:
+    """Wpis zastepczy dla screena, na ktorym map_item sie wywrocil.
+
+    Przedmiot ma wyladowac w "do sprawdzenia", a nie zniknac: okno buduje liste wylacznie
+    z plikow .listing.json. Udane poprzednie dopasowanie zostaje nietkniete (lepsze stare
+    staty niz zadne) i dochodzi do niego samo ostrzezenie."""
+    res = dict(prev) if prev.get("listing") else {"source": ocr.get("file") or f.stem,
+                                                  "unmatched": [], "properties": []}
+    res.setdefault("ocr_name", (ocr.get("lines") or ["?"])[0])
+    res["warnings"] = list(res.get("warnings") or []) + [
+        f"dopasowanie przerwal blad programu ({type(e).__name__}: {e}) - szczegoly w logu, "
+        "sprobuj odczytac ponownie"]
+    res["needs_review"] = True
+    return res
+
+
 def run(folder: Path, verbose: bool = True):
     files = sorted(p for p in folder.glob("*.json")
                    if not p.name.endswith((".listing.json", ".raw.json")))
@@ -615,7 +637,14 @@ def run(folder: Path, verbose: bool = True):
             prev = json.loads(out_file.read_text(encoding="utf-8"))
             if prev.get("posted"):
                 continue  # juz wystawiony - nie ruszamy (inaczej zniknalby znacznik i przedmiot poszedlby drugi raz)
-        res = map_item(ocr)
+        try:
+            res = map_item(ocr)
+        except Exception as e:
+            # Jeden zly przedmiot nie moze zabrac reszty listy. Bez tego wyjatek przerywal cala
+            # petle i kazdy nastepny screen zostawal bez .listing.json, czyli niewidoczny w oknie
+            # (tak zniknelo 11 odczytow przy zmianie pola 'property' w API Traderie).
+            traceback.print_exc()
+            res = awaria(f, ocr, prev, e)
         for key in KEEP_ON_REMAP:   # to, co wpisal uzytkownik, nie moze zniknac po ponownym odczycie
             if prev.get(key) is not None and res.get(key) is None:
                 res[key] = prev[key]

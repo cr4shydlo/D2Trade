@@ -98,16 +98,20 @@ def import_listings(folder: Path, active: dict) -> list:
         item = l.get("item") or {}
         listing = []
         for p in l.get("properties") or []:
+            # Traderie przezwalo pole z nazwa statu: bylo 'property', jest 'name' (X 2026).
+            # Bez tego oferty wciagniete spoza programu mialy nazwy statow puste, a Ladder
+            # - bo warunek nizej nie trafial - zapisywal sie jako True zamiast "Ladder".
+            nazwa = p.get("name") or p.get("property") or ""
             if p["type"] == "number":
                 v = p.get("number")
             elif p["type"] == "string":
                 v = p.get("string")
-            elif p.get("property") == "Ladder":
+            elif nazwa == "Ladder":
                 v = "Ladder" if p.get("bool") else "Non Ladder"
             else:
                 v = True if p.get("bool") else None
             if v is not None:
-                listing.append({"property_id": p["property_id"], "value": v, "property": p.get("property", "")})
+                listing.append({"property_id": p["property_id"], "value": v, "property": nazwa})
         lst = {"source": "", "imported": True, "ocr_name": item.get("name", "?"), "warnings": [], "unmatched": [],
                "properties": [], "item_id": str(item.get("id")), "slug": item.get("slug"),
                "name": item.get("name"), "type": item.get("type"), "listing": listing, "needs_review": False,

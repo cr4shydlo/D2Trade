@@ -73,6 +73,52 @@ def test_stat_ktorego_traderie_nie_ma_zostaje_zgloszony():
     assert not [p for p in item["properties"] if "regenerate mana" in p["property"].lower()]
 
 
+def test_wywrotka_na_jednym_screenie_nie_zabiera_reszty(tmp_path, monkeypatch):
+    """Blad przy jednym przedmiocie nie moze skasowac z listy wszystkich nastepnych.
+
+    Okno buduje liste wylacznie z plikow .listing.json, wiec wyjatek przerywajacy petle
+    run() znaczyl, ze kazdy nastepny screen - choc odczytany - byl w oknie niewidoczny
+    (tak zniknelo 11 odczytow przy zmianie pola 'property' w API Traderie).
+    """
+    zly, dobry = "item_20261001_174324_164", "item_20261001_174317_634"
+    folder = tmp_path / "screenshots"
+    folder.mkdir()
+    for stem in (zly, dobry):
+        (folder / f"{stem}.json").write_text(json.dumps(ocr(stem)), encoding="utf-8")
+
+    oryg = tm.map_item
+    monkeypatch.setattr(tm, "map_item",
+                        lambda o: (_ for _ in ()).throw(KeyError("property"))
+                        if zly in o["file"] else oryg(o))
+    tm.run(folder, verbose=False)
+
+    padl = json.loads((folder / f"{zly}.listing.json").read_text(encoding="utf-8"))
+    print("padl:", padl.get("ocr_name"), "|", padl["warnings"])
+    assert padl["needs_review"] and any("blad programu" in w for w in padl["warnings"])
+    assert padl["ocr_name"]        # bez nazwy nie dalo by sie go znalezc na liscie
+
+    dalszy = json.loads((folder / f"{dobry}.listing.json").read_text(encoding="utf-8"))
+    print("nastepny:", dalszy.get("name"), "| staty:", len(dalszy["properties"]))
+    assert dalszy["listing"] and not dalszy["needs_review"]
+
+
+def test_wywrotka_nie_kasuje_udanego_dopasowania(tmp_path, monkeypatch):
+    """Gdy poprzedni odczyt sie udal, zostaje - lepsze stare staty niz zadne."""
+    stem = "item_20261001_174324_164"
+    folder = tmp_path / "screenshots"
+    folder.mkdir()
+    (folder / f"{stem}.json").write_text(json.dumps(ocr(stem)), encoding="utf-8")
+    tm.run(folder, verbose=False)
+    przed = json.loads((folder / f"{stem}.listing.json").read_text(encoding="utf-8"))
+
+    monkeypatch.setattr(tm, "map_item", lambda o: (_ for _ in ()).throw(KeyError("property")))
+    tm.run(folder, verbose=False)
+    po = json.loads((folder / f"{stem}.listing.json").read_text(encoding="utf-8"))
+    print(f"staty przed: {len(przed['properties'])} -> po wywrotce: {len(po['properties'])}")
+    assert po["listing"] == przed["listing"] and po["name"] == przed["name"]
+    assert po["needs_review"] and any("blad programu" in w for w in po["warnings"])
+
+
 def test_ponowny_odczyt_nie_gubi_wpisow(tmp_path):
     """Ponowny odczyt nadpisuje .listing.json - postac, skrzynia i cena musza przezyc."""
     stem = "item_20261001_174324_164"

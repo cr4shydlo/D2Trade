@@ -330,6 +330,7 @@
     "nazwa postaci": "캐릭터 이름",
     "nie rozpoznano przedmiotu ani bazy (linie: '{0}' / '{1}')": "아이템도 기본 아이템도 인식하지 못했습니다 (줄: '{0}' / '{1}')",
     "nie udalo sie pobrac '{0}' z Traderie (blad polaczenia) - sprobuj odczytac ponownie, zanim wystawisz": "Traderie에서 '{0}'을(를) 가져오지 못했습니다 (연결 오류) - 등록 전에 다시 읽어 주세요",
+    "dopasowanie przerwal blad programu ({0}) - szczegoly w logu, sprobuj odczytac ponownie": "프로그램 오류로 매칭이 중단되었습니다 ({0}) - 자세한 내용은 로그에 있습니다. 스크린샷을 다시 읽어 보세요",
     "nie znaleziono przedmiotu '{0}'": "아이템 '{0}'을(를) 찾을 수 없음",
     "niezidentyfikowany - pominiety": "미확인 아이템 - 건너뜀",
     "niski": "낮음",
